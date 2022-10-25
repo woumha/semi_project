@@ -57,11 +57,11 @@
 			<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 		<script type="text/javascript">
 			var clientId = "zROYJp38WO0IxEpiDz0u";
-			var callbackUrl = "http://localhost:8787/project4/view2/naverLoginAPI.jsp";
+			var callbackUrl = "http://localhost:8787/project4/view2/naverLoginAPI.jsp"; // 네이버 developer 변경
 			var naver_id_login = new naver_id_login(clientId, callbackUrl);
 			var state = naver_id_login.getUniqState();
 			naver_id_login.setButton("white", 3, 40);
-			naver_id_login.setDomain("http://localhost:8787/project4/view/login_btn.jsp");
+			naver_id_login.setDomain("http://localhost:8787/project4/view/login_btn.jsp"); // 네이버 developer 변경
 			naver_id_login.setState(state);
 			naver_id_login.setPopup();
 			naver_id_login.init_naver_id_login();

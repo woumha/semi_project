@@ -1,4 +1,4 @@
-package src.com.action;
+package com.action;
 
 import java.io.IOException;
 
@@ -15,9 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import src.com.controller.Action;
-import src.com.controller.ActionForward;
-import src.com.model.userTokenDTO;
+import com.controller.Action;
+import com.controller.ActionForward;
+import com.model.userTokenDTO;
 
 public class SendMailAction implements Action {
 	private String mailTitle;

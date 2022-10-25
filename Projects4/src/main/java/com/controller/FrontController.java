@@ -1,4 +1,4 @@
-package src.com.controller;
+package com.controller;
 
 import java.io.FileInputStream;
 
@@ -42,7 +42,7 @@ public class FrontController extends HttpServlet {
 		Properties pro = new Properties();
 		
 		// mapping.properties File 선택
-		FileInputStream fis = new FileInputStream("C:\\Users\\user1\\git\\kh_JSP\\Projects4\\src\\main\\java\\src\\com\\controller\\mapping.properties");
+		FileInputStream fis = new FileInputStream("C:\\Users\\user1\\git\\Projects4\\Projects4\\src\\main\\java\\src\\com\\controller\\mapping.properties");
 		// .properties 파일을 읽어드림
 		pro.load(fis);
 		// bbs_list.do와 같은 property 값을 읽어드림

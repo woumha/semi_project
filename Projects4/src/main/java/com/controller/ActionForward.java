@@ -1,4 +1,4 @@
-package src.com.controller;
+package com.controller;
 /*
  * ActionForward 클래스
  * 

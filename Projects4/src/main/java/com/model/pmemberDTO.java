@@ -1,4 +1,4 @@
-package src.com.model;
+package com.model;
 
 public class pmemberDTO {
 	private String pmember_email;

@@ -1,4 +1,4 @@
-package src.com.action;
+package com.action;
 
 import java.util.Calendar;
 

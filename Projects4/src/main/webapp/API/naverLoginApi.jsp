@@ -9,7 +9,7 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script type="text/javascript">
 	  var clientId = "zROYJp38WO0IxEpiDz0u";
-	  var callbackUrl = "http://localhost:8787/project4/view2/naverLoginAPI.jsp";
+	  var callbackUrl = "http://localhost:8787/project4/view2/naverLoginAPI.jsp"; // 네이버 developer 변경
 	  var naver_id_login = new naver_id_login(clientId, callbackUrl);
 	  
 	  // 접근 토큰 값 출력

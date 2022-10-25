@@ -21,7 +21,7 @@
 			return false;			
 		} else {
 			$.ajax({
-				url: "Projects4/signUp.do",
+				url: "/Projects4/signUp.do",
 				data: $("#inform").serialize(),
 				datatype: "text",
 				success: function(data) {

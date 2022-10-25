@@ -15,7 +15,6 @@
 	<div align="center">
 		◀<h4>전화번호 인증하기</h4>
 		<hr>
-			<c:set var="infor" value="${user }" />
 			<form id="formsubmit" method="post" action="<%=request.getContextPath() %>/tokenCheck_ok.do">
 				${infor.getEmail() }으로 보내드린 인증 코드를 입력하세요.
 				<br>

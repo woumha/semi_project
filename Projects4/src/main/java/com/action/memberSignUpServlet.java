@@ -1,4 +1,4 @@
-package src.com.action;
+package com.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import src.com.controller.ActionForward;
-import src.com.model.LoginDAO;
-import src.com.model.LoginDTO;
+import com.controller.ActionForward;
+import com.model.LoginDAO;
+import com.model.LoginDTO;
 
 /**
  * Servlet implementation class memberSignUpServlet
@@ -36,9 +36,10 @@ public class memberSignUpServlet extends HttpServlet {
 		String first = request.getParameter("firstname");
 		int phone = Integer.parseInt(request.getParameter("phone"));
 		int birth = Integer.parseInt(request.getParameter("birth"));
+		
 		String mail = request.getParameter("email");
 		String mail_Id = "", mail_Domain = "";
-		
+		System.out.println("real mail: " + mail);
 		StringTokenizer st = new StringTokenizer(mail, "@");
 		while(st.hasMoreTokens()) {
 			mail_Id = st.nextToken();
@@ -49,10 +50,11 @@ public class memberSignUpServlet extends HttpServlet {
 		userInfor.setPmember_name(last+first);
 		
 		userInfor.setPmember_email(mail_Id);
+		System.out.println("mail: "+ mail_Id);
 		userInfor.setPmember_domain(mail_Domain);
-		
+		System.out.println("do: " + mail_Domain);
 		userInfor.setPmember_code(usercodeMaker());
-		
+		System.out.println("code: " + userInfor.getPmember_code());
 		userInfor.setFirstname(first);
 		userInfor.setLastname(last);
 		
