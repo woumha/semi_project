@@ -22,8 +22,8 @@ import com.model.userTokenDTO;
 public class SendMailAction implements Action {
 	private String mailTitle;
 	private String mailContent;
-	String user = "axp987@naver.com";
-	String password = "qoa1@akfl";
+	String user = "ghcks8357@naver.com";
+	String password = "Oraclepwd1!@";
 	
 	
 	@Override
@@ -83,8 +83,8 @@ public class SendMailAction implements Action {
 	         save.setToken(ranNum);
 	         
 	         HttpSession session = request.getSession();
-	         session.setAttribute("membermail", fullEmail);
-	         session.setAttribute("user", save);
+	         request.setAttribute("membermail", fullEmail);
+	         session.setAttribute("user", save); // 이메일, 코드
 	         
 	         forward.setRedirect(false);
 	         forward.setPath("tokenCheck.do");

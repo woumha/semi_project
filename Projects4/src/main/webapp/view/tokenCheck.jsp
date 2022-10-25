@@ -16,7 +16,7 @@
 		◀<h4>전화번호 인증하기</h4>
 		<hr>
 			<form id="formsubmit" method="post" action="<%=request.getContextPath() %>/tokenCheck_ok.do">
-				${infor.getEmail() }으로 보내드린 인증 코드를 입력하세요.
+				${membermail }으로 보낸 인증 코드를 입력하세요.
 				<br>
 				<input type="text" name="inputToken" id="inputToken" placeholder="인증번호를 입력해주세요.">
 				<span id="ck"></span>
