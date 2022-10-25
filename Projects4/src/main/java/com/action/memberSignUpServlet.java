@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.controller.ActionForward;
 import com.model.LoginDAO;
@@ -36,8 +37,7 @@ public class memberSignUpServlet extends HttpServlet {
 		String first = request.getParameter("firstname");
 		int phone = Integer.parseInt(request.getParameter("phone"));
 		int birth = Integer.parseInt(request.getParameter("birth"));
-		
-		String mail = request.getParameter("email");
+		String mail = request.getParameter("hideemail"); 
 		String mail_Id = "", mail_Domain = "";
 		System.out.println("real mail: " + mail);
 		StringTokenizer st = new StringTokenizer(mail, "@");
@@ -48,15 +48,11 @@ public class memberSignUpServlet extends HttpServlet {
 		
 		LoginDTO userInfor = new LoginDTO();
 		userInfor.setPmember_name(last+first);
-		
-		userInfor.setPmember_email(mail_Id);
-		System.out.println("mail: "+ mail_Id);
-		userInfor.setPmember_domain(mail_Domain);
-		System.out.println("do: " + mail_Domain);
+		userInfor.setPmember_email(mail_Id.trim());
+		userInfor.setPmember_domain(mail_Domain.trim());
 		userInfor.setPmember_code(usercodeMaker());
-		System.out.println("code: " + userInfor.getPmember_code());
-		userInfor.setFirstname(first);
-		userInfor.setLastname(last);
+		userInfor.setFirstname(first.trim());
+		userInfor.setLastname(last.trim());
 		
 		userInfor.setPmember_birth(birth);
 		userInfor.setPmember_phone(phone);

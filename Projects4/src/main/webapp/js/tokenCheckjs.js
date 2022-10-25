@@ -1,14 +1,7 @@
 /**
  * 
  */
- 
- $(function() {
-		$.ajaxSetup({
-			ContentType: "application/x-www-form-urlencoded;charset=UTF-8",
-			type: "post"
-		});
-		
-		
+$(function() {
 		$("#inputToken").keyup(function() {
 			if($.trim($("#inputToken").val()).length < 6) {
 				let warning = '<font color="red">숫자 6개를 입력해주세요.</font>';
@@ -25,4 +18,4 @@
 				$("#formsubmit").submit();
 			}
 		});
-	});
+});

@@ -79,7 +79,7 @@ public class SendMailAction implements Action {
 	         		+ "</script>");
 	         
 	         userTokenDTO save = new userTokenDTO();
-	         save.setEmail(fullEmail);
+	         save.setEmail(fullEmail.trim());
 	         save.setToken(ranNum);
 	         
 	         HttpSession session = request.getSession();

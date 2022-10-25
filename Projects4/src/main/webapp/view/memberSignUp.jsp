@@ -10,7 +10,7 @@
 <meta charset="UTF-8">
 <title>회원가입</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
-<script type="text/javascript" src="../js/normalJoin.js"></script>
+<script type="text/javascript" src="../js/signUp.js"></script>
 </head>
 <body>
 	<div align="center">
@@ -18,8 +18,10 @@
 		<hr>
 	</div>
 	<div>
+		<c:set var="u" value="${user }" />
 		<form method="post" id="inform" name="inform" action="">
-			<input type="text" id="email" class="field" name="email" placeholder="<%=mail %>" readonly>
+			<input type="hidden" name="hideemail" value="${u.getEmail() }">
+			<input type="text" id="email" class="field" name="email" placeholder="${u.getEmail() }" readonly>
 			<br>
 			<input type="text" id="lname" class="field" name="lastname" placeholder="이름(예:길동)">
 			<br>

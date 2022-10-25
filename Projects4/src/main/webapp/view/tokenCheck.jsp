@@ -9,13 +9,13 @@
 <meta charset="UTF-8">
 <title>인증 코드</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
-<script type="text/javascript" src="../js/tokenCheck.js"></script>
+<script type="text/javascript" src="js/tokenCheckjs.js"></script>
 </head>
 <body>
 	<div align="center">
 		◀<h4>전화번호 인증하기</h4>
 		<hr>
-			<form id="formsubmit" method="post" action="<%=request.getContextPath() %>/tokenCheck_ok.do">
+			<form id="formsubmit" method="post" action="<%=request.getContextPath() %>/tokenCheck_ok.do?email=${membermail}">
 				${membermail }으로 보낸 인증 코드를 입력하세요.
 				<br>
 				<input type="text" name="inputToken" id="inputToken" placeholder="인증번호를 입력해주세요.">

@@ -26,6 +26,7 @@
 				datatype: "text",
 				success: function(data) {
 					if(data > 0) {
+						alert('가입 완료'); // 경로 설정되면 삭제 해주시오
 						location.href=""; // 회원가입이 완료되었을때 이동경로
 					}
 					else {
