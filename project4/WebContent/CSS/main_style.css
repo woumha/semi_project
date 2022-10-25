@@ -1,0 +1,140 @@
+@charset "UTF-8";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#header_category.fixed {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+}
+
+
+
+#headerLine {
+	margin-top: 10px;
+	margin-bottom: 10px;
+    border: 0;
+    height: 1px;
+    background: #ccc;	
+}
+
+.main_topbar {
+	list-style:none;
+	text-align: center;
+	display: table;
+ 	width: 1920px;
+ 	
+}
+
+.main_topbar > li {
+	text-align: center;
+	display: inline-block;
+	margin: 10px;
+	
+}
+
+/* 상단바 텍스트 */
+.main_topbar > li > p {
+	/* ----- 드래그 방지 스타일 -----*/
+	-webkit-user-select: none;
+ 	-moz-user-select: none;
+ 	-ms-user-select: none;
+ 	user-select: none;
+ 	/* -----------------------*/
+ 	margin-top: 0px;
+ 	font-size: 15px;
+ 	font-weight: bold;
+}
+
+/* 필터 영역 스타일 ============*/
+/* 모달 */
+
+.btn_filter {
+	text-decoration: none;
+}
+.btn_filter p {
+	/* ----- 드래그 방지 스타일 -----*/
+	-webkit-user-select: none;
+ 	-moz-user-select: none;
+ 	-ms-user-select: none;
+ 	user-select: none;
+ 	/* -----------------------*/
+ 	margin-top: 0px;
+ 	font-size: 15px;
+ 	font-weight: bold;
+ 	text-decoration: none;
+ 	color: black;
+}
+
+
+/*=========================*/
+
+.center_imgs  a  div {
+	width: 260px;
+	height: 260px;
+	border-radius: 5%;
+	overflow: hidden;
+}
+
+.center_imgs  a  div  img {
+	width: 100%;
+	height: 100%;
+ 	object-fit: cover;
+}
+
+.center_imgs  a  p {
+	text-align: center;
+}
+
+.center_list {
+	text-align: center;
+	list-style: none;
+	display: block;
+	
+	/* 센터 왼쪽 여백 */
+	margin-left: 100px;
+}
+
+.center_list  li {
+	float: left;
+	/* 숙소 리스트끼리의 간격 */
+	margin-left: 15px;
+	margin-right: 15px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.center_list  li  a  p {
+	font-size: 15px;
+	text-align: left;
+	margin-top: 3px;
+	margin-bottom: 3px;
+	
+}
+
+.location, .price {
+	font-weight: bold; 
+}
+
+.center_list a {
+	display:block;
+	text-decoration:none;
+}
+
+.center_list a:visited {
+ 	color : black;
+}
+
+/* 검색 스타일 */
+.search {
+	text-align: center;
+}
+
+
+
+
+	
