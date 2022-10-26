@@ -384,7 +384,7 @@ $(window).scroll(function() {
 	<c:if test="${!empty list }">
 		<c:forEach items="${list }" var="dto">
 			<li class="center_imgs">
-				<a href="#">
+				<a href="detail.do?id=${dto.getHouse_no() }">
 					<div>
 						<img src="upload/${dto.getHouse_img1() }">
 					</div>
