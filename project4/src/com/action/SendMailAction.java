@@ -22,8 +22,8 @@ import com.model.userTokenDTO;
 public class SendMailAction implements Action {
 	private String mailTitle;
 	private String mailContent;
-	String user = "axp987@naver.com";
-	String password = "qoa1@akfl";
+	String user = "ghcks8357@naver.com";
+	String password = "Oraclepwd1!@";
 	
 	
 	@Override
