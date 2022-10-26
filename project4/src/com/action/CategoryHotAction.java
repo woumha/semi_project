@@ -6,12 +6,13 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.controller.Action;
+import com.controller.ActionForward;
 import com.model.HouseDAO;
 import com.model.HouseDTO;
 
 public class CategoryHotAction implements Action {
 
-	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 		HouseDAO dao = HouseDAO.getInstance();

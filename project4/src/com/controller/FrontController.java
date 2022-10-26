@@ -6,8 +6,8 @@ import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-import com.action.Action;
-import com.action.ActionForward;
+import com.controller.Action;
+import com.controller.ActionForward;
 
 public class FrontController extends HttpServlet {
 
@@ -35,7 +35,7 @@ public class FrontController extends HttpServlet {
 		Properties pro = new Properties();
 		
 		FileInputStream fis = 
-			new FileInputStream("C:\\NCS\\workspace(jsp)\\project4_\\src\\com\\controller\\mapping.properties");
+			new FileInputStream("D:\\git\\projects\\project4\\src\\com\\controller\\mapping.properties");
 		
 		pro.load(fis);
 		
