@@ -29,14 +29,6 @@
     <session-timeout>20</session-timeout>
   </session-config>
   <servlet>
-    <servlet-name>HouseDetail</servlet-name>
-    <servlet-class>model.DetailController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>HouseDetail</servlet-name>
-    <url-pattern>/detail.do</url-pattern>
-  </servlet-mapping>
-  <servlet>
     <servlet-name>FrontController</servlet-name>
     <servlet-class>com.controller.FrontController</servlet-class>
   </servlet>

@@ -10,71 +10,50 @@ import javax.sql.DataSource;
 public class HouseDAO {
 
 	Connection con = null;
-
 	PreparedStatement pstmt = null;
-
 	ResultSet rs = null;
-
-	String sql= null;
-
+	String sql = null;
 
 	private static HouseDAO instance;
 
-	public HouseDAO() {
-	}
+	public HouseDAO() {}
 	
 	public static HouseDAO getInstance() {
-		
-		if(instance == null) {
+		if (instance == null) {
 			instance = new HouseDAO();
 		}
-		
 		return instance;
 	}
 	
 	public void openConn() {
-		
 		try {
-
 			Context ctx = new InitialContext();
-			
 			DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/myoracle");
-			
 			con = ds.getConnection();
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 	}
 	
 	public void closeConn(ResultSet rs, PreparedStatement pstmt, Connection con) {
-		
 		try {
-			if(pstmt !=null){pstmt.close();}
-			if(con != null) {con.close();}
-			if(rs !=null) {rs.close();}
+			if (pstmt !=null) { pstmt.close(); }
+			if (con != null) { con.close(); }
+			if (rs !=null) { rs.close(); }
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
 	public List<HouseDTO> getHouseList() {
-		
 		openConn();
-		
 		List<HouseDTO> list = new ArrayList<HouseDTO>();
-
 		try {
-			
 			sql = "select * from house order by house_no desc";
-			
 			pstmt = con.prepareStatement(sql);
-			
 			rs = pstmt.executeQuery();	
 			
-			while(rs.next()) {
-				
+			while (rs.next()) {
 				HouseDTO dto = new HouseDTO();
 				
 				dto.setHouse_no(rs.getInt("house_no"));
@@ -110,26 +89,17 @@ public class HouseDAO {
 		}
 		return list;
 	}
-	
-	
+
 	public List<HouseDTO> categoryList(String cate) {
-		
 		openConn();
-		
 		List<HouseDTO> list = new ArrayList<HouseDTO>();
-		
 		try {
-			
 			sql = "select * from house where house_category = ?";
-			
 			pstmt = con.prepareStatement(sql);
-			
 			pstmt.setString(1, cate);
-			
 			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				
+
+			while (rs.next()) {
 				HouseDTO dto = new HouseDTO();
 				
 				dto.setHouse_no(rs.getInt("house_no"));
@@ -166,7 +136,6 @@ public class HouseDAO {
 		return list;
 	}
 	
-	
 	public List<HouseDTO> filterList_cprice(String cata, int price) {
 		openConn();
 		List<HouseDTO> list = new ArrayList<HouseDTO>();
@@ -176,7 +145,7 @@ public class HouseDAO {
 			pstmt.setString(1, cata);
 			pstmt.setInt(2, price);
 			rs = pstmt.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				HouseDTO dto = new HouseDTO();
 				dto.setHouse_no(rs.getInt("house_no"));
 				dto.setHouse_owner(rs.getString("house_owner"));
@@ -220,7 +189,7 @@ public class HouseDAO {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, price);
 			rs = pstmt.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				HouseDTO dto = new HouseDTO();
 				dto.setHouse_no(rs.getInt("house_no"));
 				dto.setHouse_owner(rs.getString("house_owner"));
@@ -265,7 +234,7 @@ public class HouseDAO {
 			pstmt.setString(1, cata);
 			pstmt.setInt(2, person);
 			rs = pstmt.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				HouseDTO dto = new HouseDTO();
 				dto.setHouse_no(rs.getInt("house_no"));
 				dto.setHouse_owner(rs.getString("house_owner"));
@@ -309,7 +278,7 @@ public class HouseDAO {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, person);
 			rs = pstmt.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				HouseDTO dto = new HouseDTO();
 				dto.setHouse_no(rs.getInt("house_no"));
 				dto.setHouse_owner(rs.getString("house_owner"));
@@ -354,7 +323,7 @@ public class HouseDAO {
 			pstmt.setInt(1, price);
 			pstmt.setInt(2, person);
 			rs = pstmt.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				HouseDTO dto = new HouseDTO();
 				dto.setHouse_no(rs.getInt("house_no"));
 				dto.setHouse_owner(rs.getString("house_owner"));
@@ -400,7 +369,7 @@ public class HouseDAO {
 			pstmt.setInt(2, price);
 			pstmt.setInt(3, person);
 			rs = pstmt.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				HouseDTO dto = new HouseDTO();
 				dto.setHouse_no(rs.getInt("house_no"));
 				dto.setHouse_owner(rs.getString("house_owner"));
@@ -566,27 +535,27 @@ public class HouseDAO {
 		openConn();
 		List<HouseDTO> list = new ArrayList<HouseDTO>();
 		try {
-			if(water == 1) {
+			if (water == 1) {
 				sql = "select * from house where house_water = ?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, water);
-			} else if(pool == 1) {
+			} else if (pool == 1) {
 				sql = "select * from house where house_pool = ?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, pool);				
-			} else if(ski == 1) {
+			} else if (ski == 1) {
 				sql = "select * from house where house_ski = ?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, ski);				
-			} else if(grill == 1) {
+			} else if (grill == 1) {
 				sql = "select * from house where house_grill = ?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, grill);				
-			} else if(smoking == 1) {
+			} else if (smoking == 1) {
 				sql = "select * from house where house_smoking = ?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, smoking);				
-			} else if(gym == 1) {
+			} else if (gym == 1) {
 				sql = "select * from house where house_gym = ?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, gym);				
@@ -594,7 +563,7 @@ public class HouseDAO {
 			
 			rs = pstmt.executeQuery();
 			
-			while(rs.next()) {
+			while (rs.next()) {
 				HouseDTO dto = new HouseDTO();
 				dto.setHouse_no(rs.getInt("house_no"));
 				dto.setHouse_owner(rs.getString("house_owner"));
@@ -627,8 +596,40 @@ public class HouseDAO {
 			closeConn(rs, pstmt, con);
 		}		
 		return list;
-	}	
+	}
 	
-	
+	public HouseDTO selectHouseInfo(String houseNo) {
+		openConn();
+    	HouseDTO dto = new HouseDTO();
+       
+        try {
+        	sql = "SELECT * FROM house WHERE house_no= ?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setNString(1, houseNo);
+            rs = pstmt.executeQuery();
+            if (rs.next()) {            	
+            	dto.setHouse_no(rs.getInt(1));
+            	dto.setHouse_owner(rs.getString(2));
+            	dto.setHouse_name(rs.getString(3));
+            	dto.setHouse_category(rs.getString(4));
+            	dto.setHouse_location(rs.getString(5));
+            	dto.setHouse_price(rs.getInt(6));
+            	dto.setHouse_content(rs.getString(7));
+            	dto.setHouse_phone(rs.getString(8));
+            	dto.setHouse_person(rs.getInt(9));
+            	dto.setHouse_star(rs.getFloat(10));
+            	dto.setHouse_img1(rs.getString(12));
+            	dto.setHouse_img2(rs.getString(13));
+            	dto.setHouse_img3(rs.getString(14));
+            }
+            
+        } catch (SQLException e) {
+            System.out.println("숙소 정보 조회 중 예외 발생");
+            e.printStackTrace();
+        } finally {
+			closeConn(rs, pstmt, con);
+		}
+        return dto;
+    }
 	
 }
