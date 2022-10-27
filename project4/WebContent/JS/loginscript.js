@@ -9,12 +9,7 @@
 	});
 	
 	//====================== loginSelect.jsp =========================
-	$(".member_login").hide();
 	
-	
-	$("#modal").click(function() {
-		$(".member_login").toggle();
-	});
 	
 	$(".sign").on("click", function() {
 		location.href="<%=request.getContextPath()%>/inputEmail.do";

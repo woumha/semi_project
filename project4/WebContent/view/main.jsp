@@ -27,6 +27,11 @@
 <link rel="stylesheet" href="CSS/main_style.css">
 <script src="JS/main_java2.js"> </script>
 
+<link rel="stylesheet" href="../CSS/top.css">
+<script src="../JS/main_java2.js"> </script>
+<link rel="stylesheet" href="CSS/top.css">
+<script src="JS/main_java2.js"> </script>
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
