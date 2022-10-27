@@ -2,43 +2,29 @@ package com.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
 import java.util.Calendar;
 import java.util.StringTokenizer;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.controller.Action;
 import com.controller.ActionForward;
 import com.model.LoginDAO;
 import com.model.LoginDTO;
 
-/**
- * Servlet implementation class memberSignUpServlet
- */
-@WebServlet("/signUp.do")
-public class memberSignUpServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public memberSignUpServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+public class memberSignUpOkAction implements Action {
 
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	@Override
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String last = request.getParameter("lastname");
 		String first = request.getParameter("firstname");
 		int phone = Integer.parseInt(request.getParameter("phone"));
 		int birth = Integer.parseInt(request.getParameter("birth"));
-		String mail = request.getParameter("email");
+		String mail = request.getParameter("hide_email");
 		String mail_Id = "", mail_Domain = "";
-		
+		System.out.println("mail: " + mail);
 		StringTokenizer st = new StringTokenizer(mail, "@");
 		while(st.hasMoreTokens()) {
 			mail_Id = st.nextToken();
@@ -46,7 +32,7 @@ public class memberSignUpServlet extends HttpServlet {
 		}
 		
 		LoginDTO userInfor = new LoginDTO();
-		userInfor.setPmember_name(last+first);
+		userInfor.setPmember_name(first+last);
 		
 		userInfor.setPmember_email(mail_Id);
 		userInfor.setPmember_domain(mail_Domain);
@@ -62,9 +48,23 @@ public class memberSignUpServlet extends HttpServlet {
 		LoginDAO dao = LoginDAO.getInstance();
 		int check = dao.memberSignUp(userInfor);
 		
-		PrintWriter out = response.getWriter();
-		out.println(check); // memberSignUp.jsp
-		
+		ActionForward forward = new ActionForward();
+		if(check > 0) {
+			long code_session = dao.getMemberCode(mail_Id);
+			HttpSession session = request.getSession();
+			session.setAttribute("member_code_session", code_session);
+			session.setMaxInactiveInterval(60*60);
+			
+			forward.setRedirect(true);
+			forward.setPath("/view/loginSelect.jsp"); // 상단 클래스 >>
+		} else {
+			PrintWriter out = response.getWriter();
+			out.println("<script>"
+					+ "alert('문제가 발생하였습니다. 잠시후 다시 시도해주세요.');"
+					+ "history.back();"
+					+ "</script>");
+		}
+		return forward;
 	}
 	
 	protected long usercodeMaker() {
@@ -89,4 +89,5 @@ public class memberSignUpServlet extends HttpServlet {
 		}
 		return result;
 	}
+
 }

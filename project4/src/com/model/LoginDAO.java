@@ -84,13 +84,14 @@ public class LoginDAO {
 		public int MemberCheck(String user) {
 			int result = 0;
 			openConn();
-			
+			System.out.println("user::: " + user);
 			try {
-				sql = "select * from pmember";
+				sql = "select count(*) from pmember where pmember_email = ?";
 				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, user);
 				rs = pstmt.executeQuery();
 				while(rs.next()) {
-					if(user.equals(rs.getString("pmember_email"))) {
+					if(rs.getInt(1) > 0) {
 						result = 1;
 					} else {
 						result = 0;
@@ -158,4 +159,26 @@ public class LoginDAO {
 			}
 			return result;
 		} //memberSignUp
+		
+		
+		public Long getMemberCode(String ID) {
+			long result = 0;
+			openConn();
+			
+			try {
+				sql = "select pmember_code from pmember where pmember_email = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, ID);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					result = rs.getLong("pmember_code");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				closeConn(rs, pstmt, con);
+			}
+			return result;
+		}
 }
