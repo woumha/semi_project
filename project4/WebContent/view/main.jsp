@@ -1,207 +1,39 @@
+<%@page import="com.model.HouseDTO"%>
+<%@page import="java.util.List"%>
+<%@page import="com.model.HouseDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String allcategory = "전체"; 
+
+	HouseDAO dao = HouseDAO.getInstance();
+
+	List<HouseDTO> list = dao.getHouseList();
+
+	request.setAttribute("List_start", list);
+	request.setAttribute("List_title_start", allcategory); 
+%>
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-    
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>project4 main page</title>
+<link rel="stylesheet" href="../CSS/main_style.css">
+<script src="../JS/main_java2.js"> </script>
 <link rel="stylesheet" href="CSS/main_style.css">
 <script src="JS/main_java2.js"> </script>
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<!-- 모달 창 참 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
- 
-<script type="text/javascript">
-$(document).ready(function(){
-	$(".filter_menu1 li").click(function(e) {
-   		e.stopPropagation();
-	});
-	$('.filter_menu1').hide();
-	var count = 0;
-	$('.house_place1').click(function(){
-		if(count == 0) {
-			$('.filter_menu1').slideDown();
-			count = 1;
-		} else{
-			$('.filter_menu1').hide();
-			count = 0;
-		}
-	});
-});
-$(document).ready(function(){
-	$(".filter_menu2 li").click(function(e) {
-   		e.stopPropagation();
-	});
-	$('.filter_menu2').hide();
-	var count = 0;
-	$('.house_place2').click(function(){
-		if(count == 0) {
-			$('.filter_menu2').slideDown();
-			count = 1;
-		} else{
-			$('.filter_menu2').hide();
-			count = 0;
-		}
-	});
-});
-$(document).ready(function(){
-	$(".filter_menu3 li").click(function(e) {
-   		e.stopPropagation();
-	});
-	$('.filter_menu3').hide();
-	var count = 0;
-	$('.house_place3').click(function(){
-		if(count == 0) {
-			$('.filter_menu3').slideDown();
-			count = 1;
-		} else{
-			$('.filter_menu3').hide();
-			count = 0;
-		}
-	});
-});
-
-var lnb = $("#header_category").offset().top;
-$(window).scroll(function() {
-  	var window = $(this).scrollTop();
-
-    if(lnb <= window) {
-      $("#header_category").addClass("fixed");
-    } else {
-      $("#header_category").removeClass("fixed");
-    }
-})
-</script>
-<style type="text/css">
-/* 상단바 카테고리 이미지(이모티콘) */
-#category1 {background-image: url('main_img/top1_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;
-    width: 60px;
-    height: 60px;
-    border: 0px;
-    border-style: none;
- 	cursor:pointer;
- 	outline: 0;
-}
-#category2 {background-image: url('main_img/top2_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;
-    width: 60px;
-    height: 60px;
-    border: 0px;
-    border-style: none;
- 	cursor:pointer;
- 	outline: 0;
-}
-#category3 {background-image: url('main_img/top3_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;
-    width: 60px;
-    height: 60px;
-    border: 0px;
-    border-style: none;
- 	cursor:pointer;
- 	outline: 0;
-}
-#category4 {background-image: url('main_img/top4_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;
-    width: 60px;
-    height: 60px;
-    border: 0px;
-    border-style: none;
- 	cursor:pointer;
- 	outline: 0;
-}
-#category5 {background-image: url('main_img/top5_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;
-    width: 60px;
-    height: 60px;
-    border: 0px;
-    border-style: none;
- 	cursor:pointer;
- 	outline: 0;
-}
-#category6 {background-image: url('main_img/top6_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;
-    width: 60px;
-    height: 60px;
-    border: 0px;
-    border-style: none;
- 	cursor:pointer;
- 	outline: 0;
-}
-#category7 {background-image: url('main_img/top7_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;
-    width: 60px;
-    height: 60px;
-    border: 0px;
-    border-style: none;
- 	cursor:pointer;
- 	outline: 0;
-}
-#category8 {background-image: url('main_img/top8_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;
-    width: 60px;
-    height: 60px;
-    border: 0px;
-    border-style: none;
- 	cursor:pointer;
- 	outline: 0;
-}
-#category9 {background-image: url('main_img/top9_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;
-    width: 60px;
-    height: 60px;
-    border: 0px;
-    border-style: none;
- 	cursor:pointer;
- 	outline: 0;
-}
-#category10 {background-image: url('main_img/top10_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;
-    width: 60px;
-    height: 60px;
-    border: 0px;
-    border-style: none;
- 	cursor:pointer;
- 	outline: 0;
-}
-#category11 {background-image: url('main_img/top1_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;
-    width: 60px;
-    height: 60px;
-    border: 0px;
-    border-style: none;
- 	cursor:pointer;
- 	outline: 0;
-}
-#category12 {background-image: url('main_img/top2_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;
-    width: 60px;
-    height: 60px;
-    border: 0px;
-    border-style: none;
- 	cursor:pointer;
- 	outline: 0;
-}
-#category13 {background-image: url('main_img/top3_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;
-    width: 60px;
-    height: 60px;
-    border: 0px;
-    border-style: none;
- 	cursor:pointer;
- 	outline: 0;
-}
-#category14 {background-image: url('main_img/top4_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;
-    width: 60px;
-    height: 60px;
-    border: 0px;
-    border-style: none;
- 	cursor:pointer;
- 	outline: 0;
-}
-
-#cont_star {
-	text-align: right;
-	float: right;
-	margin-right: 5px;
-}
-
-
-</style>
 
 </head>
 <body>
@@ -310,7 +142,13 @@ $(window).scroll(function() {
 			</li>
 			<li>
 				<a class="btn_filter" href="#ex7">
-					<img src="main_img/filter_icon.png">
+					<c:set var="list" value="${List }"/>
+						<c:if test="${empty list }">
+							<img src="../main_img/filter_icon.png">	
+						</c:if>
+						<c:if test="${!empty list }">
+							<img src="main_img/filter_icon.png">	
+						</c:if>
 					<p>필터</p>
 				</a>
 			</li>		
@@ -378,7 +216,13 @@ $(window).scroll(function() {
 	<!-- 모달창(필터) 내용 end ======================================================== -->
 	<!-- 카테고리 상단 바 end ========================================================================-->
 	<c:set var="title" value="${List_title }"/>
-	<div style="text-align: center;">${title }<div>
+	<c:if test="${!empty title }">
+		<div style="text-align: center;">${title }<div>
+	</c:if>
+	<c:if test="${empty title }">
+		<c:set var="title1" value="${List_title_start }"/>
+		<div style="text-align: center;">${title1 }<div>
+	</c:if>
 	<c:set var="list" value="${List }"/>
 	<ul class="center_list">
 	<c:if test="${!empty list }">
@@ -406,7 +250,29 @@ $(window).scroll(function() {
 		</c:forEach>
 	</c:if>
 	<c:if test="${empty list }">
-		리스트가 없음!
+		<c:set var="list1" value="${List_start }"/>
+		<c:forEach items="${list1 }" var="dto1">
+			<li class="center_imgs">
+				<a href="../detail.do?id=${dto1.getHouse_no() }">
+					<div>
+						<img src="../upload/${dto1.getHouse_img1() }">
+					</div>
+					<p class="location">${dto1.getHouse_name() }
+						<span id="cont_star">★
+							<c:if test="${dto1.getHouse_star() == 0}">
+								NEW!
+							</c:if>
+							<c:if test="${dto1.getHouse_star() != 0}">
+								${dto1.getHouse_star() }
+							</c:if>
+						</span>
+					</p> <!-- 이름 -->
+					<p class="km">${dto1.getHouse_location() }</p> <!-- 위치 -->
+					<p class="date">${dto1.getHouse_category() } &nbsp; ${dto1.getHouse_person() }명</p> <!-- 종류 -->
+					<p class="price">₩<fmt:formatNumber value="${dto1.getHouse_price() }"/> <span style="font-weight: normal">/박</span></p> <!-- 가격 -->
+				</a>
+			</li>
+		</c:forEach>
 	</c:if>
 	</ul>
 </body>

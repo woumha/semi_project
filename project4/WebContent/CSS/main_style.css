@@ -3,6 +3,7 @@
 * {
   margin: 0;
   padding: 0;
+  color: black;
 }
 
 #header_category.fixed {
@@ -26,7 +27,7 @@
 	list-style:none;
 	text-align: center;
 	display: table;
- 	width: 1920px;
+ 	width: 100%;
  	
 }
 
@@ -133,6 +134,127 @@
 .search {
 	text-align: center;
 }
+
+/* 상단바 카테고리 이미지(이모티콘) */
+#category1 {background-image: url('../main_img/top1_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
+    width: 60px;
+    height: 60px;
+    border: 0px;
+    border-style: none;
+ 	cursor:pointer;
+ 	outline: 0;
+}
+#category2 {background-image: url('../main_img/top2_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
+    width: 60px;
+    height: 60px;
+    border: 0px;
+    border-style: none;
+ 	cursor:pointer;
+ 	outline: 0;
+}
+#category3 {background-image: url('../main_img/top3_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
+    width: 60px;
+    height: 60px;
+    border: 0px;
+    border-style: none;
+ 	cursor:pointer;
+ 	outline: 0;
+}
+#category4 {background-image: url('../main_img/top4_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
+    width: 60px;
+    height: 60px;
+    border: 0px;
+    border-style: none;
+ 	cursor:pointer;
+ 	outline: 0;
+}
+#category5 {background-image: url('../main_img/top5_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
+    width: 60px;
+    height: 60px;
+    border: 0px;
+    border-style: none;
+ 	cursor:pointer;
+ 	outline: 0;
+}
+#category6 {background-image: url('../main_img/top6_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
+    width: 60px;
+    height: 60px;
+    border: 0px;
+    border-style: none;
+ 	cursor:pointer;
+ 	outline: 0;
+}
+#category7 {background-image: url('../main_img/top7_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
+    width: 60px;
+    height: 60px;
+    border: 0px;
+    border-style: none;
+ 	cursor:pointer;
+ 	outline: 0;
+}
+#category8 {background-image: url('../main_img/top8_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
+    width: 60px;
+    height: 60px;
+    border: 0px;
+    border-style: none;
+ 	cursor:pointer;
+ 	outline: 0;
+}
+#category9 {background-image: url('../main_img/top9_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
+    width: 60px;
+    height: 60px;
+    border: 0px;
+    border-style: none;
+ 	cursor:pointer;
+ 	outline: 0;
+}
+#category10 {background-image: url('../main_img/top10_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
+    width: 60px;
+    height: 60px;
+    border: 0px;
+    border-style: none;
+ 	cursor:pointer;
+ 	outline: 0;
+}
+#category11 {background-image: url('../main_img/top1_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
+    width: 60px;
+    height: 60px;
+    border: 0px;
+    border-style: none;
+ 	cursor:pointer;
+ 	outline: 0;
+}
+#category12 {background-image: url('../main_img/top2_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
+    width: 60px;
+    height: 60px;
+    border: 0px;
+    border-style: none;
+ 	cursor:pointer;
+ 	outline: 0;
+}
+#category13 {background-image: url('../main_img/top3_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
+    width: 60px;
+    height: 60px;
+    border: 0px;
+    border-style: none;
+ 	cursor:pointer;
+ 	outline: 0;
+}
+#category14 {background-image: url('../main_img/top4_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
+    width: 60px;
+    height: 60px;
+    border: 0px;
+    border-style: none;
+ 	cursor:pointer;
+ 	outline: 0;
+}
+
+#cont_star {
+	text-align: right;
+	float: right;
+	margin-right: 5px;
+}
+
 
 
 
