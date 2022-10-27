@@ -37,23 +37,9 @@
 
 </head>
 <body>
+	<jsp:include page="../include/top.jsp"/>
 	<div id="header">
-	<!-- 검색 영역 코드 ============================================================================ -->
-	<form method="post" action="<%=request.getContextPath() %>/board_search.do"  class="search">
-	   	<select name="search_field">
-			<option value="title">제목</option>
-	   		<option value="cont">내용</option>
-	   		<option value="title_cont">제목+내용</option>
-	   		<option value="writer">작성자</option>
-	   	</select>
-	   
-		<input name="search_keyword" value="(임시) 검색창">&nbsp;&nbsp;
-		<input type="submit" value="검색">
-	</form>	
-	<!-- 검색 영역 코드 end =========================================================================== -->
-	
-	<hr id="headerLine">
-	
+
 	<!-- 카테고리 상단 바 ============================================================================== -->
 	<div id="header_category">
 		<ul class="main_topbar">
@@ -275,5 +261,6 @@
 		</c:forEach>
 	</c:if>
 	</ul>
+	<jsp:include page="../include/bottom.jsp"/>
 </body>
 </html>

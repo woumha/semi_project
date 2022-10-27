@@ -12,7 +12,7 @@ body {
 	
 .header {
   width: 100%;
-  height: 13%;
+  height: 8%;
   left: 0px;
   top: 0px;
   position: fixed;

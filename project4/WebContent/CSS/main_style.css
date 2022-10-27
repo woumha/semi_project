@@ -13,16 +13,6 @@
 	width: 100%;
 }
 
-
-
-#headerLine {
-	margin-top: 10px;
-	margin-bottom: 10px;
-    border: 0;
-    height: 1px;
-    background: #ccc;	
-}
-
 .main_topbar {
 	list-style:none;
 	text-align: center;

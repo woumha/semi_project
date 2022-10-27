@@ -7,14 +7,11 @@
 <title>Insert title here</title>
 <style type="text/css">
 	.footer {
-	position: absolute;
 	width: 100%;
-	height: 13%;
+	height: 5%;
 	left: 0px;
 	bottom: 0px;
-	position: fixed;
 	background-color: white;
-	box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.15);
 	clear: both;
 	}
 	.footer p {
@@ -24,6 +21,7 @@
 	font-size: 1px;
 	line-height: 22px;
 	color: gray;
+	margin-bottom: 5px;
 	}
 </style>
 </head>
