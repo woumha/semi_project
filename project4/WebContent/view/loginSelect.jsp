@@ -29,13 +29,6 @@
 		$("#mypage").click(function() {
 			location.href="<%=request.getContextPath()%>/account-settings.do?code=${member_code_session}";
 		});
-		
-		$("#signOut").click(function(){
-			<%
-			session.invalidate();
-			response.sendRedirect("loginSelect.jsp");
-			%>
-		});
 	});
 </script>
 
