@@ -10,7 +10,7 @@
 <meta charset="UTF-8">
 <title>회원가입</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
-<script type="text/javascript" src="../js/normalJoin.js"></script>
+<script type="text/javascript" src="../JS/loginscript.js"></script>
 </head>
 <body>
 	<div align="center">
@@ -18,7 +18,8 @@
 		<hr>
 	</div>
 	<div>
-		<form method="post" id="inform" name="inform" action="">
+		<form method="post" id="inform" name="inform" action="<%=request.getContextPath() %>/signUp.do">
+			<input type="hidden" id="hide_email" name="hide_email" value="<%=mail %>">
 			<input type="text" id="email" class="field" name="email" placeholder="<%=mail %>" readonly>
 			<br>
 			<input type="text" id="lname" class="field" name="lastname" placeholder="이름(예:길동)">

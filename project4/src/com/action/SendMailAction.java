@@ -35,7 +35,7 @@ public class SendMailAction implements Action {
 		String memberEmail = request.getParameter("email"); // 수신자 이메일
 		String domain_Address = request.getParameter("domain");
 	
-		int ranNum = numberToken();
+		String ranNum = numberToken();
 		
 		mailTitle = "안녕하세요. 4조 인증번호입니다.";
 		mailContent = "아래의 인증번호를 입력해주세요.\n\n" + ranNum + "\n\n감사합니다.";
@@ -102,9 +102,19 @@ public class SendMailAction implements Action {
 		return forward;
 	}
 	
-	public int numberToken() {
-		int userToken = (int)(Math.random()*1000000);
+	public String numberToken() {
+		int userToken = 0;
+		String token = "";
 		
-		return userToken;
+		userToken = (int)(Math.random()*1000000);
+		// 000 000
+		if(userToken < 100000) {
+			//099 999
+			token = "0" + Integer.toString(userToken);
+		} else {
+			token = Integer.toString(userToken);
+		}
+		
+		return token;
 	}
 }
