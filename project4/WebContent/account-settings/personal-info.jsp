@@ -5,6 +5,29 @@
 <head>
 <meta charset="UTF-8">
 <title>개인정보 - 계정 관리 - 4팀</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$.ajaxSetup({
+			ContentType: "application/x-www-form-urlencoded;charset=UTF-8", //한글처리
+			type: "post"
+		});
+		
+		$.ajax({
+			url: "/project4/account.do",
+			datatype: "xml",
+			success: function(data) {
+				var pname ="";
+				$(data).find("personal").each(function() {
+					pname = $(this).find("pmember_name").text();
+				});
+				
+				$("#name").text(pname);
+			}
+		}); // ajax
+		
+	});
+</script>
 <style type="text/css">
 	 
 </style>
@@ -17,7 +40,7 @@
 		<div>
 			실명
 			<br>
-			<span></span>
+			<span id="pname"></span>
 			<span>
 			<button aria-hidden="false" 
 				id="legalName-row-action" 
