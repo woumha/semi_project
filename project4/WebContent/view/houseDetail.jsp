@@ -33,13 +33,16 @@
 			<h3>예약 정보</h3>
 			<p>₩<b>${ houseInfo.house_price }</b> /박 · 최대 인원 ${ houseInfo.house_person }명</p>
 			<form name="reservationform" class="form" method="get" action="payment_main.jsp">
-				<input type="hidden" id="houseNo" name="houseNo" value="${ houseInfo.house_no }" />
-		        <label for="startDate">체크인</label>
-		        <input type="date" id="startDate" name="startDate" />
-		        <label for="endDate">체크아웃</label>
-		        <input type="date" id="endDate" name="endDate" />
-		        <button type="submit">예약하기</button>
-		    </form>
+                <input type="hidden" id="houseNo" name="houseNo" value="${ houseInfo.house_no }" />
+                <input type="hidden" id="houseName" name="houseName" value="${ houseInfo.house_name }" />
+                <input type="hidden" id="houseImg1" name="houseImg1" value="${ houseInfo.house_img1 }" />
+                <input type="hidden" id="houseprice" name="houseprice" value="${ houseInfo.house_price }" />
+                <label for="startDate">체크인</label>
+                <input type="date" id="startDate" name="startDate" required="required"/>
+                <label for="endDate">체크아웃</label>
+                <input type="date" id="endDate" name="endDate" required="required"/>
+                <button type="submit">예약하기</button>
+            </form>
 		<hr />
 
 		</div>

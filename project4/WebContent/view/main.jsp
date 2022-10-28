@@ -225,10 +225,10 @@
 				<a class="btn_filter" href="#ex7">
 					<c:set var="list" value="${List }"/>
 						<c:if test="${empty list }">
-							<img src="../main_img/filter_icon.png">	
+							<img src="../main_img/filter_icon_40.png">	
 						</c:if>
 						<c:if test="${!empty list }">
-							<img src="main_img/filter_icon.png">	
+							<img src="main_img/filter_icon_40.png">	
 						</c:if>
 					<p>필터</p>
 				</a>
