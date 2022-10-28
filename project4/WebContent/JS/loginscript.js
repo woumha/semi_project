@@ -1,6 +1,9 @@
 /**
  * 
  */
+/**
+ * 
+ */
  
  $(function() {
 	$.ajaxSetup({
@@ -9,20 +12,10 @@
 	});
 	
 	//====================== loginSelect.jsp =========================
+	$(".member_login").hide();
 	
-	
-	$(".sign").on("click", function() {
-		location.href="<%=request.getContextPath()%>/inputEmail.do";
-	});
-	
-	$("#message").click(function() {
-		
-	});
-	
-	$("#signOut").click(function(){
-		
-	});
 	//====================== loginSelet.jsp end =====================
+	
 	
 	//====================== tokenCheck.jsp =========================
 	
@@ -44,6 +37,7 @@
 		});
 	
 	//====================== tokenCheck.jsp =========================
+	
 	
 	//====================== memberSignUp.jsp =========================
 	$("#signUpbtn").on("click", function() {

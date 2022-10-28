@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	HttpSession sessionOut = request.getSession();
+%>
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
 <head>
 <meta charset="EUC-KR">
 <title>login_btn</title>
@@ -11,8 +13,10 @@
 <script type="text/javascript" src="../JS/loginscript.js"></script>
 <script type="text/javascript">
 	$(function() {
-		$(".member_login").hide();
-		
+		$.ajaxSetup({
+			ContentType: "application/x-www-form-urlencoded;charset=UTF-8", //한글처리
+			type: "post"
+		});
 		
 		$("#modal").click(function() {
 			$(".member_login").toggle();
@@ -22,12 +26,36 @@
 			location.href="<%=request.getContextPath()%>/inputEmail.do";
 		});
 		
-		$("#message").click(function() {
-			
-		});
 		
+		<%--
 		$("#mypage").click(function() {
 			location.href="<%=request.getContextPath()%>/account-settings.do?code=${member_code_session}";
+		});
+		--%>
+		
+		<%--
+		function account() {
+			$.ajax({
+				url: "/project4/account-settings.do",
+				data: {id: ${member_code_session}},
+				datatype: "text",
+				success: function(data) {
+					
+				},
+				error: function() {
+					alert("계정 통신 오류");
+				} 
+				
+			});
+		}
+		--%>
+		
+		$(".sign").on("click", function() {
+				location.href="<%=request.getContextPath()%>/inputEmail.do";
+		});
+		
+		$("#message").click(function() {
+			
 		});
 	});
 </script>
@@ -35,6 +63,9 @@
 <style type="text/css">
 	.tag {
 		display: block;
+		border: 0px;
+		outline: 0px;
+		background-color: white;
 	}
 </style>
 </head>
@@ -84,27 +115,41 @@
 			</form>
 		</c:if>
 		<c:if test="${!empty member_code_session }">	
-			<span id="message" class="tag">메세지</span>
+			<button id="message" class="tag">메세지</button>
 			<p>
-			<span id="alram" class="tag">알림</span>
+			<button id="alram" class="tag">알림</button>
 			<p>
-			<span id="travel" class="tag">여행</span>
+			<button id="travel" class="tag">여행</button>
 			<p>
-			<span id="wishlist" class="tag">위시리스트</span>
-			<p>
-			<hr>
-			<span id="hoster" class="tag">숙소 호스트 되기</span>
-			<p>
-			<span id="ex_hoster" class="tag">체험 호스팅하기</span>
-			<p>
-			<span id="suggestion_hoster" class="tag">호스트 추천하기</span>
-			<p>
-			<span id="mypage" class="tag">계정</span>
+			<button id="wishlist" class="tag">위시리스트</button>
 			<p>
 			<hr>
-			<span id="help" class="tag">도움말</span>
+			<button id="hoster" class="tag">숙소 호스트 되기</button>
 			<p>
-			<span id="signOut" class="tag">로그아웃</span>
+			<button id="ex_hoster" class="tag">체험 호스팅하기</button>
+			<p>
+			<button id="suggestion_hoster" class="tag">호스트 추천하기</button>
+			<p>
+			<form method="post" id="mypage" action="<%=request.getContextPath()%>/account-settings.do">
+				<input type="hidden" name="code" value="${member_code_session }">
+				<button type="submit" class="tag">계정</button>
+			</form>
+			<p>
+			<hr>
+			<button id="help" class="tag">도움말</button>
+			<p>
+			<button id="signOut" class="tag">로그아웃</button>
+			<%--
+			<script type="text/javascript">
+				$("#signOut").on("click", function() {
+					<%
+						sessionOut.invalidate();
+					%>
+					alert("로그아웃 되었습니다.");
+					location.reload();
+				});
+			</script>
+			 --%>
 		</c:if>
 	</div>
 </body>

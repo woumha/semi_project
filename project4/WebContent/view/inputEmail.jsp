@@ -9,13 +9,6 @@
 <title>회원가입창</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
 <script type="text/javascript">
-	$(function() {
-		$.ajaxSetup({
-			// ajax에서 한글 깨짐 문제 해결
-			ContentType: "application/x-www-form-urlencoded;charset=UTF-8",
-			type="post"
-		});
-	});
 </script>
 </head>
 <body>

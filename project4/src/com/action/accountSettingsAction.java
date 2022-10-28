@@ -2,6 +2,7 @@ package com.action;
 
 import java.io.IOException;
 
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -16,13 +17,18 @@ public class accountSettingsAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// 계정
-		HttpSession session = request.getSession();
-		long code = (long)request.getAttribute("member_code_session");
-		
+		long member_code = Long.parseLong(request.getParameter("code"));
+		System.out.println(member_code);
 		pmemberDAO dao = pmemberDAO.getInstance();
-		dao.getMemberInformation(code);
+		pmemberDTO member = dao.getMemberInformation(member_code);
+		
+		request.setAttribute("pmember", member);
+		System.out.println(member.getPmember_name());
 		
 		ActionForward forward = new ActionForward();
+		forward.setRedirect(false);
+		forward.setPath("account-settings/account_settings.jsp");
+		
 		return forward;
 	}
 

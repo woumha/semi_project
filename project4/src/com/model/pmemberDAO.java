@@ -83,7 +83,7 @@ public class pmemberDAO {
 		
 		// 유저코드로 가져온 유저 정보
 		public pmemberDTO getMemberInformation(long code) {
-			pmemberDTO dto = new pmemberDTO();
+			pmemberDTO dto = null;
 			
 			openConn();
 			
@@ -92,7 +92,8 @@ public class pmemberDAO {
 				pstmt = con.prepareStatement(sql);
 				pstmt.setLong(1, code);
 				rs = pstmt.executeQuery();
-				if(rs.next()) {
+				while(rs.next()) {
+					dto = new pmemberDTO();
 					dto.setPmember_email(rs.getString("pmember_email"));
 					dto.setPmember_domain(rs.getString("pmember_domain"));
 					dto.setPmember_code(rs.getLong("pmember_code"));
@@ -102,6 +103,7 @@ public class pmemberDAO {
 					dto.setPmember_date(rs.getString("pmember_date"));
 					dto.setPmember_userlevel(rs.getInt("pmember_userlevel"));
 				}
+				System.out.println(dto.getPmember_code());
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
