@@ -93,7 +93,7 @@ $(function() {
 <body>
 <div class="header">
 	
-	<div id="logo_loction"></div>
+	<a href="<%=request.getContextPath() %>/house_list.do"><div id="logo_loction"></div></a>
 	
 	<a href="#"><span class="icon_leftText">숙소호스팅하기</span></a>
 	<span id="modal" style="background-color: white;">
