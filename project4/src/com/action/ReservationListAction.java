@@ -45,7 +45,7 @@ public class ReservationListAction implements Action {
 		
 		forward.setRedirect(false);
 		
-		forward.setPath("view/test.jsp");
+		forward.setPath("view/test_k.jsp");
 		
 		return forward;
 	}
