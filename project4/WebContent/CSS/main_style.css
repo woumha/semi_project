@@ -129,113 +129,113 @@
 }
 
 /* 상단바 카테고리 이미지(이모티콘) */
-#category1 {background-image: url('../main_img/top1_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
-    width: 60px;
-    height: 60px;
+#category1 {background-image: url('../main_img/top_all_40.png');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
+    width: 40px;
+    height: 40px;
     border: 0px;
     border-style: none;
  	cursor:pointer;
  	outline: 0;
 }
-#category2 {background-image: url('../main_img/top2_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
-    width: 60px;
-    height: 60px;
+#category2 {background-image: url('../main_img/top_hotel_40.png');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
+    width: 40px;
+    height: 40px;
     border: 0px;
     border-style: none;
  	cursor:pointer;
  	outline: 0;
 }
-#category3 {background-image: url('../main_img/top3_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
-    width: 60px;
-    height: 60px;
+#category3 {background-image: url('../main_img/top_apartment_40.png');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
+    width: 40px;
+    height: 40px;
     border: 0px;
     border-style: none;
  	cursor:pointer;
  	outline: 0;
 }
-#category4 {background-image: url('../main_img/top4_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
-    width: 60px;
-    height: 60px;
+#category4 {background-image: url('../main_img/top_resort_40.png');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
+    width: 40px;
+    height: 40px;
     border: 0px;
     border-style: none;
  	cursor:pointer;
  	outline: 0;
 }
-#category5 {background-image: url('../main_img/top5_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
-    width: 60px;
-    height: 60px;
+#category5 {background-image: url('../main_img/top_guest_40.png');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
+    width: 40px;
+    height: 40px;
     border: 0px;
     border-style: none;
  	cursor:pointer;
  	outline: 0;
 }
-#category6 {background-image: url('../main_img/top6_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
-    width: 60px;
-    height: 60px;
+#category6 {background-image: url('../main_img/top_hot_40.png');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
+    width: 40px;
+    height: 40px;
     border: 0px;
     border-style: none;
  	cursor:pointer;
  	outline: 0;
 }
-#category7 {background-image: url('../main_img/top7_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
-    width: 60px;
-    height: 60px;
+#category7 {background-image: url('../main_img/top_star_40.png');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
+    width: 40px;
+    height: 40px;
     border: 0px;
     border-style: none;
  	cursor:pointer;
  	outline: 0;
 }
-#category8 {background-image: url('../main_img/top8_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
-    width: 60px;
-    height: 60px;
+#category8 {background-image: url('../main_img/top_price_40.png');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
+    width: 40px;
+    height: 40px;
     border: 0px;
     border-style: none;
  	cursor:pointer;
  	outline: 0;
 }
-#category9 {background-image: url('../main_img/top9_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
-    width: 60px;
-    height: 60px;
+#category9 {background-image: url('../main_img/top_water_40.png');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
+    width: 40px;
+    height: 40px;
     border: 0px;
     border-style: none;
  	cursor:pointer;
  	outline: 0;
 }
-#category10 {background-image: url('../main_img/top10_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
-    width: 60px;
-    height: 60px;
+#category10 {background-image: url('../main_img/top_pool_40.png');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
+    width: 40px;
+    height: 40px;
     border: 0px;
     border-style: none;
  	cursor:pointer;
  	outline: 0;
 }
-#category11 {background-image: url('../main_img/top1_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
-    width: 60px;
-    height: 60px;
+#category11 {background-image: url('../main_img/top_ski_40.png');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
+    width: 40px;
+    height: 40px;
     border: 0px;
     border-style: none;
  	cursor:pointer;
  	outline: 0;
 }
-#category12 {background-image: url('../main_img/top2_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
-    width: 60px;
-    height: 60px;
+#category12 {background-image: url('../main_img/top_grill_40.png');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
+    width: 40px;
+    height: 40px;
     border: 0px;
     border-style: none;
  	cursor:pointer;
  	outline: 0;
 }
-#category13 {background-image: url('../main_img/top3_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
-    width: 60px;
-    height: 60px;
+#category13 {background-image: url('../main_img/top_smoking_40.png');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
+    width: 40px;
+    height: 40px;
     border: 0px;
     border-style: none;
  	cursor:pointer;
  	outline: 0;
 }
-#category14 {background-image: url('../main_img/top4_w60.jpg');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
-    width: 60px;
-    height: 60px;
+#category14 {background-image: url('../main_img/top_gym_40.png');background-position:  0px 0px;background-repeat: no-repeat;background-color: white;
+    width: 40px;
+    height: 40px;
     border: 0px;
     border-style: none;
  	cursor:pointer;
