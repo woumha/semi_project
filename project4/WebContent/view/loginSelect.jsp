@@ -13,6 +13,7 @@
 <script type="text/javascript" src="../JS/loginscript.js"></script>
 <script type="text/javascript">
 	$(function() {
+		
 		$.ajaxSetup({
 			ContentType: "application/x-www-form-urlencoded;charset=UTF-8", //한글처리
 			type: "post"
@@ -131,7 +132,8 @@
 			<button id="suggestion_hoster" class="tag">호스트 추천하기</button>
 			<p>
 			<form method="post" id="mypage" action="<%=request.getContextPath()%>/account-settings.do">
-				<input type="hidden" name="code" value="${member_code_session }">
+			<c:set var="co" value="${member_code_session }" />
+				<input type="hidden" name="code" value="${co }">
 				<button type="submit" class="tag">계정</button>
 			</form>
 			<p>
@@ -150,6 +152,8 @@
 				});
 			</script>
 			 --%>
+			 
+			 <span></span>
 		</c:if>
 	</div>
 </body>
