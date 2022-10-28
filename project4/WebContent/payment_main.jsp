@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+String houseName = request.getParameter("houseName");
+String startDate = request.getParameter("startDate");
+String endDate = request.getParameter("endDate");
+int houseNo = Integer.parseInt(request.getParameter("houseNo"));
+int houseprice = Integer.parseInt(request.getParameter("houseprice"));
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,19 +85,17 @@ $(document).ready(function(){
     	}, function (rsp) {           
     		console.log(rsp);            
     		if (rsp.success) {   
-    		var msg = '결제가 완료되었습니다.\n';          
-    		msg += '고유ID : ' + rsp.imp_uid+'\n';         
-    		msg += '상점 거래ID : ' + rsp.merchant_uid+'\n';      
+    		var msg = '결제가 완료되었습니다.\n';       
     		msg += '결제 금액 : ' + rsp.paid_amount+'\n';            
     		msg += '카드 승인번호 : ' + rsp.apply_num+'\n';
-    	 	window.location.href = "p.jsp";	//alert 뜨게 한 다음에 뜨게할지 고민
     		} else {               
     			var msg = '결제에 실패하였습니다.\n';           
     			msg += '에러내용 : ' + rsp.error_msg;      
     			}          
     		alert(msg);       
+    		window.location.href = "reservation_list.do?startDate=<%=startDate %>&endDate=<%=endDate %>&no=<%=houseNo %>&houseprice=<%=houseprice %>";
     		});
-    }
+    	}
   </script>
 </head>
 <body>
@@ -104,11 +109,11 @@ $(document).ready(function(){
 	<br><br>
 	<p>&nbsp;이름</p>
 	<!-- DB 넣기 : value="${dto.getname() }" -->
-	<input class="textbox" name="name" value="김경령" readonly>
+	<input class="textbox" name="name" value="" readonly>
 	<br><br>
 	<p>&nbsp;휴대폰 번호</p>
 	<!-- DB 넣기 -->
-	<input class="textbox name="phone" value="010-5654-0265" readonly>
+	<input class="textbox name="phone" value="" readonly>
 	<br><br><br>
 	
 	<!-- 약관동의 -->
@@ -141,20 +146,38 @@ $(document).ready(function(){
 
 <!-- 오른쪽 -->
 <div class="card" style="width: 18rem;">
-  <img src="img/home.webp" class="card-img-top">
+
+<!-- 이미지 넣어야 함 -->
+  <!-- <img src="img/home.webp" class="card-img-top"> -->
   
+  <!-- 수정 -->
   <!-- 내용 -->
   <div class="card-body">
-    <p>숙소 이름</p>
-    <p>체크인</p>
-    <p>체크아웃</p>
+    <div class="cover_in">
+	    <div>숙소 이름</div>
+	    <div><%=houseName %></div>
+	</div>
+	<p></p>
+  
+    <div class="cover_in">
+	    <div class="cont">체크인</div>
+	    <div><input type="date" name="check_in" value="<%=startDate %>"></div>
+	</div>
+	<p></p>
+	
+	<div class="cover_in">
+	    <div class="cont">체크아웃</div>
+	    <div><input type="date" name="check_out" value="<%=endDate %>"></div>
+	</div>
+	<!-- 수정 끝 -->
+	
     <hr color="gray">
     <h5>요금 세부정보</h5>
 	    
     <!-- 텍스트 양쪽 끝에 위치 -->
     <div class="cover_in">
-	    <div>요금</div>
-	    <div>요금</div>
+	    <div class="cont">요금</div>
+	    <div><%=houseprice %>원</div>
 	</div>
 	
 	<!-- 결제하기 버튼 -->
