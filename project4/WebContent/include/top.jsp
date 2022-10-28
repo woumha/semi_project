@@ -8,12 +8,16 @@
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script>
+
 		$(document).ready(function(){
-		  	$(".icon").click(function(){
-			  $(this).toggleClass("active");
-			  $(".menu").toggleClass("active");
+ 		  	$(".icon").click(function(){
+
+				$(".wrapper").toggleClass("active");
 			});
+		  	
 		});
+		
+		
 	</script>
 	
 	<script type="text/javascript">
@@ -35,18 +39,20 @@
 </head>
 <body>
 <div class="header">
-	<div class="wrapper">
-	  <div class="container">
-	    <div class="icon">
-	    </div>
 	
-	    <div class="menu" id="menu">
+	<div id="logo_loction"></div>
+	<a href="#"><span class="icon_leftText">숙소호스팅하기</span></a>
+	<div class="icon"></div>
+	<div class="wrapper">
+
+	  <div class="container">
+
+	    <div class="menu">
 	      <ul>
 	        <li><a href="#login">로그인</a></li>
 	        <li><a href="#sign">회원가입</a></li>
 	        <li><a href="#">숙소호스팅하기</a></li>
-	        <li><a href="#">체험호스팅하기</a></li>
-	        <li><a href="#">도움말</a></li>
+	        <li><a href="#">고객센터</a></li>
 	      </ul>
 	    </div>
 	  </div>

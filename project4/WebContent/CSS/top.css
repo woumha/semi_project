@@ -1,12 +1,12 @@
 @charset "UTF-8";
 
 body {
-  padding-top: 8%;
+  padding-top: 6%;
 }
 	
 .header {
   width: 100%;
-  height: 13%;
+  height: 75px;
   left: 0px;
   top: 0px;
   position: fixed;
@@ -25,24 +25,44 @@ body {
 /* 위치 조정 */
 .wrapper{
   position: absolute;
-  top: 25%;
-  left: 80%;
+  top: 113%;
+  left: 81%;
+  visibility: hidden;
 }
 
 .wrapper .container{
   width: 200px;
 }
 
-.wrapper .icon{
+.icon{
   width: 40px;
   height: 40px;
   margin: 0 auto 16px;
-  position: relative;
+  /* position: relative; */
+  position: absolute;
+  top: 25%;
+  left: 85%;
   cursor: pointer;
   content: url("../main_img/login.png");
 }
+/* 아이콘 옆 '슥소호스팅' 텍스트 스타일 */
+.icon_leftText{
+	position: absolute;
+	right: 17%;
+	top: 40%;
+}
 
-.wrapper .icon > div{
+/* top영역 왼쪽 로고이미지 스타일 */
+#logo_loction{
+    content: url(../main_img/logo_img.png);
+    width: 8%;
+    position: absolute;
+	left: 5%;
+	top: 7%;
+
+}
+
+.wrapper > div{
   position: absolute;
   top: 45%;
   left: 25%;
@@ -59,16 +79,20 @@ body {
   margin: 0 auto;
   background: #fff;
   position: relative;
-  opacity: 0;
   top: -10px;
   transition: all 0.5s linear;
+  border-radius: 10%;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+  
+  
 }
 
 .wrapper .container .menu ul li{
   text-align: center;
   text-transform: uppercase;
   transition: all 0.2s linear;
-  border: solid 0.1px;
+  /* 메뉴 사각형 선 */
+  /* border: solid 0.1px; */
 }
 
 .wrapper .container .menu ul li a{
@@ -89,15 +113,16 @@ body {
   border-bottom: 8px solid black;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
+
 }
 
-.wrapper .icon.active{
+.wrapper active{
   trasform: rotate(90deg);
 }
 
-.wrapper .container .menu.active{
-  opacity: 1;
-  top: 0px;
+.wrapper.active{
+  visibility: visible;
+  top: 113%;
 }
 
 .modal{

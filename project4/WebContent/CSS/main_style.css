@@ -6,6 +6,7 @@
   color: black;
 }
 
+
 #header_category.fixed {
 	position: fixed;
 	left: 0;
@@ -25,7 +26,8 @@
 	text-align: center;
 	display: inline-block;
 	margin: 10px;
-	
+	margin-left: 25px;
+	margin-right: 25px;
 }
 
 /* 상단바 텍스트 */
@@ -37,8 +39,9 @@
  	user-select: none;
  	/* -----------------------*/
  	margin-top: 0px;
- 	font-size: 15px;
- 	font-weight: bold;
+ 	font-size: 12px;
+ 	font-weight: normal;
+ 	color: #6C6C6C;
 }
 
 /* 필터 영역 스타일 ============*/
@@ -55,10 +58,10 @@
  	user-select: none;
  	/* -----------------------*/
  	margin-top: 0px;
- 	font-size: 15px;
- 	font-weight: bold;
+ 	font-size: 12px;
+ 	font-weight: normal;
+ 	color: #6C6C6C;
  	text-decoration: none;
- 	color: black;
 }
 
 

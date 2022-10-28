@@ -12,6 +12,7 @@
 
 	request.setAttribute("List_start", list);
 	request.setAttribute("List_title_start", allcategory); 
+	
 %>
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -35,7 +36,9 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-<!-- 모달 창 참 -->
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
@@ -47,89 +50,176 @@
 
 	<!-- 카테고리 상단 바 ============================================================================== -->
 	<div id="header_category">
+		<c:set var="answer" value="${List_title }"/>
 		<ul class="main_topbar">
 			<li>
 				<form method="post" action="<%=request.getContextPath() %>/house_list.do">
 					<input type="submit" value="" id="category1">
 				</form>
 				<p>전체</p>
+				
+				<c:if test="${answer ne '전체' }">
+					<hr style="margin-top: 5px; height: 2px; background-color: white; border: 0">
+				</c:if>
+				<c:if test="${answer eq '전체' }">
+					<hr style="margin-top: 5px; height: 2px; background-color: black; border: 0">
+				</c:if>
 			</li>
 			<li>
 				<form method="post" action="<%=request.getContextPath() %>/house_category.do?keyword=호텔">
 					<input type="submit" value="" id="category2">
 				</form>
 				<p>호텔</p>
+				<c:if test="${answer ne '호텔' }">
+					<hr style="margin-top: 5px; height: 2px; background-color: white; border: 0">
+				</c:if>
+				<c:if test="${answer eq '호텔' }">
+					<hr style="margin-top: 5px; height: 2px; background-color: black; border: 0">
+				</c:if>
 			</li>		
 			<li>
 				<form method="post" action="<%=request.getContextPath() %>/house_category.do?keyword=아파트">
 					<input type="submit" value="" id="category3">
 				</form>
 				<p>아파트</p>
+				<c:if test="${answer ne '아파트' }">
+					<hr style="margin-top: 5px; height: 2px; background-color: white; border: 0">
+				</c:if>
+				<c:if test="${answer eq '아파트' }">
+					<hr style="margin-top: 5px; height: 2px; background-color: black; border: 0">
+				</c:if>
 			</li>	
 			<li>
 				<form method="post" action="<%=request.getContextPath() %>/house_category.do?keyword=리조트">
 					<input type="submit" value="" id="category4">
 				</form>
 				<p>리조트</p>
+				<c:if test="${answer ne '리조트' }">
+					<hr style="margin-top: 5px; height: 2px; background-color: white; border: 0">
+				</c:if>
+				<c:if test="${answer eq '리조트' }">
+					<hr style="margin-top: 5px; height: 2px; background-color: black; border: 0">
+				</c:if>
 			</li>	
 			<li>
 				<form method="post" action="<%=request.getContextPath() %>/house_category.do?keyword=게스트하우스">
 					<input type="submit" value="" id="category5">
 				</form>
 				<p>게스트하우스</p>
+				<c:if test="${answer ne '게스트하우스' }">
+					<hr style="margin-top: 5px; height: 2px; background-color: white; border: 0">
+				</c:if>
+				<c:if test="${answer eq '게스트하우스' }">
+					<hr style="margin-top: 5px; height: 2px; background-color: black; border: 0">
+				</c:if>
 			</li>	
 			<li>
 				<form method="post" action="<%=request.getContextPath() %>/category_hot.do">
 					<input type="submit" value="" id="category6">
 				</form>
-				<p>인기순</li>	
+				<p>인기순</p>
+				<c:if test="${answer ne '인기순' }">
+					<hr style="margin-top: 5px; height: 2px; background-color: white; border: 0">
+				</c:if>
+				<c:if test="${answer eq '인기순' }">
+					<hr style="margin-top: 5px; height: 2px; background-color: black; border: 0">
+				</c:if>
+			</li>
 			<li>
 				<form method="post" action="<%=request.getContextPath() %>/category_star.do">
 					<input type="submit" value="" id="category7">
 				</form>
 				<p>별점순</p>
+				<c:if test="${answer ne '별점순' }">
+					<hr style="margin-top: 5px; height: 2px; background-color: white; border: 0">
+				</c:if>
+				<c:if test="${answer eq '별점순' }">
+					<hr style="margin-top: 5px; height: 2px; background-color: black; border: 0">
+				</c:if>
 			</li>
 			<li>
 				<form method="post" action="<%=request.getContextPath() %>/category_price.do">
 					<input type="submit" value="" id="category14">
 				</form>
 				<p>가격순</p>
+				<c:if test="${answer ne '가격순' }">
+					<hr style="margin-top: 5px; height: 2px; background-color: white; border: 0">
+				</c:if>
+				<c:if test="${answer eq '가격순' }">
+					<hr style="margin-top: 5px; height: 2px; background-color: black; border: 0">
+				</c:if>
 			</li>
 			<li>
 				<form method="post" action="<%=request.getContextPath() %>/category_option.do?title=수변인접&water=1&pool=0&ski=0&grill=0&smoking=0&gym=0">
 					<input type="submit" value="" id="category8">
 				</form>
 				<p>수변인접</p>
+				<c:if test="${answer ne '수변인접' }">
+					<hr style="margin-top: 5px; height: 2px; background-color: white; border: 0">
+				</c:if>
+				<c:if test="${answer eq '수변인접' }">
+					<hr style="margin-top: 5px; height: 2px; background-color: black; border: 0">
+				</c:if>
 			</li>	
 			<li>
 				<form method="post" action="<%=request.getContextPath() %>/category_option.do?title=수영장&water=0&pool=1&ski=0&grill=0&smoking=0&gym=0">
 					<input type="submit" value="" id="category9">
 				</form>
 				<p>수영장</p>
+				<c:if test="${answer ne '수영장' }">
+					<hr style="margin-top: 5px; height: 2px; background-color: white; border: 0">
+				</c:if>
+				<c:if test="${answer eq '수영장' }">
+					<hr style="margin-top: 5px; height: 2px; background-color: black; border: 0">
+				</c:if>
 			</li>	
 			<li>
 				<form method="post" action="<%=request.getContextPath() %>/category_option.do?title=스키장&water=0&pool=0&ski=1&grill=0&smoking=0&gym=0">
 					<input type="submit" value="" id="category10">
 				</form>
 				<p>스키장</p>
+				<c:if test="${answer ne '스키장' }">
+					<hr style="margin-top: 5px; height: 2px; background-color: white; border: 0">
+				</c:if>
+				<c:if test="${answer eq '스키장' }">
+					<hr style="margin-top: 5px; height: 2px; background-color: black; border: 0">
+				</c:if>
 			</li>	
 			<li>
 				<form method="post" action="<%=request.getContextPath() %>/category_option.do?title=바베큐&water=0&pool=0&ski=0&grill=1&smoking=0&gym=0">
 					<input type="submit" value="" id="category11">
 				</form>
 				<p>바베큐</p>
+				<c:if test="${answer ne '바베큐' }">
+					<hr style="margin-top: 5px; height: 2px; background-color: white; border: 0">
+				</c:if>
+				<c:if test="${answer eq '바베큐' }">
+					<hr style="margin-top: 5px; height: 2px; background-color: black; border: 0">
+				</c:if>
 			</li>
 			<li>
 				<form method="post" action="<%=request.getContextPath() %>/category_option.do?title=흡연장&water=0&pool=0&ski=0&grill=0&smoking=1&gym=0">
 					<input type="submit" value="" id="category12">
 				</form>
 				<p>흡연장</p>
+				<c:if test="${answer ne '흡연장' }">
+					<hr style="margin-top: 5px; height: 2px; background-color: white; border: 0">
+				</c:if>
+				<c:if test="${answer eq '흡연장' }">
+					<hr style="margin-top: 5px; height: 2px; background-color: black; border: 0">
+				</c:if>
 			</li>
 			<li>
 				<form method="post" action="<%=request.getContextPath() %>/category_option.do?title=헬스장&water=0&pool=0&ski=0&grill=0&smoking=0&gym=1">
 					<input type="submit" value="" id="category13">
 				</form>
 				<p>헬스장</p>
+				<c:if test="${answer ne '헬스장' }">
+					<hr style="margin-top: 5px; height: 2px; background-color: white; border: 0">
+				</c:if>
+				<c:if test="${answer eq '헬스장' }">
+					<hr style="margin-top: 5px; height: 2px; background-color: black; border: 0">
+				</c:if>
 			</li>
 			<li>
 				<a class="btn_filter" href="#ex7">
@@ -206,14 +296,14 @@
 	</script>
 	<!-- 모달창(필터) 내용 end ======================================================== -->
 	<!-- 카테고리 상단 바 end ========================================================================-->
-	<c:set var="title" value="${List_title }"/>
+<%-- 	<c:set var="title" value="${List_title }"/>
 	<c:if test="${!empty title }">
 		<div style="text-align: center;">${title }<div>
 	</c:if>
 	<c:if test="${empty title }">
 		<c:set var="title1" value="${List_title_start }"/>
 		<div style="text-align: center;">${title1 }<div>
-	</c:if>
+	</c:if> --%>
 	<c:set var="list" value="${List }"/>
 	<ul class="center_list">
 	<c:if test="${!empty list }">
