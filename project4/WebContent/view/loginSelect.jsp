@@ -140,20 +140,7 @@
 			<hr>
 			<button id="help" class="tag">도움말</button>
 			<p>
-			<button id="signOut" class="tag">로그아웃</button>
-			<%--
-			<script type="text/javascript">
-				$("#signOut").on("click", function() {
-					<%
-						sessionOut.invalidate();
-					%>
-					alert("로그아웃 되었습니다.");
-					location.reload();
-				});
-			</script>
-			 --%>
-			 
-			 <span></span>
+			<button id="signOut" class="tag" onclick="location.href='<%=request.getContextPath() %>/logout.do'">로그아웃</button>
 		</c:if>
 	</div>
 </body>

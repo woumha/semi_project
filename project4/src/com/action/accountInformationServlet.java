@@ -18,7 +18,7 @@ import com.model.pmemberDTO;
  * Servlet implementation class account_information
  */
 @WebServlet("/account.do")
-public class account_information extends HttpServlet {
+public class accountInformationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

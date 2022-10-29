@@ -37,7 +37,7 @@
 		<table align="center" id="bigTable">
 			<tr>
 				<td>
-					<a href="personal-info" class="information" >
+					<a href="account-settings/personal-info.jsp" class="information" >
 						<div style="margin-bottom: 16px;" id="0" class="box">
 							<div>
 								<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; height: 32px; width: 32px; fill: currentcolor;">
