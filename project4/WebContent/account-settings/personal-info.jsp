@@ -33,6 +33,9 @@
 			}
 			
 		}); // ajax
+	});
+	
+	$("reWrite").on("click", function() {
 		
 	});
 </script>
@@ -41,60 +44,144 @@
 </style>
 </head>
 <body>
+	<div class="childdiv">
+		<h4>개인 > 개인정보</h4>
+	</div>
+	<p> <p>
 	<div id="parentdiv" align="center">
 		<table>
 			<tr>
+				<th>
+					실명
+				</th>
 				<td>
-					<div class="childdiv">
-						<h4>개인 > 개인정보</h4>
-						<div>
-							실명
-							<br>
-							<span id="pname"></span>
-							<span>
-							<button aria-hidden="false" 
-								id="legalName-row-action" 
-								aria-labelledby="legalName-row-action legalName-row-title" 
-								type="button" class="reWrite">수정</button>
-							</span>
-						</div>
-					</div>
-				<hr>
-					</td>
-				</tr>
-			<tr>
-				<td>
-					<div class="childdiv">
-						<div>
-							핸드폰 번호
-							<br>
-							<span id="pemail"></span>
-							<span>
-							<button aria-hidden="false" 
-								id="legalName-row-action" 
-								aria-labelledby="legalName-row-action legalName-row-title" 
-								type="button" class="reWrite">수정</button>
-							</span>
-						</div>
-					</div>sx
-				<hr>
+					<span>
+						<button aria-hidden="false" 
+							id="namebtn" 
+							aria-labelledby="legalName-row-action legalName-row-title" 
+							class="reWrite">
+								수정
+						</button>
+					</span>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<div class="childdiv">
-						<div>
-							생년월일
-							<br>
-							<span id="pbirth"></span>
-							å<span>
-							<button aria-hidden="false" 
-								id="legalName-row-action" 
-								aria-labelledby="legalName-row-action legalName-row-title" 
-								type="button" class="reWrite">수정</button>
-							</span>
-						</div>
-					</div>
+					<div id="pname"></div>
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					<hr>
+				</td>
+			</tr>
+			
+			<tr>
+				<th>
+					성별
+				</th>
+				<td>
+					<span>
+						<button aria-hidden="false" 
+							id="genderbtn" 
+							aria-labelledby="legalName-row-action legalName-row-title" 
+							class="reWrite">
+								수정
+						</button>
+					</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div id="pgender"></div>
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					<hr>
+				</td>
+			</tr>
+			
+			<tr>
+				<th>
+					이메일 주소
+				</th>
+				<td>
+					<span>
+						<button aria-hidden="false" 
+							id="emailbtn" 
+							aria-labelledby="legalName-row-action legalName-row-title" 
+							class="reWrite">
+								수정
+						</button>
+					</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div id="peamil"></div>
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					<hr>
+				</td>
+			</tr>
+			
+			<tr>
+				<th>
+					전화번호
+				</th>
+				<td>
+					<span>
+						<button aria-hidden="false" 
+							id="phonebtn" 
+							aria-labelledby="legalName-row-action legalName-row-title" 
+							class="reWrite">
+								수정
+						</button>
+					</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div id="pphone"></div>
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					<hr>
+				</td>
+			</tr>
+			
+			<tr>
+				<th>
+					주소
+				</th>
+				<td>
+					<span>
+						<button aria-hidden="false" 
+							id="addrbtn" 
+							aria-labelledby="legalName-row-action legalName-row-title" 
+							class="reWrite">
+								수정
+						</button>
+					</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div id="paddr"></div>
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					<hr>
 				</td>
 			</tr>
 		</table>
