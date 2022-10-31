@@ -47,7 +47,7 @@ public class tokenCheckOkAction implements Action {
 				session.setAttribute("member_code_session", code_session);
 				session.setMaxInactiveInterval(60*60);
 				forward.setRedirect(true);
-				forward.setPath("view/loginSelect.jsp"); // 로그인시 메인 >> 회원등급 판단도 해야함
+				forward.setPath("view/main.jsp"); // 로그인시 메인 >> 회원등급 판단도 해야함
 			} else if(memberCheck == 0) { // 회원가입
 				forward.setRedirect(true);
 				forward.setPath("view/memberSignUp.jsp");

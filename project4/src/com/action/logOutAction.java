@@ -18,7 +18,7 @@ public class logOutAction implements Action {
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(true);
-		forward.setPath("view/loginSelect.jsp");
+		forward.setPath("view/main.jsp");
 		return forward;
 	}
 

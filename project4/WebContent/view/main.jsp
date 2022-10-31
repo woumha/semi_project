@@ -139,7 +139,7 @@
 			</li>
 			<li>
 				<form method="post" action="<%=request.getContextPath() %>/category_price.do">
-					<input type="submit" value="" id="category14">
+					<input type="submit" value="" id="category8">
 				</form>
 				<p>가격순</p>
 				<c:if test="${answer ne '가격순' }">
@@ -151,7 +151,7 @@
 			</li>
 			<li>
 				<form method="post" action="<%=request.getContextPath() %>/category_option.do?title=수변인접&water=1&pool=0&ski=0&grill=0&smoking=0&gym=0">
-					<input type="submit" value="" id="category8">
+					<input type="submit" value="" id="category9">
 				</form>
 				<p>수변인접</p>
 				<c:if test="${answer ne '수변인접' }">
@@ -163,7 +163,7 @@
 			</li>	
 			<li>
 				<form method="post" action="<%=request.getContextPath() %>/category_option.do?title=수영장&water=0&pool=1&ski=0&grill=0&smoking=0&gym=0">
-					<input type="submit" value="" id="category9">
+					<input type="submit" value="" id="category10">
 				</form>
 				<p>수영장</p>
 				<c:if test="${answer ne '수영장' }">
@@ -175,7 +175,7 @@
 			</li>	
 			<li>
 				<form method="post" action="<%=request.getContextPath() %>/category_option.do?title=스키장&water=0&pool=0&ski=1&grill=0&smoking=0&gym=0">
-					<input type="submit" value="" id="category10">
+					<input type="submit" value="" id="category11">
 				</form>
 				<p>스키장</p>
 				<c:if test="${answer ne '스키장' }">
@@ -187,7 +187,7 @@
 			</li>	
 			<li>
 				<form method="post" action="<%=request.getContextPath() %>/category_option.do?title=바베큐&water=0&pool=0&ski=0&grill=1&smoking=0&gym=0">
-					<input type="submit" value="" id="category11">
+					<input type="submit" value="" id="category12">
 				</form>
 				<p>바베큐</p>
 				<c:if test="${answer ne '바베큐' }">
@@ -199,7 +199,7 @@
 			</li>
 			<li>
 				<form method="post" action="<%=request.getContextPath() %>/category_option.do?title=흡연장&water=0&pool=0&ski=0&grill=0&smoking=1&gym=0">
-					<input type="submit" value="" id="category12">
+					<input type="submit" value="" id="category13">
 				</form>
 				<p>흡연장</p>
 				<c:if test="${answer ne '흡연장' }">
@@ -211,7 +211,7 @@
 			</li>
 			<li>
 				<form method="post" action="<%=request.getContextPath() %>/category_option.do?title=헬스장&water=0&pool=0&ski=0&grill=0&smoking=0&gym=1">
-					<input type="submit" value="" id="category13">
+					<input type="submit" value="" id="category14">
 				</form>
 				<p>헬스장</p>
 				<c:if test="${answer ne '헬스장' }">
