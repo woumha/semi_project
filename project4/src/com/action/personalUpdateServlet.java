@@ -30,21 +30,32 @@ public class personalUpdateServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
+		String result = "";
 		
+		int no = Integer.parseInt(request.getParameter("find"));
 		long membercode = Long.parseLong(request.getParameter("code"));
-		String lastName = request.getParameter("last");
-		String firstName = request.getParameter("first");
+		
 		
 		pmemberDTO dto = new pmemberDTO();
-		dto.setPmember_code(membercode);
-		dto.setPmember_firstname(firstName);
-		dto.setPmember_lastname(lastName);
-		
 		pmemberDAO dao = pmemberDAO.getInstance();
-		String result = dao.setPersonalUpdate(dto);
+		dto.setPmember_code(membercode);
+		if(no == 1) { // 이름 변경
+			String lastName = request.getParameter("last");
+			String firstName = request.getParameter("first");
+			
+			dto.setPmember_firstname(firstName);
+			dto.setPmember_lastname(lastName);
+			
+			result = dao.setPersonalUpdate(no, dto);		
+		} else if(no == 2) { // 성별 변경
+			String gen = request.getParameter("gender");
+			dto.setPmember_gender(gen);
+			result = dao.setPersonalUpdate(no, dto);
+		}
+		
 		
 		PrintWriter out = response.getWriter();
-		out.println(result);
+		out.println(result);	
 	}
 
 }

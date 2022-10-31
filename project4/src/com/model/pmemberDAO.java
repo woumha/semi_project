@@ -149,30 +149,80 @@ public class pmemberDAO {
 			return result;
 		} // getMemberXMLInfromation
 		
-		public String setPersonalUpdate(pmemberDTO dto) {
+		public String setPersonalUpdate(int no, pmemberDTO dto) {
 			String result = "";
 			openConn();
 			
 			try {
-				sql = "update pmember set pmember_firstname = ?, pmember_lastname = ? where pmember_code = ?";
-				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, dto.getPmember_firstname());
-				pstmt.setString(2, dto.getPmember_lastname());
-				pstmt.setLong(3, dto.getPmember_code());
-				pstmt.executeUpdate();
-				
-				sql = "select * from pmember where pmember_code = ?";
-				pstmt = con.prepareStatement(sql);
-				pstmt.setLong(1, dto.getPmember_code());
-				rs = pstmt.executeQuery();
-				result += "<personals>";
-				while(rs.next()) {
-					result += "<personal>";
+				if(no == 1) { // 이름 변경
+					sql = "update pmember set pmember_firstname = ?, pmember_lastname = ? where pmember_code = ?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, dto.getPmember_firstname());
+					pstmt.setString(2, dto.getPmember_lastname());
+					pstmt.setLong(3, dto.getPmember_code());
+					pstmt.executeUpdate();
+					
+					sql = "select * from pmember where pmember_code = ?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setLong(1, dto.getPmember_code());
+					rs = pstmt.executeQuery();
+					result += "<personals>";
+					if(rs.next()) {
+						result += "<personal>";
 						result += "<pmember_firstname>" + rs.getString("pmember_firstname") + "</pmember_firstname>";
 						result += "<pmember_lastname>" + rs.getString("pmember_lastname") + "</pmember_lastname>";
-					result += "</personal>";
+						result += "</personal>";
+					}
+					result += "</personals>";
+				} else if (no == 2) { // 성별 변경
+					sql = "update pmember set pmember_gender = ? where pmember_code = ?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, dto.getPmember_gender());
+					pstmt.setLong(2, dto.getPmember_code());
+					pstmt.executeUpdate();
+					
+					sql = "select pmember_gender from pmember where pmember_code = ?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setLong(1, dto.getPmember_code());
+					rs = pstmt.executeQuery();
+					result += "<personals>";
+					if(rs.next()) {
+						result += "<personal>";
+						result += "<pmember_gender>" + rs.getString("pmember_gender") + "</pmember_gender>";
+						result += "</personal>";
+					}
+					result += "</personals>";
+				} else if (no == 3) { // 이메일 변경
+					sql = "update pmember set pmember_email = ?, pmember_domain = ? where pmember_code = ?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, dto.getPmember_email());
+					pstmt.setString(2, dto.getPmember_domain());
+					pstmt.setLong(3, dto.getPmember_code());
+					rs = pstmt.executeQuery();
+					result += "<personals>";
+					if(rs.next()) {
+						result += "<personal>";
+						result += "<pmember_email>" + rs.getString("pmember_email") + "</pmember_email>";
+						result += "<pmember_domain>" + rs.getString("pmember_domain") + "</pmember_domain>";
+						result += "</personal>";
+					}
+					result += "</personals>";
+				} else if (no == 4) { // 전화 번호
+					sql = "update pmember set pmember_phone = ? where pmember_code = ?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setLong(1, dto.getPmember_phone());
+					pstmt.setLong(2, dto.getPmember_code());
+					rs = pstmt.executeQuery();
+					result += "<personals>";
+					if(rs.next()) {
+						result += "<personal>";
+						result += "<pmember_phone>" + rs.getString("pmember_phone") + "</pmember_phone>";
+						result += "</personal>";
+					}
+					result += "</personals>";
+				} else if(no == 5) { // 주소 변경
+					System.out.println("미완성");
 				}
-				result += "</personals>";
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
