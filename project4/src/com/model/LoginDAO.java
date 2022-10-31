@@ -89,7 +89,7 @@ public class LoginDAO {
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, user);
 				rs = pstmt.executeQuery();
-				while(rs.next()) {
+				if(rs.next()) {
 					if(rs.getInt(1) > 0) {
 						result = 1;
 					} else {
@@ -102,6 +102,7 @@ public class LoginDAO {
 			} finally {
 				closeConn(rs, pstmt, con);
 			}
+			System.out.println("LoginDAO result: " + result);
 			return result;
 		}
 		
@@ -148,7 +149,7 @@ public class LoginDAO {
 				pstmt.setString(5, userInfor.getPmember_lastname());
 				pstmt.setString(6, userInfor.getPmember_gender());
 				pstmt.setInt(7, userInfor.getPmember_birth());
-				pstmt.setInt(8, userInfor.getPmember_phone());
+				pstmt.setLong(8, userInfor.getPmember_phone());
 				
 				result = pstmt.executeUpdate();
 			} catch (SQLException e) {
