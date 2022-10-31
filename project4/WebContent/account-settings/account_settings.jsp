@@ -30,7 +30,7 @@
 		<c:set var="list" value="${pmember }" />
 		<h2>계정</h2>
 		<br>
-		<h4>${list.pmember_name }, ${list.pmember_email }@${list.pmember_domain } > <a href="#">프로필로 이동</a></h4>
+		<h4>${list.pmember_firstname }${list.pmember_lastname }님, ${list.pmember_email }@${list.pmember_domain } > <a href="#">프로필로 이동</a></h4>
 	</div>
 	<p>
 	<div align="center">

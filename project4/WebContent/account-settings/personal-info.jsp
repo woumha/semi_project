@@ -1,3 +1,4 @@
+<%@page import="java.util.StringTokenizer"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -19,42 +20,75 @@
 			success: function(data) {
 				let pname ="";
 				$(data).find("personal").each(function() {
-					pname = $(this).find("pmember_name").text();
+					pfirstname = $(this).find("pmember_firstname").text();
+					plastname = $(this).find("pmember_lastname").text();
+					pgender = $(this).find("pmember_gender").text();
 					pemail = $(this).find("pmember_email").text();
 					pbirth = $(this).find("pmember_birth").text();
 				});
 				
-				$("#pname").text(pname);
+				$("#fname").text(pfirstname);
+				$("#lname").text(plastname)
 				$("#pemail").text(pemail);
 				$("#pbirth").text(pbirth);
+				$("#pgender").text(pgender);
 			},
 			error: function() {
 				alert("계정 통신 오류");
 			}
 			
 		}); // ajax
-	});
-	
-	$("reWrite").on("click", function() {
+		
+		$("#cnamebtn").hide();
+		$(".tdinput").hide();
+		
+		
+		$(".reWrite").on("click", function() {
+			var tagId = $(this).attr('id');
+			$(".reWrite").text("취소");		
+			switch(tagId) {
+				case "namebtn":
+					$("#pname").text("허가증이나 여권 등 여행 서류에 기재되어 있는 이름을 말합니다.");
+					$(".tdinput").show();
+					$("#lastName").text($("#lname"));
+					$("#firstName").text($("#fname"));
+					break;
+				case "genderbtn":
+					$("#genderbtn").hide();
+					break;
+				case "emailbtn":
+					$("#emailbtn").hide();
+					break;
+				case "phonebtn":
+					$("#phonebtn").hide();
+					break;
+				case "addrbtn":
+					$("#addrbtn").hide();
+					break;
+			}
+		});
 		
 	});
+	
 </script>
 <style type="text/css">
-	 
+	 .btntd {
+	 	float: right
+	 }
 </style>
 </head>
 <body>
-	<div class="childdiv">
+	<div align="center" class="childdiv">
 		<h4>개인 > 개인정보</h4>
 	</div>
 	<p> <p>
 	<div id="parentdiv" align="center">
-		<table>
+		<table width="600">
 			<tr>
 				<th>
 					실명
 				</th>
-				<td>
+				<td class="btntd">
 					<span>
 						<button aria-hidden="false" 
 							id="namebtn" 
@@ -67,12 +101,21 @@
 			</tr>
 			<tr>
 				<td>
-					<div id="pname"></div>
+					<span id="fname"></span>
+					<span id="lname"></span>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="tdinput">
+					<input type="text" name="lastName" id="lastName"> 
+					<input type="text" name="firstName" id="firstName">
 				</td>
 			</tr>
 			
+			
 			<tr>
-				<td>
+				<td colspan="2">
+					<p>
 					<hr>
 				</td>
 			</tr>
@@ -81,7 +124,7 @@
 				<th>
 					성별
 				</th>
-				<td>
+				<td class="btntd">
 					<span>
 						<button aria-hidden="false" 
 							id="genderbtn" 
@@ -99,7 +142,8 @@
 			</tr>
 			
 			<tr>
-				<td>
+				<td colspan="2">
+					<p>
 					<hr>
 				</td>
 			</tr>
@@ -108,7 +152,7 @@
 				<th>
 					이메일 주소
 				</th>
-				<td>
+				<td class="btntd">
 					<span>
 						<button aria-hidden="false" 
 							id="emailbtn" 
@@ -126,7 +170,8 @@
 			</tr>
 			
 			<tr>
-				<td>
+				<td colspan="2">
+					<p>
 					<hr>
 				</td>
 			</tr>
@@ -135,7 +180,7 @@
 				<th>
 					전화번호
 				</th>
-				<td>
+				<td class="btntd">
 					<span>
 						<button aria-hidden="false" 
 							id="phonebtn" 
@@ -153,7 +198,8 @@
 			</tr>
 			
 			<tr>
-				<td>
+				<td colspan="2">
+					<p>
 					<hr>
 				</td>
 			</tr>
@@ -162,7 +208,7 @@
 				<th>
 					주소
 				</th>
-				<td>
+				<td class="btntd">
 					<span>
 						<button aria-hidden="false" 
 							id="addrbtn" 
@@ -180,7 +226,8 @@
 			</tr>
 			
 			<tr>
-				<td>
+				<td colspan="2">
+					<p>
 					<hr>
 				</td>
 			</tr>

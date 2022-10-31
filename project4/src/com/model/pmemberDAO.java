@@ -97,7 +97,9 @@ public class pmemberDAO {
 					dto.setPmember_email(rs.getString("pmember_email"));
 					dto.setPmember_domain(rs.getString("pmember_domain"));
 					dto.setPmember_code(rs.getLong("pmember_code"));
-					dto.setPmember_name(rs.getString("pmember_name"));
+					dto.setPmember_firstname(rs.getString("pmember_firstname"));
+					dto.setPmember_lastname(rs.getString("pmember_lastname"));
+					dto.setPmember_gender(rs.getString("pmember_gender"));
 					dto.setPmember_birth(rs.getInt("pmember_birth"));
 					dto.setPmember_phone(rs.getInt("pmember_phone"));
 					dto.setPmember_date(rs.getString("pmember_date"));
@@ -129,7 +131,9 @@ public class pmemberDAO {
 						result += "<pmember_email>" + rs.getString("pmember_email") + "</pmember_email>";
 						result += "<pmember_domain>" + rs.getString("pmember_domain") + "</pmember_domain>";
 						result += "<pmember_code>" + rs.getString("pmember_code") + "</pmember_code>";
-						result += "<pmember_name>" + rs.getString("pmember_name") + "</pmember_name>";
+						result += "<pmember_firtname>" + rs.getString("pmember_firtname") + "</pmember_firtname>";
+						result += "<pmember_lastname>" + rs.getString("pmember_lastname") + "</pmember_lastname>";
+						result += "<pmember_gender>" + rs.getString("pmember_gender") + "</pmember_gender>";
 						result += "<pmember_birth>" + rs.getString("pmember_birth") + "</pmember_birth>";
 						result += "<pmember_phone>" + rs.getString("pmember_phone") + "</pmember_phone>";
 						result += "<pmember_userlevel>" + rs.getString("pmember_userlevel") + "</pmember_userlevel>";
