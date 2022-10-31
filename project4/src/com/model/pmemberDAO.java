@@ -112,4 +112,36 @@ public class pmemberDAO {
 			}
 			return dto;
 		} //getMemberInformation
+		
+		
+		public String getMemberXMLInfromation(long code) {
+			String result = "";
+			openConn();
+			
+			try {
+				sql = "select * from pmember where pmember_code = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setLong(1, code);
+				rs = pstmt.executeQuery();
+				result += "<personals>";
+				while(rs.next()) {
+					result += "<personal>";
+						result += "<pmember_email>" + rs.getString("pmember_email") + "</pmember_email>";
+						result += "<pmember_domain>" + rs.getString("pmember_domain") + "</pmember_domain>";
+						result += "<pmember_code>" + rs.getString("pmember_code") + "</pmember_code>";
+						result += "<pmember_name>" + rs.getString("pmember_name") + "</pmember_name>";
+						result += "<pmember_birth>" + rs.getString("pmember_birth") + "</pmember_birth>";
+						result += "<pmember_phone>" + rs.getString("pmember_phone") + "</pmember_phone>";
+						result += "<pmember_userlevel>" + rs.getString("pmember_userlevel") + "</pmember_userlevel>";
+					result += "</personal>";
+				}
+				result += "</personals>";
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				closeConn(rs, pstmt, con);
+			}
+			return result;
+		}
 }
