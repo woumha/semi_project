@@ -1,6 +1,7 @@
 <%@page import="java.util.StringTokenizer"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,20 +19,64 @@
 			url: "/project4/account.do",
 			datatype: "xml",
 			success: function(data) {
-				let pname ="";
+				
 				$(data).find("personal").each(function() {
+					pcode = $(this).find("pmember_code").text().trim();
 					pfirstname = $(this).find("pmember_firstname").text();
 					plastname = $(this).find("pmember_lastname").text();
-					pgender = $(this).find("pmember_gender").text();
-					pemail = $(this).find("pmember_email").text();
+					pname = plastname + " " + pfirstname;
+					pmembergender = $(this).find("pmember_gender").text();
+					pemail = $(this).find("pmember_email").text() + "@" + $(this).find("pmember_domain").text();
+					pphone = $(this).find("pmember_phone").text();
 					pbirth = $(this).find("pmember_birth").text();
 				});
+				$("#pname").text(pname);
 				
-				$("#fname").text(pfirstname);
-				$("#lname").text(plastname)
+				if(pmembergender == "null") {
+					$("#pgender").text("지정되지 않음");
+				} else {
+					$("#pgender").text(pmembergender);
+				}
 				$("#pemail").text(pemail);
-				$("#pbirth").text(pbirth);
-				$("#pgender").text(pgender);
+				$("#pphone").text(pphone);
+				
+				
+				$(".tdinput").hide();
+				$("#nameinsert").hide();
+				
+				$(".reWrite").on("click", function() {
+					let tagid = document.querySelector(".reWrite").id;
+					switch(tagid) {
+						case "namebtn":
+							if($("#namebtn").text().trim() == "수정") {
+								$("#namebtn").text("취소");		
+								$("#pname").text("허가증이나 여권 등 여행 서류에 기재되어 있는 이름을 말합니다.");
+								$("#lastName").val(plastname);
+								$("#firstName").val(pfirstname);
+								$("#nameinsert").show();
+								$(".tdinput").show();
+								
+							} else {
+								$("#namebtn").text("수정");
+								$(".tdinput").hide();
+								$("#pname").text(pname);
+							}
+							
+							break;
+						case "genderbtn":
+							$("#genderbtn").hide();
+							break;
+						case "emailbtn":
+							$("#emailbtn").hide();
+							break;
+						case "phonebtn":
+							$("#phonebtn").hide();
+							break;
+						case "addrbtn":
+							$("#addrbtn").hide();
+							break;
+					}
+				});
 			},
 			error: function() {
 				alert("계정 통신 오류");
@@ -39,37 +84,33 @@
 			
 		}); // ajax
 		
-		$("#cnamebtn").hide();
-		$(".tdinput").hide();
-		
-		
-		$(".reWrite").on("click", function() {
-			var tagId = $(this).attr('id');
-			$(".reWrite").text("취소");		
-			switch(tagId) {
-				case "namebtn":
-					$("#pname").text("허가증이나 여권 등 여행 서류에 기재되어 있는 이름을 말합니다.");
-					$(".tdinput").show();
-					$("#lastName").text($("#lname"));
-					$("#firstName").text($("#fname"));
-					break;
-				case "genderbtn":
-					$("#genderbtn").hide();
-					break;
-				case "emailbtn":
-					$("#emailbtn").hide();
-					break;
-				case "phonebtn":
-					$("#phonebtn").hide();
-					break;
-				case "addrbtn":
-					$("#addrbtn").hide();
-					break;
-			}
-		});
-		
 	});
 	
+	function insertsubmit() {
+		$.ajaxSetup({
+			ContentType: "application/x-www-form-urlencoded;charset=UTF-8", //한글처리
+			type: "post"
+		});
+		
+		$.ajax({
+			url: "/project4/personal_update.do",
+			data: {
+				code = pcode,
+				last: $("#lastName").val(),
+				first: $("#firstName").val()
+			},
+			success: function(data) {
+				$(data).find("personal").each(function() {
+					lastname = $(this).find("pmember_lastname").text().trim();
+					firstname = $(this).find("pmember_firstname").text().trim();
+					$("#namebtn").text("수정");
+					$(".tdinput").hide();
+					$("#pname").text(lastname + " " + firstname);
+				});
+			},
+			
+		});
+	}; // insertsubmit()
 </script>
 <style type="text/css">
 	 .btntd {
@@ -101,18 +142,20 @@
 			</tr>
 			<tr>
 				<td>
-					<span id="fname"></span>
-					<span id="lname"></span>
+					<span id="pname"></span>
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" class="tdinput">
-					<input type="text" name="lastName" id="lastName"> 
-					<input type="text" name="firstName" id="firstName">
-				</td>
-			</tr>
-			
-			
+					<td colspan="2" class="tdinput">
+						<input type="text" name="lastName" id="lastName"> 
+						<input type="text" name="firstName" id="firstName">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="button" value="저장" class="inserbtn" id="nameinsert" onclick="insertsubmit()">
+					</td>
+				</tr>
 			<tr>
 				<td colspan="2">
 					<p>
@@ -165,7 +208,7 @@
 			</tr>
 			<tr>
 				<td>
-					<div id="peamil"></div>
+					<div id="pemail"></div>
 				</td>
 			</tr>
 			

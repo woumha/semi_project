@@ -131,7 +131,7 @@ public class pmemberDAO {
 						result += "<pmember_email>" + rs.getString("pmember_email") + "</pmember_email>";
 						result += "<pmember_domain>" + rs.getString("pmember_domain") + "</pmember_domain>";
 						result += "<pmember_code>" + rs.getString("pmember_code") + "</pmember_code>";
-						result += "<pmember_firtname>" + rs.getString("pmember_firtname") + "</pmember_firtname>";
+						result += "<pmember_firstname>" + rs.getString("pmember_firstname") + "</pmember_firstname>";
 						result += "<pmember_lastname>" + rs.getString("pmember_lastname") + "</pmember_lastname>";
 						result += "<pmember_gender>" + rs.getString("pmember_gender") + "</pmember_gender>";
 						result += "<pmember_birth>" + rs.getString("pmember_birth") + "</pmember_birth>";
@@ -147,5 +147,37 @@ public class pmemberDAO {
 				closeConn(rs, pstmt, con);
 			}
 			return result;
-		}
+		} // getMemberXMLInfromation
+		
+		public String setPersonalUpdate(pmemberDTO dto) {
+			String result = "";
+			openConn();
+			
+			try {
+				sql = "update pmember set pmember_firstname = ?, pmember_lastname = ? where pmember_code = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, dto.getPmember_firstname());
+				pstmt.setString(2, dto.getPmember_lastname());
+				pstmt.setLong(3, dto.getPmember_code());
+				pstmt.executeUpdate();
+				
+				sql = "select * from pmember where pmember_code = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setLong(1, dto.getPmember_code());
+				rs = pstmt.executeQuery();
+				result += "<personals>";
+				while(rs.next()) {
+					result += "<personal>";
+						result += "<pmember_firstname>" + rs.getString("pmember_firstname") + "</pmember_firstname>";
+						result += "<pmember_lastname>" + rs.getString("pmember_lastname") + "</pmember_lastname>";
+					result += "</personal>";
+				}
+				result += "</personals>";
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeConn(rs, pstmt, con);
+			}
+			return result;
+		} // setPersonalUpdate
 }

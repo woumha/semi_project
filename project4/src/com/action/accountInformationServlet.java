@@ -23,12 +23,14 @@ public class accountInformationServlet extends HttpServlet {
        
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 계정 > 개인정보의 정보를 불러옴
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		
 		HttpSession session = request.getSession();
 		long memcode = (long)session.getAttribute("member_code_session");
 	
 		pmemberDAO dao = pmemberDAO.getInstance();
 		String memberinfor = dao.getMemberXMLInfromation(memcode);
-		
 		PrintWriter out = response.getWriter();
 		out.println(memberinfor);
 		
