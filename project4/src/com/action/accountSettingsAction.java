@@ -23,7 +23,6 @@ public class accountSettingsAction implements Action {
 		pmemberDTO member = dao.getMemberInformation(member_code);
 		
 		request.setAttribute("pmember", member);
-		System.out.println(member.getPmember_name());
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);

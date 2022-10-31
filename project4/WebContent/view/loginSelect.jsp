@@ -27,30 +27,6 @@
 			location.href="<%=request.getContextPath()%>/inputEmail.do";
 		});
 		
-		
-		<%--
-		$("#mypage").click(function() {
-			location.href="<%=request.getContextPath()%>/account-settings.do?code=${member_code_session}";
-		});
-		--%>
-		
-		<%--
-		function account() {
-			$.ajax({
-				url: "/project4/account-settings.do",
-				data: {id: ${member_code_session}},
-				datatype: "text",
-				success: function(data) {
-					
-				},
-				error: function() {
-					alert("계정 통신 오류");
-				} 
-				
-			});
-		}
-		--%>
-		
 		$(".sign").on("click", function() {
 				location.href="<%=request.getContextPath()%>/inputEmail.do";
 		});

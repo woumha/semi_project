@@ -4,7 +4,9 @@ public class pmemberDTO {
 	private String pmember_email;
 	private String pmember_domain;
 	private long pmember_code;
-	private String pmember_name;
+	private String pmember_firstname;
+	private String pmember_lastname;
+	private String pmember_gender;
 	private int pmember_birth;
 	private int pmember_phone;
 	private String pmember_date;
@@ -23,11 +25,24 @@ public class pmemberDTO {
 	public void setPmember_domain(String pmember_domain) {
 		this.pmember_domain = pmember_domain;
 	}
-	public String getPmember_name() {
-		return pmember_name;
+	
+	public String getPmember_firstname() {
+		return pmember_firstname;
 	}
-	public void setPmember_name(String pmember_name) {
-		this.pmember_name = pmember_name;
+	public void setPmember_firstname(String pmember_firstname) {
+		this.pmember_firstname = pmember_firstname;
+	}
+	public String getPmember_lastname() {
+		return pmember_lastname;
+	}
+	public void setPmember_lastname(String pmember_lastname) {
+		this.pmember_lastname = pmember_lastname;
+	}
+	public String getPmember_gender() {
+		return pmember_gender;
+	}
+	public void setPmember_gender(String pmember_gender) {
+		this.pmember_gender = pmember_gender;
 	}
 	public int getPmember_birth() {
 		return pmember_birth;

@@ -84,7 +84,6 @@ public class LoginDAO {
 		public int MemberCheck(String user) {
 			int result = 0;
 			openConn();
-			System.out.println("user::: " + user);
 			try {
 				sql = "select count(*) from pmember where pmember_email = ?";
 				pstmt = con.prepareStatement(sql);
@@ -116,13 +115,12 @@ public class LoginDAO {
 			openConn();
 			
 			try {
-				sql = "select pmember_code from pmember";
+				sql = "select pmember_code from pmember where pmember_code = ?";
 				pstmt = con.prepareStatement(sql);
+				pstmt.setLong(1, code);
 				rs = pstmt.executeQuery();
-				
 				while(rs.next()) {
-					
-					if(code == rs.getInt("pmember_code")) { // int 또는 long
+					if(rs.getLong("pmember_code") == code) { // int 또는 long
 						check = true;
 					}
 				}
@@ -141,14 +139,16 @@ public class LoginDAO {
 			openConn();
 			
 			try {
-				sql = "insert into pmember values (?, ?, ?, ?, ?, ?, sysdate, 3)";
+				sql = "insert into pmember values (?, ?, ?, ?, ?, ?, ?, ?, sysdate, 3)";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, userInfor.getPmember_email());
 				pstmt.setString(2, userInfor.getPmember_domain());
 				pstmt.setLong(3, userInfor.getPmember_code());
-				pstmt.setString(4, userInfor.getPmember_name());
-				pstmt.setInt(5, userInfor.getPmember_birth());
-				pstmt.setInt(6, userInfor.getPmember_phone());
+				pstmt.setString(4, userInfor.getPmember_firstname());
+				pstmt.setString(5, userInfor.getPmember_lastname());
+				pstmt.setString(6, userInfor.getPmember_gender());
+				pstmt.setInt(7, userInfor.getPmember_birth());
+				pstmt.setInt(8, userInfor.getPmember_phone());
 				
 				result = pstmt.executeUpdate();
 			} catch (SQLException e) {

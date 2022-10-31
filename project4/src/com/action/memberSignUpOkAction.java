@@ -32,15 +32,13 @@ public class memberSignUpOkAction implements Action {
 		}
 		
 		LoginDTO userInfor = new LoginDTO();
-		userInfor.setPmember_name(first+last);
-		
 		userInfor.setPmember_email(mail_Id);
 		userInfor.setPmember_domain(mail_Domain);
 		
 		userInfor.setPmember_code(usercodeMaker());
 		
-		userInfor.setFirstname(first);
-		userInfor.setLastname(last);
+		userInfor.setPmember_firstname(first);
+		userInfor.setPmember_lastname(last);
 		
 		userInfor.setPmember_birth(birth);
 		userInfor.setPmember_phone(phone);
@@ -56,7 +54,7 @@ public class memberSignUpOkAction implements Action {
 			session.setMaxInactiveInterval(60*60);
 			
 			forward.setRedirect(true);
-			forward.setPath("/view/loginSelect.jsp"); // 상단 클래스 >>
+			forward.setPath("view/loginSelect.jsp"); // 상단 클래스 >>
 		} else {
 			PrintWriter out = response.getWriter();
 			out.println("<script>"

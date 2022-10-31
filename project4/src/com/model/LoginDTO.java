@@ -1,12 +1,12 @@
 package com.model;
 
 public class LoginDTO {
-	private String pmember_name;
 	private String pmember_email;
 	private String pmember_domain;
 	private long pmember_code;
-	private String firstname;
-	private String lastname;
+	private String pmember_firstname;
+	private String pmember_lastname;
+	private String pmember_gender;
 	private int pmember_birth;
 	private int pmember_phone;
 	private String pmember_date;
@@ -14,11 +14,24 @@ public class LoginDTO {
 	
 	
 	
-	public String getPmember_name() {
-		return pmember_name;
+	
+	public String getPmember_firstname() {
+		return pmember_firstname;
 	}
-	public void setPmember_name(String pmember_name) {
-		this.pmember_name = pmember_name;
+	public void setPmember_firstname(String pmember_firstname) {
+		this.pmember_firstname = pmember_firstname;
+	}
+	public String getPmember_lastname() {
+		return pmember_lastname;
+	}
+	public void setPmember_lastname(String pmember_lastname) {
+		this.pmember_lastname = pmember_lastname;
+	}
+	public String getPmember_gender() {
+		return pmember_gender;
+	}
+	public void setPmember_gender(String pmember_gender) {
+		this.pmember_gender = pmember_gender;
 	}
 	public String getPmember_email() {
 		return pmember_email;
@@ -38,18 +51,7 @@ public class LoginDTO {
 	public void setPmember_code(long pmember_code) {
 		this.pmember_code = pmember_code;
 	}
-	public String getFirstname() {
-		return firstname;
-	}
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
-	}
-	public String getLastname() {
-		return lastname;
-	}
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
-	}
+	
 	public int getPmember_birth() {
 		return pmember_birth;
 	}
