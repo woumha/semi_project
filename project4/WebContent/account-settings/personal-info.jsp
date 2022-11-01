@@ -87,12 +87,25 @@
 							break;
 						case "emailbtn":
 							if($("#emailbtn").text().trim() == "수정") {
-								$("#pemail").text("언제든지 확인하실 수 있는 주소를 확인하세요.");
+								$("#pemail").text("언제든지 확인하실 수 있는 주소를 입력해주세요.");
 								$("#emailbtn").text("취소");
 								$(".classmail").show();
 								$("#sendcode").on("click", function() {
 									$.ajax({
-										url: "/project4/"
+										url: "/project4/sendMail.do",
+										data: {
+											tag: tagid,
+											email: $("#emailtext").val(),
+											domain: $("#emailSelect").val()
+										},
+										datatype: "text",
+										success: function(data) {
+											
+										},
+										error: function() {
+											$("#tokencheck").hide();
+											alert("이메일을 전송하지 못했습니다.");
+										}
 									});
 									$("#tokencheck").show();						
 								});
@@ -294,7 +307,7 @@
 						<div class="classmail">
 							<input type="text" id="emailtext">
 							@
-							<select name="emailSelect">
+							<select name="emailSelect" id="emailSelect">
 								<option value="naver.com">naver.com</option>
 								<option value="gmail.com">gmail.com</option>
 								<option value="daum.net">daum.net</option>

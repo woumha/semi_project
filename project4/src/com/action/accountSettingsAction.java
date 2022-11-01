@@ -18,7 +18,7 @@ public class accountSettingsAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// 계정
 		long member_code = Long.parseLong(request.getParameter("code"));
-		System.out.println(member_code);
+		
 		pmemberDAO dao = pmemberDAO.getInstance();
 		pmemberDTO member = dao.getMemberInformation(member_code);
 		

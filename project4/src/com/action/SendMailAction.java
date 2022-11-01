@@ -34,7 +34,6 @@ public class SendMailAction implements Action {
 		
 		String memberEmail = request.getParameter("email"); // 수신자 이메일
 		String domain_Address = request.getParameter("domain");
-	
 		String ranNum = numberToken();
 		
 		mailTitle = "안녕하세요. 4조 인증번호입니다.";
@@ -78,16 +77,25 @@ public class SendMailAction implements Action {
 	         		+ "alert('인증번호 발송을 완료했습니다.');"
 	         		+ "</script>");
 	         
-	         userTokenDTO save = new userTokenDTO();
-	         save.setEmail(fullEmail);
-	         save.setToken(ranNum);
+	         String tagId = request.getParameter("tag");
 	         
-	         HttpSession session = request.getSession();
-	         session.setAttribute("membermail", fullEmail);
-	         session.setAttribute("user", save);
+	         if(tagId.equals("emailbtn")) {
+	        	 userTokenDTO upDateSave = new userTokenDTO();
+	        	 
+	        	 
+	         } else {
+	        	 userTokenDTO save = new userTokenDTO();
+		         save.setEmail(fullEmail);
+		         save.setToken(ranNum);
+		         
+	        	 HttpSession session = request.getSession();
+		         session.setAttribute("membermail", fullEmail);
+		         session.setAttribute("user", save);
+		         
+		         forward.setRedirect(false);
+		         forward.setPath("tokenCheck.do");
+	         }
 	         
-	         forward.setRedirect(false);
-	         forward.setPath("tokenCheck.do");
 	         
 		} catch(Exception e){
 			PrintWriter out = response.getWriter();

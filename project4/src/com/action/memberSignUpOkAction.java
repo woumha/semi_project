@@ -24,7 +24,7 @@ public class memberSignUpOkAction implements Action {
 		int birth = Integer.parseInt(request.getParameter("birth"));
 		String mail = request.getParameter("hide_email");
 		String mail_Id = "", mail_Domain = "";
-		System.out.println("mail: " + mail);
+		
 		StringTokenizer st = new StringTokenizer(mail, "@");
 		while(st.hasMoreTokens()) {
 			mail_Id = st.nextToken();
