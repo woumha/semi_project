@@ -80,9 +80,10 @@ public class SendMailAction implements Action {
 	         String tagId = request.getParameter("tag");
 	         
 	         if(tagId.equals("emailbtn")) {
-	        	 userTokenDTO upDateSave = new userTokenDTO();
-	        	 
-	        	 
+	        	 // ranNum
+	        	 String allData = memberEmail + "|" + ranNum;// 사용자가 입력한 이메일
+	        	 System.out.println(allData);
+	        	 out.println(allData);
 	         } else {
 	        	 userTokenDTO save = new userTokenDTO();
 		         save.setEmail(fullEmail);

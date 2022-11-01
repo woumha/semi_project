@@ -99,15 +99,16 @@
 											domain: $("#emailSelect").val()
 										},
 										datatype: "text",
-										success: function(data) {
-											
+										success: function(datacode) {
+											allData = datacode;
+											console.log(allData);
+											$("#tokencheck").show();
 										},
 										error: function() {
 											$("#tokencheck").hide();
 											alert("이메일을 전송하지 못했습니다.");
 										}
-									});
-									$("#tokencheck").show();						
+									});						
 								});
 							} else {
 								$("#pemail").text(pemail);
