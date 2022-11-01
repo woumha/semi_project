@@ -73,17 +73,17 @@ public class SendMailAction implements Action {
 	         System.out.println("message sent successfully");
 	         
 	         PrintWriter out = response.getWriter();
-	         out.println("<script>"
-	         		+ "alert('인증번호 발송을 완료했습니다.');"
-	         		+ "</script>");
 	         
-	         String tagId = request.getParameter("tag");
-	        
-	         if(tagId != null) {
-	        	 // ranNum
-	        	 String allData = memberEmail + "|" + ranNum;// 사용자가 입력한 이메일
-	        	 System.out.println(allData);
-	        	 out.println(allData);
+	         String tagId = request.getParameter("tag").trim();
+	         
+	         if(tagId.equals("emailbtn")) {
+	        	 String no = ranNum;
+	        	 PrintWriter outgo = response.getWriter();
+	        	 outgo.println(no);
+	        	 
+	        	 outgo.println("<script>"
+	        	 		+ "history.back();"
+	        	 		+ "</script>");
 	         } else {
 	        	 userTokenDTO save = new userTokenDTO();
 		         save.setEmail(fullEmail);
@@ -95,20 +95,20 @@ public class SendMailAction implements Action {
 		         
 		         forward.setRedirect(false);
 		         forward.setPath("tokenCheck.do");
+		         
+		         return forward;
 	         }
 	         
 	         
 		} catch(Exception e){
 			PrintWriter out = response.getWriter();
 	         out.println("<script>"
-	         		+ "alert('통신 오류입니다..');"
+	         		+ "alert('메일 통신 오류입니다..');"
 	         		+ "history.back();"
 	         		+ "</script>");
 		    e.printStackTrace();
 		}
-		 
-		
-		return forward;
+		return null;
 	}
 	
 	public String numberToken() {

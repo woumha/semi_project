@@ -34,7 +34,7 @@ public class personalUpdateServlet extends HttpServlet {
 		
 		int no = Integer.parseInt(request.getParameter("find"));
 		long membercode = Long.parseLong(request.getParameter("code"));
-		
+		System.out.println(no);
 		
 		pmemberDTO dto = new pmemberDTO();
 		pmemberDAO dao = pmemberDAO.getInstance();
@@ -51,8 +51,15 @@ public class personalUpdateServlet extends HttpServlet {
 			String gen = request.getParameter("gender");
 			dto.setPmember_gender(gen);
 			result = dao.setPersonalUpdate(no, dto);
+		} else if(no == 3) {
+			String email = request.getParameter("mail");
+			String domain = request.getParameter("domain");
+			dto.setPmember_email(email);
+			dto.setPmember_domain(domain);
+			
+			dao.setPersonalUpdate(no, dto);
+			
 		}
-		
 		
 		PrintWriter out = response.getWriter();
 		out.println(result);	

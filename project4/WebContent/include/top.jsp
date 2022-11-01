@@ -136,6 +136,7 @@ $(function() {
 				<tr>
 					<td>
 						<form method="post" id="email_input" action="<%=request.getContextPath() %>/sendMail.do">
+							<input type="hidden" name="tag" value="first">
 							<input type="text" id="email" name="email" placeholder="Email">
 							<div id="email_text">
 								@

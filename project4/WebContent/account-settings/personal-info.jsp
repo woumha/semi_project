@@ -51,6 +51,7 @@
 				// 이메일
 				$(".classmail").hide();
 				$("#tokencheck").hide();
+				$("#inputcode").hide();
 				
 				$(".reWrite").on("click", function() {
 					let tagid = $(this).attr("id");
@@ -90,32 +91,12 @@
 								$("#pemail").text("언제든지 확인하실 수 있는 주소를 입력해주세요.");
 								$("#emailbtn").text("취소");
 								$(".classmail").show();
-								$("#sendcode").on("click", function() {
-									$.ajax({
-										url: "/project4/sendMail.do",
-										data: {
-											tag: tagid,
-											email: $("#emailtext").val(),
-											domain: $("#emailSelect").val()
-										},
-										datatype: "text",
-										success: function(datacode) {
-											let allData = datacode;
-											console.log(allData);
-											$("#tokencheck").show();
-										},
-										error: function() {
-											$("#tokencheck").hide();
-											alert("이메일을 전송하지 못했습니다.");
-										}
-									});						
-								});
 							} else {
 								$("#pemail").text(pemail);
 								$(".classmail").hide();
 								$("#emailbtn").text("수정");
-								
-								
+								$("#tokencheck").hide();
+								$("#inputcode").hide();
 							}
 							break;
 						case "phonebtn":
@@ -133,6 +114,34 @@
 			
 		}); // ajax
 		
+		// 이메일 인증
+		$("#sendcode").on("click", function() {
+			m = $("#emailtext").val();
+			d = $("#emailSelect").val();
+			$.ajax({
+				url: "/project4/sendMail.do",
+				datatype: "text",
+				data: {
+					tag: "emailbtn",
+					email: m,
+					domain: d
+				},
+				success: function(data) {
+					$("#tokencheck").show();
+					$("#inputcode").show();
+					member_code = data.substring(0, 6);
+					console.log(member_code);
+				},
+				error: function() {
+					alert("코드 전송을 실패했습니다.");
+				}
+			});
+			
+			//$('#formmail').submit();
+			
+			
+			
+		});
 	});
 	
 	function insertsubmit() {
@@ -182,8 +191,38 @@
 					});
 				}
 			});
+		} else if($("#emailbtn").text().trim() == "취소") {
+			if(member_code == $("#inputcode").val()) {
+				$.ajax({
+					url: "/project4/personal_update.do",
+					datatype: "xml",
+					mailup: {
+						find: "3",
+						code: pcode,
+						mail: m,
+						domain: d
+					},
+					success: function() {
+						$(mailup).find("personal").each(function() {
+							updateMail = $(this).find("pmember_email").text().trim();
+							updateDomain = $(this).find("pmember_domain").text().trim();
+							$("#pemail").text(updateMail + "@" + updateDomain);
+							$(".classmail").hide();
+							$("#emailbtn").text("수정");
+							$("#tokencheck").hide();
+							$("#inputcode").hide();
+						});
+						
+					},
+					error: function() {
+						alert("이메일 수정 실패");
+					}
+				});
+			} else {
+				alert("인증코드가 잘못되었습니다.");
+			}
 		}
-	}; // insertsubmit()
+	}; // insertsubmit();
 </script>
 <style type="text/css">
 	 .btntd {
@@ -306,21 +345,26 @@
 				<tr>
 					<td>
 						<div class="classmail">
-							<input type="text" id="emailtext">
-							@
-							<select name="emailSelect" id="emailSelect">
-								<option value="naver.com">naver.com</option>
-								<option value="gmail.com">gmail.com</option>
-								<option value="daum.net">daum.net</option>
-							</select>						
+							<form method="get" id="formmail" action="<%=request.getContextPath() %>/sendMail.do">
+								<input type="hidden" name="tag" value="emailbtn">
+								<input type="text" name="email" id="emailtext">
+								@
+								<select name="emailSelect" id="emailSelect" name="domain">
+									<option value="naver.com">naver.com</option>
+									<option value="gmail.com">gmail.com</option>
+									<option value="daum.net">daum.net</option>
+								</select>						
+							</form>
 						</div>
 					</td>
 				</tr>
 				<tr>
 					<td>
 						<div id="tired">
-							<input type="button" value="인증코드발송" class="classmail" id="sendcode">
-							<input type="button" value="수정" class="tokencheck" id="tokencheck">
+							<input type="button" value="인증" class="classmail" id="sendcode">
+							<br>
+							<input type="text" id="inputcode" class="inputcode" placeholder="인증 코드">
+							<input type="button" value="수정" class="tokencheck" id="tokencheck" onclick="insertsubmit()">
 						</div>
 					</td>
 				</tr>
