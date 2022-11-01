@@ -198,6 +198,11 @@ public class pmemberDAO {
 					pstmt.setString(1, dto.getPmember_email());
 					pstmt.setString(2, dto.getPmember_domain());
 					pstmt.setLong(3, dto.getPmember_code());
+					pstmt.executeUpdate();
+					
+					sql = "select pmember_email, pmember_domain from pmember where pmember_code = ?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setLong(1, dto.getPmember_code());
 					rs = pstmt.executeQuery();
 					result += "<personals>";
 					if(rs.next()) {

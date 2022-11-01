@@ -196,16 +196,17 @@
 				$.ajax({
 					url: "/project4/personal_update.do",
 					datatype: "xml",
-					mailup: {
+					data: {
 						find: "3",
 						code: pcode,
 						mail: m,
 						domain: d
 					},
-					success: function() {
-						$(mailup).find("personal").each(function() {
+					success: function(data) {
+						$(data).find("personal").each(function() {
 							updateMail = $(this).find("pmember_email").text().trim();
 							updateDomain = $(this).find("pmember_domain").text().trim();
+							
 							$("#pemail").text(updateMail + "@" + updateDomain);
 							$(".classmail").hide();
 							$("#emailbtn").text("수정");

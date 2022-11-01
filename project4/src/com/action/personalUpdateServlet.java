@@ -57,7 +57,7 @@ public class personalUpdateServlet extends HttpServlet {
 			dto.setPmember_email(email);
 			dto.setPmember_domain(domain);
 			
-			dao.setPersonalUpdate(no, dto);
+			result = dao.setPersonalUpdate(no, dto);
 			
 		}
 		
