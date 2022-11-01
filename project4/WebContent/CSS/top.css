@@ -126,7 +126,7 @@ body {
 /* top영역 왼쪽 로고이미지 스타일 */
 #logo_loction{
     content: url(../main_img/logo_img.png);
-    width: 8%;
+    width: 150px;
     position: absolute;
 	left: 5%;
 	top: 7%;
