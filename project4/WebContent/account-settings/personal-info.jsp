@@ -130,7 +130,7 @@
 					$("#tokencheck").show();
 					$("#inputcode").show();
 					member_code = data.substring(0, 6);
-					console.log(member_code);
+					console.log("personal-info.jsp: "+ member_code);
 				},
 				error: function() {
 					alert("코드 전송을 실패했습니다.");
@@ -212,6 +212,7 @@
 							$("#emailbtn").text("수정");
 							$("#tokencheck").hide();
 							$("#inputcode").hide();
+							$("#inputcode").val('');
 						});
 						
 					},
