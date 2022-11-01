@@ -100,7 +100,7 @@
 										},
 										datatype: "text",
 										success: function(datacode) {
-											allData = datacode;
+											let allData = datacode;
 											console.log(allData);
 											$("#tokencheck").show();
 										},
