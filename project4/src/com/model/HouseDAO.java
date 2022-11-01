@@ -621,6 +621,15 @@ public class HouseDAO {
             	dto.setHouse_img1(rs.getString(12));
             	dto.setHouse_img2(rs.getString(13));
             	dto.setHouse_img3(rs.getString(14));
+				dto.setHouse_count(rs.getInt(15));
+				dto.setHouse_water(rs.getInt(16));
+				dto.setHouse_pool(rs.getInt(17));
+				dto.setHouse_ski(rs.getInt(18));
+				dto.setHouse_food(rs.getInt(19));
+				dto.setHouse_parking(rs.getInt(20));
+				dto.setHouse_grill(rs.getInt(21));
+				dto.setHouse_smoking(rs.getInt(22));
+				dto.setHouse_gym(rs.getInt(23));
             }
             
         } catch (SQLException e) {

@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+*{
+	font-family: Georgia, "Malgun Gothic", serif;
+	line-height: 200%;
+	}
+
+
+hr{
+	
+	background-color: #A6A6A6;
+	height: 1px;
+	border: 0;
+}
+
+.star{
+	color : #FFE400;
+	
+}
+
+.flex_row {
+	display: flex;
+	padding-left: 15%;
+	
+}
+
+.flex_col {
+	display: flex;
+	flex-direction: column;
+}
+
+.div1{
+
+	padding-left: 15%;
+	padding-right: 15%;
+	
+}
