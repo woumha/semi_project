@@ -78,8 +78,8 @@ public class SendMailAction implements Action {
 	         		+ "</script>");
 	         
 	         String tagId = request.getParameter("tag");
-	         
-	         if(tagId.equals("emailbtn")) {
+	        
+	         if(tagId != null) {
 	        	 // ranNum
 	        	 String allData = memberEmail + "|" + ranNum;// 사용자가 입력한 이메일
 	        	 System.out.println(allData);
