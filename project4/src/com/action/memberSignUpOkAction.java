@@ -54,7 +54,7 @@ public class memberSignUpOkAction implements Action {
 			session.setMaxInactiveInterval(60*60);
 			
 			forward.setRedirect(true);
-			forward.setPath("view/loginSelect.jsp"); // 상단 클래스 >>
+			forward.setPath("view/main.jsp"); // 상단 클래스 >>
 		} else {
 			PrintWriter out = response.getWriter();
 			out.println("<script>"

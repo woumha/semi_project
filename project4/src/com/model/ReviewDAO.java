@@ -103,7 +103,7 @@ public class ReviewDAO {
         return list;
     }
 
-    // 리뷰 데이터를 받아 DB에 추가합니다.
+    // 리뷰작성 - 리뷰 데이터를 받아 DB에 추가합니다.
     public int insertWrite(ReviewDTO dto) {
     	openConn();
         int result = 0;

@@ -3,7 +3,78 @@
 body {
   padding-top: 6%;
 }
-	
+#email_text {
+	padding-top: 4px;
+    margin-right: 10px;
+    margin-left: 10px;
+	float: left;
+}
+#email {
+  float: left;
+  width: 200px;
+  height: 32px;
+  font-size: 15px;
+  border: 0;
+  border-radius: 15px;
+  outline: none;
+  padding-left: 10px;
+  background-color: rgb(233, 233, 233);
+}
+#email_select_box {
+	float: left;
+	position: relative;
+	width: auto;
+	height: 32px;
+	border-radius: 4px;
+}
+
+#email_select {
+  width: auto;
+  height: 32px;
+  font-size: 15px;
+  border: 0;
+  border-radius: 15px;
+  outline: none;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: rgb(233, 233, 233);
+
+}
+
+#div_sendEmail {
+	text-align: center;
+}
+
+#sendEmail {
+	border: 0;
+	width: 113px;
+	height: 32px;
+	margin-top: 35px;
+	border-radius: 5%;
+}
+
+#sendEmail:hover {
+	background-color: #e85255;
+	color: white;
+	cursor: pointer;
+}
+
+#logout_menu button {
+	margin-bottom: 13px;
+	font-size: 12px;
+}
+
+#hoster {
+	margin-top: 13px;
+}
+#signOut {
+	color: #e85255;
+	font-weight: bold;
+}
+#logout_menu button:hover {
+	cursor: pointer;
+}
+
 .header {
   width: 100%;
   height: 75px;
@@ -55,7 +126,7 @@ body {
 /* top영역 왼쪽 로고이미지 스타일 */
 #logo_loction{
     content: url(../main_img/logo_img.png);
-    width: 8%;
+    width: 150px;
     position: absolute;
 	left: 5%;
 	top: 7%;
@@ -70,10 +141,13 @@ body {
     width: 40px;
     height: 40px;
 }
+#modal:hover {
+	cursor: pointer;
+}
 
 /* top menu 영역 */
 .member_login {
-  width: 180px;
+  width: 205px;
   height: auto;
   margin: 0 auto;
   background: #fff;
@@ -86,11 +160,54 @@ body {
   transition: all 0.5s linear;
   border-radius: 10%;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+  
+  padding: 20px;
+  padding-bottom: 10px;
+  
+  
+}
+.member_login_insert {
+	margin-bottom: 13px;
+	font-size: 15px;
+}
+.member_login_input {
+	margin-bottom: 13px;
+	font-size: 15px;
+}
+.member_home_hosting_admin {
+	margin-top: 12px;
+	margin-bottom: 12px;
+	font-size: 13px;	
+}
+.member_home_hosting_experience {
+	margin-bottom: 12px;
+	font-size: 13px;	
+}
+.member_help {
+	margin-bottom: 12px;
+	font-size: 13px;	
 }
 
 
+/* 로그인 이메일 입력 모달창 */
 
-
+#login_hi {
+	margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+#login_welcom {
+	margin-top: 16px;
+    margin-bottom: 25px;
+    font-size: 20px;
+}
+#naver_id_login {
+	text-align: center;
+	margin-top: 40px;
+}
+#email_input {
+		
+}
 
 .wrapper > div{
   position: absolute;
