@@ -101,11 +101,11 @@ public class pmemberDAO {
 					dto.setPmember_lastname(rs.getString("pmember_lastname"));
 					dto.setPmember_gender(rs.getString("pmember_gender"));
 					dto.setPmember_birth(rs.getInt("pmember_birth"));
-					dto.setPmember_phone(rs.getInt("pmember_phone"));
+					dto.setPmember_phone(rs.getString("pmember_phone"));
 					dto.setPmember_date(rs.getString("pmember_date"));
 					dto.setPmember_userlevel(rs.getInt("pmember_userlevel"));
 				}
-				System.out.println(dto.getPmember_code());
+				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -215,7 +215,7 @@ public class pmemberDAO {
 				} else if (no.equals("phone")) { // 전화 번호
 					sql = "update pmember set pmember_phone = ? where pmember_code = ?";
 					pstmt = con.prepareStatement(sql);
-					pstmt.setLong(1, dto.getPmember_phone());
+					pstmt.setString(1, dto.getPmember_phone());
 					pstmt.setLong(2, dto.getPmember_code());
 					rs = pstmt.executeQuery();
 					result += "<personals>";
@@ -235,4 +235,23 @@ public class pmemberDAO {
 			}
 			return result;
 		} // setPersonalUpdate
+		
+		public int setMemberDelete(pmemberDTO dto) {
+			int check = 0;
+			String result = "";
+			openConn();
+			
+			try {
+				sql = "delete from pmember where pmember_code = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setLong(1, dto.getPmember_code());
+				check = pstmt.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				closeConn(rs, pstmt, con);
+			}
+			return check;
+		}
 }

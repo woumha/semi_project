@@ -24,20 +24,34 @@ $(function() {
 		}
 		
 	});
+	
 		
 	$("#member-delete-btn").on("click", function() {
-		let btnValue = document.querySelector("#member-delete-btn").innerText = "계정 삭제";
-		showtr.style.display = 'none';
-		hiddentr.style.display = 'block';
+		let btnValue = document.querySelector("#member-delete-btn").innerText;
 		
-		if(btnValue == "계정 삭제") {
-			$.ajax({
-				url: "/project4/memberDelete.do",
+		if(btnValue != "계정 삭제") {
+			document.querySelector("#member-delete-btn").innerText = "계정 삭제";
+			showtr.style.display = 'none';
+			hiddentr.style.display = 'block';
+		} else {
+			$.ajaxSetup({
+					ContentType: "application/x-www-form-urlencoded;charset=UTF-8", //한글처리
+					type: "post"
+				});
 				
-			});
+				$.ajax({ 
+					url: "/project4/memberDelete.do",
+					datatype: "text",
+					success: function(data) {
+						if(data == 1) {
+							location.href="byebye.jsp";
+						}
+					}
+				});
 		}
-		
 	});
+	
 });
+
 
 

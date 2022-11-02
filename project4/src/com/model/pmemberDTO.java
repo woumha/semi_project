@@ -8,7 +8,7 @@ public class pmemberDTO {
 	private String pmember_lastname;
 	private String pmember_gender;
 	private int pmember_birth;
-	private long pmember_phone;
+	private String pmember_phone;
 	private String pmember_date;
 	private int pmember_userlevel;
 	
@@ -50,10 +50,10 @@ public class pmemberDTO {
 	public void setPmember_birth(int pmember_birth) {
 		this.pmember_birth = pmember_birth;
 	}
-	public long getPmember_phone() {
+	public String getPmember_phone() {
 		return pmember_phone;
 	}
-	public void setPmember_phone(long pmember_phone) {
+	public void setPmember_phone(String pmember_phone) {
 		this.pmember_phone = pmember_phone;
 	}
 	public int getPmember_userlevel() {

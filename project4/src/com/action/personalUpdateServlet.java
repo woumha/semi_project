@@ -60,7 +60,7 @@ public class personalUpdateServlet extends HttpServlet {
 			dto.setPmember_domain(domain);
 			
 		} else if(no.equals("phone")) {
-			long phone = Long.parseLong(request.getParameter("num"));
+			String phone = request.getParameter("num");
 			
 			dto.setPmember_phone(phone);
 		}
