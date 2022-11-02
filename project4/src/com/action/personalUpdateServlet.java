@@ -30,39 +30,43 @@ public class personalUpdateServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
+		
+		PrintWriter out = response.getWriter();
 		String result = "";
 		
-		int no = Integer.parseInt(request.getParameter("find"));
+		String no = request.getParameter("find");
 		long membercode = Long.parseLong(request.getParameter("code"));
 		System.out.println(no);
 		
 		pmemberDTO dto = new pmemberDTO();
 		pmemberDAO dao = pmemberDAO.getInstance();
 		dto.setPmember_code(membercode);
-		if(no == 1) { // 이름 변경
+		if(no.equals("name")) { // 이름 변경
 			String lastName = request.getParameter("last");
 			String firstName = request.getParameter("first");
 			
 			dto.setPmember_firstname(firstName);
 			dto.setPmember_lastname(lastName);
 			
-			result = dao.setPersonalUpdate(no, dto);		
-		} else if(no == 2) { // 성별 변경
+					
+		} else if(no.equals("gender")) { // 성별 변경
 			String gen = request.getParameter("gender");
 			dto.setPmember_gender(gen);
-			result = dao.setPersonalUpdate(no, dto);
-		} else if(no == 3) {
+			
+		} else if(no.equals("mail")) {
 			String email = request.getParameter("mail");
 			String domain = request.getParameter("domain");
 			dto.setPmember_email(email);
 			dto.setPmember_domain(domain);
 			
-			result = dao.setPersonalUpdate(no, dto);
+		} else if(no.equals("phone")) {
+			long phone = Long.parseLong(request.getParameter("num"));
 			
+			dto.setPmember_phone(phone);
 		}
 		
-		PrintWriter out = response.getWriter();
-		out.println(result);	
+		result = dao.setPersonalUpdate(no, dto);
+		out.println(result);
 	}
 
 }

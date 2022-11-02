@@ -149,12 +149,12 @@ public class pmemberDAO {
 			return result;
 		} // getMemberXMLInfromation
 		
-		public String setPersonalUpdate(int no, pmemberDTO dto) {
+		public String setPersonalUpdate(String no, pmemberDTO dto) {
 			String result = "";
 			openConn();
 			
 			try {
-				if(no == 1) { // 이름 변경
+				if(no.equals("name")) { // 이름 변경
 					sql = "update pmember set pmember_firstname = ?, pmember_lastname = ? where pmember_code = ?";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, dto.getPmember_firstname());
@@ -174,7 +174,7 @@ public class pmemberDAO {
 						result += "</personal>";
 					}
 					result += "</personals>";
-				} else if (no == 2) { // 성별 변경
+				} else if (no.equals("gender")) { // 성별 변경
 					sql = "update pmember set pmember_gender = ? where pmember_code = ?";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, dto.getPmember_gender());
@@ -192,7 +192,7 @@ public class pmemberDAO {
 						result += "</personal>";
 					}
 					result += "</personals>";
-				} else if (no == 3) { // 이메일 변경
+				} else if (no.equals("mail")) { // 이메일 변경
 					sql = "update pmember set pmember_email = ?, pmember_domain = ? where pmember_code = ?";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, dto.getPmember_email());
@@ -212,7 +212,7 @@ public class pmemberDAO {
 						result += "</personal>";
 					}
 					result += "</personals>";
-				} else if (no == 4) { // 전화 번호
+				} else if (no.equals("phone")) { // 전화 번호
 					sql = "update pmember set pmember_phone = ? where pmember_code = ?";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setLong(1, dto.getPmember_phone());
@@ -225,7 +225,7 @@ public class pmemberDAO {
 						result += "</personal>";
 					}
 					result += "</personals>";
-				} else if(no == 5) { // 주소 변경
+				} else if(no.equals("addr")) { // 주소 변경
 					System.out.println("미완성");
 				}
 			} catch (Exception e) {

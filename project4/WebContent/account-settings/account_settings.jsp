@@ -103,7 +103,7 @@
 			
 			<tr>
 				<td>
-					<a href="privacy-and-sharing" class="information" >
+					<a href="account-settings/privacy-and-sharing.jsp" class="information" >
 						<div class="_1uwb2q9">
 							<div style="margin-bottom: 16px;" id="4" class="box">
 								<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; height: 32px; width: 32px; fill: currentcolor;">
