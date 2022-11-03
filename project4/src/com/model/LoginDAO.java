@@ -149,7 +149,7 @@ public class LoginDAO {
 				pstmt.setString(5, userInfor.getPmember_lastname());
 				pstmt.setString(6, userInfor.getPmember_gender());
 				pstmt.setInt(7, userInfor.getPmember_birth());
-				pstmt.setLong(8, userInfor.getPmember_phone());
+				pstmt.setString(8, userInfor.getPmember_phone());
 				
 				result = pstmt.executeUpdate();
 			} catch (SQLException e) {
