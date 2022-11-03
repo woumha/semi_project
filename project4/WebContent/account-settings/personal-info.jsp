@@ -8,168 +8,9 @@
 <meta charset="UTF-8">
 <title>개인정보 - 계정 관리 - 4팀</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
+<script type="text/javascript" src="../JS/personal-info_javascript.js"></script>
 <script type="text/javascript">
-	$(function() {
-		$.ajaxSetup({
-			ContentType: "application/x-www-form-urlencoded;charset=UTF-8", //한글처리
-			type: "post"
-		});
-		
-		$.ajax({
-			url: "/project4/account.do",
-			datatype: "xml",
-			success: function(data) {
-				
-				$(data).find("personal").each(function() {
-					pcode = $(this).find("pmember_code").text().trim();
-					pfirstname = $(this).find("pmember_firstname").text();
-					plastname = $(this).find("pmember_lastname").text();
-					pname = plastname + " " + pfirstname;
-					pmembergender = $(this).find("pmember_gender").text();
-					pe = $(this).find("pmember_email").text();
-					pemail = $(this).find("pmember_email").text() + "@" + $(this).find("pmember_domain").text();
-					pphone = $(this).find("pmember_phone").text();
-					pbirth = $(this).find("pmember_birth").text();
-				});
-				$("#pname").text(pname);
-				
-				if(pmembergender == "null") {
-					$("#pgender").text("지정되지 않음");
-				} else {
-					$("#pgender").text(pmembergender);
-				}
-				$("#pemail").text(pemail);
-				$("#pphone").text(pphone);
-				
-				// 이름
-				$(".tdinput").hide();
-				$("#nameinsert").hide();
-				
-				// 성별
-				$(".classgender").hide();
-				
-				// 이메일
-				$(".classmail").hide();
-				$("#tokencheck").hide();
-				
-				$(".reWrite").on("click", function() {
-					let tagid = $(this).attr("id");
-					
-					switch(tagid) {
-						case "namebtn": //이름
-							if($("#namebtn").text().trim() == "수정") {
-								$("#namebtn").text("취소");		
-								$("#pname").text("허가증이나 여권 등 여행 서류에 기재되어 있는 이름을 말합니다.");
-								$("#lastName").val(plastname);
-								$("#firstName").val(pfirstname);
-								$(".ha").show();
-								$("#nameinsert").show();
-								$(".tdinput").show();
-							} else {
-								$("#namebtn").text("수정");
-								$("#pname").text(pname);
-								$("#nameinsert").hide();
-								$(".ha").hide();
-							}
-							break; //namebtn end
-						case "genderbtn": // 성별
-							if($("#genderbtn").text().trim() == "수정") {
-								$("#genderbtn").text("취소")
-								$(".classgender").show();
-								$("#pgender").hide();
-								
-							} else {
-								$("#genderbtn").text("수정");
-								$(".classgender").hide();
-								$("#pgender").show();
-								
-							}
-							break;
-						case "emailbtn":
-							if($("#emailbtn").text().trim() == "수정") {
-								$("#pemail").text("언제든지 확인하실 수 있는 주소를 확인하세요.");
-								$("#emailbtn").text("취소");
-								$(".classmail").show();
-								$("#sendcode").on("click", function() {
-									$.ajax({
-										url: "/project4/"
-									});
-									$("#tokencheck").show();						
-								});
-							} else {
-								$("#pemail").text(pemail);
-								$(".classmail").hide();
-								$("#emailbtn").text("수정");
-								
-								
-							}
-							break;
-						case "phonebtn":
-							$("#phonebtn").hide();
-							break;
-						case "addrbtn":
-							$("#addrbtn").hide();
-							break;
-					}
-				});
-			},
-			error: function() {
-				alert("계정 통신 오류");
-			}
-			
-		}); // ajax
-		
-	});
 	
-	function insertsubmit() {
-		$.ajaxSetup({
-			ContentType: "application/x-www-form-urlencoded;charset=UTF-8", //한글처리
-			type: "post"
-		});
-		if($("#namebtn").text().trim() == "취소") {
-			$.ajax({
-				url: "/project4/personal_update.do",
-				data: {
-					find: "1",
-					code: pcode,
-					last: $("#lastName").val(),
-					first: $("#firstName").val()
-				},
-				success: function(data) {
-					$(data).find("personal").each(function() {
-						lastname = $(this).find("pmember_lastname").text().trim();
-						firstname = $(this).find("pmember_firstname").text().trim();
-						$("#namebtn").text("수정");
-						$(".tdinput").hide();
-						$("#nameinsert").hide();
-						$("#pname").text(lastname + " " + firstname);
-					});
-				},
-				
-			});
-		} else if($("#genderbtn").text().trim() == "취소") {
-			select = $("select[name=genderSelect] option:selected" ).text();
-			console.log(select);
-			
-			$.ajax({
-				url: "/project4/personal_update.do",
-				data: {
-					find: "2",
-					code: pcode,
-					gender: select 
-				},
-				success: function(data) {
-					$(data).find("personal").each(function() {
-						gender = $(this).find("pmember_gender").text().trim();
-						$("#genderbtn").text("수정");
-						$("#pgender").text(gender);
-						$(".classgender").hide();
-						$("#pgender").show();
-					});
-				}
-			});
-		}
-	}; // insertsubmit()
 </script>
 <style type="text/css">
 	 .btntd {
@@ -292,21 +133,26 @@
 				<tr>
 					<td>
 						<div class="classmail">
-							<input type="text" id="emailtext">
-							@
-							<select name="emailSelect">
-								<option value="naver.com">naver.com</option>
-								<option value="gmail.com">gmail.com</option>
-								<option value="daum.net">daum.net</option>
-							</select>						
+							<form method="get" id="formmail" action="<%=request.getContextPath() %>/sendMail.do">
+								<input type="hidden" name="tag" value="emailbtn">
+								<input type="text" name="email" id="emailtext">
+								@
+								<select name="emailSelect" id="emailSelect" name="domain">
+									<option value="naver.com">naver.com</option>
+									<option value="gmail.com">gmail.com</option>
+									<option value="daum.net">daum.net</option>
+								</select>						
+							</form>
 						</div>
 					</td>
 				</tr>
 				<tr>
 					<td>
 						<div id="tired">
-							<input type="button" value="인증코드발송" class="classmail" id="sendcode">
-							<input type="button" value="수정" class="tokencheck" id="tokencheck">
+							<input type="button" value="인증" class="classmail" id="sendcode">
+							<br>
+							<input type="text" id="inputcode" class="inputcode" placeholder="인증 코드">
+							<input type="button" value="수정" class="tokencheck" id="tokencheck" onclick="insertsubmit()">
 						</div>
 					</td>
 				</tr>
@@ -342,8 +188,14 @@
 						<div id="pphone"></div>
 					</td>
 				</tr>
+				<tr>
+					<td id="td_phone_btn">
+						<input type="text" id="inputphone" class="classphone" placeholder="-를 제외하고 입력해주세요.">
+						&nbsp;
+						<input type="button" id="phone_input_btn" class="phone_input_btn" value="저장" onclick="insertsubmit()">
+					</td>
+				</tr>
 			</div>
-			
 			<tr>
 				<td colspan="2">
 					<p>
@@ -351,7 +203,7 @@
 				</td>
 			</tr>
 			
-			<div id="divaddr">
+			<!-- <div id="divaddr">
 				<tr>
 					<th>
 						주소
@@ -379,7 +231,7 @@
 					<p>
 					<hr>
 				</td>
-			</tr>
+			</tr> -->
 		</table>
 	</div>
 </body>
