@@ -150,7 +150,7 @@
 				</td>
 				
 				<td>
-					<a href="professional-hosting" class="information" >
+					<a href="account-settings/professional-hosting" class="information" >
 						<div class="_1uwb2q9">
 							<div style="margin-bottom: 16px;" id="7" class="box">
 								<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; height: 32px; width: 32px; fill: currentcolor;">

@@ -15,7 +15,13 @@
 		float: right;
 	}
 </style>
-<body>
+<script type="text/javascript">
+	window.history.forward();
+	function noBack() {
+		window.history.forward();
+	}
+</script>
+<body onload="noBack();" onpageshow="if(event.persisted) noBack();" onunload="">
 	<div align="center">
 		<table width="50%">
 			<tr id="showtr">

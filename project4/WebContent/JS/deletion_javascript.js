@@ -49,8 +49,16 @@ $(function() {
 					}
 				});
 		}
-	});
+	}); // memeber-delete-btn
 	
+	$("#deletion-page").on("click", function() {
+		let btnValue = document.querySelector("#member-delete-btn").innerText;
+		if(btnValue != "계정 삭제") {
+			location.href="../privacy-and-sharing.jsp";
+		} else {
+			location.href="deletion.jsp";
+		}
+	}); // deletion-page
 });
 
 
