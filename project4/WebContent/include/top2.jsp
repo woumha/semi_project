@@ -63,11 +63,11 @@ $(function() {
 <div class="header">
 	
 	<a href="<%=request.getContextPath() %>/house_list.do"><div id="logo_loction"></div></a>
-	
-	<a href="#"><span class="icon_leftText">숙소호스팅하기</span></a>
+	<a href="<%=request.getContextPath() %>/host_list.do?pcode=${member_code_session }"><span class="icon_leftText">숙소호스팅하기</span></a>
 	<span id="modal" style="background-color: white;">
 		<img src="main_img/login.png" width="40px" height="40px" class="open_modal">	
 	</span>
+	
 	<c:set var="code" value="${member_code_session }" />
 	<div class="member_login">
 		<c:if test="${empty code }">
@@ -90,32 +90,31 @@ $(function() {
 				</div>
 			</form>
 		</c:if>
-		<c:if test="${!empty member_code_session }">	
-			<button id="message" class="tag">메세지</button>
-			<p>
-			<button id="alram" class="tag">알림</button>
-			<p>
-			<button id="travel" class="tag">여행</button>
-			<p>
-			<button id="wishlist" class="tag">위시리스트</button>
-			<p>
-			<hr>
-			<button id="hoster" class="tag">숙소 호스트 되기</button>
-			<p>
-			<button id="ex_hoster" class="tag">체험 호스팅하기</button>
-			<p>
-			<button id="suggestion_hoster" class="tag">호스트 추천하기</button>
-			<p>
-			<form method="post" id="mypage" action="<%=request.getContextPath()%>/account-settings.do">
-			<c:set var="co" value="${member_code_session }" />
-				<input type="hidden" name="code" value="${co }">
-				<button type="submit" class="tag">계정</button>
-			</form>
-			<p>
-			<hr>
-			<button id="help" class="tag">도움말</button>
-			<p>
-			<button id="signOut" class="tag" onclick="location.href='<%=request.getContextPath() %>/logout.do'">로그아웃</button>
+		<c:if test="${!empty member_code_session }">
+			<div id="logout_menu">
+				<button id="message" class="tag">메세지</button>
+				<p>
+				<button id="alram" class="tag">알림</button>
+				<p>
+				<button id="travel" class="tag">여행</button>
+				<p>
+				<button id="wishlist" class="tag">위시리스트</button>
+				<p>
+				<hr>
+				<button id="hoster" class="tag">숙소 호스트 되기</button>
+				<p>
+				<button id="suggestion_hoster" class="tag">호스트 추천하기</button>
+				<p>
+				<form method="post" id="mypage" action="<%=request.getContextPath()%>/account-settings.do">
+				<c:set var="co" value="${member_code_session }" />
+					<input type="hidden" name="code" value="${co }">
+					<button type="submit" class="tag">계정</button>
+				</form>
+				<p>
+				<button id="help" class="tag">Q&A</button>
+				<p>
+				<button id="signOut" class="tag" onclick="location.href='<%=request.getContextPath() %>/logout.do'">로그아웃</button>
+			</div>
 		</c:if>
 	</div>
 
@@ -130,6 +129,7 @@ $(function() {
 				<tr>
 					<td>
 						<form method="post" id="email_input" action="<%=request.getContextPath() %>/sendMail.do">
+							<input type="hidden" name="tag" value="first">
 							<input type="text" id="email" name="email" placeholder="Email">
 							<div id="email_text">
 								@

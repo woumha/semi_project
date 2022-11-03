@@ -63,8 +63,7 @@ $(function() {
 <div class="header">
 	
 	<a href="<%=request.getContextPath() %>/house_list.do"><div id="logo_loction"></div></a>
-	
-	<a href="#"><span class="icon_leftText">숙소호스팅하기</span></a>
+	<a href="<%=request.getContextPath() %>/host_list.do?pcode=${member_code_session }"><span class="icon_leftText">숙소호스팅하기</span></a>
 	<span id="modal" style="background-color: white;">
 		<c:set var="list" value="${List }"/>
 		<c:if test="${empty list }">
