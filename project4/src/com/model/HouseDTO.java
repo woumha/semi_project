@@ -1,9 +1,9 @@
 package com.model;
 
 public class HouseDTO {
-
 	private int house_no;
 	private String house_owner;
+	private long pmember_code;
 	private String house_name;
 	private String house_category;
 	private String house_location;
@@ -38,6 +38,12 @@ public class HouseDTO {
 	}
 	public void setHouse_owner(String house_owner) {
 		this.house_owner = house_owner;
+	}
+	public long getPmember_code() {
+		return pmember_code;
+	}
+	public void setPmember_code(long pmember_code) {
+		this.pmember_code = pmember_code;
 	}
 	public String getHouse_name() {
 		return house_name;
@@ -164,9 +170,5 @@ public class HouseDTO {
 	}
 	public void setHouse_gym(int house_gym) {
 		this.house_gym = house_gym;
-	}
-	
-	
-
-	
+	}	
 }

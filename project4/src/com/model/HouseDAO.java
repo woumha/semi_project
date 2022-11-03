@@ -641,4 +641,265 @@ public class HouseDAO {
         return dto;
     }
 	
+	//kk
+		public int deleteHouse(String no) {
+			int result = 0;
+			
+			try {
+				openConn();
+				sql = "select * from house where house_no = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, no);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					sql = "delete from house where house_no = ?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, no);
+					result = pstmt.executeUpdate();
+				} else {
+					result = -1;
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				closeConn(rs, pstmt, con);
+			}
+			return result;
+		}
+		
+		public void updateSequence(String no) {
+			
+			try {
+				openConn();
+				sql = "update house set house_no = house_no -1 where house_no > ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, no);
+				pstmt.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				closeConn(rs, pstmt, con);
+			}
+		}
+		
+		public HouseDTO getHouseCont(String no) {
+			HouseDTO dto = null;
+			
+			try {
+				openConn();
+				sql = "select * from house where house_no = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, no);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					dto = new HouseDTO();
+					dto.setHouse_no(rs.getInt("house_no"));
+					dto.setHouse_owner(rs.getString("house_owner"));
+					dto.setPmember_code(rs.getLong("pmember_code"));
+					dto.setHouse_name(rs.getString("house_name"));
+					dto.setHouse_category(rs.getString("house_category"));
+					dto.setHouse_location(rs.getString("house_location"));
+					dto.setHouse_price(rs.getInt("house_price"));
+					dto.setHouse_content(rs.getString("house_content"));
+					dto.setHouse_phone(rs.getString("house_phone"));
+					dto.setHouse_person(rs.getInt("house_person"));
+					dto.setHouse_star(rs.getFloat("house_star"));
+					dto.setHouse_update(rs.getString("house_update"));
+					dto.setHouse_img1(rs.getString("house_img1"));
+					dto.setHouse_img2(rs.getString("house_img2"));
+					dto.setHouse_img3(rs.getString("house_img3"));
+					dto.setHouse_count(rs.getInt("house_count"));
+					dto.setHouse_water(rs.getInt("house_water"));
+					dto.setHouse_pool(rs.getInt("house_pool"));
+					dto.setHouse_ski(rs.getInt("house_ski"));
+					dto.setHouse_food(rs.getInt("house_food"));
+					dto.setHouse_parking(rs.getInt("house_parking"));
+					dto.setHouse_grill(rs.getInt("house_grill"));
+					dto.setHouse_smoking(rs.getInt("house_smoking"));
+					dto.setHouse_gym(rs.getInt("house_gym"));
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				closeConn(rs, pstmt, con);
+			}
+			return dto;
+		}
+		
+		//유저코드 추가해야힘
+		public int updateHouse(HouseDTO dto) {
+			int result = 0;
+			
+			try {
+				openConn();
+				sql = "update house set house_name = ?, house_category = ?, house_location = ?, house_price = ?, house_content = ?, house_phone = ?, house_person = ?, sysdate, house_water = ?, house_pool = ?, house_ski = ?, house_food = ?, house_parking = ?, house_grill = ?, house_smoking = ?, house_gym = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, dto.getHouse_name());
+				pstmt.setString(2, dto.getHouse_category());
+				pstmt.setString(3, dto.getHouse_location());
+				pstmt.setInt(4, dto.getHouse_price());
+				pstmt.setString(5, dto.getHouse_content());
+				pstmt.setString(6, dto.getHouse_phone());
+				pstmt.setInt(7, dto.getHouse_person());
+				pstmt.setString(8, dto.getHouse_img1());
+				pstmt.setString(9, dto.getHouse_img2());
+				pstmt.setString(10, dto.getHouse_img3());
+				pstmt.setInt(8, dto.getHouse_water());
+				pstmt.setInt(9, dto.getHouse_pool());
+				pstmt.setInt(10, dto.getHouse_ski());
+				pstmt.setInt(11, dto.getHouse_food());
+				pstmt.setInt(12, dto.getHouse_parking());
+				pstmt.setInt(13, dto.getHouse_grill());
+				pstmt.setInt(14, dto.getHouse_smoking());
+				pstmt.setInt(15, dto.getHouse_gym());
+				
+				result = pstmt.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				closeConn(rs, pstmt, con);
+			}
+			return result;
+		}
+		
+		public int modifyUpload(HouseDTO dto) {
+			int result = 0;
+			
+			try {
+				openConn();
+				sql = "select * from house where house_no = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, dto.getHouse_no());
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					if(dto.getHouse_img1() == null) {
+						sql = "update house set house_name = ?, house_category = ?, house_location = ?, house_price = ?, house_content = ?, house_phone = ?, house_person = ?, house_update = sysdate, house_water = ?, house_pool = ?, house_ski = ?, house_food = ?, house_parking = ?, house_grill = ?, house_smoking = ?, house_gym = ? where house_no = ?";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, dto.getHouse_name());
+						pstmt.setString(2, dto.getHouse_category());
+						pstmt.setString(3, dto.getHouse_location());
+						pstmt.setInt(4, dto.getHouse_price());
+						pstmt.setString(5, dto.getHouse_content());
+						pstmt.setString(6, dto.getHouse_phone());
+						pstmt.setInt(7, dto.getHouse_person());
+						pstmt.setInt(8, dto.getHouse_water());
+						pstmt.setInt(9, dto.getHouse_pool());
+						pstmt.setInt(10, dto.getHouse_ski());
+						pstmt.setInt(11, dto.getHouse_food());
+						pstmt.setInt(12, dto.getHouse_parking());
+						pstmt.setInt(13, dto.getHouse_grill());
+						pstmt.setInt(14, dto.getHouse_smoking());
+						pstmt.setInt(15, dto.getHouse_gym());
+						pstmt.setInt(16, dto.getHouse_no());
+					} else {	//수정폼 페이지에서 첨부파일을 선택한 경우
+						sql = "update house set house_name = ?, house_category = ?, house_location = ?, house_price = ?, house_content = ?, house_phone = ?, house_person = ?, house_img1 = ?, house_img2 = ?, house_img3 = ?, house_update = sysdate, house_water = ?, house_pool = ?, house_ski = ?, house_food = ?, house_parking = ?, house_grill = ?, house_smoking = ?, house_gym = ? where house_no = ?";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, dto.getHouse_name());
+						pstmt.setString(2, dto.getHouse_category());
+						pstmt.setString(3, dto.getHouse_location());
+						pstmt.setInt(4, dto.getHouse_price());
+						pstmt.setString(5, dto.getHouse_content());
+						pstmt.setString(6, dto.getHouse_phone());
+						pstmt.setInt(7, dto.getHouse_person());
+						pstmt.setString(8, dto.getHouse_img1());
+						pstmt.setString(9, dto.getHouse_img2());
+						pstmt.setString(10, dto.getHouse_img3());
+						pstmt.setInt(11, dto.getHouse_water());
+						pstmt.setInt(12, dto.getHouse_pool());
+						pstmt.setInt(13, dto.getHouse_ski());
+						pstmt.setInt(14, dto.getHouse_food());
+						pstmt.setInt(15, dto.getHouse_parking());
+						pstmt.setInt(16, dto.getHouse_grill());
+						pstmt.setInt(17, dto.getHouse_smoking());
+						pstmt.setInt(18, dto.getHouse_gym());
+						pstmt.setInt(19, dto.getHouse_no());
+					}
+					result = pstmt.executeUpdate();
+				} 
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				closeConn(rs, pstmt, con);
+			}
+			return result;
+		}//modifyUpload() 메서드 end
+		
+		public List<HouseDTO> getHList(int page, int rowsize) {
+			List<HouseDTO> list = new ArrayList<HouseDTO>();
+			int startNo = (page*rowsize) - (rowsize - 1);
+			int endNo = (page * rowsize);
+			
+			try {
+				openConn();
+				sql = "select * from(select row_number() over(order by house_no desc) rnum, b.* from house b) where rnum >= ? and rnum <= ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, startNo);
+				pstmt.setInt(2, endNo);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					HouseDTO dto = new HouseDTO();
+					dto.setHouse_no(rs.getInt("house_no"));
+					dto.setHouse_owner(rs.getString("house_owner"));
+					dto.setPmember_code(rs.getLong("pmember_code"));
+					dto.setHouse_name(rs.getString("house_name"));
+					dto.setHouse_category(rs.getString("house_category"));
+					dto.setHouse_location(rs.getString("house_location"));
+					dto.setHouse_price(rs.getInt("house_price"));
+					dto.setHouse_content(rs.getString("house_content"));
+					dto.setHouse_phone(rs.getString("house_phone"));
+					dto.setHouse_person(rs.getInt("house_person"));
+					dto.setHouse_star(rs.getFloat("house_star"));
+					dto.setHouse_update(rs.getString("house_update"));
+					dto.setHouse_img1(rs.getString("house_img1"));
+					dto.setHouse_img2(rs.getString("house_img2"));
+					dto.setHouse_img3(rs.getString("house_img3"));
+					dto.setHouse_count(rs.getInt("house_count"));
+					dto.setHouse_water(rs.getInt("house_water"));
+					dto.setHouse_pool(rs.getInt("house_pool"));
+					dto.setHouse_ski(rs.getInt("house_ski"));
+					dto.setHouse_food(rs.getInt("house_food"));
+					dto.setHouse_parking(rs.getInt("house_parking"));
+					dto.setHouse_grill(rs.getInt("house_grill"));
+					dto.setHouse_smoking(rs.getInt("house_smoking"));
+					dto.setHouse_gym(rs.getInt("house_gym"));
+					list.add(dto);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				closeConn(rs, pstmt, con);
+			}
+			return list;
+		}
+		
+		public int getHouseCount() {
+			int count = 0;
+			
+			try {
+				openConn();
+				sql = "select count(*) from house";
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					count = rs.getInt(1);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				closeConn(rs, pstmt, con);
+			}
+			return count;
+		}
 }
