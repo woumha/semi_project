@@ -56,6 +56,7 @@ $(function() {
 <!-- 모달 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
 </head>
@@ -151,19 +152,30 @@ $(function() {
 								<input type="submit" id="sendEmail" name="sendEmail" value="인증번호 보내기">
 							</div>
 						</form>
-						<div id="naver_id_login"></div>
-						<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+						<br>
+						<div id="naverIdLogin" align="center"></div>
 						<script type="text/javascript">
-							var clientId = "zROYJp38WO0IxEpiDz0u";
-							var callbackUrl = "http://localhost:8787/project4/view2/naverLoginAPI.jsp";
-							var naver_id_login = new naver_id_login(clientId, callbackUrl);
+							/* var naver_id_login = new naver_id_login(clientId, callbackUrl);
 							var state = naver_id_login.getUniqState();
 							naver_id_login.setButton("white", 3, 40);
-							naver_id_login.setDomain("http://localhost:8787/project4/view/login_btn.jsp");
+							naver_id_login.setDomain("http://localhost:8756/project4/include/top.jsp"); // 현재 버튼 출력 위치
 							naver_id_login.setState(state);
 							naver_id_login.setPopup();
-							naver_id_login.init_naver_id_login();
+							naver_id_login.init_naver_id_login(); */
+							
+							var naverLogin = new naver.LoginWithNaverId(
+									{
+										clientId: "zROYJp38WO0IxEpiDz0u",
+										callbackUrl: "http://localhost:8756/project4/API/naverLoginApi.jsp",
+										isPopup: false, /* 팝업을 통한 연동처리 여부 */
+										loginButton: {color: "green", type: 3, height: 30} /* 로그인 버튼의 타입을 지정 */
+									}
+								);
+							
+							naverLogin.init();
 						</script>
+						
+						
 					</td>
 				</tr>
 			</table>
