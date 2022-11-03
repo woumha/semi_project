@@ -1,4 +1,9 @@
-fefe
+2022-11-03 오후 2시쯤 업데이트 주의사항 (장동환)
 
+com.controller > FrontController : 맵핑 주소 바꾸기
 
-test
+com.action > AdminModifyAction
+com.action > HostWriteOkAction
+com.action > HostModifyOkAction
+  : 위 파일들 첨부파일 저장 위치(경로)를 <<본인>> 프로젝트 upload폴더 주소로 변경
+   String saveFolder = "이부분 변경";
