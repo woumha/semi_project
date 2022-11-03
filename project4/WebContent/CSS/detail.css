@@ -11,7 +11,23 @@ hr{
 	background-color: #A6A6A6;
 	height: 1px;
 	border: 0;
+	padding-left: 15%;
+	padding-right: 15%;
 }
+
+div1 > hr{
+		
+	background-color: #A6A6A6;
+	height: 1px;
+	border: 0;
+}
+	
+	
+	div1 > br{
+	
+	line-height: 100%;
+	
+	}
 
 .star{
 	color : #FFE400;
@@ -33,5 +49,43 @@ hr{
 
 	padding-left: 15%;
 	padding-right: 15%;
+	
+}
+
+
+
+.div1 > .img > div{
+	
+ float: left; width: 50%;
+}
+.div1 > .img > div > img{
+	
+	width: 7%;
+	vertical-align:middle;
+}
+
+
+.div1 > .img > div> span{
+	
+margin-top:20px;
+font-size:18px;
+}
+
+.div1 > .img {
+	height: 200px;
+}
+.div1 > .img > hr{
+	background-color: #A6A6A6;
+	height: 1px;
+	border: 0;	
+	
+	
+}
+
+
+
+.div1 > .info {
+	
+	height: 150px;
 	
 }

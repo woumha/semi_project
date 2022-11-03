@@ -610,26 +610,26 @@ public class HouseDAO {
             if (rs.next()) {            	
             	dto.setHouse_no(rs.getInt(1));
             	dto.setHouse_owner(rs.getString(2));
-            	dto.setHouse_name(rs.getString(3));
-            	dto.setHouse_category(rs.getString(4));
-            	dto.setHouse_location(rs.getString(5));
-            	dto.setHouse_price(rs.getInt(6));
-            	dto.setHouse_content(rs.getString(7));
-            	dto.setHouse_phone(rs.getString(8));
-            	dto.setHouse_person(rs.getInt(9));
-            	dto.setHouse_star(rs.getFloat(10));
-            	dto.setHouse_img1(rs.getString(12));
-            	dto.setHouse_img2(rs.getString(13));
-            	dto.setHouse_img3(rs.getString(14));
-				dto.setHouse_count(rs.getInt(15));
-				dto.setHouse_water(rs.getInt(16));
-				dto.setHouse_pool(rs.getInt(17));
-				dto.setHouse_ski(rs.getInt(18));
-				dto.setHouse_food(rs.getInt(19));
-				dto.setHouse_parking(rs.getInt(20));
-				dto.setHouse_grill(rs.getInt(21));
-				dto.setHouse_smoking(rs.getInt(22));
-				dto.setHouse_gym(rs.getInt(23));
+            	dto.setHouse_name(rs.getString(4));
+            	dto.setHouse_category(rs.getString(5));
+            	dto.setHouse_location(rs.getString(6));
+            	dto.setHouse_price(rs.getInt(7));
+            	dto.setHouse_content(rs.getString(8));
+            	dto.setHouse_phone(rs.getString(9));
+            	dto.setHouse_person(rs.getInt(10));
+            	dto.setHouse_star(rs.getFloat(11));
+            	dto.setHouse_img1(rs.getString(13));
+            	dto.setHouse_img2(rs.getString(14));
+            	dto.setHouse_img3(rs.getString(15));
+				dto.setHouse_count(rs.getInt(16));
+				dto.setHouse_water(rs.getInt(17));
+				dto.setHouse_pool(rs.getInt(18));
+				dto.setHouse_ski(rs.getInt(19));
+				dto.setHouse_food(rs.getInt(20));
+				dto.setHouse_parking(rs.getInt(21));
+				dto.setHouse_grill(rs.getInt(22));
+				dto.setHouse_smoking(rs.getInt(23));
+				dto.setHouse_gym(rs.getInt(24));
             }
             
         } catch (SQLException e) {
