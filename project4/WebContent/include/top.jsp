@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    
+<%@ page import="java.net.URLEncoder" %>
+<%@ page import="java.security.SecureRandom" %>
+<%@ page import="java.math.BigInteger" %>  
 <%
 	HttpSession sessionOut = request.getSession();
 %>
@@ -13,6 +15,7 @@
 <title>Insert title here</title>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
 <script type="text/javascript" src="../JS/loginscript.js"></script>
 <script type="text/javascript" src="JS/loginscript.js"></script>
@@ -153,28 +156,16 @@ $(function() {
 							</div>
 						</form>
 						<br>
-						<div id="naverIdLogin" align="center"></div>
-						<script type="text/javascript">
-							/* var naver_id_login = new naver_id_login(clientId, callbackUrl);
-							var state = naver_id_login.getUniqState();
-							naver_id_login.setButton("white", 3, 40);
-							naver_id_login.setDomain("http://localhost:8756/project4/include/top.jsp"); // 현재 버튼 출력 위치
-							naver_id_login.setState(state);
-							naver_id_login.setPopup();
-							naver_id_login.init_naver_id_login(); */
-							
-							var naverLogin = new naver.LoginWithNaverId(
-									{
-										clientId: "zROYJp38WO0IxEpiDz0u",
-										callbackUrl: "http://localhost:8756/project4/API/naverLoginApi.jsp",
-										isPopup: false, /* 팝업을 통한 연동처리 여부 */
-										loginButton: {color: "green", type: 3, height: 30} /* 로그인 버튼의 타입을 지정 */
-									}
-								);
-							
-							naverLogin.init();
-						</script>
-						
+						 <div id="naver_id_login"></div>
+							<script type="text/javascript">
+						        var naver_id_login = new naver_id_login("zROYJp38WO0IxEpiDz0u", "http://localhost:8756/project4/API/naverLoginApi.jsp");
+						        var state = naver_id_login.getUniqState();
+						        naver_id_login.setButton("white", 3,30);
+						        naver_id_login.setDomain("http://localhost:8756/include/top.jsp");
+						        naver_id_login.setState(state);
+						        //naver_id_login.setPopup(false);
+						        naver_id_login.init_naver_id_login();
+						    </script>
 						
 					</td>
 				</tr>

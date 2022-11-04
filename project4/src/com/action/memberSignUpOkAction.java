@@ -3,6 +3,7 @@ package com.action;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Calendar;
+import java.util.Random;
 import java.util.StringTokenizer;
 
 import javax.servlet.http.HttpServletRequest;
@@ -75,9 +76,11 @@ public class memberSignUpOkAction implements Action {
 			String year = Integer.toString(calendar.get(Calendar.YEAR));
 			String month = Integer.toString(calendar.get(Calendar.MONTH)+1);
 			String day = Integer.toString(calendar.get(Calendar.DAY_OF_MONTH));
-			int ran = (int)(Math.random()*10000);
+			Random random = new Random();
+			int ran = random.nextInt(9999 - 1000 +1) + 1000;
 			
 			result = Long.parseLong(year.substring(2) + month + day + ran);
+			
 			boolean check = dao.memberCodeCheck(result);
 			if(check == true) {
 				continue;
