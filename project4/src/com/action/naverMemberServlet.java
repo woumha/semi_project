@@ -75,7 +75,11 @@ public class naverMemberServlet extends HttpServlet {
 	      System.out.print("responseCode2="+responseCode);
 	      //PrintWriter out = response.getWriter();
 	      if(responseCode==200) {
-	        out.println(res.toString());
+	    	ActionForward forward = new ActionForward();
+	    	request.setAttribute("navertoken", res.toString());
+	    	forward.setRedirect(false);
+	    	forward.setPath("");
+	    	//out.println(res.toString());
 	      }
 	      System.out.println("\n\n\nres: " + res.toString());
 	    } catch (Exception e) {

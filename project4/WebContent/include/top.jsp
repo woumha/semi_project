@@ -156,17 +156,33 @@ $(function() {
 							</div>
 						</form>
 						<br>
-						 <div id="naver_id_login"></div>
-							<script type="text/javascript">
-						        var naver_id_login = new naver_id_login("zROYJp38WO0IxEpiDz0u", "http://localhost:8756/project4/API/naverLoginApi.jsp");
-						        var state = naver_id_login.getUniqState();
-						        naver_id_login.setButton("white", 3,30);
-						        naver_id_login.setDomain("http://localhost:8756/include/top.jsp");
-						        naver_id_login.setState(state);
-						        //naver_id_login.setPopup(false);
-						        naver_id_login.init_naver_id_login();
-						    </script>
-						
+						<div id="naver_id_login" align="center"></div>
+	
+						<!-- 네이버아이디로로그인 버튼 노출 영역 -->
+						<script type="text/javascript">
+					 		var naver_id_login = new naver_id_login("zROYJp38WO0IxEpiDz0u", "http://localhost:8756/project4/API/naverLoginApi.jsp");	// Client ID, CallBack URL 삽입
+																// 단 'localhost'가 포함된 CallBack URL
+					 		var state = naver_id_login.getUniqState();
+							
+					 		naver_id_login.setButton("white", 2, 40);
+					 		naver_id_login.setDomain("서비스 URL");	//  URL
+					 		naver_id_login.setState(state);
+					 		naver_id_login.init_naver_id_login();
+						</script>
+						<%-- 
+						<%
+						    String clientId = "zROYJp38WO0IxEpiDz0u";//애플리케이션 클라이언트 아이디값";
+						    String redirectURI = URLEncoder.encode("http://localhost:8756/project4/naverMember.do", "UTF-8");
+						    SecureRandom random = new SecureRandom();
+						    String state = new BigInteger(130, random).toString();
+						    String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
+						    apiURL += "&client_id=" + clientId;
+						    apiURL += "&redirect_uri=" + redirectURI;
+						    apiURL += "&state=" + state;
+						    session.setAttribute("state", state);
+						 %>
+ 						 <a href="<%=apiURL%>"><img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></a>
+						 --%>
 					</td>
 				</tr>
 			</table>
