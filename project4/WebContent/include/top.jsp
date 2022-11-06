@@ -15,6 +15,7 @@
 <title>Insert title here</title>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
 <script type="text/javascript" src="../JS/loginscript.js"></script>
@@ -59,7 +60,6 @@ $(function() {
 <!-- 모달 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
 </head>
@@ -151,7 +151,7 @@ $(function() {
 									<option value="daum.net">daum.net</option>
 								</select>
 							</div>
-							<div id="div_sendEmail">
+							<!-- <div id="div_sendEmail">
 								<input type="submit" id="sendEmail" name="sendEmail" value="인증번호 보내기">
 							</div>
 						</form>
@@ -165,8 +165,21 @@ $(function() {
 						        naver_id_login.setState(state);
 						        //naver_id_login.setPopup(false);
 						        naver_id_login.init_naver_id_login();
+						    </script> -->
+						   <br> <br> <br>
+						  <div id="button_area" align="center"> 
+					        <div id="naverIdLogin"></div>
+					      </div>
+						  <script type="text/javascript">
+								    const naverLogin = new naver.LoginWithNaverId(
+										{
+											clientId: "zROYJp38WO0IxEpiDz0u",
+											callbackUrl: "http://localhost:8756/project4/API/naverLoginApi.jsp",
+											loginButton: {color: "green", type: 2, height: 30}
+										}
+									);
+								 naverLogin.init(); // 로그인 설정
 						    </script>
-						
 					</td>
 				</tr>
 			</table>
