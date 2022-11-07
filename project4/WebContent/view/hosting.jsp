@@ -36,7 +36,18 @@
 #paging_box {
 	text-align: center;
 }
-
+.host_btns {
+	border: 0;
+	width: 113px;
+	height: 32px;
+	margin-top: 35px;
+	border-radius: 5%;
+}
+.host_btns:hover {
+	background-color: #e85255;
+	color: white;
+	cursor: pointer;
+}
 
 </style>
 </head>
@@ -93,7 +104,7 @@
 		</c:if>
 		<tr>
 			<td colspan="8" align="center" id="write_btn">
-				<input type="button" value="숙소 등록" onclick="location.href='host_write.do'">
+				<input type="button" id="host_btns" class="host_btns" value="숙소 등록" onclick="location.href='host_write.do'">
 			</td>
 		</tr>
 	</table>

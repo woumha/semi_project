@@ -151,22 +151,10 @@ $(function() {
 									<option value="daum.net">daum.net</option>
 								</select>
 							</div>
-							<!-- <div id="div_sendEmail">
+							 <div id="div_sendEmail">
 								<input type="submit" id="sendEmail" name="sendEmail" value="인증번호 보내기">
 							</div>
 						</form>
-						<br>
-<<<<<<< HEAD
-						 <div id="naver_id_login"></div>
-							<script type="text/javascript">
-						        var naver_id_login = new naver_id_login("zROYJp38WO0IxEpiDz0u", "http://localhost:8756/project4/API/naverLoginApi.jsp");
-						        var state = naver_id_login.getUniqState();
-						        naver_id_login.setButton("white", 3,30);
-						        naver_id_login.setDomain("http://localhost:8756/include/top.jsp");
-						        naver_id_login.setState(state);
-						        //naver_id_login.setPopup(false);
-						        naver_id_login.init_naver_id_login();
-						    </script> -->
 						   <br> <br> <br>
 						  <div id="button_area" align="center"> 
 					        <div id="naverIdLogin"></div>
@@ -181,7 +169,6 @@ $(function() {
 									);
 								 naverLogin.init(); // 로그인 설정
 						    </script>
-=======
 						<div id="naver_id_login" align="center"></div>
 	
 						<!-- 네이버아이디로로그인 버튼 노출 영역 -->
@@ -209,7 +196,6 @@ $(function() {
 						 %>
  						 <a href="<%=apiURL%>"><img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></a>
 						 --%>
->>>>>>> refs/remotes/origin/이호찬
 					</td>
 				</tr>
 			</table>
