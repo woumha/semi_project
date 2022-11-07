@@ -902,4 +902,48 @@ public class HouseDAO {
 			}
 			return count;
 		}
+		
+		public HouseDTO selectInfo(String houseNo) {
+			openConn();
+	    	HouseDTO dto = new HouseDTO();
+	       
+	        try {
+	        	sql = "select * from house where house_no= ?";
+	            pstmt = con.prepareStatement(sql);
+	            pstmt.setString(1, houseNo);
+	            rs = pstmt.executeQuery();
+	            if (rs.next()) {            	
+	            	dto.setHouse_no(rs.getInt("house_no"));
+					dto.setHouse_owner(rs.getString("house_owner"));
+					dto.setPmember_code(rs.getLong("pmember_code"));
+					dto.setHouse_name(rs.getString("house_name"));
+					dto.setHouse_category(rs.getString("house_category"));
+					dto.setHouse_location(rs.getString("house_location"));
+					dto.setHouse_price(rs.getInt("house_price"));
+					dto.setHouse_content(rs.getString("house_content"));
+					dto.setHouse_phone(rs.getString("house_phone"));
+					dto.setHouse_person(rs.getInt("house_person"));
+					dto.setHouse_star(rs.getFloat("house_star"));
+					dto.setHouse_update(rs.getString("house_update"));
+					dto.setHouse_img1(rs.getString("house_img1"));
+					dto.setHouse_img2(rs.getString("house_img2"));
+					dto.setHouse_img3(rs.getString("house_img3"));
+					dto.setHouse_count(rs.getInt("house_count"));
+					dto.setHouse_water(rs.getInt("house_water"));
+					dto.setHouse_pool(rs.getInt("house_pool"));
+					dto.setHouse_ski(rs.getInt("house_ski"));
+					dto.setHouse_food(rs.getInt("house_food"));
+					dto.setHouse_parking(rs.getInt("house_parking"));
+					dto.setHouse_grill(rs.getInt("house_grill"));
+					dto.setHouse_smoking(rs.getInt("house_smoking"));
+					dto.setHouse_gym(rs.getInt("house_gym"));
+	            }
+	        } catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				closeConn(rs, pstmt, con);
+			}
+	        return dto;
+	    }
 }
