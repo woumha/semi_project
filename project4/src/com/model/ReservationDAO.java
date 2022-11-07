@@ -57,7 +57,8 @@ public class ReservationDAO {
 				ReservationDTO dto = new ReservationDTO();
 				dto.setId(rs.getInt("id"));
 				dto.setHouse_no(rs.getInt("house_no"));
-				dto.setMember_id(rs.getString("member_id"));
+				dto.setHouse_name(rs.getString("house_name"));
+				dto.setPmember_code(rs.getLong("pmember_code"));
 				dto.setCheckin(rs.getString("checkin"));
 				dto.setCheckout(rs.getString("checkout"));
 				dto.setHeadcount(rs.getInt("headcount"));
@@ -74,7 +75,7 @@ public class ReservationDAO {
 		return list;
 	}
 	
-	public int insertRes(int house_no, String member_id, String checkin, String checkout, int price) {
+	public int insertRes(int house_no, String house_name, Long pmember_code, String checkin, String checkout, int price) {
 		int result = 0, count = 0;
 		
 		try {
@@ -87,14 +88,15 @@ public class ReservationDAO {
 				count = rs.getInt(1) + 1;
 			}
 			
-			sql = "insert into reservation values(?, ?, ?, ?, ?, 0, ?, sysdate)";
+			sql = "insert into reservation values(?, ?, ?, ?, ?, 0, ?, sysdate, ?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, count);
 			pstmt.setInt(2, house_no);
-			pstmt.setString(3, member_id);
+			pstmt.setLong(3, pmember_code);
 			pstmt.setString(4, checkin);
 			pstmt.setString(5, checkout);
 			pstmt.setInt(6, price);
+			pstmt.setString(7, house_name);
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {

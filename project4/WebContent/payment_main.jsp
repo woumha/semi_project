@@ -6,6 +6,9 @@ String startDate = request.getParameter("startDate");
 String endDate = request.getParameter("endDate");
 int houseNo = Integer.parseInt(request.getParameter("houseNo"));
 int houseprice = Integer.parseInt(request.getParameter("houseprice"));
+String houseImg1 = request.getParameter("houseImg1");
+int id = Integer.parseInt(request.getParameter("houseNo"));
+int count = Integer.parseInt(request.getParameter("count"));
 %>
 <!DOCTYPE html>
 <html>
@@ -20,6 +23,7 @@ int houseprice = Integer.parseInt(request.getParameter("houseprice"));
 <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 <!-- iamport.payment.js -->
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+<script src="JS/houseDetail.js"> </script>
 <script>
 //약관동의
 $(document).ready(function(){
@@ -75,8 +79,8 @@ $(document).ready(function(){
       	pg : 'kcp',
         pay_method : 'card',
         merchant_uid: "IMP"+makeMerchantUid, 
-        name : '숙소이름',
-        amount : 500,
+        name : '<%=houseName %>',
+        amount : <%=houseprice %>,
         buyer_email : 'abdc@naver.com',
         buyer_name : 'KH정보교육원',
         buyer_tel : '010-5654-0265',
@@ -93,7 +97,7 @@ $(document).ready(function(){
     			msg += '에러내용 : ' + rsp.error_msg;      
     			}          
     		alert(msg);       
-    		window.location.href = "reservation_list.do?startDate=<%=startDate %>&endDate=<%=endDate %>&no=<%=houseNo %>&houseprice=<%=houseprice %>";
+    		window.location.href = "reservation_list.do?&houseName=<%=houseName %>&startDate=<%=startDate %>&endDate=<%=endDate %>&no=<%=houseNo %>&houseprice=<%=houseprice %>&pmember_code=${member_code_session }";
     		});
     	}
   </script>
@@ -115,7 +119,7 @@ $(document).ready(function(){
 	<!-- DB 넣기 -->
 	<input class="textbox name="phone" value="" readonly>
 	<br><br><br>
-	
+
 	<!-- 약관동의 -->
 	<div class="checkT">
 		<input type="checkbox" name="c1" class="all"> 숙소 이용규칙 및 취소 / <U>환불규정</U> 동의<br><br>
@@ -148,7 +152,7 @@ $(document).ready(function(){
 <div class="card" style="width: 18rem;">
 
 <!-- 이미지 넣어야 함 -->
-  <!-- <img src="img/home.webp" class="card-img-top"> -->
+  <img src="upload/<%=houseImg1 %>" width="267" height="180"/>
   
   <!-- 수정 -->
   <!-- 내용 -->
@@ -160,14 +164,14 @@ $(document).ready(function(){
 	<p></p>
   
     <div class="cover_in">
-	    <div class="cont">체크인</div>
-	    <div><input type="date" name="check_in" value="<%=startDate %>"></div>
+	    <div class="cont" id="startDate">체크인</div>
+	    <div><input type="date" name="startDate" id="startDate" value="<%=startDate %>"></div>
 	</div>
 	<p></p>
 	
 	<div class="cover_in">
-	    <div class="cont">체크아웃</div>
-	    <div><input type="date" name="check_out" value="<%=endDate %>"></div>
+	    <div class="cont" id="endDate">체크아웃</div>
+	    <div><input type="date" name="endDate" id="endDate" value="<%=endDate %>"></div>
 	</div>
 	<!-- 수정 끝 -->
 	
