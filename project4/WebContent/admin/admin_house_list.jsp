@@ -16,16 +16,50 @@ pageEncoding="UTF-8"%>
 	}
 </script>
 <style type="text/css">
-	td {
+	table {
+		border-collapse: separate;
+  		border-spacing: 0 10px;
+	}
+	
+	#box {
+		margin-left: 8%;
+	}
+
+	#list {
+		border: 1px;
+		cellspacing: 0;
+		width: 1200px;
+		align: center;
 		text-align: center;
+	}
+	
+	#paging {
+		margin-left: 44%;
+	}
+	
+	#paging_1 {
+		margin-left: 45%;
+	}
+	
+	.btn {
+		border: 0;
+		width: 50px;
+		height: 30px;
+		border-radius: 5%;
+	}
+	
+	.btn:hover {
+		background-color: #e85255;
+		color: white;
+		cursor: pointer;	
 	}
 </style>
 </head>
 <body>
    <jsp:include page="../include/top2.jsp"/>
-   <div align="center">
-      <table border="1" cellspacing="0" width="1000">
-         <tr bgcolor="#eeffee">
+   <div id="box">
+      <table id="list">
+         <tr>
             <th>숙소 번호</th>
             <th>숙소 주인</th>
             <th>유저 코드</th>
@@ -60,7 +94,7 @@ pageEncoding="UTF-8"%>
                   <td> ${dto.getHouse_star() } </td>
                   <td> ${dto.getHouse_update().substring(0,10) } </td>
                   <td>
-                  	<input type="button" value="삭제" onclick="location.href='admin_delete.do?no=${dto.getHouse_no()}'">
+                  	<input type="button" class="btn" value="삭제" onclick="location.href='admin_delete.do?no=${dto.getHouse_no()}'">
                   </td>
                </tr>
             </c:forEach>
@@ -76,6 +110,7 @@ pageEncoding="UTF-8"%>
       </table>
       
       <!-- 페이징 처리 -->
+      <div id="paging">
       <c:if test="${page > block }">
 			<a href="admin_house_list.do?page=1&p_page=${p_page }">◀◀︎</a>
 			<a href="admin_house_list.do?page=${startBlock - 1 }&p_page=${p_page }">◀︎</a>
@@ -95,11 +130,12 @@ pageEncoding="UTF-8"%>
 			<a href="admin_house_list.do?page=${allPage }&p_page=${p_page }">▶▶︎︎</a>
 		</c:if>
       </div>
+     </div>
       <br><br>
       
-      <div align="center">
-      <table border="1" cellspacing="0" width="1000">
-         <tr bgcolor="#eeffee">
+      <div id="box">
+      <table id="list">
+         <tr>
             <th>코드</th>
             <th>이름</th>
             <th>생년월일</th>
@@ -128,7 +164,7 @@ pageEncoding="UTF-8"%>
                   <td> ${dto.getPmember_date().substring(0,10) } </td>
                   <td> ${dto.getPmember_userlevel() } </td>
                   <td>
-                     <input type="button" value="삭제" onclick="location.href='admin_p_delete.do?no=${dto.getPmember_code()}'">
+                     <input type="button" class="btn" value="삭제" onclick="location.href='admin_p_delete.do?no=${dto.getPmember_code()}'">
                   </td>
                </tr>
             </c:forEach>
@@ -144,6 +180,7 @@ pageEncoding="UTF-8"%>
       </table>
       
       <!-- 페이징 처리 -->
+      <div id="paging_1">
       <c:if test="${p_page > p_block }">
 			<a href="admin_house_list.do?p_page=1&page=${page }">◀◀︎</a>
 			<a href="admin_house_list.do?p_page=${p_startBlock - 1 }&page=${page }">◀︎</a>
@@ -162,6 +199,7 @@ pageEncoding="UTF-8"%>
 			<a href="admin_house_list.do?p_page=${p_endBlock + 1 }&page=${page }">▶︎︎</a>
 			<a href="admin_house_list.do?p_page=${p_allPage }&page=${page }">▶▶︎︎</a>
 		</c:if>
+		</div>
       </div>
    
    <jsp:include page="../include/bottom.jsp"/>

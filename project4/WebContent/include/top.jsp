@@ -174,11 +174,13 @@ $(function() {
 									<option value="daum.net">daum.net</option>
 								</select>
 							</div>
+
 							<div id="div_sendEmail">
 								<input type="submit" id="sendEmail" name="sendEmail" value="인증번호 보내기">
 							</div>
 						</form>
 						<br>
+
 						<div id="naver_id_login" align="center"></div>
 						<!-- 네이버아이디로로그인 버튼 노출 영역 -->
 						<script type="text/javascript">
