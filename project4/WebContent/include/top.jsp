@@ -12,16 +12,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>여행은 살아보는 거야</title>
+
+<!-- 부트스트랩 -->
+
+<!-- 부트스트랩 End-->
+
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
-<script type="text/javascript" src="../JS/loginscript.js"></script>
-<script type="text/javascript" src="JS/loginscript.js"></script>
-<link rel="stylesheet" href="CSS/top.css">
-<link rel="stylesheet" href="../CSS/top.css">
+
+<script type="text/javascript" src="/project4/JS/loginscript.js"></script>
+<script type="text/javascript" src="/project4/JS/searchButton.js"></script>
+<link rel="stylesheet" href="/project4/CSS/top.css">
+<link rel="stylesheet" href="/project4/CSS/searchButton.css">
+
 <script>
 	$(document).ready(function(){
  		  $(".icon").click(function(){
@@ -46,6 +53,7 @@ $(function() {
 		
 	});
 });
+
 </script>
 <style type="text/css">
 	.tag {
@@ -54,9 +62,11 @@ $(function() {
 		outline: 0px;
 		background-color: white;
 	}
+	
+	
 </style>
 <!-- 로그인 관련 영역 end ======================================================================================= -->
-	
+
 <!-- 모달 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
@@ -65,16 +75,32 @@ $(function() {
 </head>
 <body>
 <div class="header">
-	
+	<div class="searchDiv">
+		<div class="search-wrapper">
+		    <div class="input-holder">
+		        <!-- <input type="text" class="search-input" />  -->
+		        <button class="search-icon" onclick="searchToggle(this, event);">
+		        	<span></span>
+		        </button>
+		        
+		        <button class="checkbtn">체크인</button>
+	        	<button class="checkbtn">체크아웃</button>
+	        	<button class="checkbtn">여행자</button>
+		        
+		    </div>
+		    <span class="close" onclick="searchToggle(this, event);"></span>
+		</div>
+	</div>
+ 	
 	<a href="<%=request.getContextPath() %>/house_list.do"><div id="logo_loction"></div></a>
 	<a href="<%=request.getContextPath() %>/host_list.do?pcode=${member_code_session }"><span class="icon_leftText">숙소호스팅하기</span></a>
 	<span id="modal" style="background-color: white;">
 		<c:set var="list" value="${List }"/>
 		<c:if test="${empty list }">
-			<img src="../main_img/login.png" width="40px" height="40px" class="open_modal">	
+			<img src="/project4/main_img/loveTravel.png" width="40px" height="40px" class="open_modal">	
 		</c:if>
 		<c:if test="${!empty list }">
-			<img src="main_img/login.png" width="40px" height="40px" class="open_modal">	
+			<img src="/project4/main_img/login.png" width="40px" height="40px" class="open_modal">	
 		</c:if>
 	</span>
 	
@@ -92,11 +118,8 @@ $(function() {
 				<div class="member_home_hosting_admin">
 					<a href="#login">숙소 호스팅하기</a>
 				</div>
-				<div class="member_home_hosting_experience">
-					<a href="#login">고객센터</a>
-				</div>
 				<div class="member_help">
-					<a href="#">Q&A</a>
+					<a href="#" onclick="location.href='<%=request.getContextPath()%>/QnA.do'">Q&A</a>
 				</div>
 			</form>
 		</c:if>
@@ -121,7 +144,7 @@ $(function() {
 					<button type="submit" class="tag">계정</button>
 				</form>
 				<p>
-				<button id="help" class="tag">Q&A</button>
+				<button id="help" class="tag" onclick="location.href='<%=request.getContextPath() %>QnA.do'" >Q&A</button>				
 				<p>
 				<button id="signOut" class="tag" onclick="location.href='<%=request.getContextPath() %>/logout.do'">로그아웃</button>
 			</div>
@@ -151,51 +174,25 @@ $(function() {
 									<option value="daum.net">daum.net</option>
 								</select>
 							</div>
-							 <div id="div_sendEmail">
+
+							<div id="div_sendEmail">
 								<input type="submit" id="sendEmail" name="sendEmail" value="인증번호 보내기">
 							</div>
 						</form>
-						   <br> <br> <br>
-						  <div id="button_area" align="center"> 
-					        <div id="naverIdLogin"></div>
-					      </div>
-						  <script type="text/javascript">
-								    const naverLogin = new naver.LoginWithNaverId(
-										{
-											clientId: "zROYJp38WO0IxEpiDz0u",
-											callbackUrl: "http://localhost:8756/project4/API/naverLoginApi.jsp",
-											loginButton: {color: "green", type: 2, height: 30}
-										}
-									);
-								 naverLogin.init(); // 로그인 설정
-						    </script>
+						<br>
+
 						<div id="naver_id_login" align="center"></div>
-	
 						<!-- 네이버아이디로로그인 버튼 노출 영역 -->
 						<script type="text/javascript">
 					 		var naver_id_login = new naver_id_login("zROYJp38WO0IxEpiDz0u", "http://localhost:8756/project4/API/naverLoginApi.jsp");	// Client ID, CallBack URL 삽입
 																// 단 'localhost'가 포함된 CallBack URL
 					 		var state = naver_id_login.getUniqState();
 							
-					 		naver_id_login.setButton("white", 2, 40);
+					 		naver_id_login.setButton("green", 2, 40);
 					 		naver_id_login.setDomain("서비스 URL");	//  URL
 					 		naver_id_login.setState(state);
 					 		naver_id_login.init_naver_id_login();
 						</script>
-						<%-- 
-						<%
-						    String clientId = "zROYJp38WO0IxEpiDz0u";//애플리케이션 클라이언트 아이디값";
-						    String redirectURI = URLEncoder.encode("http://localhost:8756/project4/naverMember.do", "UTF-8");
-						    SecureRandom random = new SecureRandom();
-						    String state = new BigInteger(130, random).toString();
-						    String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
-						    apiURL += "&client_id=" + clientId;
-						    apiURL += "&redirect_uri=" + redirectURI;
-						    apiURL += "&state=" + state;
-						    session.setAttribute("state", state);
-						 %>
- 						 <a href="<%=apiURL%>"><img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></a>
-						 --%>
 					</td>
 				</tr>
 			</table>
@@ -207,6 +204,7 @@ $(function() {
 
 <script>
     $('a[href="#login"]').click(function(event) {
+    	console.log("1");
       event.preventDefault();
  
       $(this).modal({
