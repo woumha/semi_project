@@ -16,14 +16,11 @@ public class HouseListAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
-		String allcategory = "전체"; 
-		
 		HouseDAO dao = HouseDAO.getInstance();
 		
 		List<HouseDTO> list = dao.getHouseList();
 		
 		request.setAttribute("List", list);
-		request.setAttribute("List_title", allcategory); 
 		
 		ActionForward forward = new ActionForward();
 		

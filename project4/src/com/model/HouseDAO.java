@@ -136,275 +136,6 @@ public class HouseDAO {
 		return list;
 	}
 	
-	public List<HouseDTO> filterList_cprice(String cata, int price) {
-		openConn();
-		List<HouseDTO> list = new ArrayList<HouseDTO>();
-		try {
-			sql = "select * from house where house_category = ? and house_price <= ?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, cata);
-			pstmt.setInt(2, price);
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				HouseDTO dto = new HouseDTO();
-				dto.setHouse_no(rs.getInt("house_no"));
-				dto.setHouse_owner(rs.getString("house_owner"));
-				dto.setHouse_name(rs.getString("house_name"));
-				dto.setHouse_category(rs.getString("house_category"));
-				dto.setHouse_location(rs.getString("house_location"));
-				dto.setHouse_price(rs.getInt("house_price"));
-				dto.setHouse_content(rs.getString("house_content"));
-				dto.setHouse_phone(rs.getString("house_phone"));
-				dto.setHouse_person(rs.getInt("house_person"));
-				dto.setHouse_star(rs.getFloat("house_star"));
-				dto.setHouse_update(rs.getString("house_update"));
-				dto.setHouse_img1(rs.getString("house_img1"));
-				dto.setHouse_img2(rs.getString("house_img2"));
-				dto.setHouse_img3(rs.getString("house_img3"));
-				dto.setHouse_count(rs.getInt("house_count"));
-				dto.setHouse_water(rs.getInt("house_water"));
-				dto.setHouse_pool(rs.getInt("house_pool"));
-				dto.setHouse_ski(rs.getInt("house_ski"));
-				dto.setHouse_food(rs.getInt("house_food"));
-				dto.setHouse_parking(rs.getInt("house_parking"));
-				dto.setHouse_grill(rs.getInt("house_grill"));
-				dto.setHouse_smoking(rs.getInt("house_smoking"));
-				dto.setHouse_gym(rs.getInt("house_gym"));
-				
-				list.add(dto);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			closeConn(rs, pstmt, con);
-		}
-		return list;
-	}
-	// ===========================================================================
-	public List<HouseDTO> filterList_price(int price) {
-		openConn();
-		List<HouseDTO> list = new ArrayList<HouseDTO>();
-		try {
-			sql = "select * from house where house_price <= ?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, price);
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				HouseDTO dto = new HouseDTO();
-				dto.setHouse_no(rs.getInt("house_no"));
-				dto.setHouse_owner(rs.getString("house_owner"));
-				dto.setHouse_name(rs.getString("house_name"));
-				dto.setHouse_category(rs.getString("house_category"));
-				dto.setHouse_location(rs.getString("house_location"));
-				dto.setHouse_price(rs.getInt("house_price"));
-				dto.setHouse_content(rs.getString("house_content"));
-				dto.setHouse_phone(rs.getString("house_phone"));
-				dto.setHouse_person(rs.getInt("house_person"));
-				dto.setHouse_star(rs.getFloat("house_star"));
-				dto.setHouse_update(rs.getString("house_update"));
-				dto.setHouse_img1(rs.getString("house_img1"));
-				dto.setHouse_img2(rs.getString("house_img2"));
-				dto.setHouse_img3(rs.getString("house_img3"));
-				dto.setHouse_count(rs.getInt("house_count"));
-				dto.setHouse_water(rs.getInt("house_water"));
-				dto.setHouse_pool(rs.getInt("house_pool"));
-				dto.setHouse_ski(rs.getInt("house_ski"));
-				dto.setHouse_food(rs.getInt("house_food"));
-				dto.setHouse_parking(rs.getInt("house_parking"));
-				dto.setHouse_grill(rs.getInt("house_grill"));
-				dto.setHouse_smoking(rs.getInt("house_smoking"));
-				dto.setHouse_gym(rs.getInt("house_gym"));
-				
-				list.add(dto);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			closeConn(rs, pstmt, con);
-		}
-		return list;
-	}
-	
-	public List<HouseDTO> filterList_cperson(String cata, int person) {
-		openConn();
-		List<HouseDTO> list = new ArrayList<HouseDTO>();
-		try {
-			sql = "select * from house where house_category = ? and house_person >= ?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, cata);
-			pstmt.setInt(2, person);
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				HouseDTO dto = new HouseDTO();
-				dto.setHouse_no(rs.getInt("house_no"));
-				dto.setHouse_owner(rs.getString("house_owner"));
-				dto.setHouse_name(rs.getString("house_name"));
-				dto.setHouse_category(rs.getString("house_category"));
-				dto.setHouse_location(rs.getString("house_location"));
-				dto.setHouse_price(rs.getInt("house_price"));
-				dto.setHouse_content(rs.getString("house_content"));
-				dto.setHouse_phone(rs.getString("house_phone"));
-				dto.setHouse_person(rs.getInt("house_person"));
-				dto.setHouse_star(rs.getFloat("house_star"));
-				dto.setHouse_update(rs.getString("house_update"));
-				dto.setHouse_img1(rs.getString("house_img1"));
-				dto.setHouse_img2(rs.getString("house_img2"));
-				dto.setHouse_img3(rs.getString("house_img3"));
-				dto.setHouse_count(rs.getInt("house_count"));
-				dto.setHouse_water(rs.getInt("house_water"));
-				dto.setHouse_pool(rs.getInt("house_pool"));
-				dto.setHouse_ski(rs.getInt("house_ski"));
-				dto.setHouse_food(rs.getInt("house_food"));
-				dto.setHouse_parking(rs.getInt("house_parking"));
-				dto.setHouse_grill(rs.getInt("house_grill"));
-				dto.setHouse_smoking(rs.getInt("house_smoking"));
-				dto.setHouse_gym(rs.getInt("house_gym"));
-				
-				list.add(dto);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			closeConn(rs, pstmt, con);
-		}
-		return list;
-	}
-	// ===========================================================================
-	public List<HouseDTO> filterList_person(int person) {
-		openConn();
-		List<HouseDTO> list = new ArrayList<HouseDTO>();
-		try {
-			sql = "select * from house where house_person >= ?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, person);
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				HouseDTO dto = new HouseDTO();
-				dto.setHouse_no(rs.getInt("house_no"));
-				dto.setHouse_owner(rs.getString("house_owner"));
-				dto.setHouse_name(rs.getString("house_name"));
-				dto.setHouse_category(rs.getString("house_category"));
-				dto.setHouse_location(rs.getString("house_location"));
-				dto.setHouse_price(rs.getInt("house_price"));
-				dto.setHouse_content(rs.getString("house_content"));
-				dto.setHouse_phone(rs.getString("house_phone"));
-				dto.setHouse_person(rs.getInt("house_person"));
-				dto.setHouse_star(rs.getFloat("house_star"));
-				dto.setHouse_update(rs.getString("house_update"));
-				dto.setHouse_img1(rs.getString("house_img1"));
-				dto.setHouse_img2(rs.getString("house_img2"));
-				dto.setHouse_img3(rs.getString("house_img3"));
-				dto.setHouse_count(rs.getInt("house_count"));
-				dto.setHouse_water(rs.getInt("house_water"));
-				dto.setHouse_pool(rs.getInt("house_pool"));
-				dto.setHouse_ski(rs.getInt("house_ski"));
-				dto.setHouse_food(rs.getInt("house_food"));
-				dto.setHouse_parking(rs.getInt("house_parking"));
-				dto.setHouse_grill(rs.getInt("house_grill"));
-				dto.setHouse_smoking(rs.getInt("house_smoking"));
-				dto.setHouse_gym(rs.getInt("house_gym"));
-				
-				list.add(dto);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			closeConn(rs, pstmt, con);
-		}
-		return list;
-	}
-	
-	public List<HouseDTO> filterList_pperson(int price, int person) {
-		openConn();
-		List<HouseDTO> list = new ArrayList<HouseDTO>();
-		try {
-			sql = "select * from house where house_price <= ? and house_person >= ?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, price);
-			pstmt.setInt(2, person);
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				HouseDTO dto = new HouseDTO();
-				dto.setHouse_no(rs.getInt("house_no"));
-				dto.setHouse_owner(rs.getString("house_owner"));
-				dto.setHouse_name(rs.getString("house_name"));
-				dto.setHouse_category(rs.getString("house_category"));
-				dto.setHouse_location(rs.getString("house_location"));
-				dto.setHouse_price(rs.getInt("house_price"));
-				dto.setHouse_content(rs.getString("house_content"));
-				dto.setHouse_phone(rs.getString("house_phone"));
-				dto.setHouse_person(rs.getInt("house_person"));
-				dto.setHouse_star(rs.getFloat("house_star"));
-				dto.setHouse_update(rs.getString("house_update"));
-				dto.setHouse_img1(rs.getString("house_img1"));
-				dto.setHouse_img2(rs.getString("house_img2"));
-				dto.setHouse_img3(rs.getString("house_img3"));
-				dto.setHouse_count(rs.getInt("house_count"));
-				dto.setHouse_water(rs.getInt("house_water"));
-				dto.setHouse_pool(rs.getInt("house_pool"));
-				dto.setHouse_ski(rs.getInt("house_ski"));
-				dto.setHouse_food(rs.getInt("house_food"));
-				dto.setHouse_parking(rs.getInt("house_parking"));
-				dto.setHouse_grill(rs.getInt("house_grill"));
-				dto.setHouse_smoking(rs.getInt("house_smoking"));
-				dto.setHouse_gym(rs.getInt("house_gym"));
-				
-				list.add(dto);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			closeConn(rs, pstmt, con);
-		}
-		return list;
-	}
-	
-	public List<HouseDTO> filterList_cpperson(String cate, int price, int person) {
-		openConn();
-		List<HouseDTO> list = new ArrayList<HouseDTO>();
-		try {
-			sql = "select * from house where house_category = ? and house_price <= ? and house_person >= ?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, cate);
-			pstmt.setInt(2, price);
-			pstmt.setInt(3, person);
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				HouseDTO dto = new HouseDTO();
-				dto.setHouse_no(rs.getInt("house_no"));
-				dto.setHouse_owner(rs.getString("house_owner"));
-				dto.setHouse_name(rs.getString("house_name"));
-				dto.setHouse_category(rs.getString("house_category"));
-				dto.setHouse_location(rs.getString("house_location"));
-				dto.setHouse_price(rs.getInt("house_price"));
-				dto.setHouse_content(rs.getString("house_content"));
-				dto.setHouse_phone(rs.getString("house_phone"));
-				dto.setHouse_person(rs.getInt("house_person"));
-				dto.setHouse_star(rs.getFloat("house_star"));
-				dto.setHouse_update(rs.getString("house_update"));
-				dto.setHouse_img1(rs.getString("house_img1"));
-				dto.setHouse_img2(rs.getString("house_img2"));
-				dto.setHouse_img3(rs.getString("house_img3"));
-				dto.setHouse_count(rs.getInt("house_count"));
-				dto.setHouse_water(rs.getInt("house_water"));
-				dto.setHouse_pool(rs.getInt("house_pool"));
-				dto.setHouse_ski(rs.getInt("house_ski"));
-				dto.setHouse_food(rs.getInt("house_food"));
-				dto.setHouse_parking(rs.getInt("house_parking"));
-				dto.setHouse_grill(rs.getInt("house_grill"));
-				dto.setHouse_smoking(rs.getInt("house_smoking"));
-				dto.setHouse_gym(rs.getInt("house_gym"));
-				
-				list.add(dto);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			closeConn(rs, pstmt, con);
-		}
-		return list;
-	}
-	
 	public List<HouseDTO> categoryHotList() {
 		openConn();
 		List<HouseDTO> list = new ArrayList<HouseDTO>();
@@ -946,4 +677,89 @@ public class HouseDAO {
 			}
 	        return dto;
 	    }
+		public List<HouseDTO> getFilterList(String cate, int price, int person) {
+			openConn();
+			List<HouseDTO> list = new ArrayList<HouseDTO>();
+			
+			try {
+				if(cate.equals("선택안함") && price == 0 && person == 0) {
+					sql = "select * from house order by house_no desc";
+					pstmt = con.prepareStatement(sql);
+					rs = pstmt.executeQuery();
+				} else if(cate.equals("선택안함") && price == 0 && person != 0) {
+					sql = "select * from house where house_person >= ? order by house_no desc";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, person);
+					rs = pstmt.executeQuery();
+				} else if(cate.equals("선택안함") && price != 0 && person == 0) {
+					sql = "select * from house where house_price <= ? order by house_no desc";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, price);
+					rs = pstmt.executeQuery();
+				} else if(!cate.equals("선택안함") && person == 0 && person == 0) {
+					sql = "select * from house where house_category = ? order by house_no desc";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, cate);
+					rs = pstmt.executeQuery();
+				} else if(cate.equals("선택안함") && price != 0 && person != 0) {
+					sql = "select * from house where house_person >= ? and house_price <= ? order by house_no desc";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, person);
+					pstmt.setInt(2, price);
+					rs = pstmt.executeQuery();
+				} else if(!cate.equals("선택안함") && price != 0 && person == 0) {
+					sql = "select * from house where house_category = ? and house_price <= ? order by house_no desc";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, cate);
+					pstmt.setInt(2, price);
+					rs = pstmt.executeQuery();
+				} else if(!cate.equals("선택안함") && price == 0 && person != 0) {
+					sql = "select * from house where house_category = ? and house_person >= ? order by house_no desc";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, cate);
+					pstmt.setInt(2, person);
+					rs = pstmt.executeQuery();
+				} else {
+					sql = "select * from house where house_category = ? and house_person >= ? and house_price <= ? order by house_no desc";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, cate);
+					pstmt.setInt(2, person);
+					pstmt.setInt(3, price);
+					rs = pstmt.executeQuery();
+				}
+
+				while(rs.next()) {
+					HouseDTO dto = new HouseDTO();
+					dto.setHouse_no(rs.getInt("house_no"));
+					dto.setHouse_owner(rs.getString("house_owner"));
+					dto.setHouse_name(rs.getString("house_name"));
+					dto.setHouse_category(rs.getString("house_category"));
+					dto.setHouse_location(rs.getString("house_location"));
+					dto.setHouse_price(rs.getInt("house_price"));
+					dto.setHouse_content(rs.getString("house_content"));
+					dto.setHouse_phone(rs.getString("house_phone"));
+					dto.setHouse_person(rs.getInt("house_person"));
+					dto.setHouse_star(rs.getFloat("house_star"));
+					dto.setHouse_update(rs.getString("house_update"));
+					dto.setHouse_img1(rs.getString("house_img1"));
+					dto.setHouse_img2(rs.getString("house_img2"));
+					dto.setHouse_img3(rs.getString("house_img3"));
+					dto.setHouse_count(rs.getInt("house_count"));
+					dto.setHouse_water(rs.getInt("house_water"));
+					dto.setHouse_pool(rs.getInt("house_pool"));
+					dto.setHouse_ski(rs.getInt("house_ski"));
+					dto.setHouse_food(rs.getInt("house_food"));
+					dto.setHouse_parking(rs.getInt("house_parking"));
+					dto.setHouse_grill(rs.getInt("house_grill"));
+					dto.setHouse_smoking(rs.getInt("house_smoking"));
+					dto.setHouse_gym(rs.getInt("house_gym"));
+					list.add(dto);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				closeConn(rs, pstmt, con);
+			}
+			return list;
+		}
 }

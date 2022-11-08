@@ -240,45 +240,38 @@
  	<!-- 모달창(필터) 내용 ============================================================ -->
  	<c:set var="f_category" value="${f_cate }"/>
 	<div id="ex7" class="modal">
-		<p> 필터 (((공사중📢)))</p>
-		<br>
-		<hr width="65%" color="blue">
-  		<br>
-  		<br>
-  		<!-- 필터 선택시 이벤트 -->
-  		<script type="text/javascript">
-  			function input_price(a) {
-  				document.getElementById("filter_pice").value = a;
-			}
-  			function input_person(e) {
-  				document.getElementById("filter_person").value = e;
-			}
-  		</script>
-  		<!-- 필터 선택시 이벤트 end -->
-  		<form method="post" action="<%=request.getContextPath() %>/filter_ok.do?category=${f_category }">
-			<p>최대 요금 : ₩<input id="filter_pice" name="filter_pice" value=0> 이하</p>
-			<br>
-			<div>
-				<input type="button" value="₩200,000" onclick="input_price(200000)">
-				<input type="button" value="₩250,000" onclick="input_price(250000)">
-				<input type="button" value="₩300,000" onclick="input_price(300000)">
-				<input type="button" value="₩350,000" onclick="input_price(350000)">
+		<p id="filter_title"> 필터 </p>
+		<hr style="margin-bottom: 20px; color: gray;">
+  		<form method="post" action="<%=request.getContextPath() %>/filter_ok.do">
+  			<div id="f_category_box">
+				<p class="sub_title">숙소 유형 : <input id="filter_category" class="filter_input" name="filter_category" value="선택안함"></p>
+				<div>
+					<input class="filter_select" type="button" value="호텔" onclick="input_category('호텔')">
+					<input class="filter_select" type="button" value="아파트" onclick="input_category('아파트')">
+					<input class="filter_select" type="button" value="리조트" onclick="input_category('리조트')">
+					<input class="filter_select" type="button" value="게스트하우스" onclick="input_category('게스트하우스')">
+				</div>
 			</div>
-			<br>
-			<hr width="100%" color="skyblue">
-			<br>
-			<p>최대 인원 : <input id="filter_person" name="filter_person" value=0>명 까지</p>
-			<br>
-			<div>
-				<input type="button" value="2명" onclick="input_person(2)">
-				<input type="button" value="4명" onclick="input_person(4)">
-				<input type="button" value="6명" onclick="input_person(6)">
-				<input type="button" value="8명" onclick="input_person(8)">
+			<div id="f_price_box">
+				<p class="sub_title">최대 요금 : ₩<input id="filter_price" class="filter_input" name="filter_price" value="0"> 이하</p>
+				<div>
+					<input class="filter_select" type="button" value="₩200,000" onclick="input_price(200000)">
+					<input class="filter_select" type="button" value="₩250,000" onclick="input_price(250000)">
+					<input class="filter_select" type="button" value="₩300,000" onclick="input_price(300000)">
+					<input class="filter_select" type="button" value="₩350,000" onclick="input_price(350000)">
+				</div>
 			</div>
-			<br>
-			<hr width="100%" color="skyblue">
-			<br>  			
-			<div>
+			<div id="f_person_box">
+				<p class="sub_title">최대 인원 : <input id="filter_person" class="filter_input" name="filter_person" value="0">명 까지</p>
+				<div>
+					<input class="filter_select3" type="button" value="2명" onclick="input_person(2)">
+					<input class="filter_select3" type="button" value="4명" onclick="input_person(4)">
+					<input class="filter_select3" type="button" value="6명" onclick="input_person(6)">
+					<input class="filter_select3" type="button" value="8명" onclick="input_person(8)">
+					<input class="filter_select3" type="button" value="12명" onclick="input_person(12)">
+				</div>
+			</div>
+			<div id="filter_submit_box">
 				<input type="submit" name="filterOk" value="필터적용">
 				<input type="reset" name="filter_reset" value="선택해제">
 			</div>
@@ -286,6 +279,9 @@
 	</div>
  	<!-- 모달창 자바스크립트 영역 -->
 	<script>
+		function input_price(a) { document.getElementById("filter_price").value = a; }
+		function input_person(e) { document.getElementById("filter_person").value = e; }
+		function input_category(e) { document.getElementById("filter_category").value = e; }
     	$('a[href="#ex7"]').click(function(event) {
       		event.preventDefault();
  
@@ -296,66 +292,93 @@
 	</script>
 	<!-- 모달창(필터) 내용 end ======================================================== -->
 	<!-- 카테고리 상단 바 end ========================================================================-->
-<%-- 	<c:set var="title" value="${List_title }"/>
-	<c:if test="${!empty title }">
-		<div style="text-align: center;">${title }<div>
+	<c:set var="check" value="${check }"/>
+	<c:if test="${empty check }">
+		<c:set var="list" value="${List }"/>
+		<ul class="center_list">
+		<c:if test="${!empty list }">
+			<c:forEach items="${list }" var="dto">
+				<li class="center_imgs">
+					<a href="detail.do?id=${dto.getHouse_no() }">
+						<div>
+							<img src="upload/${dto.getHouse_img1() }">
+						</div>
+						<p class="location">${dto.getHouse_name() }
+							<span id="cont_star">★
+								<c:if test="${dto.getHouse_star() == 0}">
+									NEW!
+								</c:if>
+								<c:if test="${dto.getHouse_star() != 0}">
+									${dto.getHouse_star() }
+								</c:if>
+							</span>
+						</p> <!-- 이름 -->
+						<p class="km">${dto.getHouse_location() }</p> <!-- 위치 -->
+						<p class="date">${dto.getHouse_category() } &nbsp; ${dto.getHouse_person() }명</p> <!-- 종류 -->
+						<p class="price">₩<fmt:formatNumber value="${dto.getHouse_price() }"/> <span style="font-weight: normal">/박</span></p> <!-- 가격 -->
+					</a>
+				</li>
+			</c:forEach>
+		</c:if>
+		<c:if test="${empty list }">
+			<c:set var="list1" value="${List_start }"/>
+			<c:forEach items="${list1 }" var="dto1">
+				<li class="center_imgs">
+					<a href="../detail.do?id=${dto1.getHouse_no() }">
+						<div>
+							<img src="../upload/${dto1.getHouse_img1() }">
+						</div>
+						<p class="location">${dto1.getHouse_name() }
+							<span id="cont_star">★
+								<c:if test="${dto1.getHouse_star() == 0}">
+									NEW!
+								</c:if>
+								<c:if test="${dto1.getHouse_star() != 0}">
+									${dto1.getHouse_star() }
+								</c:if>
+							</span>
+						</p> <!-- 이름 -->
+						<p class="km">${dto1.getHouse_location() }</p> <!-- 위치 -->
+						<p class="date">${dto1.getHouse_category() } &nbsp; ${dto1.getHouse_person() }명</p> <!-- 종류 -->
+						<p class="price">₩<fmt:formatNumber value="${dto1.getHouse_price() }"/> <span style="font-weight: normal">/박</span></p> <!-- 가격 -->
+					</a>
+				</li>
+			</c:forEach>
+		</c:if>
+		</ul>
 	</c:if>
-	<c:if test="${empty title }">
-		<c:set var="title1" value="${List_title_start }"/>
-		<div style="text-align: center;">${title1 }<div>
-	</c:if> --%>
-	<c:set var="list" value="${List }"/>
-	<ul class="center_list">
-	<c:if test="${!empty list }">
-		<c:forEach items="${list }" var="dto">
-			<li class="center_imgs">
-				<a href="detail.do?id=${dto.getHouse_no() }">
-					<div>
-						<img src="upload/${dto.getHouse_img1() }">
-					</div>
-					<p class="location">${dto.getHouse_name() }
-						<span id="cont_star">★
-							<c:if test="${dto.getHouse_star() == 0}">
-								NEW!
-							</c:if>
-							<c:if test="${dto.getHouse_star() != 0}">
-								${dto.getHouse_star() }
-							</c:if>
-						</span>
-					</p> <!-- 이름 -->
-					<p class="km">${dto.getHouse_location() }</p> <!-- 위치 -->
-					<p class="date">${dto.getHouse_category() } &nbsp; ${dto.getHouse_person() }명</p> <!-- 종류 -->
-					<p class="price">₩<fmt:formatNumber value="${dto.getHouse_price() }"/> <span style="font-weight: normal">/박</span></p> <!-- 가격 -->
-				</a>
-			</li>
-		</c:forEach>
+	<c:if test="${!empty check }">
+		<c:set var="list" value="${List }"/>
+		<ul class="center_list">
+		<c:if test="${!empty list }">
+			<c:forEach items="${list }" var="dto">
+				<li class="center_imgs">
+					<a href="detail.do?id=${dto.getHouse_no() }">
+						<div>
+							<img src="upload/${dto.getHouse_img1() }">
+						</div>
+						<p class="location">${dto.getHouse_name() }
+							<span id="cont_star">★
+								<c:if test="${dto.getHouse_star() == 0}">
+									NEW!
+								</c:if>
+								<c:if test="${dto.getHouse_star() != 0}">
+									${dto.getHouse_star() }
+								</c:if>
+							</span>
+						</p> <!-- 이름 -->
+						<p class="km">${dto.getHouse_location() }</p> <!-- 위치 -->
+						<p class="date">${dto.getHouse_category() } &nbsp; ${dto.getHouse_person() }명</p> <!-- 종류 -->
+						<p class="price">₩<fmt:formatNumber value="${dto.getHouse_price() }"/> <span style="font-weight: normal">/박</span></p> <!-- 가격 -->
+					</a>
+				</li>
+			</c:forEach>
+		</c:if>
+		<c:if test="${empty list }">
+			<p>검색된 숙소가 없습니다...</p>
+		</c:if>
+		</ul>	
 	</c:if>
-	<c:if test="${empty list }">
-		<c:set var="list1" value="${List_start }"/>
-		<c:forEach items="${list1 }" var="dto1">
-			<li class="center_imgs">
-				<a href="../detail.do?id=${dto1.getHouse_no() }">
-					<div>
-						<img src="../upload/${dto1.getHouse_img1() }">
-					</div>
-					<p class="location">${dto1.getHouse_name() }
-						<span id="cont_star">★
-							<c:if test="${dto1.getHouse_star() == 0}">
-								NEW!
-							</c:if>
-							<c:if test="${dto1.getHouse_star() != 0}">
-								${dto1.getHouse_star() }
-							</c:if>
-						</span>
-					</p> <!-- 이름 -->
-					<p class="km">${dto1.getHouse_location() }</p> <!-- 위치 -->
-					<p class="date">${dto1.getHouse_category() } &nbsp; ${dto1.getHouse_person() }명</p> <!-- 종류 -->
-					<p class="price">₩<fmt:formatNumber value="${dto1.getHouse_price() }"/> <span style="font-weight: normal">/박</span></p> <!-- 가격 -->
-				</a>
-			</li>
-		</c:forEach>
-	</c:if>
-	</ul>
 	<jsp:include page="/include/bottom.jsp"/>
 </body>
 </html>

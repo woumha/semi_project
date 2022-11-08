@@ -124,7 +124,7 @@
 </head>
 
 <body>
-<jsp:include page="../include/top2.jsp" />
+<jsp:include page="../include/top.jsp"/>
 <c:set var="dto" value="${house_content }" />
 <div id="content_title">숙소 정보</div>
 	<div id="main_div">

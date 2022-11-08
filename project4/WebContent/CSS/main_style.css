@@ -248,7 +248,72 @@
 	margin-right: 5px;
 }
 
-
+#filter_title {
+		text-align: center;
+		margin-top: 15px;
+		margin-bottom: 10px;
+		font-size: 25px;
+	}
+	#f_category_box { margin-bottom: 40px; }
+	#f_price_box { margin-bottom: 40px; }
+	#f_person_box { margin-bottom: 40px; }
+	#filter_btns { margin-top: 20px; }
+.filter_input {
+	/* 둥근 입력창 스타일 */
+	width: 140px;
+	height: 30px;
+	font-size: 15px;
+	border: 0;
+	border-radius: 15px;
+	outline: none;
+	padding-left: 10px;
+	background-color: rgb(233, 233, 233);
+	/* 둥근 입력창 스타일 끝 */
+}
+.sub_title {
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+.filter_select {
+	border: 0;
+	width: 100px;
+	height: 32px;
+	margin-top: 0px;
+	border-radius: 5%;
+}
+.filter_select:hover {
+	background-color: #e85255;
+	color: white;
+	cursor: pointer;
+}
+.filter_select3 {
+	border: 0;
+	width: 80px;
+	height: 32px;
+	margin-top: 0px;
+	border-radius: 5%;
+}
+.filter_select3:hover {
+	background-color: #e85255;
+	color: white;
+	cursor: pointer;
+}
+#filter_submit_box {
+	text-align: center;
+	margin-bottom: 20px;
+}
+#filter_submit_box > input {
+	border: 0;
+	width: 80px;
+	height: 32px;
+	border-radius: 5%;
+}
+#filter_submit_box > input:hover {
+	background-color: #e85255;
+	color: white;
+	cursor: pointer;
+}
+#ex7 { height: auto; }
 
 
 
