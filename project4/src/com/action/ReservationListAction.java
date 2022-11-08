@@ -20,24 +20,25 @@ public class ReservationListAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
 		int house_no = Integer.parseInt(request.getParameter("no").trim());
-
-		//String member_id = request.getParameter("member_id").trim();
-		String member_id = "j";
 		
+		String house_name = request.getParameter("houseName").trim();
+		
+		long pmember_code = Long.parseLong(request.getParameter("pmember_code").trim());
 		String checkin = request.getParameter("startDate").trim();
 		String checkout = request.getParameter("endDate").trim();
 		int price = Integer.parseInt(request.getParameter("houseprice").trim());
 		
 		// 넘어온 값 확인용 코드
 		System.out.println("넘어온 카테고리 값 >>> " + house_no);
-		System.out.println("넘어온 카테고리 값 >>> " + member_id);
+		System.out.println("넘어온 카테고리 값 >>> " + house_name);
+		System.out.println("넘어온 카테고리 값 >>> " + pmember_code);
 		System.out.println("넘어온 카테고리 값 >>> " + checkin);
 		System.out.println("넘어온 카테고리 값 >>> " + checkout);
 		System.out.println("넘어온 카테고리 값 >>> " + price);
 		
 		ReservationDAO dao = ReservationDAO.getInstance();
 		
-		int R_List = dao.insertRes(house_no, member_id, checkin, checkout, price);
+		int R_List = dao.insertRes(house_no, house_name, pmember_code, checkin, checkout, price);
 		
 		request.setAttribute("List", R_List);
 		

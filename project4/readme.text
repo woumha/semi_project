@@ -7,3 +7,9 @@ com.action > HostWriteOkAction
 com.action > HostModifyOkAction
   : 위 파일들 첨부파일 저장 위치(경로)를 <<본인>> 프로젝트 upload폴더 주소로 변경
    String saveFolder = "이부분 변경";
+   
+22022-11-08 오후 3시쯤 업데이트 내용 (장동환)
+
+top.jsp 숙소호스팅하기 코드 수정 (표시해놨음)
+main.jsp 숙소리스트 코드 수정 + 필터영역 기능 + css 완료(임시)
+필터영역 코드 변경으로 인해 houseDAO에 필요없는 코드 삭제 및 action에 필요없는 파일 삭제

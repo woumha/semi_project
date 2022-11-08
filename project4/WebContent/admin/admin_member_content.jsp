@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="../include/top2.jsp"/>
 	<div align="center">
 		<c:set var="dto" value="${Cont }" />
 		<hr width="50%" color="tomato">
@@ -74,5 +75,6 @@
 			</tr>
 		</table>
 	</div>
+	<jsp:include page="../include/bottom.jsp"/>
 </body>
 </html>

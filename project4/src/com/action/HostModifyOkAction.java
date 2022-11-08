@@ -40,14 +40,14 @@ public class HostModifyOkAction implements Action {
 		String house_content = multi.getParameter("house_content").trim();
 		String house_phone = multi.getParameter("house_phone").trim();
 		int house_person = Integer.parseInt(multi.getParameter("house_person").trim());
-		int house_water = Integer.parseInt(multi.getParameter("house_person").trim());
-		int house_pool = Integer.parseInt(multi.getParameter("house_person").trim());
-		int house_ski = Integer.parseInt(multi.getParameter("house_person").trim());
-		int house_food = Integer.parseInt(multi.getParameter("house_person").trim());
-		int house_parking = Integer.parseInt(multi.getParameter("house_person").trim());
-		int house_grill = Integer.parseInt(multi.getParameter("house_person").trim());
-		int house_smoking = Integer.parseInt(multi.getParameter("house_person").trim());
-		int house_gym = Integer.parseInt(multi.getParameter("house_person").trim());
+		int house_water = Integer.parseInt(multi.getParameter("house_water").trim());
+		int house_pool = Integer.parseInt(multi.getParameter("house_pool").trim());
+		int house_ski = Integer.parseInt(multi.getParameter("house_ski").trim());
+		int house_food = Integer.parseInt(multi.getParameter("house_food").trim());
+		int house_parking = Integer.parseInt(multi.getParameter("house_parking").trim());
+		int house_grill = Integer.parseInt(multi.getParameter("house_grill").trim());
+		int house_smoking = Integer.parseInt(multi.getParameter("house_smoking").trim());
+		int house_gym = Integer.parseInt(multi.getParameter("house_gym").trim());
 		String house_img1 = multi.getFilesystemName("house_img1");
 		if(house_img1 == null) {house_img1 = multi.getParameter("house_img1_old");}
 		String house_img2 = multi.getFilesystemName("house_img2");

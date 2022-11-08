@@ -1,30 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 <!-- 모달 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 <!-- 모달 end -->
 
 <style type="text/css">
-
-#Host_list_box {
-	text-align: center;
-}
-
+#Host_list_box { text-align: center; }
 #Host_list {
 	border: 1px;
 	cellspacing: 0;
@@ -32,143 +32,292 @@
 	align: center;
 	text-align: center;
 }
-
-#paging_box {
-	text-align: center;
+#paging_box { text-align: center; }
+.input_box {
+	/* 둥근 입력창 스타일 */
+	width: 200px;
+	height: 32px;
+	font-size: 15px;
+	border: 0;
+	border-radius: 15px;
+	outline: none;
+	padding-left: 10px;
+	background-color: rgb(233, 233, 233);
+	/* 둥근 입력창 스타일 끝 */
 }
-
-
+.input_textbox {
+	/* 둥근 입력창 스타일 */
+	width: 200px;
+	height: auto;
+	font-size: 15px;
+	border: 0;
+	border-radius: 15px;
+	outline: none;
+	padding-left: 10px;
+	background-color: rgb(233, 233, 233);
+	/* 둥근 입력창 스타일 끝 */
+}
+.input_textbox_location {
+	/* 둥근 입력창 스타일 */
+	width: auto;
+	height: 32px;
+	font-size: 15px;
+	border: 0;
+	border-radius: 15px;
+	outline: none;
+	padding-left: 10px;
+	background-color: rgb(233, 233, 233);
+	/* 둥근 입력창 스타일 끝 */
+}
+.input_textbox_content {
+	/* 둥근 입력창 스타일 */
+	width: auto;
+	height: auto;
+	font-size: 15px;
+	border: 0;
+	border-radius: 15px;
+	outline: none;
+	padding-left: 10px;
+	background-color: rgb(233, 233, 233);
+	/* 둥근 입력창 스타일 끝 */
+}
+.input_box_person {
+	/* 둥근 입력창 스타일 */
+	width: 30px;
+	height: 30px;
+	font-size: 15px;
+	border: 0;
+	border-radius: 15px;
+	outline: none;
+	padding-left: 10px;
+	background-color: rgb(233, 233, 233);
+	/* 둥근 입력창 스타일 끝 */
+}
+#write_title { text-align: center; margin-top: 2%; font-size: 25px; }
+#main_div { margin-top: 2%; margin-bottom: 3%; margin-left: 30%; text-align: left; }
+#sub_div_area1 .sub_div, #sub_div_area2 .sub_div { display: inline; }
+#sub_div_area1, #sub_div_area2 { margin-bottom: 20px; }
+#sub_div_area3 { margin-top: 50px; }
+#sub_div_area4 { margin-top: 30px; }
+#sub_div_area5 { margin-top: 30px; }
+#sub_div_area6 { margin-top: 50px; }
+#sub_div_area7 { text-align: center; margin-top: 50px; }
+.sub_div { margin-bottom: 20px; }
+.one_tr { padding-left: 30px; padding-right: 10px; }
+.two_tr { padding-left: 180px; padding-right: 10px; }
+.title_text { padding-right: 10px; }
+.radio_title_text { padding-right: 15px; }
+.host_btns {
+	border: 0;
+	width: 113px;
+	height: 32px;
+	margin-top: 35px;
+	border-radius: 5%;
+}
+.host_btns:hover {
+	background-color: #e85255;
+	color: white;
+	cursor: pointer;
+}
 </style>
 </head>
+
 <body>
-<jsp:include page="../include/top2.jsp"/>
-<div id="Host_list_box" id="Host_list">
-	<div align="center">
-		<hr width="50%" color="marmoon">
-		<h3>UPLOAD 테이블 자료실 게시판 글쓰기 폼 페이지</h3>
-		<hr width="50%" color="marmoon">
-		<br>
-               <%-- enctype : 파일을 업로드하기 위한 속성 --%>
-		<form method="post" enctype="multipart/form-data" action="<%=request.getContextPath() %>/host_write_ok.do">
+<jsp:include page="../include/top.jsp"/>
+
+<div id="write_title">숙소 등록</div>
+<%-- enctype : 파일을 업로드하기 위한 속성 --%>
+	<form id="form_tag" method="post" enctype="multipart/form-data" action="<%=request.getContextPath()%>/host_write_ok.do">
+	<div id="main_div">
 		<input type="hidden" value="${member_code_session }" name="pcode">
-			<table>
-				<tr>
-					<th>숙소이름</th>
-					<td> <input name="house_name"> </td>
-				</tr>
-				<tr>
-					<th>숙소카테고리</th>
-					<td>
-						<select name="house_category">
-							<option value="호텔" selected>호텔</option>
-							<option value="아파트" >아파트</option>
-							<option value="리조트">리조트</option>
-							<option value="게스트하우스">게스트하우스</option>
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<th>숙소주소</th>
-					<td>
-						<textarea rows="7" cols="25" name="house_location"></textarea>
-					</td>
-				</tr>
-				<tr>
-					<th>숙소가격</th>
-					<td> <input name="house_price"> </td>
-				</tr>
-				<tr>
-					<th>숙소설명</th>
-					<td>
-						<textarea rows="7" cols="25" name="house_content"></textarea>
-					</td>
-				</tr>
-				<tr>
-					<th>숙소전화번호</th>
-					<td> <input name="house_phone"> </td>
-				</tr>
-				<tr>
-					<th>숙소인원</th>
-					<td> <input name="house_person"> </td>
-				</tr>
-				<tr>
-					<th>파일첨부1</th>
-					<td> <input type="file" name="house_img1"> </td>
-				</tr>
-				<tr>
-					<th>파일첨부2</th>
-					<td> <input type="file" name="house_img2"> </td>
-				</tr>
-				<tr>
-					<th>파일첨부3</th>
-					<td> <input type="file" name="house_img3"> </td>
-				</tr>
-				<tr>
-					<th>수변인접 여부</th>
-					<td>
-						<input type="radio" name="house_water" value="0">없음
-						<input type="radio" name="house_water" value="1">있음
-					</td>
-				</tr>
-				<tr>
-					<th>수영장 여부</th>
-					<td>
-						<input type="radio" name="house_pool" value="0">없음
-						<input type="radio" name="house_pool" value="1">있음
-					</td>
-				</tr>
-				<tr>
-					<th>스키장 여부</th>
-					<td>
-						<input type="radio" name="house_ski" value="0">없음
-						<input type="radio" name="house_ski" value="1">있음
-					</td>
-				</tr>
-				<tr>
-					<th>식사제공 여부</th>
-					<td>
-						<input type="radio" name="house_food" value="0">없음
-						<input type="radio" name="house_food" value="1">있음
-					</td>
-				</tr>
-				<tr>
-					<th>무료주차 여부</th>
-					<td>
-						<input type="radio" name="house_parking" value="0">없음
-						<input type="radio" name="house_parking" value="1">있음
-					</td>
-				</tr>
-				<tr>
-					<th>바베큐 그릴 여부</th>
-					<td>
-						<input type="radio" name="house_gril" value="0">없음
-						<input type="radio" name="house_gril" value="1">있음
-					</td>
-				</tr>
-				<tr>
-					<th>흡연장 여부</th>
-					<td>
-						<input type="radio" name="house_smoking" value="0">없음
-						<input type="radio" name="house_smoking" value="1">있음
-					</td>
-				</tr>
-				<tr>
-					<th>헬스장 여부</th>
-					<td>
-						<input type="radio" name="house_gym" value="0">없음
-						<input type="radio" name="house_gym" value="1">있음
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center">
-						<input type="submit" value="글쓰기">&nbsp;&nbsp;&nbsp;
-						<input type="reset" value="다시작성">
-					</td>
-				</tr>
+		<div id="sub_div_area1">
+			<div class="sub_div">
+				<span class="title_text">숙소 이름</span> <input class="input_box" name="house_name" id="house_name">
+			</div>
+			<div class="sub_div" style="margin-left: 30px;">
+				<span class="title_text">숙소 카테고리</span>
+				<select class="input_box" name="house_category" id="house_category">
+					<option value="호텔" selected>호텔</option>
+					<option value="아파트">아파트</option>
+					<option value="리조트">리조트</option>
+					<option value="게스트하우스">게스트하우스</option>
+				</select>
+			</div>
+		</div>
+		<div id="sub_div_area2">
+			<div class="sub_div">
+				<span class="title_text">숙소 가격</span> <input type="number" class="input_box" name="house_price" id="house_price">
+			</div>
+			<div class="sub_div" style="margin-left: 30px;">
+				<span class="title_text">숙소 전화번호</span> <input class="input_box" name="house_phone" id="house_phone">
+			</div>
+			<div class="sub_div" style="margin-left: 20px;">
+				<span class="title_text">숙소 인원</span> <input type="number" class="input_box_person" name="house_person" id="house_person">명
+			</div>
+		</div>
+		<div id="sub_div_area3">
+			<div class="sub_div">
+				<table>
+					<tr>
+						<th><span class="title_text">숙소 주소</span></th>
+						<td><textarea class="input_textbox_location" rows="1" cols="100" name="house_location" id="house_location"></textarea></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div id="sub_div_area4">
+			<div class="sub_div">
+				<table>
+					<tr>
+						<th><span class="title_text">숙소 소개</span></th>
+						<td><textarea class="input_textbox_content" rows="10" cols="100" name="house_content" id="house_content"></textarea></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div id="sub_div_area5">
+			<div class="sub_div">
+				<span class="title_text">파일첨부1</span> <input type="file" name="house_img1" id="house_img1">
+				<span class="title_text">파일첨부2</span> <input type="file" name="house_img2" id="house_img2">
+				<span class="title_text">파일첨부3</span> <input type="file" name="house_img3" id="house_img3">
+			</div>
+		</div>
+		<div id="sub_div_area6">
+			<table style="border-collapse: separate; border-spacing:0px 20px;">
+				<div class="sub_div">
+					<tr>
+						<th class="one_tr">
+							<img src="main_img/top_water_40.png">
+						</th>
+						<td>
+							<span class="radio_title_text">수변인접 여부</span>
+							<input class="input_radio" type="radio" name="house_water" id="house_water" value="0" checked>없음
+							<input class="input_radio" type="radio" name="house_water" id="house_water" value="1">있음
+						</td>
+						<th class="two_tr">
+							<img src="main_img/top_pool_40.png">
+						</th>
+						<td>
+							<span class="radio_title_text" id="house_price">수영장 여부</span>
+							<input class="input_radio" type="radio" name="house_pool" id="house_pool" value="0" checked>없음
+							<input class="input_radio" type="radio" name="house_pool" id="house_pool" value="1">있음
+						</td>
+					</tr>
+				</div>
+				<div class="sub_div">
+					<tr>
+						<th class="one_tr">
+							<img src="main_img/top_ski_40.png">
+						</th>
+						<td>
+							<span class="radio_title_text" id="house_price">스키장 여부</span>
+							<input class="input_radio" type="radio" name="house_ski" id="house_ski" value="0" checked>없음
+							<input class="input_radio" type="radio" name="house_ski" id="house_ski" value="1">있음
+						</td>
+						<th class="two_tr">
+							<img src="main_img/food_40.png">
+						</th>
+						<td>
+							<span class="radio_title_text" id="house_price">식사제공 여부</span>
+							<input class="input_radio" type="radio" name="house_food" id="house_food" value="0" checked>없음
+							<input class="input_radio" type="radio" name="house_food" id="house_food" value="1">있음
+						</td>
+					</tr>
+				</div>
+				<div class="sub_div">
+					<tr>
+						<th class="one_tr">
+							<img src="main_img/top_parking_40.png">
+						</th>
+						<td>
+							<span class="radio_title_text" id="house_price">무료주차 여부</span>
+							<input class="input_radio" type="radio" name="house_parking" id="house_parking" value="0" checked>없음
+							<input class="input_radio" type="radio" name="house_parking" id="house_parking" value="1">있음
+						</td>
+						<th class="two_tr">
+							<img src="main_img/top_grill_40.png">
+						</th>
+						<td>
+							<span class="radio_title_text" id="house_price">바베큐 그릴 여부</span>
+							<input class="input_radio" type="radio" name="house_grill" id="house_grill" value="0" checked>없음
+							<input class="input_radio" type="radio" name="house_grill" id="house_grill" value="1">있음
+						</td>
+					</tr>
+				</div>
+				<div class="sub_div">
+					<tr>
+						<th class="one_tr">
+							<img src="main_img/top_smoking_40.png">
+						</th>
+						<td>
+							<span class="radio_title_text" id="house_price">흡연장 여부</span>
+							<input class="input_radio" type="radio" name="house_smoking" id="house_smoking" value="0" checked>없음
+							<input class="input_radio" type="radio" name="house_smoking" id="house_smoking" value="1">있음
+						</td>
+						<th class="two_tr">
+							<img src="main_img/top_gym_40.png">
+						</th>
+						<td>
+							<span class="radio_title_text" id="house_price">헬스장 여부</span>
+							<input class="input_radio" type="radio" name="house_gym" id="house_gym" value="0" checked>없음
+							<input class="input_radio" type="radio" name="house_gym" id="house_gym" value="1">있음
+						</td>
+					</tr>
+				</div>
 			</table>
-		</form>
+		</div>
 	</div>
-</div>
-<jsp:include page="../include/bottom.jsp"/>
+	<div id="sub_div_area7">
+		<div class="sub_div">
+			<input type="submit" value="숙소등록" class="host_btns">&nbsp;&nbsp;&nbsp;
+			<input type="reset" value="다시작성" class="host_btns">
+		</div>
+	</div>
+</form>
+<script>
+	let ft = document.getElementById("form_tag");
+	ft.addEventListener("submit", function(e){
+		let hname = document.getElementById("house_name");
+		let hcategory = document.getElementById("house_category");
+		let hprice = document.getElementById("house_price");
+		let hphone = document.getElementById("house_phone");
+		let hperson = document.getElementById("house_person");
+		let hlocation = document.getElementById("house_location");
+		let hcontent = document.getElementById("house_content");
+		let himg1 = document.getElementById("house_img1");
+		let himg2 = document.getElementById("house_img2");
+		let himg3 = document.getElementById("house_img3");
+		let hwater = document.getElementById("house_water");
+		let hpool = document.getElementById("house_pool");
+		let hski = document.getElementById("house_ski");
+		let hfood = document.getElementById("house_food");
+		let hparking = document.getElementById("house_parking");
+		let hgrill = document.getElementById("house_grill");
+		let hsmoking = document.getElementById("house_smoking");
+		let hgym = document.getElementById("house_gym");
+		
+		if(hname.value.length == 0) { alert('숙소 이름을 입력해주세요!'); e.preventDefault();
+		} else if(hcategory.value.length == 0) { alert('숙소 카테고리를 선택해주세요!'); e.preventDefault();
+		} else if(hprice.value.length == 0) { alert('숙소 가격을 입력해주세요!'); e.preventDefault();
+		} else if(hphone.value.length == 0) { alert('숙소 전화번호를 입력해주세요!'); e.preventDefault();
+		} else if(hperson.value.length == 0) { alert('숙소 최대 인원 수를 입력해주세요!'); e.preventDefault();
+		} else if(hlocation.value.length == 0) { alert('숙소 주소를 입력해주세요!'); e.preventDefault();
+		} else if(hcontent.value.length == 0) { alert('숙소 소개를 입력해주세요!'); e.preventDefault();
+		} else if(himg1.value.length == 0) { alert('숙소 이미지(1)를 첨부해주세요!'); e.preventDefault();
+		} else if(himg2.value.length == 0) { alert('숙소 이미지(2)를 첨부해주세요!'); e.preventDefault();
+		} else if(himg3.value.length == 0) { alert('숙소 이미지(3)를 첨부해주세요!'); e.preventDefault();
+		} else if(hwater.value.length == 0) { alert('수변인접 여부를 선택해주세요!'); e.preventDefault();
+		} else if(hpool.value.length == 0) { alert('수영장 여부를 선택해주세요!'); e.preventDefault();
+		} else if(hski.value.length == 0) { alert('스키장 여부를 선택해주세요!'); e.preventDefault();
+		} else if(hfood.value.length == 0) { alert('식사제공 여부를 선택해주세요!'); e.preventDefault();
+		} else if(hparking.value.length == 0) { alert('무료주차 여부를 선택해주세요!'); e.preventDefault();
+		} else if(hgrill.value.length == 0) { alert('바베큐 그릴 여부를 선택해주세요!'); e.preventDefault();
+		} else if(hsmoking.value.length == 0) { alert('흡연장 여부를 선택해주세요!'); e.preventDefault();
+		} else if(hgym.value.length == 0) { alert('헬스장 여부를 선택해주세요!'); e.preventDefault();
+		}
+	});
+</script>
+
+<jsp:include page="../include/bottom.jsp" />
 </body>
 </html>

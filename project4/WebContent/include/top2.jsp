@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    
+<%@ page import="java.net.URLEncoder" %>
+<%@ page import="java.security.SecureRandom" %>
+<%@ page import="java.math.BigInteger" %>  
 <%
 	HttpSession sessionOut = request.getSession();
 %>
@@ -13,6 +15,8 @@
 <title>Insert title here</title>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
 <script type="text/javascript" src="../JS/loginscript.js"></script>
 <script type="text/javascript" src="JS/loginscript.js"></script>
@@ -141,23 +145,51 @@ $(function() {
 									<option value="daum.net">daum.net</option>
 								</select>
 							</div>
-							<div id="div_sendEmail">
+							 <div id="div_sendEmail">
 								<input type="submit" id="sendEmail" name="sendEmail" value="인증번호 보내기">
 							</div>
 						</form>
-						<div id="naver_id_login"></div>
-						<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+						   <br> <br> <br>
+						  <div id="button_area" align="center"> 
+					        <div id="naverIdLogin"></div>
+					      </div>
+						  <script type="text/javascript">
+								    const naverLogin = new naver.LoginWithNaverId(
+										{
+											clientId: "zROYJp38WO0IxEpiDz0u",
+											callbackUrl: "http://localhost:8756/project4/API/naverLoginApi.jsp",
+											loginButton: {color: "green", type: 2, height: 30}
+										}
+									);
+								 naverLogin.init(); // 로그인 설정
+						    </script>
+						<div id="naver_id_login" align="center"></div>
+	
+						<!-- 네이버아이디로로그인 버튼 노출 영역 -->
 						<script type="text/javascript">
-							var clientId = "zROYJp38WO0IxEpiDz0u";
-							var callbackUrl = "http://localhost:8787/project4/view2/naverLoginAPI.jsp";
-							var naver_id_login = new naver_id_login(clientId, callbackUrl);
-							var state = naver_id_login.getUniqState();
-							naver_id_login.setButton("white", 3, 40);
-							naver_id_login.setDomain("http://localhost:8787/project4/view/login_btn.jsp");
-							naver_id_login.setState(state);
-							naver_id_login.setPopup();
-							naver_id_login.init_naver_id_login();
+					 		var naver_id_login = new naver_id_login("zROYJp38WO0IxEpiDz0u", "http://localhost:8756/project4/API/naverLoginApi.jsp");	// Client ID, CallBack URL 삽입
+																// 단 'localhost'가 포함된 CallBack URL
+					 		var state = naver_id_login.getUniqState();
+							
+					 		naver_id_login.setButton("white", 2, 40);
+					 		naver_id_login.setDomain("서비스 URL");	//  URL
+					 		naver_id_login.setState(state);
+					 		naver_id_login.init_naver_id_login();
 						</script>
+						<%-- 
+						<%
+						    String clientId = "zROYJp38WO0IxEpiDz0u";//애플리케이션 클라이언트 아이디값";
+						    String redirectURI = URLEncoder.encode("http://localhost:8756/project4/naverMember.do", "UTF-8");
+						    SecureRandom random = new SecureRandom();
+						    String state = new BigInteger(130, random).toString();
+						    String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
+						    apiURL += "&client_id=" + clientId;
+						    apiURL += "&redirect_uri=" + redirectURI;
+						    apiURL += "&state=" + state;
+						    session.setAttribute("state", state);
+						 %>
+ 						 <a href="<%=apiURL%>"><img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></a>
+						 --%>
 					</td>
 				</tr>
 			</table>
