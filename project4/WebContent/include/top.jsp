@@ -79,16 +79,22 @@ $(function() {
 		<div class="search-wrapper">
 		    <div class="input-holder">
 		        <!-- <input type="text" class="search-input" />  -->
+			    <input type="text" class="search-input" name="searchContent" id="searchId">
 		        <button class="search-icon" onclick="searchToggle(this, event);">
-		        	<span></span>
+		        
+		        	<span id="clickbtn"></span>
 		        </button>
 		        
 		        
 		    </div>
 		    <span class="close" onclick="searchToggle(this, event);"></span>
 	        <button id="checkinbtn" class="checkbtn">체크인</button>
-        	<button class="checkbtn">체크아웃</button>
+        	<button id="checkoutbtn">체크아웃</button>
         	<button class="checkbtn">여행자</button>
+	        <br>
+	        <input type="date" id="startDate" name="startDate" required="required" onChange="calcResult(event, 'start')"/>
+	        &nbsp; &nbsp;
+        	<input type="date" id="endDate" name="endDate" required="required" onChange="calcResult(event, 'end')"/>
 		</div>
 	</div>
  	

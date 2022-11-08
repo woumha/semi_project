@@ -74,7 +74,7 @@
 	        
 	        for (var i = 1; i <= nextDate; i++) {
 	            calendar.innerHTML = calendar.innerHTML + 
-	            	'<div class="day"><label for="r'+ i +'" /><input id="r'+ i +'" class="radiobtn" name="selectgroup" type="radio" value="'+ i +'">' + i + '</div>'
+	            	'<div class="day current"><label for="r'+ i +'" /><input id="r'+ i +'" class="radiobtn" name="selectgroup" type="radio" value="'+ i +'">' + i + '</div>'
 	            	
 	           
 	        }
@@ -91,23 +91,29 @@
 	        // 클릭한 날짜 지정
 	        $(".radiobtn").hide();
 	        var selectDay = "";
-	        
-	        
-	        
-	        
-	        
+	 
 	        for (var i = 1; i <= nextDate; i++) {
-	        	$("#r"+ i).on("click", function() {
-	        		selectDay = $(this).val();	
-	        		classDay = $(this).attr('class');
+	        	$("#r"+ i).click(function() {
+	        		checkIn = $(this).val();
+	        		if(checkIn < i) {
+	        			$("#r"+ i).attr('readonly');
+	        		}
+	        		
 	        		
 	        		var currentMonthDate = document.querySelectorAll('.dates .current');
-	        		currentMonthDate[selectDay-1].classList.add('today');
+	        		currentMonthDate[checkIn-1].classList.add('today');
 	        		$(".current.today").css("background-color", "rgb(242 242 242)");
+	        		
+	        	
+	        		
 		        });		
-	        }
-	   
+	        } 
+	   		
+	        $(".current.today").on("click", function() {
+	        	console.log("1");
+	        });
 	    }
+	    
 	  
 	    // 이전달로 이동
 	    $('.go-prev').on('click', function() {
