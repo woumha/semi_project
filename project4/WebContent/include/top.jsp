@@ -83,12 +83,12 @@ $(function() {
 		        	<span></span>
 		        </button>
 		        
-		        <button class="checkbtn">체크인</button>
-	        	<button class="checkbtn">체크아웃</button>
-	        	<button class="checkbtn">여행자</button>
 		        
 		    </div>
 		    <span class="close" onclick="searchToggle(this, event);"></span>
+	        <button id="checkinbtn" class="checkbtn">체크인</button>
+        	<button class="checkbtn">체크아웃</button>
+        	<button class="checkbtn">여행자</button>
 		</div>
 	</div>
  	
@@ -97,10 +97,10 @@ $(function() {
 	<span id="modal" style="background-color: white;">
 		<c:set var="list" value="${List }"/>
 		<c:if test="${empty list }">
-			<img src="/project4/main_img/loveTravel.png" width="40px" height="40px" class="open_modal">	
+			<img src="/project4/main_img/login.png" width="40px" height="40px" class="open_modal">	
 		</c:if>
 		<c:if test="${!empty list }">
-			<img src="/project4/main_img/login.png" width="40px" height="40px" class="open_modal">	
+			<img src="/project4/main_img/loveTravel.png" width="40px" height="40px" class="open_modal">	
 		</c:if>
 	</span>
 	
@@ -202,7 +202,7 @@ $(function() {
 
 <script>
     $('a[href="#login"]').click(function(event) {
-    	console.log("1");
+    	
       event.preventDefault();
  
       $(this).modal({

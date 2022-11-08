@@ -16,6 +16,15 @@ $(function() {
 	            container.find('.search-input').val('');
 	        }
 	}	
+	
+	
+	$("checkinbtn").on("click", function() {
+		StartCalendar();
+		EndCalendar();
+	});
+	
+	
+	
 });
 
 function searchToggle(obj, evt){
@@ -30,4 +39,11 @@ function searchToggle(obj, evt){
 	            container.find('.search-input').val('');
 	        }
 	}	
+	
+function StartCalendar() {
+		
+}
 
+function EndCalendar() {
+	
+}
