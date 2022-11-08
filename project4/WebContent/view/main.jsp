@@ -45,7 +45,7 @@
 
 </head>
 <body>
-	<jsp:include page="../include/top.jsp"/>
+	<jsp:include page="/include/top.jsp"/>
 	<div id="header">
 
 	<!-- 카테고리 상단 바 ============================================================================== -->
@@ -356,6 +356,6 @@
 		</c:forEach>
 	</c:if>
 	</ul>
-	<jsp:include page="../include/bottom.jsp"/>
+	<jsp:include page="/include/bottom.jsp"/>
 </body>
 </html>
