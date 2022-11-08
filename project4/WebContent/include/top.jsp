@@ -93,7 +93,16 @@ $(function() {
 	</div>
  	
 	<a href="<%=request.getContextPath() %>/house_list.do"><div id="logo_loction"></div></a>
-	<a href="<%=request.getContextPath() %>/host_list.do?pcode=${member_code_session }"><span class="icon_leftText">숙소호스팅하기</span></a>
+	
+	<!-- 22-11-08 변경된 부분 (비로그인시 숙소호스팅하기 링크 클릭하면 로그인 모달창이 뜨게 변경함) =============================================================== -->
+	<c:if test="${!empty member_code_session }">
+		<a href="<%=request.getContextPath() %>/host_list.do?pcode=${member_code_session }"><span class="icon_leftText">숙소호스팅하기</span></a>
+	</c:if>
+	<c:if test="${empty member_code_session }">
+		<a href="#login"><span class="icon_leftText">숙소호스팅하기</span></a>
+	</c:if>
+	<!-- =================================================================================================================================== -->
+	
 	<span id="modal" style="background-color: white;">
 		<c:set var="list" value="${List }"/>
 		<c:if test="${empty list }">

@@ -52,7 +52,7 @@
 </style>
 </head>
 <body>
-<jsp:include page="../include/top2.jsp"/>
+<jsp:include page="../include/top.jsp"/>
 <div id="Host_list_box">
 	<table id="Host_list">
 		<tr>

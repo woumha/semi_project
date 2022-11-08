@@ -68,7 +68,7 @@ public class HostWriteOkAction implements Action {
 		int house_ski = Integer.parseInt(multi.getParameter("house_ski").trim());
 		int house_food = Integer.parseInt(multi.getParameter("house_food").trim());
 		int house_parking = Integer.parseInt(multi.getParameter("house_parking").trim());
-		int house_gril = Integer.parseInt(multi.getParameter("house_gril").trim());
+		int house_grill = Integer.parseInt(multi.getParameter("house_grill").trim());
 		int house_smoking = Integer.parseInt(multi.getParameter("house_smoking").trim());
 		int house_gym = Integer.parseInt(multi.getParameter("house_gym").trim());
 		System.out.println("===== 옵션확인용 ================================");
@@ -77,7 +77,7 @@ public class HostWriteOkAction implements Action {
 		System.out.println("house_ski >>> " + house_ski);
 		System.out.println("house_food >>> " + house_food);
 		System.out.println("house_parking >>> " + house_parking);
-		System.out.println("house_gril >>> " + house_gril);
+		System.out.println("house_gril >>> " + house_grill);
 		System.out.println("house_smoking >>> " + house_smoking);
 		System.out.println("house_gym >>> " + house_gym);
 		System.out.println("===== 옵션확인용 끝 ===============================");
@@ -109,7 +109,7 @@ public class HostWriteOkAction implements Action {
 		dto.setHouse_ski(house_ski);
 		dto.setHouse_food(house_food);
 		dto.setHouse_parking(house_parking);
-		dto.setHouse_grill(house_gril);
+		dto.setHouse_grill(house_grill);
 		dto.setHouse_smoking(house_smoking);
 		dto.setHouse_gym(house_gym);
 
