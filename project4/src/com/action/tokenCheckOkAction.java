@@ -44,7 +44,13 @@ public class tokenCheckOkAction implements Action {
 			if(memberCheck == 1) { // 로그인
 				LoginDAO dao = LoginDAO.getInstance();
 				long code_session = dao.getMemberCode(mail_Id);
+				String code_name_session = dao.getMemberName(mail_Id);
+				String code_phone_session = dao.getMemberPhone(mail_Id);
+				
 				session.setAttribute("member_code_session", code_session);
+				session.setAttribute("m_name", code_name_session);
+				session.setAttribute("m_phone", code_phone_session);
+				
 				session.setMaxInactiveInterval(60*60);
 				forward.setRedirect(true);
 				forward.setPath("view/main.jsp"); // 로그인시 메인 >> 회원등급 판단도 해야함

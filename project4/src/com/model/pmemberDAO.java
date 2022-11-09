@@ -298,6 +298,7 @@ public class pmemberDAO {
 							dto.setPmember_code(rs.getLong("pmember_code"));
 							dto.setPmember_firstname(rs.getString("pmember_firstname"));
 							dto.setPmember_lastname(rs.getString("pmember_lastname"));
+							dto.setPmember_gender(rs.getString("pmember_gender"));
 							dto.setPmember_birth(rs.getInt("pmember_birth"));
 							dto.setPmember_phone(rs.getString("pmember_phone"));
 							dto.setPmember_date(rs.getString("pmember_date"));
@@ -329,6 +330,7 @@ public class pmemberDAO {
 							dto.setPmember_code(rs.getLong("pmember_code"));
 							dto.setPmember_firstname(rs.getString("pmember_firstname"));
 							dto.setPmember_lastname(rs.getString("pmember_lastname"));
+							dto.setPmember_gender(rs.getString("pmember_gender"));
 							dto.setPmember_birth(rs.getInt("pmember_birth"));
 							dto.setPmember_phone(rs.getString("pmember_phone"));
 							dto.setPmember_date(rs.getString("pmember_date"));
@@ -387,6 +389,7 @@ public class pmemberDAO {
 							dto.setPmember_code(rs.getLong("pmember_code"));
 							dto.setPmember_firstname(rs.getString("pmember_firstname"));
 							dto.setPmember_lastname(rs.getString("pmember_lastname"));
+							dto.setPmember_gender(rs.getString("pmember_gender"));
 							dto.setPmember_birth(rs.getInt("pmember_birth"));
 							dto.setPmember_phone(rs.getString("pmember_phone"));
 							dto.setPmember_date(rs.getString("pmember_date"));
