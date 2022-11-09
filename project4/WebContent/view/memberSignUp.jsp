@@ -58,7 +58,6 @@
 	outline: none;
 	padding-left: 10px;
 	background-color: rgb(233, 233, 233);
-	
 }
 #ph  {
 	float: none;
@@ -73,7 +72,7 @@
 }
 	
 #signUp_title {
-	margin-top: 130px;
+	margin-top: 100px;
     margin-bottom: 70px;
     font-size: 35px;
 }
@@ -81,22 +80,22 @@
 /* 입력 내용 박스 영역 */
 #signUp_box {
 	margin-left: 38%;
-	margin-bottom: 240px;
+	margin-bottom: 50px;
 }
 
-#signUp_box > form > div {
+#signUp_box  > div {
 	margin-bottom: 10px;
 }
 
-#signUp_box > form > p {
+#signUp_box  > p {
 	margin-left: 10px;
 	margin-bottom: 30px;
 	font-size: 10px;
 	color: gray;
 }
 #submit_btn {
-	margin-top: 40px;
-	margin-left: 185px;
+	text-align: center;
+	margin-bottom: 150px;
 }
 #signUpbtn {
 	text-align: center;
@@ -111,18 +110,26 @@
 	color: white;
 	cursor: pointer;
 }
-	
+
+#signUp_icon {
+	width: 80px;
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+
 </style>
 </head>
 <body>
 <jsp:include page="../include/top.jsp"/>
 
 	<div align="center" id="signUp_title">
+		<img src="/project4/main_img/signUp_icon.png" id="signUp_icon">
 		<p>회원 가입 완료하기</p>
-		<hr width="25%">
 	</div>
+	<form method="post" id="inform" name="inform" action="<%=request.getContextPath() %>/signUp.do">
 	<div id="signUp_box">
-		<form method="post" id="inform" name="inform" action="<%=request.getContextPath() %>/signUp.do">
+		
 			<input type="hidden" id="hide_email" name="hide_email" value="<%=mail %>">
 			<div>
 				<input type="text" id="email1" class="field" name="email" placeholder="<%=mail %>" readonly>
@@ -141,12 +148,12 @@
 				<input type="text" id="ph" class="field" name="phone" placeholder="핸드폰 번호">
 			</div>
 			<p>예약 확인과 영수증을 이메일로 보내드립니다.</p>
-			<div id="submit_btn">
-				<input type="submit" id="signUpbtn" name="signUpbtn" value="동의 및 계속하기">
-			</div>
-		</form>		
+			
 	</div>
-	
+	<div id="submit_btn">
+		<input type="submit" id="signUpbtn" name="signUpbtn" value="동의 및 계속하기">
+	</div>
+	</form>	
 <jsp:include page="../include/bottom.jsp"/>	
 </body>
 </html>

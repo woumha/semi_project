@@ -1,4 +1,4 @@
-2<%@page import="com.model.pmemberDTO"%>
+<%@page import="com.model.pmemberDTO"%>
 <%@page import="com.model.pmemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
