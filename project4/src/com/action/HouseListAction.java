@@ -19,8 +19,9 @@ public class HouseListAction implements Action {
 		HouseDAO dao = HouseDAO.getInstance();
 		
 		List<HouseDTO> list = dao.getHouseList();
-		
+		String List_title = "전체";
 		request.setAttribute("List", list);
+		request.setAttribute("List_title", List_title);
 		
 		ActionForward forward = new ActionForward();
 		

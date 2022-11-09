@@ -233,4 +233,26 @@ public class LoginDAO {
 			return result;
 		}
 		//pmember_phone(session)
+		
+		public int getMemberLevel(String mail) {
+			
+			int result = 0;
+			
+			openConn();
+
+			try {
+				sql = "select pmember_userlevel from pmember where pmember_email = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, mail);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					result = rs.getInt("pmember_userlevel");
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				closeConn(rs, pstmt, con);
+			}
+			return result;
+		}
 }

@@ -46,10 +46,19 @@ public class tokenCheckOkAction implements Action {
 				long code_session = dao.getMemberCode(mail_Id);
 				String code_name_session = dao.getMemberName(mail_Id);
 				String code_phone_session = dao.getMemberPhone(mail_Id);
+				int level = dao.getMemberLevel(mail_Id);
 				
 				session.setAttribute("member_code_session", code_session);
 				session.setAttribute("m_name", code_name_session);
 				session.setAttribute("m_phone", code_phone_session);
+				
+				// 추가된 코드 22-11-09 ==============================================================================
+				session.setAttribute("member_level", level);
+
+				System.out.println("===================================================================");
+				System.out.println("접속유저 레벨 <<<" + level + ">>>");
+				System.out.println("===================================================================");
+				// =================================================================================================
 				
 				session.setMaxInactiveInterval(60*60);
 				forward.setRedirect(true);
