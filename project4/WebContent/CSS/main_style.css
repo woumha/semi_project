@@ -4,8 +4,12 @@
   margin: 0;
   padding: 0;
   color: black;
+  text-decoration: none; /* 링크의 밑줄 제거 */
+  color: inherit; /* 링크의 색상 제거 */
 }
 
+/* 항상 오른쪽 스크롤바가 보이게 하는 코드 */
+html { overflow-y: scroll; }
 
 #header_category.fixed {
 	position: fixed;
@@ -17,7 +21,7 @@
 .main_topbar {
 	list-style:none;
 	text-align: center;
-	display: table;
+	/* display: table; */
  	width: 100%;
  	
 }
@@ -249,15 +253,17 @@
 }
 
 #filter_title {
-		text-align: center;
-		margin-top: 15px;
-		margin-bottom: 10px;
-		font-size: 25px;
-	}
-	#f_category_box { margin-bottom: 40px; }
-	#f_price_box { margin-bottom: 40px; }
-	#f_person_box { margin-bottom: 40px; }
-	#filter_btns { margin-top: 20px; }
+	text-align: center;
+	margin-top: 15px;
+	margin-bottom: 10px;
+	font-size: 25px;
+}
+
+#f_category_box { margin-bottom: 40px; }
+#f_price_box { margin-bottom: 40px; }
+#f_person_box { margin-bottom: 40px; }
+#filter_btns { margin-top: 20px; }
+
 .filter_input {
 	/* 둥근 입력창 스타일 */
 	width: 140px;
@@ -303,6 +309,8 @@
 	margin-bottom: 20px;
 }
 #filter_submit_box > input {
+	background-color: #eb9799;
+	color: white;
 	border: 0;
 	width: 80px;
 	height: 32px;

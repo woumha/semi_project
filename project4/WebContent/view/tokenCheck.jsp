@@ -17,13 +17,13 @@
 }
 
 #email_token_text {
-    margin-top: 150px;
+    margin-top: 30px;
     margin-bottom: 100px;
     font-size: 35px;
 }
 
 #formsubmit {
-	margin-bottom: 400px;
+	margin-bottom: 150px;
 }
 
 #email_token_text2 {
@@ -49,12 +49,36 @@
 #ck {
 }
 
+#tokenCheck_icon {
+	margin-top: 100px;
+	text-align: center;
+	width: 80px;
+}
+
+.main_btn {
+	border: 0;
+	width: 113px;
+	height: 32px;
+	margin-top: 35px;
+	border-radius: 5%;
+}
+.main_btn:hover {
+	background-color: #e85255;
+	color: white;
+	cursor: pointer;
+}
+#main_btn_box {
+	text-align: center;
+	margin-bottom: 250px;
+}
+
 </style>
 </head>
 <body>
-<jsp:include page="../include/top2.jsp"/>
+<jsp:include page="../include/top.jsp"/>
 
 	<div align="center" id="email_token">
+		<img src="/project4/main_img/tokenCheck_icon.png" id="tokenCheck_icon">
 		<p id="email_token_text">이메일 인증번호 입력하기</p>
 		<c:set var="infor" value="${user }" />
 		<form id="formsubmit" method="post" action="<%=request.getContextPath() %>/tokenCheck_ok.do">
@@ -66,7 +90,9 @@
 			<span id="ck"></span>
 		</form>
 	</div>
-	
+	<div id="main_btn_box">
+		<button class="main_btn" onclick="location.href='<%=request.getContextPath()%>/house_list.do'">메인으로</button>
+	</div>
 <jsp:include page="../include/bottom.jsp"/>
 </body>
 </html>
