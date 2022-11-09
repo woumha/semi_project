@@ -1,3 +1,5 @@
+2<%@page import="com.model.pmemberDTO"%>
+<%@page import="com.model.pmemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
@@ -10,6 +12,7 @@ String houseImg1 = request.getParameter("houseImg1");
 int id = Integer.parseInt(request.getParameter("houseNo"));
 int count = Integer.parseInt(request.getParameter("count"));
 %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,7 +65,7 @@ $(document).ready(function(){
 		});
 	});
 	
-//결제 api
+	//결제 api
 	var IMP = window.IMP; 
     IMP.init("imp68070036"); 
       
@@ -80,7 +83,7 @@ $(document).ready(function(){
         pay_method : 'card',
         merchant_uid: "IMP"+makeMerchantUid, 
         name : '<%=houseName %>',
-        amount : <%=houseprice %>,
+        amount : '<%=houseprice %>',
         buyer_email : 'abdc@naver.com',
         buyer_name : 'KH정보교육원',
         buyer_tel : '010-5654-0265',
@@ -92,18 +95,19 @@ $(document).ready(function(){
     		var msg = '결제가 완료되었습니다.\n';       
     		msg += '결제 금액 : ' + rsp.paid_amount+'\n';            
     		msg += '카드 승인번호 : ' + rsp.apply_num+'\n';
+    		window.location.href = "reservation_list.do?&houseName=<%=houseName %>&startDate=<%=startDate %>&endDate=<%=endDate %>&no=<%=houseNo %>&houseprice=<%=houseprice %>&pmember_code=${member_code_session }";
     		} else {               
     			var msg = '결제에 실패하였습니다.\n';           
-    			msg += '에러내용 : ' + rsp.error_msg;      
-    			}          
+    			msg += '에러내용 : ' + rsp.error_msg; 
+    			window.location.href = "house_list.do";
+    		}          
     		alert(msg);       
-    		window.location.href = "reservation_list.do?&houseName=<%=houseName %>&startDate=<%=startDate %>&endDate=<%=endDate %>&no=<%=houseNo %>&houseprice=<%=houseprice %>&pmember_code=${member_code_session }";
     		});
     	}
   </script>
 </head>
 <body>
-
+<jsp:include page="include/top.jsp"/>
 <form method="post" id="form1">
 <div class="cover">
 
@@ -112,12 +116,11 @@ $(document).ready(function(){
 	<h1>예약자 정보</h1>
 	<br><br>
 	<p>&nbsp;이름</p>
-	<!-- DB 넣기 : value="${dto.getname() }" -->
-	<input class="textbox" name="name" value="" readonly>
+	<input class="textbox" name="name" value="${m_name }" readonly>
 	<br><br>
 	<p>&nbsp;휴대폰 번호</p>
 	<!-- DB 넣기 -->
-	<input class="textbox name="phone" value="" readonly>
+	<input class="textbox name="phone" value="${m_phone }" readonly>
 	<br><br><br>
 
 	<!-- 약관동의 -->
@@ -185,10 +188,16 @@ $(document).ready(function(){
 	</div>
 	
 	<!-- 결제하기 버튼 -->
-   	<button type="button" disabled class="btn" style="background-color:#cbcbcb" onclick="requestPay()">결제</button>
+	<c:if test="${!empty member_code_session}">
+   		<button type="button" class="btn" style="background-color:#cbcbcb" onclick="requestPay()">결제</button>
+   	</c:if>
+	<c:if test="${empty member_code_session}">
+   		<button type="button" disabled class="btn" style="background-color:#cbcbcb" onclick="alert('로그인을 먼저 진행해주세요')">결제</button>
+   	</c:if>
   </div>
 </div>
 </div>
 </form>
+<jsp:include page="include/bottom.jsp"/>
 </body>
 </html>

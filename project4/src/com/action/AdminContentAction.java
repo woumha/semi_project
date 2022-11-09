@@ -17,7 +17,7 @@ public class AdminContentAction implements Action {
 		String houseNo = request.getParameter("no").trim();
 		HouseDAO dao = HouseDAO.getInstance();
 		
-		HouseDTO content = dao.selectHouseInfo(houseNo);
+		HouseDTO content = dao.selectInfo(houseNo);
 		request.setAttribute("Cont", content);
 		
 		ActionForward forward = new ActionForward();

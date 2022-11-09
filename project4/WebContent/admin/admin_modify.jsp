@@ -11,7 +11,7 @@
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 <!-- 모달 -->
@@ -24,180 +24,316 @@
 <!-- 모달 end -->
 
 <style type="text/css">
-#Host_list_box { text-align: center; }
-#Host_list {
-	border: 1px;
-	cellspacing: 0;
-	width: 1200px;
-	align: center;
-	text-align: center;
-}
-#paging_box { text-align: center; }
-.input_box {
-	/* 둥근 입력창 스타일 */
-	width: 200px;
-	height: 32px;
-	font-size: 15px;
-	border: 0;
-	border-radius: 15px;
-	outline: none;
-	padding-left: 10px;
-	background-color: rgb(233, 233, 233);
-	/* 둥근 입력창 스타일 끝 */
-}
-.input_textbox {
-	/* 둥근 입력창 스타일 */
-	width: 200px;
-	height: auto;
-	font-size: 15px;
-	border: 0;
-	border-radius: 15px;
-	outline: none;
-	padding-left: 10px;
-	background-color: rgb(233, 233, 233);
-	/* 둥근 입력창 스타일 끝 */
-}
-.input_textbox_location {
-	/* 둥근 입력창 스타일 */
-	width: auto;
-	height: 32px;
-	font-size: 15px;
-	border: 0;
-	border-radius: 15px;
-	outline: none;
-	padding-left: 10px;
-	background-color: rgb(233, 233, 233);
-	/* 둥근 입력창 스타일 끝 */
-}
-.input_textbox_content {
-	/* 둥근 입력창 스타일 */
-	width: auto;
-	height: auto;
-	font-size: 15px;
-	border: 0;
-	border-radius: 15px;
-	outline: none;
-	padding-left: 10px;
-	background-color: rgb(233, 233, 233);
-	/* 둥근 입력창 스타일 끝 */
-}
-.input_box_person {
-	/* 둥근 입력창 스타일 */
-	width: 30px;
-	height: 30px;
-	font-size: 15px;
-	border: 0;
-	border-radius: 15px;
-	outline: none;
-	padding-left: 10px;
-	background-color: rgb(233, 233, 233);
-	/* 둥근 입력창 스타일 끝 */
-}
-.input_box_name {
-	/* 둥근 입력창 스타일 */
-	width: 150px;
-	height: 30px;
-	font-size: 15px;
-	border: 0;
-	border-radius: 15px;
-	outline: none;
-	padding-left: 10px;
-	background-color: rgb(233, 233, 233);
-	/* 둥근 입력창 스타일 끝 */
-}
-#write_title { text-align: center; margin-top: 2%; font-size: 25px; }
-#main_div { margin-top: 2%; margin-bottom: 3%; margin-left: 30%; text-align: left; }
-#sub_div_area1 .sub_div, #sub_div_area2 .sub_div { display: inline; }
-#sub_div_area1, #sub_div_area2 { margin-bottom: 20px; }
-#sub_div_area3 { margin-top: 50px; }
-#sub_div_area4 { margin-top: 30px; }
-#sub_div_area5 { margin-top: 30px; }
-#sub_div_area6 { margin-top: 50px; }
-#sub_div_area7 { text-align: center; margin-top: 50px; }
-.sub_div { margin-bottom: 20px; }
-.one_tr { padding-left: 30px; padding-right: 10px; }
-.two_tr { padding-left: 180px; padding-right: 10px; }
-.title_text { padding-right: 10px; }
-.radio_title_text { padding-right: 15px; }
-.host_btns {
-	border: 0;
-	width: 113px;
-	height: 32px;
-	margin-top: 35px;
-	border-radius: 5%;
-}
-.host_btns:hover {
-	background-color: #e85255;
-	color: white;
-	cursor: pointer;
-}
+	.input_box {
+		/* 둥근 입력창 스타일 */
+		width: 200px;
+		height: 30px;
+		font-size: 15px;
+		border: 0;
+		border-radius: 5px;
+		outline: none;
+		padding-left: 10px;
+		background-color: rgb(233, 233, 233);
+		/* 둥근 입력창 스타일 끝 */
+	}
+	.input_box_cat {
+		/* 둥근 입력창 스타일 */
+		width: 210px;
+		height: 30px;
+		font-size: 15px;
+		border: 0;
+		border-radius: 5px;
+		outline: none;
+		padding-left: 10px;
+		background-color: rgb(233, 233, 233);
+		/* 둥근 입력창 스타일 끝 */
+	}
+	.input_box_cont {
+		/* 둥근 입력창 스타일 */
+		width: 200px;
+		height: 80px;
+		font-size: 15px;
+		border: 0;
+		border-radius: 5px;
+		outline: none;
+		padding-left: 10px;
+		background-color: rgb(233, 233, 233);
+		/* 둥근 입력창 스타일 끝 */
+	}
+	#title {
+		text-align: center;
+		margin-top: 2%;
+		font-size: 25px;
+	}
+	#main {
+		margin-top: 2%;
+		margin-bottom: 3%;
+		margin-left: 12%;
+		text-align: left;
+	}
+	#sub_div_area1 .sub_div, #sub_div_area2 .sub_div { display: inline; }
+	#sub_div_area1, #sub_div_area2 { margin-bottom: 20px; margin-left: 30%; }
+	#sub_div_area3 { margin-top: 20px; }
+	#sub_div_area4 { margin-top: 30px; }
+	#sub_div_area5 { margin-top: 30px; }
+	#sub_div_area6 { margin-left: 3%;}
+	#sub_div_area7 { text-align: center; margin-top: 50px; }
+	.sub_div { margin-bottom: 20px; }
+	.sub_div_btn { margin-right: 30%; }
+	.one_tr { padding-right: 10px; padding-left: 90px;}
+	.one {width: 450px;}
+	.title_text { padding-right: 10px; }
+	.title_file { padding-left: 11%; }
+	#btn {
+		border: 0;
+		width: 113px;
+		height: 32px;
+		border-radius: 5%;
+	}
+	#btn:hover {
+		background-color: #e85255;
+		color: white;
+		cursor: pointer;
+	}
+	#border {
+		width: 80%;
+		height: 50%;
+		border: 2;
+		border-radius: 15px;
+		outline: none;
+		padding-left: 10px;
+		border-color: rgb(233, 233, 233);
+		border-style: solid;
+		padding: 3%;
+	}
+	#house_img1_preview {
+	    display:none;
+	}
+	#house_img2_preview {
+	    display:none;
+	}
+	#house_img3_preview {
+	    display:none;
+	}
+	#sub_img1 {
+		display: inline-block;
+		width: 33%;
+	}
+	
+	#sub_img2{
+		display: inline-block;
+		width: 33%;
+	}
+	
+	#sub_img3 {
+		display: inline-block;
+		width: 33%;
+	}
 </style>
 </head>
-
 <body>
 <jsp:include page="../include/top2.jsp" />
 <c:set var="dto" value="${modify }"/>
-<div id="write_title">${dto.getHouse_name()} 숙소 수정</div>
 <%-- enctype : 파일을 업로드하기 위한 속성 --%>
 	<form id="form_tag"method="post" enctype="multipart/form-data" action="<%=request.getContextPath() %>/admin_modify_ok.do">
-	<div id="main_div">
+	<div id="main">
+		<div id="border">
+		<div id="title">${dto.getHouse_name()} 숙소 수정</div><br>
 		<input type="hidden" name="house_no" value="${dto.getHouse_no() }">
 		<input type="hidden" value="${member_code_session }" name="pcode">
+		<input type="hidden" name="house_star" value="${dto.getHouse_star() }">
+		
 		<div id="sub_div_area1">
 			<div class="sub_div">
-				<span class="title_text">숙소 주인</span> <input class="input_box_name" name="house_owner" id="house_owner" value="${dto.getHouse_owner() }" readonly>
+				<span class="title_text">숙소 주인</span>
+				<input style="margin-left: 19.1%" class="input_box" name="house_owner" id="house_owner" value="${dto.getHouse_owner() }" readonly>
 			</div>
-			<div class="sub_div" style="margin-left: 30px;">
+		</div>
+		
+		<div id="sub_div_area1">
+			<div class="sub_div">
 				<span class="title_text">숙소 카테고리</span>
-				<select class="input_box_name" name="house_category" id="house_category">
-					<option value="호텔" selected>호텔</option>
-					<option value="아파트">아파트</option>
-					<option value="리조트">리조트</option>
-					<option value="게스트하우스">게스트하우스</option>
+				<select style="margin-left: 15%" class="input_box_cat" name="house_category" id="house_category">
+					<option value="호텔" <c:if test="${dto.getHouse_category() == '호텔'}"> selected </c:if>>호텔</option>
+					<option value="아파트" <c:if test="${dto.getHouse_category() == '아파트'}"> selected </c:if>>아파트</option>
+					<option value="리조트" <c:if test="${dto.getHouse_category() == '리조트'}"> selected </c:if>>리조트</option>
+					<option value="게스트하우스" <c:if test="${dto.getHouse_category() == '게스트하우스'}"> selected </c:if>>게스트하우스</option>
 				</select>
 			</div>
+		</div>
+		
+		<div id="sub_div_area1">
 			<div class="sub_div">
-				<span class="title_text" style="margin-left: 30px;">숙소 이름</span> <input class="input_box_name" name="house_name" id="house_name" value="${dto.getHouse_name() }">
+				<span class="title_text">숙소 이름</span>
+				<input style="margin-left: 19%" class="input_box" name="house_name" id="house_name" value="${dto.getHouse_name() }">
 			</div>
 		</div>
+		
 		<div id="sub_div_area2">
 			<div class="sub_div">
-				<span class="title_text">숙소 가격</span> <input type="number" class="input_box" name="house_price" id="house_price" value="${dto.getHouse_price() }">
-			</div>
-			<div class="sub_div" style="margin-left: 30px;">
-				<span class="title_text">숙소 전화번호</span> <input class="input_box" name="house_phone" id="house_phone" value="${dto.getHouse_phone() }">
-			</div>
-			<div class="sub_div" style="margin-left: 20px;">
-				<span class="title_text">숙소 인원</span> <input type="number" class="input_box_person" name="house_person" id="house_person" value="${dto.getHouse_person() }">명
+				<span class="title_text">숙소 가격</span>
+				<input style="margin-left: 19%" type="number" class="input_box" name="house_price" id="house_price" value="${dto.getHouse_price() }">
 			</div>
 		</div>
-		<div id="sub_div_area3">
+			
+		<div id="sub_div_area1">
+			<div class="sub_div" >
+				<span class="title_text">숙소 전화번호</span>
+				<input style="margin-left: 14.8%" class="input_box" name="house_phone" id="house_phone" value="${dto.getHouse_phone() }">
+			</div>
+		</div>
+			
+		<div id="sub_div_area1">
+			<div class="sub_div">
+				<span class="title_text">숙소 인원</span>
+				<input style="margin-left: 18.9%" type="number" class="input_box" name="house_person" id="house_person" value="${dto.getHouse_person() }">
+			</div>
+		</div>
+		
+		<div id="sub_div_area2">
 			<div class="sub_div">
 				<table>
 					<tr>
 						<th><span class="title_text">숙소 주소</span></th>
-						<td><textarea class="input_textbox_location" rows="1" cols="100" name="house_location" id="house_location">${dto.getHouse_location() }</textarea></td>
+						<td><textarea style="margin-left: 63.4%" class="input_box" rows="1" cols="100" name="house_location" id="house_location">${dto.getHouse_location() }</textarea></td>
 					</tr>
 				</table>
 			</div>
 		</div>
-		<div id="sub_div_area4">
+		
+		<div id="sub_div_area2">
 			<div class="sub_div">
 				<table>
 					<tr>
-						<th><span class="title_text">숙소 소개</span></th>
-						<td><textarea class="input_textbox_content" rows="10" cols="100" name="house_content" id="house_content"></textarea></td>
+						<th><span class="title_cont">숙소 소개</span></th>
+						<td><textarea style="margin-left: 68%" class="input_box_cont" rows="1" cols="100" name="house_content" id="house_house_contentlocation">${dto.getHouse_content() }</textarea></td>
 					</tr>
 				</table>
 			</div>
 		</div>
-		<div id="sub_div_area5">
-			<div class="sub_div">
-				<span class="title_text">파일첨부1</span> <input type="file" name="house_img1" id="house_img1">
-				<span class="title_text">파일첨부2</span> <input type="file" name="house_img2" id="house_img2">
-				<span class="title_text">파일첨부3</span> <input type="file" name="house_img3" id="house_img3">
-			</div>
+			
+		<div id="sub_img1">
+				<span class="title_file">파일첨부1 : </span>
+					<input type="file" name="house_img1"  style="width: 215px;" id="house_img1">
+				    	<br>
+				    	<span id="house_img1_preview">
+				    		<img style="margin-left: 10%" src="#"  width="100px" />
+					        <br>
+					        <a href="#" style="margin-left: 10%">삭제</a>
+				    	</span>
 		</div>
+				    	
+		<div id="sub_img2">
+				<span class="title_file">파일첨부2 : </span>
+					<input type="file" name="house_img2" style="width: 215px;" id="house_img2">
+				    	<br>
+				    	<span id="house_img2_preview">
+				    		<img src="#" style="margin-left: 10%"  width="100px" />
+					        <br>
+					        <a href="#" style="margin-left: 10%">삭제</a>
+				    	</span>
+		</div>
+		
+		<div id="sub_img3">	    	
+				<span class="title_file">파일첨부3 : </span>
+					<input type="file" name="house_img3" style="width: 215px;" id="house_img3">
+				    	<br>
+				    	<span id="house_img3_preview">
+				    		<img src="#" style="margin-left: 10%"  width="100px" />
+					        <br>
+					        <a href="#" style="margin-left: 10%" >삭제</a>
+				    	</span>
+		</div>
+				    
+					
+				    
+<script type="text/javascript">
+	$('#house_img1').on('change', function() {
+					        
+	ext = $(this).val().split('.').pop().toLowerCase(); 
+					        
+		if($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
+			resetFormElement($(this)); 
+			window.alert('이미지 파일이 아닙니다! (gif, png, jpg, jpeg 만 업로드 가능)');
+		} else {
+			file = $('#house_img1').prop("files")[0];
+			blobURL = window.URL.createObjectURL(file);
+			$('#house_img1_preview img').attr('src', blobURL);
+			$('#house_img1_preview').slideDown();
+			$(this).slideUp(); 
+		}
+	});
+					
+	$('#house_img1_preview a').bind('click', function() {
+		resetFormElement($('#house_img1'));
+		$('#house_img1').slideDown();
+		$(this).parent().slideUp();
+		return false;
+	});
+					
+	function resetFormElement(e) {
+		e.wrap('<form>').closest('form').get(0).reset();
+		e.unwrap(); 
+	}
+	
+	$('#house_img2').on('change', function() {
+        
+		ext = $(this).val().split('.').pop().toLowerCase(); 
+						        
+			if($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -2) {
+				resetFormElement($(this)); 
+				window.alert('이미지 파일이 아닙니다! (gif, png, jpg, jpeg 만 업로드 가능)');
+			} else {
+				file = $('#house_img2').prop("files")[0];
+				blobURL = window.URL.createObjectURL(file);
+				$('#house_img2_preview img').attr('src', blobURL);
+				$('#house_img2_preview').slideDown();
+				$(this).slideUp(); 
+			}
+		});
+						
+		$('#house_img2_preview a').bind('click', function() {
+			resetFormElement($('#house_img2'));
+			$('#house_img2').slideDown();
+			$(this).parent().slideUp();
+			return false;
+		});
+						
+		function resetFormElement(e) {
+			e.wrap('<form>').closest('form').get(0).reset();
+			e.unwrap(); 
+		}
+		
+		$('#house_img3').on('change', function() {
+	        
+			ext = $(this).val().split('.').pop().toLowerCase(); 
+							        
+				if($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -3) {
+					resetFormElement($(this)); 
+					window.alert('이미지 파일이 아닙니다! (gif, png, jpg, jpeg 만 업로드 가능)');
+				} else {
+					file = $('#house_img3').prop("files")[0];
+					blobURL = window.URL.createObjectURL(file);
+					$('#house_img3_preview img').attr('src', blobURL);
+					$('#house_img3_preview').slideDown();
+					$(this).slideUp(); 
+				}
+			});
+							
+			$('#house_img3_preview a').bind('click', function() {
+				resetFormElement($('#house_img3'));
+				$('#house_img3').slideDown();
+				$(this).parent().slideUp();
+				return false;
+			});
+							
+			function resetFormElement(e) {
+				e.wrap('<form>').closest('form').get(0).reset();
+				e.unwrap(); 
+			}
+</script>
+		
+		<br>
 		<div id="sub_div_area6">
 			<table style="border-collapse: separate; border-spacing:0px 20px;">
 				<div class="sub_div">
@@ -205,18 +341,18 @@
 						<th class="one_tr">
 							<img src="main_img/top_water_40.png">
 						</th>
-						<td>
+						<td class="one">
 							<span class="radio_title_text">수변인접 여부</span>
-							<input class="input_radio" type="radio" name="house_water" id="house_water" value="0" checked>없음
-							<input class="input_radio" type="radio" name="house_water" id="house_water" value="1">있음
+							<input style="margin-left: 5%"  type="radio" name="house_water" value="0" <c:if test="${dto.getHouse_water() == 0}">checked</c:if>> 없음
+							<input style="margin-left: 5%"  type="radio" name="house_water" value="1" <c:if test="${dto.getHouse_water() == 1}">checked</c:if>> 있음
 						</td>
 						<th class="two_tr">
 							<img src="main_img/top_pool_40.png">
 						</th>
 						<td>
 							<span class="radio_title_text" id="house_price">수영장 여부</span>
-							<input class="input_radio" type="radio" name="house_pool" id="house_pool" value="0" checked>없음
-							<input class="input_radio" type="radio" name="house_pool" id="house_pool" value="1">있음
+							<input style="margin-left: 13.5%" type="radio" name="house_pool" value="0" <c:if test="${dto.getHouse_pool() == 0}">checked</c:if>> 없음
+							<input style="margin-left: 5%" type="radio" name="house_pool" value="1" <c:if test="${dto.getHouse_pool() == 1}">checked</c:if>> 있음
 						</td>
 					</tr>
 				</div>
@@ -225,18 +361,18 @@
 						<th class="one_tr">
 							<img src="main_img/top_ski_40.png">
 						</th>
-						<td>
+						<td class="one">
 							<span class="radio_title_text" id="house_price">스키장 여부</span>
-							<input class="input_radio" type="radio" name="house_ski" id="house_ski" value="0" checked>없음
-							<input class="input_radio" type="radio" name="house_ski" id="house_ski" value="1">있음
+							<input style="margin-left: 8%" type="radio" name="house_ski" value="0" <c:if test="${dto.getHouse_ski() == 0}">checked</c:if>> 없음
+							<input style="margin-left: 5%" type="radio" name="house_ski" value="1" <c:if test="${dto.getHouse_ski() == 1}">checked</c:if>> 있음
 						</td>
 						<th class="two_tr">
 							<img src="main_img/food_40.png">
 						</th>
 						<td>
 							<span class="radio_title_text" id="house_price">식사제공 여부</span>
-							<input class="input_radio" type="radio" name="house_food" id="house_food" value="0" checked>없음
-							<input class="input_radio" type="radio" name="house_food" id="house_food" value="1">있음
+							<input style="margin-left: 9.5%" type="radio" name="house_food" value="0" <c:if test="${dto.getHouse_food() == 0}">checked</c:if>> 없음
+							<input style="margin-left: 5%" type="radio" name="house_food" value="1" <c:if test="${dto.getHouse_food() == 1}">checked</c:if>> 있음
 						</td>
 					</tr>
 				</div>
@@ -245,18 +381,18 @@
 						<th class="one_tr">
 							<img src="main_img/top_parking_40.png">
 						</th>
-						<td>
+						<td class="one">
 							<span class="radio_title_text" id="house_price">무료주차 여부</span>
-							<input class="input_radio" type="radio" name="house_parking" id="house_parking" value="0" checked>없음
-							<input class="input_radio" type="radio" name="house_parking" id="house_parking" value="1">있음
+							<input style="margin-left: 5%" type="radio" name="house_parking" value="0" <c:if test="${dto.getHouse_parking() == 0}">checked</c:if>>  없음
+							<input style="margin-left: 5%" type="radio" name="house_parking" value="1" <c:if test="${dto.getHouse_parking() == 1}">checked</c:if>>  있음
 						</td>
 						<th class="two_tr">
 							<img src="main_img/top_grill_40.png">
 						</th>
-						<td>
+						<td style="width: 400px;">
 							<span class="radio_title_text" id="house_price">바베큐 그릴 여부</span>
-							<input class="input_radio" type="radio" name="house_grill" id="house_grill" value="0" checked>없음
-							<input class="input_radio" type="radio" name="house_grill" id="house_grill" value="1">있음
+							<input style="margin-left: 5%" type="radio" name="house_grill" value="0" <c:if test="${dto.getHouse_grill() == 0}">checked</c:if>>  없음
+							<input style="margin-left: 5%" type="radio" name="house_grill" value="1" <c:if test="${dto.getHouse_grill() == 1}">checked</c:if>>  있음
 						</td>
 					</tr>
 				</div>
@@ -265,28 +401,29 @@
 						<th class="one_tr">
 							<img src="main_img/top_smoking_40.png">
 						</th>
-						<td>
+						<td class="one">
 							<span class="radio_title_text" id="house_price">흡연장 여부</span>
-							<input class="input_radio" type="radio" name="house_smoking" id="house_smoking" value="0" checked>없음
-							<input class="input_radio" type="radio" name="house_smoking" id="house_smoking" value="1">있음
+							<input style="margin-left: 8%" type="radio" name="house_smoking" value="0" <c:if test="${dto.getHouse_smoking() == 0}">checked</c:if>>  없음
+							<input style="margin-left: 5%" type="radio" name="house_smoking" value="1" <c:if test="${dto.getHouse_smoking() == 1}">checked</c:if>>  있음
 						</td>
 						<th class="two_tr">
 							<img src="main_img/top_gym_40.png">
 						</th>
 						<td>
 							<span class="radio_title_text" id="house_price">헬스장 여부</span>
-							<input class="input_radio" type="radio" name="house_gym" id="house_gym" value="0" checked>없음
-							<input class="input_radio" type="radio" name="house_gym" id="house_gym" value="1">있음
+							<input style="margin-left: 13.5%" type="radio" name="house_gym" value="0" <c:if test="${dto.getHouse_gym() == 0}">checked</c:if>> 없음
+							<input style="margin-left: 5%" type="radio" name="house_gym" value="1" <c:if test="${dto.getHouse_gym() == 1}">checked</c:if>> 있음
 						</td>
 					</tr>
 				</div>
 			</table>
 		</div>
 	</div>
+	</div>
 	<div id="sub_div_area7">
 		<div class="sub_div">
-			<input type="submit" value="숙소수정" class="host_btns">&nbsp;&nbsp;&nbsp;
-			<input type="reset" value="다시작성" class="host_btns">
+			<input id="btn" type="submit" value="숙소수정" class="host_btns">&nbsp;&nbsp;&nbsp;
+			<input id="btn" type="reset" value="다시작성" class="host_btns">
 		</div>
 	</div>
 </form>

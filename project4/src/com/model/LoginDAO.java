@@ -161,7 +161,7 @@ public class LoginDAO {
 			return result;
 		} //memberSignUp
 		
-		
+		//pmember_code(session)
 		public Long getMemberCode(String ID) {
 			long result = 0;
 			openConn();
@@ -182,4 +182,55 @@ public class LoginDAO {
 			}
 			return result;
 		}
+		//pmember_code(session)
+		
+		//pmember_name(session)
+		public String getMemberName(String Name) {
+			String name1 = "";
+			String name2 = "";
+			String result = "";
+			openConn();
+			
+			try {
+				sql = "select pmember_firstname, pmember_lastname from pmember where pmember_email = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, Name);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					name1 = rs.getString("pmember_firstname");
+					name2 = rs.getString("pmember_lastname");
+					result = name1+name2;
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				closeConn(rs, pstmt, con);
+			}
+			return result;
+		}
+		//pmember_name(session)
+		
+		//pmember_phone(session)
+		public String getMemberPhone(String Phone) {
+			String result = "";
+			openConn();
+				
+			try {
+				sql = "select pmember_phone from pmember where pmember_email = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, Phone);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					result = rs.getString("pmember_phone");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				closeConn(rs, pstmt, con);
+			}
+			return result;
+		}
+		//pmember_phone(session)
 }

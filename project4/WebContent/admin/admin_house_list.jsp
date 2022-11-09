@@ -20,10 +20,6 @@ pageEncoding="UTF-8"%>
 		border-collapse: separate;
   		border-spacing: 0 10px;
 	}
-	
-	#box {
-		margin-left: 8%;
-	}
 
 	#list {
 		border: 1px;
@@ -31,14 +27,6 @@ pageEncoding="UTF-8"%>
 		width: 1200px;
 		align: center;
 		text-align: center;
-	}
-	
-	#paging {
-		margin-left: 44%;
-	}
-	
-	#paging_1 {
-		margin-left: 45%;
 	}
 	
 	.btn {
@@ -57,7 +45,7 @@ pageEncoding="UTF-8"%>
 </head>
 <body>
    <jsp:include page="../include/top2.jsp"/>
-   <div id="box">
+   <div id="box" style="text-align: -webkit-center;">
       <table id="list">
          <tr>
             <th>숙소 번호</th>
@@ -110,7 +98,7 @@ pageEncoding="UTF-8"%>
       </table>
       
       <!-- 페이징 처리 -->
-      <div id="paging">
+      <div id="paging" align="center">
       <c:if test="${page > block }">
 			<a href="admin_house_list.do?page=1&p_page=${p_page }">◀◀︎</a>
 			<a href="admin_house_list.do?page=${startBlock - 1 }&p_page=${p_page }">◀︎</a>
@@ -133,7 +121,7 @@ pageEncoding="UTF-8"%>
      </div>
       <br><br>
       
-      <div id="box">
+      <div id="box" style="text-align: -webkit-center;">
       <table id="list">
          <tr>
             <th>코드</th>
@@ -180,7 +168,7 @@ pageEncoding="UTF-8"%>
       </table>
       
       <!-- 페이징 처리 -->
-      <div id="paging_1">
+      <div id="paging_1" align="center">
       <c:if test="${p_page > p_block }">
 			<a href="admin_house_list.do?p_page=1&page=${page }">◀◀︎</a>
 			<a href="admin_house_list.do?p_page=${p_startBlock - 1 }&page=${page }">◀︎</a>

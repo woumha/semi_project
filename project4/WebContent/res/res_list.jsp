@@ -29,7 +29,6 @@ pageEncoding="UTF-8"%>
    <div id="box">
       <table id="list">
          <tr>
-            <th>No.</th>
             <th>숙소 이름</th>
             <th>체크인</th>
             <th>체크아웃</th>
@@ -43,7 +42,6 @@ pageEncoding="UTF-8"%>
          <c:if test="${!empty list }">
             <c:forEach items="${list }" var="dto">
                <tr>
-                  <td> ${dto.getId() } </td>
                   <td>
 					   <a href="<%=request.getContextPath() %>/res_content.do?pcode=${member_code_session }&no=${dto.getHouse_no() }">
 				  	   ${dto.getHouse_name() }</a>

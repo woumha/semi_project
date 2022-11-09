@@ -6,7 +6,7 @@ div.card {
 .cover {
     display: flex;
     justify-content: space-between;
-    margin: 100px 300px 100px 300px;
+    margin: 1.5% 300px 1.5% 300px;
 }
 .cover_in {
 	display: flex;
@@ -18,6 +18,9 @@ div.card {
 	height: 40px;
 	width: 400px;
 	padding-left: 10px;
+}
+.card {
+	position: inherit;
 }
 
 /* 모달 */    
