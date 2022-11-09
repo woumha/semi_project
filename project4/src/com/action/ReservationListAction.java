@@ -46,7 +46,7 @@ public class ReservationListAction implements Action {
 		
 		forward.setRedirect(false);
 		
-		forward.setPath("view/test_k.jsp");
+		forward.setPath("house_list.do");
 		
 		return forward;
 	}
