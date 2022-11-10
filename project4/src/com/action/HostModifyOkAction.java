@@ -19,7 +19,7 @@ public class HostModifyOkAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 		// 첨부파일이 저장될 위치(경로) 설정.
-		String saveFolder = "C:\\NCS\\workspace(jsp)\\project6\\WebContent\\upload";
+		String saveFolder = "C:\\NCS\\workspace(jsp)\\project10\\WebContent\\upload";
 				
 		// 첨부파일 용량(크기) 제한 - 파일 업로드 최대 크기
 		int fileSize = 10 * 1024 * 1024;  // 10MB
@@ -54,6 +54,8 @@ public class HostModifyOkAction implements Action {
 		if(house_img2 == null) {house_img2 = multi.getParameter("house_img2_old");}
 		String house_img3 = multi.getFilesystemName("house_img3");
 		if(house_img3 == null) {house_img3 = multi.getParameter("house_img3_old");}
+		String latitude = multi.getParameter("latitude").trim();
+		String longitude = multi.getParameter("longitude").trim();
 		
 		/* long pmember_code = Long.parseLong(request.getParameter("pcode").trim()); */
 		
@@ -78,6 +80,8 @@ public class HostModifyOkAction implements Action {
 		dto.setHouse_img1(house_img1);
 		dto.setHouse_img2(house_img2);
 		dto.setHouse_img3(house_img3);
+		dto.setLatitude(latitude);
+		dto.setLongitude(longitude);
 		
 		HostingDAO dao = HostingDAO.getInstance();
 		

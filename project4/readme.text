@@ -39,3 +39,27 @@ top.jsp :
 
             2) 관리자일 때 '관리자 페이지' 클릭 시 숙소정보들과 회원정보를 수정할 수 있는 페이지로 이동 경로 설정
                 유저일 때 '결제 내역' 클릭 시 그 유저가 결제한 내역들이 나오는 페이지로 이동 경로 설정
+==============================================================================
+2022-11-10 업데이트 내용 (장동환)
+1) house 테이블에 
+latitude / number(30)
+longitude / number(30)
+위 컬럼 추가
+
+2) houseDTO에
+long latitude
+long longitude
+위 내용 추가
++
+HostWriteOkAction
+HostModifyAction
+HostModifyOkAction
++
+hostingDAO
+houseDAO
+
+3) 지도 내용 추가
+hostCont.jsp
+hostWrite.jsp
+houseModify.jsp
+================================================================================

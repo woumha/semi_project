@@ -25,8 +25,8 @@ public class HouseDTO {
 	private int house_grill;
 	private int house_smoking;
 	private int house_gym;
-	
-	
+	private String latitude;
+	private String longitude;
 	public int getHouse_no() {
 		return house_no;
 	}
@@ -170,5 +170,21 @@ public class HouseDTO {
 	}
 	public void setHouse_gym(int house_gym) {
 		this.house_gym = house_gym;
-	}	
+	}
+	public String getLatitude() {
+		return latitude;
+	}
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
+	}
+	public String getLongitude() {
+		return longitude;
+	}
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
+	}
+	
+	
+	
+	
 }

@@ -7,22 +7,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 <!-- 모달 -->
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 <!-- 모달 end -->
-
 <style type="text/css">
 #Host_list_box { text-align: center; }
 #Host_list {
@@ -182,6 +177,52 @@
 				<span class="title_text">파일첨부3</span> <input type="file" name="house_img3" id="house_img3">
 			</div>
 		</div>
+		
+		
+		<div id="map_area">
+			<div id="map" style="width:880px;height:500px;"></div>
+			<p><em>지도를 클릭해주세요!</em></p> 
+			<input id="latitude" name="latitude" value="0" readonly>
+			<input id="longitude" name="longitude" value="0" readonly>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b133548e794b66e5c1831469d0d70884"></script>
+<script>
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    		mapOption = { 
+        		center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+       			level: 3 // 지도의 확대 레벨
+    		};
+
+		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+		// 지도를 클릭한 위치에 표출할 마커입니다
+		var marker = new kakao.maps.Marker({ 
+   		// 지도 중심좌표에 마커를 생성합니다 
+   		position: map.getCenter() 
+		}); 
+		// 지도에 마커를 표시합니다
+		marker.setMap(map);
+
+		// 지도에 클릭 이벤트를 등록합니다
+		// 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
+		kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
+    		// 클릭한 위도, 경도 정보를 가져옵니다 
+    		var latlng = mouseEvent.latLng; 
+    
+    		// 마커 위치를 클릭한 위치로 옮깁니다
+    		marker.setPosition(latlng);
+    
+    		var message = '클릭한 위치의 위도는 ' + latlng.getLat() + ' 이고, ';
+    		message += '경도는 ' + latlng.getLng() + ' 입니다';
+    
+    		document.getElementById('latitude').value = latlng.getLat(); 
+    		document.getElementById('longitude').value = latlng.getLng(); 
+    		
+		});
+		</script>
+		</div>
+		
+		
+		
 		<div id="sub_div_area6">
 			<table style="border-collapse: separate; border-spacing:0px 20px;">
 				<div class="sub_div">
