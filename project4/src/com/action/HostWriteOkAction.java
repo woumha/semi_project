@@ -25,7 +25,7 @@ public class HostWriteOkAction implements Action {
 		// 파일 업로드 시에는 설정 내용이 있음.
 		// 1. 첨부 파일 저장 경로 지정.
 		String saveFolder = 
-			"C:\\NCS\\workspace(jsp)\\project6\\WebContent\\upload";
+			"C:\\NCS\\workspace(jsp)\\project10\\WebContent\\upload";
 		
 		// 2. 첨부 파일 크기 지정.
 		int fileSize = 10 * 1024 * 1024;  // 10MB
@@ -56,6 +56,9 @@ public class HostWriteOkAction implements Action {
 		
 		int house_person = Integer.parseInt(multi.getParameter("house_person").trim());
 		
+		String latitude = multi.getParameter("latitude").trim();
+		String longitude = multi.getParameter("longitude").trim();
+		
 		// 자료실 폼 페이지에서 type="file" 로 되어 있으면
 		// getFile() 메서드로 받아주어야 함.
 		String house_img1 = multi.getFilesystemName("house_img1");
@@ -81,7 +84,10 @@ public class HostWriteOkAction implements Action {
 		System.out.println("house_smoking >>> " + house_smoking);
 		System.out.println("house_gym >>> " + house_gym);
 		System.out.println("===== 옵션확인용 끝 ===============================");
-		
+		System.out.println("===== 지도 확인 ==================================");
+		System.out.println("latitude >>> " + latitude);
+		System.out.println("longitude >>> " + longitude);
+		System.out.println("===== 지도 확인 끝 ================================");
 		// 히든으로 넘어온 데이터도 받아주어야 한다.
 		long pmember_code = Long.parseLong(multi.getParameter("pcode"));
 		
@@ -112,6 +118,8 @@ public class HostWriteOkAction implements Action {
 		dto.setHouse_grill(house_grill);
 		dto.setHouse_smoking(house_smoking);
 		dto.setHouse_gym(house_gym);
+		dto.setLatitude(latitude);
+		dto.setLongitude(longitude);
 
 		int res = dao.writeHost(dto);
 		

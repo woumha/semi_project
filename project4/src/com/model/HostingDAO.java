@@ -177,7 +177,7 @@ public class HostingDAO {
 				count = rs.getInt(1) + 1;
 			}
 			
-			sql = "insert into house values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default, sysdate, ?, ?, ?, default, ?, ?, ?, ?, ?, ?, ?, ?)";
+			sql = "insert into house values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default, sysdate, ?, ?, ?, default, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -202,6 +202,8 @@ public class HostingDAO {
 			pstmt.setInt(19, dto.getHouse_grill());
 			pstmt.setInt(20, dto.getHouse_smoking());
 			pstmt.setInt(21, dto.getHouse_gym());
+			pstmt.setString(22, dto.getLatitude());
+			pstmt.setString(23, dto.getLongitude());
 			
 			result = pstmt.executeUpdate();
 			
@@ -256,6 +258,8 @@ public class HostingDAO {
 				dto.setHouse_grill(rs.getInt("house_grill"));
 				dto.setHouse_smoking(rs.getInt("house_smoking"));
 				dto.setHouse_gym(rs.getInt("house_gym"));
+				dto.setLatitude(rs.getString("latitude"));
+				dto.setLongitude(rs.getString("longitude"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -271,7 +275,7 @@ public class HostingDAO {
 		int check = 0 ;
 		
 		try {
-			sql = "update house set house_name = ?, house_category = ?, house_location = ?, house_price = ?, house_content = ?, house_phone = ?, house_person = ?, house_img1 = ?, house_img2 = ?, house_img3 = ?, house_water = ?, house_pool = ?, house_ski = ?, house_food = ?, house_parking = ?, house_grill = ?, house_smoking = ?, house_gym = ? where house_no = ?";
+			sql = "update house set house_name = ?, house_category = ?, house_location = ?, house_price = ?, house_content = ?, house_phone = ?, house_person = ?, house_img1 = ?, house_img2 = ?, house_img3 = ?, house_water = ?, house_pool = ?, house_ski = ?, house_food = ?, house_parking = ?, house_grill = ?, house_smoking = ?, house_gym = ?, latitude = ?, longitude = ? where house_no = ?";
 
 			pstmt = con.prepareStatement(sql);
 			
@@ -293,7 +297,9 @@ public class HostingDAO {
 			pstmt.setInt(16, dto.getHouse_grill());
 			pstmt.setInt(17, dto.getHouse_smoking());
 			pstmt.setInt(18, dto.getHouse_gym());
-			pstmt.setInt(19, dto.getHouse_no());
+			pstmt.setString(19, dto.getLatitude());
+			pstmt.setString(20, dto.getLongitude());
+			pstmt.setInt(21, dto.getHouse_no());
 			
 			check = pstmt.executeUpdate();
 			
