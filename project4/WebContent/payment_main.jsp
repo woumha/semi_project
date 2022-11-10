@@ -11,6 +11,7 @@ int houseprice = Integer.parseInt(request.getParameter("houseprice"));
 String houseImg1 = request.getParameter("houseImg1");
 int id = Integer.parseInt(request.getParameter("houseNo"));
 int count = Integer.parseInt(request.getParameter("count"));
+int result = Integer.parseInt(request.getParameter("result"));
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -26,7 +27,6 @@ int count = Integer.parseInt(request.getParameter("count"));
 <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 <!-- iamport.payment.js -->
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
-<script src="JS/houseDetail.js"> </script>
 <script>
 //약관동의
 $(document).ready(function(){
@@ -107,7 +107,7 @@ $(document).ready(function(){
   </script>
 </head>
 <body>
-<jsp:include page="include/top.jsp"/>
+<jsp:include page="include/top2.jsp"/>
 <form method="post" id="form1">
 <div class="cover">
 
@@ -120,7 +120,7 @@ $(document).ready(function(){
 	<br><br>
 	<p>&nbsp;휴대폰 번호</p>
 	<!-- DB 넣기 -->
-	<input class="textbox name="phone" value="${m_phone }" readonly>
+	<input class="textbox" name="phone" value="${m_phone }" readonly>
 	<br><br><br>
 
 	<!-- 약관동의 -->
@@ -168,13 +168,17 @@ $(document).ready(function(){
   
     <div class="cover_in">
 	    <div class="cont" id="startDate">체크인</div>
-	    <div><input type="date" name="startDate" id="startDate" value="<%=startDate %>"></div>
+	    <div>
+	    	<%=startDate %>
+	    </div>
 	</div>
 	<p></p>
 	
 	<div class="cover_in">
 	    <div class="cont" id="endDate">체크아웃</div>
-	    <div><input type="date" name="endDate" id="endDate" value="<%=endDate %>"></div>
+	    <div>
+	    	<%=endDate %>
+	    </div>
 	</div>
 	<!-- 수정 끝 -->
 	
@@ -184,7 +188,7 @@ $(document).ready(function(){
     <!-- 텍스트 양쪽 끝에 위치 -->
     <div class="cover_in">
 	    <div class="cont">요금</div>
-	    <div><%=houseprice %>원</div>
+	    <div><%=result %>원</div>
 	</div>
 	
 	<!-- 결제하기 버튼 -->
