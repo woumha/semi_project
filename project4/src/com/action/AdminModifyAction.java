@@ -21,7 +21,7 @@ public class AdminModifyAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		HouseDTO dto = new HouseDTO();
 		
-		String saveFolder = "/Users/kimkyungyoung/workspace(jsp)/.metadata/.plugins/org.eclipse.wst.server.core/tmp1/wtpwebapps/project_ex/upload";
+		String saveFolder = "C:\\NCS\\workspace(jsp)\\project11\\WebContent\\upload";
 				
 		int fileSize = 10 * 1024 * 1024;
 				
@@ -43,6 +43,8 @@ public class AdminModifyAction implements Action {
 		int house_grill = Integer.parseInt(multi.getParameter("house_grill"));
 		int house_smoking = Integer.parseInt(multi.getParameter("house_smoking"));
 		int house_gym = Integer.parseInt(multi.getParameter("house_gym"));
+		String latitude = multi.getParameter("latitude");
+		String longitude = multi.getParameter("longitude");
 		String house_update = multi.getParameter("house_update").trim();
 		
 		String upload_file1 = multi.getFilesystemName("house_img1");
@@ -73,6 +75,8 @@ public class AdminModifyAction implements Action {
 		dto.setHouse_grill(house_grill);
 		dto.setHouse_smoking(house_smoking);
 		dto.setHouse_gym(house_gym);
+		dto.setLatitude(latitude);
+		dto.setLongitude(longitude);
 		dto.setHouse_update(house_update);
 		
 		HouseDAO dao = HouseDAO.getInstance();

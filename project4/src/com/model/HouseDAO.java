@@ -454,6 +454,8 @@ public class HouseDAO {
 					dto.setHouse_grill(rs.getInt("house_grill"));
 					dto.setHouse_smoking(rs.getInt("house_smoking"));
 					dto.setHouse_gym(rs.getInt("house_gym"));
+					dto.setLatitude(rs.getString("latitude"));
+					dto.setLongitude(rs.getString("longitude"));
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -513,7 +515,7 @@ public class HouseDAO {
 				
 				if(rs.next()) {
 					if(dto.getHouse_img1() == null) {
-						sql = "update house set house_name = ?, house_category = ?, house_location = ?, house_price = ?, house_content = ?, house_phone = ?, house_person = ?, house_update = sysdate, house_water = ?, house_pool = ?, house_ski = ?, house_food = ?, house_parking = ?, house_grill = ?, house_smoking = ?, house_gym = ? where house_no = ?";
+						sql = "update house set house_name = ?, house_category = ?, house_location = ?, house_price = ?, house_content = ?, house_phone = ?, house_person = ?, house_update = sysdate, house_water = ?, house_pool = ?, house_ski = ?, house_food = ?, house_parking = ?, house_grill = ?, house_smoking = ?, house_gym = ?, latitude = ?, longitude = ? where house_no = ?";
 						pstmt = con.prepareStatement(sql);
 						pstmt.setString(1, dto.getHouse_name());
 						pstmt.setString(2, dto.getHouse_category());
@@ -530,9 +532,11 @@ public class HouseDAO {
 						pstmt.setInt(13, dto.getHouse_grill());
 						pstmt.setInt(14, dto.getHouse_smoking());
 						pstmt.setInt(15, dto.getHouse_gym());
+						pstmt.setString(16, dto.getLatitude());
+						pstmt.setString(17, dto.getLongitude());
 						pstmt.setInt(16, dto.getHouse_no());
 					} else {	//수정폼 페이지에서 첨부파일을 선택한 경우
-						sql = "update house set house_name = ?, house_category = ?, house_location = ?, house_price = ?, house_content = ?, house_phone = ?, house_person = ?, house_img1 = ?, house_img2 = ?, house_img3 = ?, house_update = sysdate, house_water = ?, house_pool = ?, house_ski = ?, house_food = ?, house_parking = ?, house_grill = ?, house_smoking = ?, house_gym = ? where house_no = ?";
+						sql = "update house set house_name = ?, house_category = ?, house_location = ?, house_price = ?, house_content = ?, house_phone = ?, house_person = ?, house_img1 = ?, house_img2 = ?, house_img3 = ?, house_update = sysdate, house_water = ?, house_pool = ?, house_ski = ?, house_food = ?, house_parking = ?, house_grill = ?, house_smoking = ?, house_gym = ?, latitude = ?, longitude = ? where house_no = ?";
 						pstmt = con.prepareStatement(sql);
 						pstmt.setString(1, dto.getHouse_name());
 						pstmt.setString(2, dto.getHouse_category());
@@ -552,7 +556,9 @@ public class HouseDAO {
 						pstmt.setInt(16, dto.getHouse_grill());
 						pstmt.setInt(17, dto.getHouse_smoking());
 						pstmt.setInt(18, dto.getHouse_gym());
-						pstmt.setInt(19, dto.getHouse_no());
+						pstmt.setString(19, dto.getLatitude());
+						pstmt.setString(20, dto.getLongitude());
+						pstmt.setInt(21, dto.getHouse_no());
 					}
 					result = pstmt.executeUpdate();
 				} 
@@ -670,6 +676,8 @@ public class HouseDAO {
 					dto.setHouse_grill(rs.getInt("house_grill"));
 					dto.setHouse_smoking(rs.getInt("house_smoking"));
 					dto.setHouse_gym(rs.getInt("house_gym"));
+					dto.setLatitude(rs.getString("latitude"));
+					dto.setLongitude(rs.getString("longitude"));
 	            }
 	        } catch (SQLException e) {
 				// TODO Auto-generated catch block
