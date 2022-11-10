@@ -1,13 +1,8 @@
 @charset "UTF-8";
 
-*{
-	font-family: Georgia, "Malgun Gothic", serif;
-	line-height: 200%;
-	}
 
 
-hr{
-	
+hr {
 	background-color: #A6A6A6;
 	height: 1px;
 	border: 0;
@@ -15,29 +10,23 @@ hr{
 	padding-right: 15%;
 }
 
-div1 > hr{
-		
+div1>hr {
 	background-color: #A6A6A6;
 	height: 1px;
 	border: 0;
 }
-	
-	
-	div1 > br{
-	
-	line-height: 100%;
-	
-	}
 
-.star{
-	color : #FFE400;
-	
+div1>br {
+	line-height: 100%;
+}
+
+.star {
+	color: #FFE400;
 }
 
 .flex_row {
 	display: flex;
 	padding-left: 15%;
-	
 }
 
 .flex_col {
@@ -45,47 +34,36 @@ div1 > hr{
 	flex-direction: column;
 }
 
-.div1{
-
+.div1 {
 	padding-left: 15%;
 	padding-right: 15%;
-	
 }
 
-
-
-.div1 > .img > div{
-	
- float: left; width: 50%;
+.div1>.img>div {
+	float: left;
+	width: 50%;
 }
-.div1 > .img > div > img{
-	
+
+.div1>.img>div>img {
 	width: 7%;
-	vertical-align:middle;
+	vertical-align: middle;
 }
 
-
-.div1 > .img > div> span{
-	
-margin-top:20px;
-font-size:18px;
+.div1>.img>div>span {
+	margin-top: 20px;
+	font-size: 18px;
 }
 
-.div1 > .img {
+.div1>.img {
 	height: 200px;
 }
-.div1 > .img > hr{
+
+.div1>.img>hr {
 	background-color: #A6A6A6;
 	height: 1px;
-	border: 0;	
-	
-	
+	border: 0;
 }
 
-
-
-.div1 > .info {
-	
+.div1>.info {
 	height: 150px;
-	
 }
