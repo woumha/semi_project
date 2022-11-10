@@ -51,7 +51,7 @@ public class ReservationDAO {
 		try {
 			sql = "select * from reservation";
 			pstmt = con.prepareStatement(sql);
-			rs = pstmt.executeQuery();	
+			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
 				ReservationDTO dto = new ReservationDTO();
