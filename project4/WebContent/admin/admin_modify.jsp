@@ -195,7 +195,52 @@
 				<table>
 					<tr>
 						<th><span class="title_text">숙소 주소</span></th>
-						<td><textarea style="margin-left: 63.4%" class="input_box" rows="1" cols="100" name="house_location" id="house_location">${dto.getHouse_location() }</textarea></td>
+						<td>
+							<textarea style="margin-left: 63.4%" class="input_box" rows="1" cols="100" name="house_location" id="house_location">${dto.getHouse_location() }</textarea>
+		<div id="map_area">
+			<div id="map" style="width:880px;height:500px;"></div>
+			<p><em>지도를 클릭해주세요!</em></p> 
+			<input id="latitude" name="latitude" value="${dto.getLatitude() }" readonly>
+			<input id="longitude" name="longitude" value="${dto.getLongitude() }" readonly>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b133548e794b66e5c1831469d0d70884"></script>
+<script>
+		var la = '<c:out value="${dto.getLatitude()}"/>';
+		var lo = '<c:out value="${dto.getLongitude()}"/>';
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    		mapOption = { 
+        		center: new kakao.maps.LatLng(la, lo), // 지도의 중심좌표
+       			level: 3 // 지도의 확대 레벨
+    		};
+
+		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+		// 지도를 클릭한 위치에 표출할 마커입니다
+		var marker = new kakao.maps.Marker({ 
+   		// 지도 중심좌표에 마커를 생성합니다 
+   		position: map.getCenter() 
+		}); 
+		// 지도에 마커를 표시합니다
+		marker.setMap(map);
+
+		// 지도에 클릭 이벤트를 등록합니다
+		// 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
+		kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
+    		// 클릭한 위도, 경도 정보를 가져옵니다 
+    		var latlng = mouseEvent.latLng; 
+    
+    		// 마커 위치를 클릭한 위치로 옮깁니다
+    		marker.setPosition(latlng);
+    
+    		var message = '클릭한 위치의 위도는 ' + latlng.getLat() + ' 이고, ';
+    		message += '경도는 ' + latlng.getLng() + ' 입니다';
+    
+    		document.getElementById('latitude').value = latlng.getLat(); 
+    		document.getElementById('longitude').value = latlng.getLng(); 
+    		
+		});
+		</script>
+		</div>
+						</td>
 					</tr>
 				</table>
 			</div>
