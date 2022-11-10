@@ -3,19 +3,13 @@ package com.model;
 public class ReservationDTO {
 	private int id;
 	private int house_no;
-	private String house_name;
-	private long pmember_code;
+	private String member_id;
 	private String checkin;
-	public String getHouse_name() {
-		return house_name;
-	}
-	public void setHouse_name(String house_name) {
-		this.house_name = house_name;
-	}
 	private String checkout;
 	private int headcount;
 	private int price;
 	private String created_date;
+	private String house_name;
 	
 	public int getId() {
 		return id;
@@ -29,11 +23,11 @@ public class ReservationDTO {
 	public void setHouse_no(int house_no) {
 		this.house_no = house_no;
 	}
-	public long getPmember_code() {
-		return pmember_code;
+	public String getMember_id() {
+		return member_id;
 	}
-	public void setPmember_code(long pmember_code) {
-		this.pmember_code = pmember_code;
+	public void setMember_id(String member_id) {
+		this.member_id = member_id;
 	}
 	public String getCheckin() {
 		return checkin;
@@ -64,5 +58,11 @@ public class ReservationDTO {
 	}
 	public void setCreated_date(String created_date) {
 		this.created_date = created_date;
+	}
+	public String getHouse_name() {
+		return house_name;
+	}
+	public void setHouse_name(String house_name) {
+		this.house_name = house_name;
 	}
 }

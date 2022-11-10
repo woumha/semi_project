@@ -78,7 +78,13 @@
 		        ₩${ houseInfo.house_price } x
 		        <input type="number" id="count" name="count" readonly="readonly"style="text-align: right;width:30px;" />
 		        박&emsp;&emsp;
-		        	<b>₩<input type="number" id="result" disabled style="text-align: right;width:180px;"/></b> <button type="submit">예약하기</button>
+		        	<b>₩<input type="number" id="result" disabled style="text-align: right;width:180px;"/></b> <c:if test="${!empty member_code_session }">
+	<button type="submit">예약하기</button>
+</c:if>
+<c:if test="${empty member_code_session }">
+	<button type="submit" disabled>예약하기</button>
+	<p style="margin-left: 193px;"><a href="house_list.do" style="color: red;">로그인</a> 후 예약이 가능합니다</p>
+</c:if>
 	        	</div>
 	        	
 		    </form>
@@ -101,20 +107,20 @@
 		        <c:forEach items="${ reviewList }" var="row" varStatus="loop">    
 		        <table>
 			    <tr>
-			    <td>
+			    <td colspan="2">
 			    <c:if test="${ row.grade eq 1}"><a class="star">★</a></c:if>
 			    <c:if test="${ row.grade eq 2}"><a class="star">★★</a></c:if>
 			    <c:if test="${ row.grade eq 3}"><a class="star">★★★</a></c:if>
 			    <c:if test="${ row.grade eq 4}"><a class="star">★★★★</a></c:if>
 			    <c:if test="${ row.grade eq 5}"><a class="star">★★★★★</a></c:if>
+			    </td>
 			    </tr>
 			    <tr>
-				<td><b>${ row.memberId }</b></td>  <!-- 작성자 -->
-			    <td>${ row.contents }</td>  <!-- 내용 -->	
+				<td>${ row.contents }</td>  <!-- 내용 -->	
 			    </tr>
-			    <tr>
-			    <td>${ row.createdDate }</td>  <!-- 작성일 -->
 			    
+			    <tr>
+			    <td>${ row.createdDate } </td>  <!-- 작성일 -->
 			    </tr>
 			    </table>
 		        </c:forEach>        

@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.controller.Action;
 import com.controller.ActionForward;
@@ -14,25 +15,21 @@ import com.model.ReviewDTO;
 
 public class ReviewWriteAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		HttpSession session = request.getSession();
+		long memcode = (long)session.getAttribute("member_code_session");
 		
 		ReviewDTO dto = new ReviewDTO();
-        dto.setHouseNo(Integer.parseInt(request.getParameter("houseNo")));
-        dto.setMemberId(request.getParameter("memberId"));
+        dto.setHouseNo(Integer.parseInt(request.getParameter("house_no")));
+        dto.setMemberId(Long.toString(memcode));
         dto.setContents(request.getParameter("contents"));
-        dto.setGrade(Integer.parseInt(request.getParameter("grade")));
+        dto.setGrade(Integer.parseInt(request.getParameter("star")));
 
-        // DAO를 통해 DB에 리뷰 내용 저장
         ReviewDAO dao = new ReviewDAO();
-        int result = dao.insertWrite(dto);
-        
-        request.setAttribute("result", result);
+        String result = Boolean.toString(dao.insertWrite(dto) == 1);
 
         ActionForward forward = new ActionForward();
-		
-		forward.setRedirect(false);
-			
-		forward.setPath("view/history.jsp");
-		
+		forward.setRedirect(true);
+		forward.setPath("review-list.do?save=" + result);
 		return forward;
 	}
 }

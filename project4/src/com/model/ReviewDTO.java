@@ -3,6 +3,7 @@ package com.model;
 public class ReviewDTO {
 	private int id;
 	private int houseNo;
+	private String houseName;
 	private String memberId;
 	private String contents;
 	private int grade;
@@ -19,6 +20,12 @@ public class ReviewDTO {
 	}
 	public void setHouseNo(int houseNo) {
 		this.houseNo = houseNo;	
+	}
+	public String getHouseName() {
+		return houseName;
+	}
+	public void setHouseName(String houseName) {
+		this.houseName = houseName;
 	}
 	public String getMemberId() {
 		return memberId;

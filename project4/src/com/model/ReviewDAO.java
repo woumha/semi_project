@@ -102,6 +102,67 @@ public class ReviewDAO {
 		}
         return list;
     }
+    
+    // 주어진 유저 아이디로 작성된 리뷰 목록을 반환합니다.
+    public List<ReviewDTO> selectUserReviews(Long id) {
+    	openConn();
+        List<ReviewDTO> list = new Vector<ReviewDTO>();       
+        try {
+        	sql = "SELECT * FROM review WHERE member_id=? ORDER BY created_date DESC";
+        	pstmt = con.prepareStatement(sql);
+        	pstmt.setLong(1, id);
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+               ReviewDTO dto = new ReviewDTO();
+               HouseDAO dao = new HouseDAO();
+               HouseDTO hDto = dao.selectHouseInfo(Integer.toString(rs.getInt(2)));
+
+                dto.setId(rs.getInt(1));
+                dto.setHouseNo(rs.getInt(2));
+                dto.setHouseName(hDto.getHouse_name());
+                dto.setMemberId(rs.getString(3));
+                dto.setContents(rs.getString(4));
+                dto.setGrade(rs.getInt(5));
+                dto.setCreatedDate(rs.getDate(6));
+
+                list.add(dto);
+            }
+        } catch (Exception e) {
+            System.out.println("리뷰 목록 조회 중 예외 발생");
+            e.printStackTrace();
+        } finally {
+			closeConn(rs, pstmt, con);
+		}
+        return list;
+    }
+    
+    // 주어진 유저 아이디로 리뷰를 작성할 수 있는 숙소를 가져옵니다.
+    public List<ReservationDTO> selectReviewWritableHouse(Long id) {
+    	openConn();
+        List<ReservationDTO> list = new Vector<ReservationDTO>();       
+        try {
+        	sql = "SELECT * FROM reservation WHERE pmember_code=? ORDER BY created_date DESC";
+        	pstmt = con.prepareStatement(sql);
+        	pstmt.setLong(1, id);
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+            	ReservationDTO dto = new ReservationDTO();
+            	HouseDAO dao = new HouseDAO();
+                HouseDTO hDto = dao.selectHouseInfo(Integer.toString(rs.getInt(2)));
+	            dto.setHouse_no(rs.getInt(2));
+	            dto.setHouse_name(hDto.getHouse_name());
+	            list.add(dto);
+            }
+        } catch (Exception e) {
+            System.out.println("리뷰 목록 조회 중 예외 발생");
+            e.printStackTrace();
+        } finally {
+			closeConn(rs, pstmt, con);
+		}
+        return list;
+    }
 
     // 리뷰작성 - 리뷰 데이터를 받아 DB에 추가합니다.
     public int insertWrite(ReviewDTO dto) {
@@ -111,15 +172,52 @@ public class ReviewDAO {
             sql = "INSERT INTO review ( "
                  + " id, house_no, member_id, contents, grade, created_date) "
                  + " VALUES ( "
-                 + " seq_board_num.NEXTVAL,?,?,?,?,sysdate)";
+                 + " (SELECT max(id)+1 FROM review),?,?,?,?,sysdate)";
             pstmt = con.prepareStatement(sql);
             pstmt.setInt(1, dto.getHouseNo());
             pstmt.setString(2, dto.getMemberId());
             pstmt.setString(3, dto.getContents());
             pstmt.setInt(4, dto.getGrade());
             result = pstmt.executeUpdate();
+            sql = "UPDATE house "
+	        		+ "SET house_star = (select avg(grade) from review where house_no = ?) "
+	        		+ "WHERE house_no = ?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, dto.getHouseNo());
+            pstmt.setInt(2, dto.getHouseNo());
+            pstmt.executeUpdate();
         } catch (Exception e) {
             System.out.println("리뷰 저장 중 예외 발생");
+            e.printStackTrace();
+        } finally {
+			closeConn(rs, pstmt, con);
+		}
+        return result;
+    }
+    
+    // 리뷰의 아이디를 받아 리뷰를 삭제합니다.
+    public int deleteReview(String id) {
+    	openConn();
+        int result = 0;
+        try {
+        	sql = "select house_no from review where id = ?";
+        	pstmt = con.prepareStatement(sql);
+        	pstmt.setNString(1, id);
+        	rs = pstmt.executeQuery();
+        	sql = "delete from review where id = ?";
+        	pstmt = con.prepareStatement(sql);
+        	pstmt.setNString(1, id);
+        	result = pstmt.executeUpdate();
+        	rs.next();
+        	sql = "UPDATE house "
+        	 		+ "SET house_star = (select avg(grade) from review where house_no = ?) "
+        			+ "WHERE house_no = ?";
+        	pstmt = con.prepareStatement(sql);
+	        pstmt.setInt(1, rs.getInt(1));
+	        pstmt.setInt(2, rs.getInt(1));
+            pstmt.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("리뷰 삭제 중 예외 발생");
             e.printStackTrace();
         } finally {
 			closeConn(rs, pstmt, con);
