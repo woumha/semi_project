@@ -361,6 +361,8 @@ public class HouseDAO {
 				dto.setHouse_grill(rs.getInt(22));
 				dto.setHouse_smoking(rs.getInt(23));
 				dto.setHouse_gym(rs.getInt(24));
+				dto.setLatitude(rs.getString(25));
+				dto.setLongitude(rs.getString(26));
             }
             
         } catch (SQLException e) {
