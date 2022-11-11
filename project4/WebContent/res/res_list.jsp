@@ -23,6 +23,18 @@ pageEncoding="UTF-8"%>
 	    margin-left: 38%;
 	    margin-top: 1%;
 	}
+	.btn {
+		border: 0;
+		width: 50px;
+		height: 30px;
+		border-radius: 5%;
+	}
+	
+	.btn:hover {
+		background-color: #e85255;
+		color: white;
+		cursor: pointer;	
+	}
 </style>
 </head>
 <body>
@@ -52,7 +64,7 @@ pageEncoding="UTF-8"%>
                   <td> ${dto.getprice() } </td>
                   <td> ${dto.getCreated_date().substring(0,10) } </td>
                   <td>
-					<input type="button" value="삭제"
+					<input id="btn" type="button" value="삭제"
 						onclick="if(confirm('예약을 취소하시겠습니까?')) {location.href='res_delete.do?no=${dto.getId() }&pcode=${member_code_session }'
 	                        }else { return; }">
 				  </td>
