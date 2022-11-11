@@ -11,7 +11,7 @@ $(function() {
 	let hiddentr = document.querySelector("#hiddentr");
 	let showtr = document.querySelector("#showtr");
 	hiddentr.style.display = 'none';
-	
+
 	
 	$.ajax({
 		url: "/project4/account.do",
