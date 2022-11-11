@@ -104,7 +104,7 @@ $(function() {
 	<!-- =================================================================================================================================== -->
 	
 	<span id="modal" style="background-color: white;">
-		<c:set var="list" value="${List }"/>
+		<c:set var="list" value="${member_code_session }"/>
 		<c:if test="${empty list }">
 			<img src="/project4/main_img/login.png" width="40px" height="40px" class="open_modal">	
 		</c:if>
