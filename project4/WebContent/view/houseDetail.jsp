@@ -6,7 +6,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Insert title here</title>
+		<title>숙소 상세 페이지</title>
 
 <link rel="stylesheet" type="text/css" href="CSS/detail.css">
 
@@ -139,7 +139,7 @@
 		<br>
 		
 		<div id="map_area">
-			<div id="map" style="width:880px;height:500px;"></div>
+			<div id="map" style="width:100%; height: 700px;"></div>
 			<%-- <p><em>지도를 클릭해주세요!</em></p> 
 			<input id="latitude" name="latitude" value="${ houseInfo.latitude }" readonly>
 			<input id="longitude" name="longitude" value="${ houseInfo.longitude }" readonly> --%>
@@ -180,7 +180,7 @@
     		
 		}); */
 		</script>		
-		
+		<br>
 		<hr>
 		<br>
 		<h3>숙소 정보</h3>

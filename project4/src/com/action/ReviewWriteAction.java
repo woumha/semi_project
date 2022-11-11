@@ -18,6 +18,14 @@ public class ReviewWriteAction implements Action {
 		HttpSession session = request.getSession();
 		long memcode = (long)session.getAttribute("member_code_session");
 		
+		System.out.println(Integer.parseInt(request.getParameter("house_no")));
+		System.out.println(Long.toString(memcode));
+		
+		System.out.println(request.getParameter("contents"));
+		
+		System.out.println(Integer.parseInt(request.getParameter("star")));
+		
+		
 		ReviewDTO dto = new ReviewDTO();
         dto.setHouseNo(Integer.parseInt(request.getParameter("house_no")));
         dto.setMemberId(Long.toString(memcode));

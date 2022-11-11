@@ -168,16 +168,26 @@ public class ReviewDAO {
     public int insertWrite(ReviewDTO dto) {
     	openConn();
         int result = 0;
+        int count = 0;
         try {
-            sql = "INSERT INTO review ( "
-                 + " id, house_no, member_id, contents, grade, created_date) "
-                 + " VALUES ( "
-                 + " (SELECT max(id)+1 FROM review),?,?,?,?,sysdate)";
+        	
+        	sql = "select max(id) from review";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				count = rs.getInt(1) + 1;
+			}
+        	
+            sql = "INSERT INTO review VALUES(?,?,?,?,?,sysdate)";
             pstmt = con.prepareStatement(sql);
-            pstmt.setInt(1, dto.getHouseNo());
-            pstmt.setString(2, dto.getMemberId());
-            pstmt.setString(3, dto.getContents());
-            pstmt.setInt(4, dto.getGrade());
+            pstmt.setInt(1, count);
+            pstmt.setInt(2, dto.getHouseNo());
+            pstmt.setString(3, dto.getMemberId());
+            pstmt.setString(4, dto.getContents());
+            pstmt.setInt(5, dto.getGrade());
             result = pstmt.executeUpdate();
             sql = "UPDATE house "
 	        		+ "SET house_star = (select avg(grade) from review where house_no = ?) "
