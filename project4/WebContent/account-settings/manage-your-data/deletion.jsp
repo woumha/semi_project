@@ -6,30 +6,32 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
-<script type="text/javascript" src="../../JS/deletion_javascript.js"></script>
+
 <title>내 정보 관리</title>
-</head>
-<style>
-	#member-delete-btn {
-		float: right;
-	}
-</style>
+<!-- 모달 -->
+
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
+<script type="text/javascript" src="/project4/JS/deletion_javascript.js"></script>
+<link rel="stylesheet" href="/project4/CSS/delete.css">
+
 <script type="text/javascript">
 	window.history.forward();
 	function noBack() {
 		window.history.forward();
 	}
 </script>
+</head>
 <body onload="noBack();" onpageshow="if(event.persisted) noBack();" onunload="">
-	<div align="center">
-		<table width="50%">
+	<jsp:include page="/include/top.jsp" />
+	<div>
+		<table>
 			<tr id="showtr">
 				<td>
 					<h2>계정 삭제하기</h2>
 					<div>
 						개인정보 삭제 요청을 제출하세요. 
-						계정 소유자임을 확인하기 위해 에어비앤비에서 이메일(<span id="email"></span>)로 연락드릴 수 있습니다. 
+						계정 소유자임을 확인하기 위해 에어비앤비에서 이메일(<span id="emailId"></span>)로 연락드릴 수 있습니다. 
 						이메일에 안내된 절차를 따르신 후에야 저희 측에서 요청을 진행할 수 있습니다.
 					</div>
 					<h4>계정 삭제 요청과 관련한 안내: </h4>
@@ -52,10 +54,13 @@
 					<div>계정 사용을 일시적으로 중단하고 싶으시다면 에어비앤비 계정을 비활성화하실 수 있습니다.</div>
 					
 					<div><button id="closeMemeber">계정 비활성화</button></div>
+					<!-- 비활성화 모달 -->
 				</td>
 			</tr>
-			<jsp:include page="../../include/deletion_bottom.jsp"></jsp:include>
+		<jsp:include page="/include/deletion_bottom.jsp"></jsp:include>
 		</table>
 	</div>
+	<jsp:include page="/include/bottom.jsp"></jsp:include>
+	<link rel="stylesheet" type="text/css" crossorigin="anonymous" href="https://a0.muscache.com/airbnb/static/packages/web/common/72f46196c8.css" media="all">
 </body>
 </html>

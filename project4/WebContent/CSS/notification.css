@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+
+
+ol li {
+	list-style-type: none;
+
+	float:left;
+}
+
+.notifi_div {
+	top: 300px;
+	margin-left: 300px;
+	line-height: 2em;
+
+	width: 700px;
+}
+
+#notice-table {
+	width: 800px;
+
+}
+
+.notice_td {
+	font-size: 14px;
+}
+
+tr td:first-child {
+	padding-right: 10px;
+	font-weight: bold;
+}
+
+tr td:last-child {
+	padding-left: 10px;
+	font-weight: bold;
+}
+
+#include-bottom {
+	position: bottom;
+
+}

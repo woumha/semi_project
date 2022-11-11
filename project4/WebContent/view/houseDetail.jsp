@@ -19,7 +19,7 @@
 	
 	</head>
 	<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
-	<jsp:include page="../include/top2.jsp"/>
+	<jsp:include page="/include/top.jsp"/>
 	
 	<div class="div1">
 		<h2>${ houseInfo.house_name }</h2>
@@ -188,7 +188,7 @@
 		<p>호스트 : ${ houseInfo.house_owner }님</p>
 		<p>연락처 : ${ houseInfo.house_phone }</p>
 		</div>
-<jsp:include page="../include/bottom.jsp"/>
+<jsp:include page="/include/bottom.jsp"/>
 		
 	</body>
 </html>

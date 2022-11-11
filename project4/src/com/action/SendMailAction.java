@@ -103,7 +103,7 @@ public class SendMailAction implements Action {
 		} catch(Exception e){
 			PrintWriter out = response.getWriter();
 	         out.println("<script>"
-	         		+ "alert('메일 통신 오류입니다..');"
+	         		+ "alert('이메일 주소를 입력해주세요');"
 	         		+ "history.back();"
 	         		+ "</script>");
 		    e.printStackTrace();

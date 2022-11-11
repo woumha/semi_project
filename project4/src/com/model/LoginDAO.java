@@ -140,7 +140,7 @@ public class LoginDAO {
 			openConn();
 			
 			try {
-				sql = "insert into pmember values (?, ?, ?, ?, ?, ?, ?, ?, sysdate, 3)";
+				sql = "insert into pmember values (?, ?, ?, ?, ?, ?, ?, ?, sysdate, 3, 'T')";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, userInfor.getPmember_email());
 				pstmt.setString(2, userInfor.getPmember_domain());
@@ -253,6 +253,27 @@ public class LoginDAO {
 			} finally {
 				closeConn(rs, pstmt, con);
 			}
+			return result;
+		}
+		
+		public String tfCheck(String user) {
+			String result = null;
+			openConn();
+			try {
+				sql = "select pmember_tf from pmember where pmember_email = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, user);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					result = rs.getString("pmember_tf");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				closeConn(rs, pstmt, con);
+			}
+			
 			return result;
 		}
 }

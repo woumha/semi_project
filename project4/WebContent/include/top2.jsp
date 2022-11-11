@@ -18,10 +18,9 @@
 <script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
-<script type="text/javascript" src="../JS/loginscript.js"></script>
-<script type="text/javascript" src="JS/loginscript.js"></script>
-<link rel="stylesheet" href="CSS/top.css">
-<link rel="stylesheet" href="../CSS/top.css">
+<script type="text/javascript" src="/project4/JS/loginscript.js"></script>
+<script type="text/javascript" src="/project4JS/loginscript.js"></script>
+<link rel="stylesheet" href="/project4/CSS/top.css">
 <script>
 	$(document).ready(function(){
  		  $(".icon").click(function(){
@@ -176,20 +175,6 @@ $(function() {
 					 		naver_id_login.setState(state);
 					 		naver_id_login.init_naver_id_login();
 						</script>
-						<%-- 
-						<%
-						    String clientId = "zROYJp38WO0IxEpiDz0u";//애플리케이션 클라이언트 아이디값";
-						    String redirectURI = URLEncoder.encode("http://localhost:8756/project4/naverMember.do", "UTF-8");
-						    SecureRandom random = new SecureRandom();
-						    String state = new BigInteger(130, random).toString();
-						    String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
-						    apiURL += "&client_id=" + clientId;
-						    apiURL += "&redirect_uri=" + redirectURI;
-						    apiURL += "&state=" + state;
-						    session.setAttribute("state", state);
-						 %>
- 						 <a href="<%=apiURL%>"><img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></a>
-						 --%>
 					</td>
 				</tr>
 			</table>

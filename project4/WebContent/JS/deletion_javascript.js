@@ -19,7 +19,7 @@ $(function() {
 		success: function(data) {
 			let email = $(data).find("pmember_email").text();
 			let domain = $(data).find("pmember_domain").text();
-			$("#email").text(email + "@" + domain);
+			$("#emailId").text(email + "@" + domain);
 			
 		}
 		

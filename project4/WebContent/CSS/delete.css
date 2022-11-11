@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+#member-delete-btn {
+	float: right;
+
+}
+
+table {
+	margin-top: 50px;
+	margin-left: 330px;
+	width: 500px;
+	line-height: 2em;
+}
+
+#modal {
+	float: left;
+}
