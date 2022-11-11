@@ -534,7 +534,7 @@ public class HouseDAO {
 						pstmt.setInt(15, dto.getHouse_gym());
 						pstmt.setString(16, dto.getLatitude());
 						pstmt.setString(17, dto.getLongitude());
-						pstmt.setInt(16, dto.getHouse_no());
+						pstmt.setInt(18, dto.getHouse_no());
 					} else {	//수정폼 페이지에서 첨부파일을 선택한 경우
 						sql = "update house set house_name = ?, house_category = ?, house_location = ?, house_price = ?, house_content = ?, house_phone = ?, house_person = ?, house_img1 = ?, house_img2 = ?, house_img3 = ?, house_update = sysdate, house_water = ?, house_pool = ?, house_ski = ?, house_food = ?, house_parking = ?, house_grill = ?, house_smoking = ?, house_gym = ?, latitude = ?, longitude = ? where house_no = ?";
 						pstmt = con.prepareStatement(sql);
