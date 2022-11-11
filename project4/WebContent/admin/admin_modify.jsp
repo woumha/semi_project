@@ -72,18 +72,18 @@
 		text-align: left;
 	}
 	#sub_div_area1 .sub_div, #sub_div_area2 .sub_div { display: inline; }
-	#sub_div_area1, #sub_div_area2 { margin-bottom: 20px; margin-left: 30%; }
+	#sub_div_area1, #sub_div_area2 { margin-bottom: 20px; margin-left: 35%; }
 	#sub_div_area3 { margin-top: 20px; }
 	#sub_div_area4 { margin-top: 30px; }
-	#sub_div_area5 { margin-top: 30px; }
-	#sub_div_area6 { margin-left: 3%;}
+	#sub_div_area5 { margin-top: 20px; margin-left: 33%; }
+	#sub_div_area6 { margin-left: 15%;}
 	#sub_div_area7 { text-align: center; margin-top: 50px; }
 	.sub_div { margin-bottom: 20px; }
 	.sub_div_btn { margin-right: 30%; }
 	.one_tr { padding-right: 10px; padding-left: 90px;}
 	.one {width: 450px;}
 	.title_text { padding-right: 10px; }
-	.title_file { padding-left: 11%; }
+	.title_file { padding-left: 24%; }
 	#btn {
 		border: 0;
 		width: 113px;
@@ -132,7 +132,7 @@
 </style>
 </head>
 <body>
-<jsp:include page="../include/top.jsp" />
+<jsp:include page="../include/top2.jsp" />
 <c:set var="dto" value="${modify }"/>
 <%-- enctype : 파일을 업로드하기 위한 속성 --%>
 	<form id="form_tag"method="post" enctype="multipart/form-data" action="<%=request.getContextPath() %>/admin_modify_ok.do">
@@ -153,7 +153,7 @@
 		<div id="sub_div_area1">
 			<div class="sub_div">
 				<span class="title_text">숙소 카테고리</span>
-				<select style="margin-left: 15%" class="input_box_cat" name="house_category" id="house_category">
+				<select style="margin-left: 16%" class="input_box_cat" name="house_category" id="house_category">
 					<option value="호텔" <c:if test="${dto.getHouse_category() == '호텔'}"> selected </c:if>>호텔</option>
 					<option value="아파트" <c:if test="${dto.getHouse_category() == '아파트'}"> selected </c:if>>아파트</option>
 					<option value="리조트" <c:if test="${dto.getHouse_category() == '리조트'}"> selected </c:if>>리조트</option>
@@ -165,28 +165,28 @@
 		<div id="sub_div_area1">
 			<div class="sub_div">
 				<span class="title_text">숙소 이름</span>
-				<input style="margin-left: 19%" class="input_box" name="house_name" id="house_name" value="${dto.getHouse_name() }">
+				<input style="margin-left: 19.1%" class="input_box" name="house_name" id="house_name" value="${dto.getHouse_name() }">
 			</div>
 		</div>
 		
 		<div id="sub_div_area2">
 			<div class="sub_div">
 				<span class="title_text">숙소 가격</span>
-				<input style="margin-left: 19%" type="number" class="input_box" name="house_price" id="house_price" value="${dto.getHouse_price() }">
+				<input style="margin-left: 19.1%" type="number" class="input_box" name="house_price" id="house_price" value="${dto.getHouse_price() }">
 			</div>
 		</div>
 			
 		<div id="sub_div_area1">
 			<div class="sub_div" >
 				<span class="title_text">숙소 전화번호</span>
-				<input style="margin-left: 14.8%" class="input_box" name="house_phone" id="house_phone" value="${dto.getHouse_phone() }">
+				<input style="margin-left: 16%" class="input_box" name="house_phone" id="house_phone" value="${dto.getHouse_phone() }">
 			</div>
 		</div>
 			
 		<div id="sub_div_area1">
 			<div class="sub_div">
 				<span class="title_text">숙소 인원</span>
-				<input style="margin-left: 18.9%" type="number" class="input_box" name="house_person" id="house_person" value="${dto.getHouse_person() }">
+				<input style="margin-left: 19.1%" type="number" class="input_box" name="house_person" id="house_person" value="${dto.getHouse_person() }">
 			</div>
 		</div>
 		
@@ -196,12 +196,20 @@
 					<tr>
 						<th><span class="title_text">숙소 주소</span></th>
 						<td>
-							<textarea style="margin-left: 63.4%" class="input_box" rows="1" cols="100" name="house_location" id="house_location">${dto.getHouse_location() }</textarea>
+							<textarea style="margin-left: 80.1%" class="input_box" rows="1" cols="100" name="house_location" id="house_location">${dto.getHouse_location() }</textarea>
+						</td>
+					</tr>
+				</table>	
+			</div>
+		</div>
+	<div id="sub_div_area5">	
 		<div id="map_area">
-			<div id="map" style="width:880px;height:500px;"></div>
+			<div id="map" style="width:500px;height:300px;"></div>
 			<p><em>지도를 클릭해주세요!</em></p> 
 			<input id="latitude" name="latitude" value="${dto.getLatitude() }" readonly>
 			<input id="longitude" name="longitude" value="${dto.getLongitude() }" readonly>
+		</div>
+	</div>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b133548e794b66e5c1831469d0d70884"></script>
 <script>
 		var la = '<c:out value="${dto.getLatitude()}"/>';
@@ -239,19 +247,13 @@
     		
 		});
 		</script>
-		</div>
-						</td>
-					</tr>
-				</table>
-			</div>
-		</div>
-		
+		<br>
 		<div id="sub_div_area2">
 			<div class="sub_div">
 				<table>
 					<tr>
 						<th><span class="title_cont">숙소 소개</span></th>
-						<td><textarea style="margin-left: 68%" class="input_box_cont" rows="1" cols="100" name="house_content" id="house_house_contentlocation">${dto.getHouse_content() }</textarea></td>
+						<td><textarea style="margin-left: 85%" class="input_box_cont" rows="1" cols="100" name="house_content" id="house_house_contentlocation">${dto.getHouse_content() }</textarea></td>
 					</tr>
 				</table>
 			</div>
@@ -262,9 +264,9 @@
 					<input type="file" name="house_img1"  style="width: 215px;" id="house_img1">
 				    	<br>
 				    	<span id="house_img1_preview">
-				    		<img style="margin-left: 10%" src="#"  width="100px" />
+				    		<img style="margin-left: 23%" src="#"  width="100px" />
 					        <br>
-					        <a href="#" style="margin-left: 10%">삭제</a>
+					        <a href="#" style="margin-left: 23%">삭제</a>
 				    	</span>
 		</div>
 				    	
@@ -273,9 +275,9 @@
 					<input type="file" name="house_img2" style="width: 215px;" id="house_img2">
 				    	<br>
 				    	<span id="house_img2_preview">
-				    		<img src="#" style="margin-left: 10%"  width="100px" />
+				    		<img src="#" style="margin-left: 23%"  width="100px" />
 					        <br>
-					        <a href="#" style="margin-left: 10%">삭제</a>
+					        <a href="#" style="margin-left: 23%">삭제</a>
 				    	</span>
 		</div>
 		
@@ -284,9 +286,9 @@
 					<input type="file" name="house_img3" style="width: 215px;" id="house_img3">
 				    	<br>
 				    	<span id="house_img3_preview">
-				    		<img src="#" style="margin-left: 10%"  width="100px" />
+				    		<img src="#" style="margin-left: 23%"  width="100px" />
 					        <br>
-					        <a href="#" style="margin-left: 10%" >삭제</a>
+					        <a href="#" style="margin-left: 23%" >삭제</a>
 				    	</span>
 		</div>
 				    
@@ -463,8 +465,6 @@
 				</div>
 			</table>
 		</div>
-	</div>
-	</div>
 	<div id="sub_div_area7">
 		<div class="sub_div">
 			<input id="btn" type="submit" value="숙소수정" class="host_btns">&nbsp;&nbsp;&nbsp;
