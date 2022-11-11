@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>인증 코드</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
-<script type="text/javascript" src="JS/loginscript.js"></script>
+<script type="text/javascript" src="/project4/JS/loginscript.js"></script>
 <style type="text/css">
 
 #email_token {
@@ -75,7 +75,7 @@
 </style>
 </head>
 <body>
-<jsp:include page="../include/top.jsp"/>
+<jsp:include page="/include/top.jsp"/>
 
 	<div align="center" id="email_token">
 		<img src="/project4/main_img/tokenCheck_icon.png" id="tokenCheck_icon">
@@ -93,6 +93,6 @@
 	<div id="main_btn_box">
 		<button class="main_btn" onclick="location.href='<%=request.getContextPath()%>/house_list.do'">메인으로</button>
 	</div>
-<jsp:include page="../include/bottom.jsp"/>
+<jsp:include page="/include/bottom.jsp"/>
 </body>
 </html>

@@ -107,4 +107,43 @@ public class ReservationDAO {
 		}
 		return result;
 	}
+	
+	public void noticeInformation(NoticeDTO dto) {
+		int count = 0;
+		int id = 0;
+		openConn();
+
+		try {
+			sql = "select count(*) from notice where pmemer_code = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setLong(1, dto.getPmember_code());
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				count = rs.getInt(1) + 1;
+			}
+
+			sql = "select ID from reservation where pmember_code = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setLong(1, dto.getPmember_code());
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				id = rs.getInt("ID");
+			}
+
+			sql = "INSERT INTO notice values (?, ?, ?, ?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, count);
+			pstmt.setString(2, dto.getNotice_cont());
+			pstmt.setLong(3, dto.getPmember_code());
+			pstmt.setInt(4, id);
+
+			pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+	}
 }

@@ -25,7 +25,7 @@ pageEncoding="UTF-8"%>
 </style>
 </head>
 <body>
-   <jsp:include page="../include/top2.jsp"/>
+   <jsp:include page="/include/top.jsp"/>
    <div id="box">
       <table id="list">
          <tr>

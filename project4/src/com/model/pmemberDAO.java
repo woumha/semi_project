@@ -426,6 +426,46 @@ public class pmemberDAO {
 						closeConn(rs, pstmt, con);
 					}
 					return result;
-				}
+				} // updateMem
+				
+				// 유저 비활성화
+				public int setShutDownMember(pmemberDTO dto) {
+					int result = 0;
+					openConn();
+
+					try {
+						sql = "update pmember set PMEMBER_TF = 'F' where pmember_code = ?";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setLong(1, dto.getPmember_code());
+
+						result = pstmt.executeUpdate();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} finally {
+						closeConn(pstmt, con);
+					}
+					return result;
+				} //  setShutDownMember
+
+				// 유저 활성화
+				public int setOnMember(String mail) {
+					int result = 0;
+					openConn();
+
+					try {
+						sql = "update pmember set PMEMBER_TF = 'T' where pmember_email = ?";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, mail);
+
+						result = pstmt.executeUpdate();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} finally {
+						closeConn(pstmt, con);
+					}
+					return result;
+				} //setOnMember
 				
 		}

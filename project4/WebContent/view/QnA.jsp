@@ -11,14 +11,14 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
 
 <link rel="stylesheet" href="../CSS/main_style.css">
-<script src="../JS/main_java2.js"> </script>
-<link rel="stylesheet" href="CSS/main_style.css">
-<script src="JS/main_java2.js"> </script>
+<script src="/project4/JS/main_java2.js"> </script>
+<link rel="stylesheet" href="//project4CSS/main_style.css">
+<script src="//project4JS/main_java2.js"> </script>
 
-<link rel="stylesheet" href="../CSS/top.css">
-<script src="../JS/main_java2.js"> </script>
-<link rel="stylesheet" href="CSS/top.css">
-<script src="JS/main_java2.js"> </script>
+<link rel="stylesheet" href="/project4/CSS/top.css">
+<script src="/project4/JS/main_java2.js"> </script>
+<link rel="stylesheet" href="/project4/CSS/top.css">
+<script src="/project4JS/main_java2.js"> </script>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
@@ -38,7 +38,7 @@
 	
 </style>
 <body>
-<jsp:include page="../include/top2.jsp"/>
+<jsp:include page="/include/top.jsp"/>
 <br>
 <h2 class="fw-bold" align="center">도움말</h2>
 <br> <br>

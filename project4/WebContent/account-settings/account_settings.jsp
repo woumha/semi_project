@@ -26,6 +26,7 @@
 </style>
 </head>
 <body>
+	<jsp:include page="/include/top.jsp"></jsp:include>
 	<div align="center">
 		<c:set var="list" value="${pmember }" />
 		<h2>계정</h2>
@@ -37,7 +38,7 @@
 		<table align="center" id="bigTable">
 			<tr>
 				<td>
-					<a href="account-settings/personal-info.jsp" class="information" >
+					<a href="/project4/account-settings/personal-info.jsp" class="information" >
 						<div style="margin-bottom: 16px;" id="0" class="box">
 							<div>
 								<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; height: 32px; width: 32px; fill: currentcolor;">
@@ -54,7 +55,7 @@
 				</td>
 				
 				<td>
-					<a href="login-and-security" class="information" >
+					<a href="account-settings/login-and-security.jsp" class="information" >
 						<div class="_1uwb2q9">
 							<div style="margin-bottom: 16px;" id="1" class="box">
 								<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; height: 32px; width: 32px; fill: currentcolor;">
@@ -71,7 +72,7 @@
 			
 			<tr>
 				<td> <!-- 결제 담당 -->
-					<a href="<%=request.getContextPath() %>/res_list.do?pcode=${member_code_session }" class="information" id="2" class="box">
+					<a href="" class="information" id="2" class="box">
 						<div class="_1uwb2q9">
 							<div style="margin-bottom: 16px;">
 								<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; height: 32px; width: 32px; fill: currentcolor;">
@@ -86,7 +87,7 @@
 				</td>
 				
 				<td>
-					<a href="notifications" class="information" >
+					<a href="account-settings/notifications.jsp" class="information" >
 						<div class="_1uwb2q9">
 							<div style="margin-bottom: 16px;" id="3" class="box">
 								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false" style="display: block; height: 32px; width: 32px; fill: currentcolor;">
@@ -150,7 +151,7 @@
 				</td>
 				
 				<td>
-										<a href="review-list.do" class="information" >
+					<a href="account-settings/professional-hosting" class="information" >
 						<div class="_1uwb2q9">
 							<div style="margin-bottom: 16px;" id="7" class="box">
 								<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; height: 32px; width: 32px; fill: currentcolor;">
@@ -159,8 +160,8 @@
 								</svg>
 							</div>
 						</div>
-						<div class="7_1">리뷰 목록</div>
-						<div class="7_2"></div>
+						<div class="7_1">전문 호스팅 도구</div>
+						<div class="7_2">에어비앤비에서 여러 숙소를 관리하신다면 전문 도구를 이용해보세요.</div>
 					</a>
 				</td>
 			</tr>
@@ -182,5 +183,6 @@
 			</tr>
 		</table>
 	</div>
+	<jsp:include page="/include/bottom.jsp"></jsp:include>
 </body>
 </html>

@@ -1,6 +1,7 @@
 package com.action;
 
 import java.io.IOException;
+
 import java.io.PrintWriter;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import com.model.HouseDAO;
 import com.model.HouseDTO;
 import com.model.ReservationDAO;
 import com.model.ReservationDTO;
+import com.model.NoticeDTO;
 
 public class ReservationListAction implements Action {
 
@@ -40,6 +42,15 @@ public class ReservationListAction implements Action {
 		
 		int R_List = dao.insertRes(house_no, house_name, pmember_code, checkin, checkout, price);
 		
+		// 이호찬 >> 예약시 notice DB에 추가됩니다.
+		if(R_List > 0) {
+			NoticeDTO noticeDTO = new NoticeDTO();
+			String notice_cont = "고객님께서 " + house_name + "을 예약하셨습니다. 자세한 사항은 [계정 > 결제 및 대금 수령]을 확인해주세요";
+			noticeDTO.setPmember_code(pmember_code);
+			noticeDTO.setNotice_cont(notice_cont);
+			dao.noticeInformation(noticeDTO);			
+		}
+				
 		request.setAttribute("List", R_List);
 		
 		ActionForward forward = new ActionForward();

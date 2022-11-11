@@ -19,6 +19,7 @@
 </style>
 </head>
 <body>
+	<jsp:include page="/include/top.jsp" />
 	<div align="center" class="childdiv">
 		<h4>개인 > 개인정보</h4>
 	</div>
@@ -202,37 +203,8 @@
 					<hr>
 				</td>
 			</tr>
-			
-			<!-- <div id="divaddr">
-				<tr>
-					<th>
-						주소
-					</th>
-					<td class="btntd">
-						<span>
-							<button aria-hidden="false" 
-								id="addrbtn" 
-								aria-labelledby="legalName-row-action legalName-row-title" 
-								class="reWrite">
-									수정
-							</button>
-						</span>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<div id="paddr"></div>
-					</td>
-				</tr>
-			</div>
-			
-			<tr>
-				<td colspan="2">
-					<p>
-					<hr>
-				</td>
-			</tr> -->
 		</table>
 	</div>
+	<jsp:include page="/include/bottom.jsp" />
 </body>
 </html>

@@ -13,6 +13,7 @@
 	
 	//====================== loginSelect.jsp =========================
 	$(".member_login").hide();
+	$(".shutdownMemeber").hide();
 	
 	//====================== loginSelet.jsp end =====================
 	

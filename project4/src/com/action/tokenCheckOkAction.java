@@ -42,27 +42,33 @@ public class tokenCheckOkAction implements Action {
 			int memberCheck = loginDB.MemberCheck(mail_Id);
 			
 			if(memberCheck == 1) { // 로그인
-				LoginDAO dao = LoginDAO.getInstance();
-				long code_session = dao.getMemberCode(mail_Id);
-				String code_name_session = dao.getMemberName(mail_Id);
-				String code_phone_session = dao.getMemberPhone(mail_Id);
-				int level = dao.getMemberLevel(mail_Id);
-				
-				session.setAttribute("member_code_session", code_session);
-				session.setAttribute("m_name", code_name_session);
-				session.setAttribute("m_phone", code_phone_session);
-				
-				// 추가된 코드 22-11-09 ==============================================================================
-				session.setAttribute("member_level", level);
-
-				System.out.println("===================================================================");
-				System.out.println("접속유저 레벨 <<<" + level + ">>>");
-				System.out.println("===================================================================");
-				// =================================================================================================
-				
-				session.setMaxInactiveInterval(60*60);
-				forward.setRedirect(true);
-				forward.setPath("view/main.jsp"); // 로그인시 메인 >> 회원등급 판단도 해야함
+				String tf = loginDB.tfCheck(mail_Id);
+				if(!tf.equals("F")) {
+					LoginDAO dao = LoginDAO.getInstance();
+					long code_session = dao.getMemberCode(mail_Id);
+					String code_name_session = dao.getMemberName(mail_Id);
+					String code_phone_session = dao.getMemberPhone(mail_Id);
+					int level = dao.getMemberLevel(mail_Id);
+					
+					session.setAttribute("member_code_session", code_session);
+					session.setAttribute("m_name", code_name_session);
+					session.setAttribute("m_phone", code_phone_session);
+					
+					// 추가된 코드 22-11-09 ==============================================================================
+					session.setAttribute("member_level", level);
+					
+					System.out.println("===================================================================");
+					System.out.println("접속유저 레벨 <<<" + level + ">>>");
+					System.out.println("===================================================================");
+					// =================================================================================================
+					session.setMaxInactiveInterval(60*60);
+					forward.setRedirect(true);
+					forward.setPath("view/main.jsp"); // 로그인시 메인 >> 회원등급 판단도 해야함
+				} else {
+					request.setAttribute("mail", mail_Id);
+					forward.setRedirect(false);
+					forward.setPath("view/onQuestion.jsp");
+				}
 			} else if(memberCheck == 0) { // 회원가입
 				forward.setRedirect(true);
 				forward.setPath("view/memberSignUp.jsp");
