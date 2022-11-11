@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+*{
+	
+	line-height: 200%;
+	
+}
+  
+  .div1{
+  
+    
+    padding-left: 10%;
+	padding-right: 10%;
+	}
+	
+	
+	
+	.div1>form>.btn{
+	
+	background-color: white;
+	
+	}
+	
+	.div1>form>.btn:hover{
+	
+	background-color: #FF878D;
+	}

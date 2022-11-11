@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>리뷰 목록 페이지</title>
 <link rel="stylesheet" type="text/css" href="CSS/ReviewList.css">
 
 <link rel="stylesheet" href="../CSS/top.css">
@@ -57,7 +57,7 @@
 		<c:choose>
 			<c:when test="${ empty result }">
 				<!-- 리뷰가 없을 때 -->
-				<p>등록된 리뷰가 없습니다.</p>
+				<p style="text-align: center; border: 1px solid black;">등록된 리뷰가 없습니다.</p>
 			</c:when>
 			<c:otherwise>
 				<!-- 리뷰가 있을 때 -->
@@ -96,9 +96,10 @@
 				</table>
 			</c:otherwise>
 		</c:choose>
-		<br> <input type="button" value="리뷰 작성"
-			style="margin: auto; display: block; width: 8%;"
-			onclick="location.href='review-write.do';"> <br>
+		<br> <input type="button" value="리뷰 작성" class="btn"
+			style="margin: auto; display: block; width: 8%; border: 1px solid black; border-radius: 5px;"
+			onclick="location.href='review-write.do';"> 
+			<br>
 	</div>
 	<jsp:include page="../include/bottom.jsp" />
 </body>

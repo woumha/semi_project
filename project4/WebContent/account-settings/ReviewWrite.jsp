@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>리뷰 작성 페이지</title>
 
 <link rel="stylesheet" type="text/css" href="../CSS/ReviewWrite.css">
 <link rel="stylesheet" type="text/css" href="CSS/ReviewWrite.css">
@@ -26,14 +26,16 @@
 	<jsp:include page="../include/top.jsp" />
 
 	<div class="div1">
-
+		<h2>&nbsp;</h2>
 		<h2>리뷰 작성</h2>
 		<br>
 
 		<c:choose>
 			<c:when test="${ empty result }">
 				<!-- 예약이 없을 때 -->
-				<p>방문하신 숙소가 없어, 리뷰를 작성할 수 없습니다.</p>
+				
+				<p style="text-align: center; border: 1px solid black;">방문하신 숙소가 없어, 리뷰를 작성할 수 없습니다.</p>
+				
 			</c:when>
 			<c:otherwise>
 				<!-- 예약이 있을 때 -->
@@ -63,14 +65,12 @@
 							<td>내용</td>
 							<td><textarea name="contents"
 									style="width: 90%; height: 100px; border: none; resize: none;"
-									maxlength="40" placeholder="40자 이하로 작성해주세요."></textarea></td>
+									maxlength="40" placeholder=" 40자 이하로 작성해주세요."></textarea></td>
 						</tr>
-						<tr>
-							<td colspan="2" align="center">
-								<button type="submit">리뷰 등록</button>
-							</td>
-						</tr>
+						
 					</table>
+					<br>
+					<button type="submit" class="btn" style="margin: auto; display: block; width: 8%; border: 1px solid black; border-radius: 5px;">리뷰 등록</button>
 				</form>
 			</c:otherwise>
 		</c:choose>

@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+
+*{
+	
+	line-height: 200%;
+	
+}
+  .div1 > table, th, td {
+    border: 0;
+  }
+
+  
+  .div1{
+ 
+    padding-left: 10%;
+	padding-right: 10%;
+	
+	}
+	
+	.star{
+	
+	color: #FFE400;
+	}
+	
+	.div1>.btn{
+	
+	background-color: white;
+	
+	}
+	
+	.div1>.btn:hover{
+	
+	background-color: #FF878D;
+	}
