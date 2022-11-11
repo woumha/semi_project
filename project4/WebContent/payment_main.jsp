@@ -84,8 +84,8 @@ $(document).ready(function(){
         merchant_uid: "IMP"+makeMerchantUid, 
         name : '<%=houseName %>',
         amount : '<%=houseprice %>',
-        buyer_email : 'abdc@naver.com',
-        buyer_name : 'KH정보교육원',
+        buyer_email : '',
+        buyer_name : '${m_name}',
         buyer_tel : '010-5654-0265',
         buyer_addr : '서울특별시 중구',
         buyer_postcode : '123-456'

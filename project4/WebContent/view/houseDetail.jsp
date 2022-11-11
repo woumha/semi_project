@@ -78,7 +78,7 @@
 		        ₩${ houseInfo.house_price } x
 		        <input type="number" id="count" name="count" readonly="readonly"style="text-align: right;width:30px;" />
 		        박&emsp;&emsp;
-		        	<b>₩<input type="number" id="result" disabled style="text-align: right;width:180px;"/></b> <c:if test="${!empty member_code_session }">
+		        	<b>₩<input type="number" id="result" name="result" style="text-align: right;width:180px;" readonly="readonly"/></b> <c:if test="${!empty member_code_session }">
 	<button type="submit">예약하기</button>
 </c:if>
 <c:if test="${empty member_code_session }">

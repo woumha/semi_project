@@ -65,7 +65,7 @@
 </style>
 </head>
 <body>
-<jsp:include page="../include/top2.jsp"/>
+<jsp:include page="../include/top.jsp"/>
 		<c:set var="dto" value="${Cont }" />
 		<div id="main">
 		<div id="border">

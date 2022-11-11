@@ -91,7 +91,7 @@
 </style>
 </head>
 <body>
-<jsp:include page="../include/top2.jsp"/>
+<jsp:include page="../include/top.jsp"/>
 	<c:set var="dto" value="${p_modify }"/>
 		<form method="post" action="<%=request.getContextPath() %>/admim_p_modify_ok.do">
 			<div id="main">

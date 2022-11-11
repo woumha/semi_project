@@ -44,7 +44,7 @@ pageEncoding="UTF-8"%>
 </style>
 </head>
 <body>
-   <jsp:include page="../include/top2.jsp"/>
+   <jsp:include page="../include/top.jsp"/>
    <div id="box" style="text-align: -webkit-center;">
       <table id="list">
          <tr>
@@ -82,7 +82,9 @@ pageEncoding="UTF-8"%>
                   <td> ${dto.getHouse_star() } </td>
                   <td> ${dto.getHouse_update().substring(0,10) } </td>
                   <td>
-                  	<input type="button" class="btn" value="삭제" onclick="location.href='admin_delete.do?no=${dto.getHouse_no()}'">
+	                  <input type="button" class="btn" value="삭제" onclick="if(confirm('숙소를 삭제 하시겠습니까?')){
+							location.href='admin_delete.do?no=${dto.getHouse_no()}'
+						} else {return;}">
                   </td>
                </tr>
             </c:forEach>

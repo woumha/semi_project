@@ -79,6 +79,7 @@
 		text-align: left;
 		margin-top: 2%;
 		font-size: 25px;
+		margin-left: 2%;
 	}
 	#sub_cont {
 		text-align: left;
@@ -100,7 +101,7 @@
 	#sub_div_area6 { margin-top: 50px; }
 	#sub_div_area7 { text-align: center; margin-top: 50px; }
 	.sub_div { margin-bottom: 20px; }
-	.sub_div_btn { margin-right: 30%; }
+	.sub_div_btn { margin-right: 35%; }
 	.one_tr { padding-right: 10px;}
 	.two_tr { padding-right: 10px; padding-left: 150px;}
 	#btn {
@@ -108,6 +109,7 @@
 		width: 113px;
 		height: 32px;
 		border-radius: 5%;
+		margin-left: 3%;
 	}
 	#btn:hover {
 		background-color: #e85255;
@@ -117,12 +119,13 @@
 	#border_1 {
 		width: 52%;
 		display: inline-block;
-		vertical-align: 88px;
+		vertical-align: 75px;
 	}
 	#border_2 {
 		width: 39%;
 		display: inline-block;
 		padding-bottom: 2%;
+		margin-left: 3%;
 	}
 	#main_border {
 		width: 75%;
@@ -132,6 +135,7 @@
 		outline: none;
 		border-color: rgb(233, 233, 233);
 		border-style: solid;
+		margin-left: 1%;
 	}
 	#left {
 		display: inline-block;
@@ -219,7 +223,7 @@
 					<input style="margin-left: 50%" id="btn" type="button" value="삭제"
 				onclick="if(confirm('예약을 취소하시겠습니까?')) {location.href='res_delete.do?no=${dto.getId() }&pcode=${member_code_session }'
 			}else { return; }">
-					<input type="button" id="btn" value="목록으로" onclick="location.href='res_list.do?pcode=${member_code_session }'">
+					<input type="button" id="btn" value="목록" onclick="location.href='res_list.do?pcode=${member_code_session }'">
 				</div>
 			</div>
 			
