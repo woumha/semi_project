@@ -72,7 +72,7 @@
 			
 			<tr>
 				<td> <!-- 결제 담당 -->
-					<a href="" class="information" id="2" class="box">
+					<a href="<%=request.getContextPath() %>/res_list.do?pcode=${member_code_session }" class="information" id="2" class="box">
 						<div class="_1uwb2q9">
 							<div style="margin-bottom: 16px;">
 								<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; height: 32px; width: 32px; fill: currentcolor;">

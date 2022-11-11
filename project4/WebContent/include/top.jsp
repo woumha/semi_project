@@ -104,7 +104,7 @@ $(function() {
 	<!-- =================================================================================================================================== -->
 	
 	<span id="modal" style="background-color: white;">
-		<c:set var="list" value="${member_code_session }"/>
+		<c:set var="list" value="${List }"/>
 		<c:if test="${empty list }">
 			<img src="/project4/main_img/login.png" width="40px" height="40px" class="open_modal">	
 		</c:if>
@@ -133,6 +133,9 @@ $(function() {
 			</form>
 		</c:if>
 		<c:if test="${!empty member_code_session }">
+		
+			<c:if test="${member_level ne 1 }">
+			
 			<div id="logout_menu">
 				<button id="message" class="tag">메세지</button>
 				<p>
@@ -145,7 +148,7 @@ $(function() {
 				<hr>
 				<button id="hoster" class="tag">숙소 호스트 되기</button>
 				<p>
-				<button id="suggestion_hoster" class="tag">호스트 추천하기</button>
+				<button id="suggestion_hoster" class="tag" onclick="location.href='<%=request.getContextPath() %>/res_list.do?pcode=${member_code_session }'">결제 내역</button>
 				<p>
 				<form method="post" id="mypage" action="<%=request.getContextPath()%>/account-settings.do">
 				<c:set var="co" value="${member_code_session }" />
@@ -153,10 +156,42 @@ $(function() {
 					<button type="submit" class="tag">계정</button>
 				</form>
 				<p>
-				<button id="help" class="tag" onclick="location.href='<%=request.getContextPath() %>QnA.do'" >Q&A</button>				
+				<button id="help" class="tag" onclick="location.href='<%=request.getContextPath() %>/QnA.do'" >Q&A</button>				
 				<p>
 				<button id="signOut" class="tag" onclick="location.href='<%=request.getContextPath() %>/logout.do'">로그아웃</button>
 			</div>
+			
+			</c:if>
+			
+			<c:if test="${member_level eq 1 }">
+			
+			<div id="logout_menu">
+				<button id="message" class="tag">메세지</button>
+				<p>
+				<button id="alram" class="tag">알림</button>
+				<p>
+				<button id="travel" class="tag">여행</button>
+				<p>
+				<button id="wishlist" class="tag">위시리스트</button>
+				<p>
+				<hr>
+				<button id="hoster" class="tag">숙소 호스트 되기</button>
+				<p>
+				<button id="suggestion_hoster" class="tag" onclick="location.href='<%=request.getContextPath() %>/admin_house_list.do'">관리자 페이지</button>
+				<p>
+				<form method="post" id="mypage" action="<%=request.getContextPath()%>/account-settings.do">
+				<c:set var="co" value="${member_code_session }" />
+					<input type="hidden" name="code" value="${co }">
+					<button type="submit" class="tag">계정</button>
+				</form>
+				<p>
+				<button id="help" class="tag" onclick="location.href='<%=request.getContextPath() %>/QnA.do'" >Q&A</button>				
+				<p>
+				<button id="signOut" class="tag" onclick="location.href='<%=request.getContextPath() %>/logout.do'">로그아웃</button>
+			</div>
+			
+			</c:if>
+			
 		</c:if>
 	</div>
 
