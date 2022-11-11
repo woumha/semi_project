@@ -132,7 +132,7 @@
 </style>
 </head>
 <body>
-<jsp:include page="../include/top2.jsp" />
+<jsp:include page="../include/top.jsp" />
 <c:set var="dto" value="${modify }"/>
 <%-- enctype : 파일을 업로드하기 위한 속성 --%>
 	<form id="form_tag"method="post" enctype="multipart/form-data" action="<%=request.getContextPath() %>/admin_modify_ok.do">

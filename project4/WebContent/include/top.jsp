@@ -55,6 +55,9 @@ $(function() {
 		outline: 0px;
 		background-color: white;
 	}
+	.modal {
+		height: auto;
+	}
 	
 	
 </style>

@@ -8,7 +8,7 @@ pageEncoding="UTF-8"%>
 <title>Insert title here</title>
 <style type="text/css">
 	#box {
-	margin-left: 8%
+	margin-left: 17%
 	}
 
 	#list {
@@ -20,12 +20,13 @@ pageEncoding="UTF-8"%>
 	}
 	
 	#paging {
-	text-align: center;
+	    margin-left: 38%;
+	    margin-top: 1%;
 	}
 </style>
 </head>
 <body>
-   <jsp:include page="/include/top.jsp"/>
+   <jsp:include page="../include/top.jsp"/>
    <div id="box">
       <table id="list">
          <tr>
@@ -51,10 +52,6 @@ pageEncoding="UTF-8"%>
                   <td> ${dto.getprice() } </td>
                   <td> ${dto.getCreated_date().substring(0,10) } </td>
                   <td>
-                    <%-- <form name="resform" class="form" method="post" action="<%=request.getContextPath() %>/res_delete.do?no=${dto.getId() }">
-						<input type="hidden" id="pcode" name="pcode" value="${member_code_session }" />
-						<button type="submit">삭제</button>
-					</form> --%>
 					<input type="button" value="삭제"
 						onclick="if(confirm('예약을 취소하시겠습니까?')) {location.href='res_delete.do?no=${dto.getId() }&pcode=${member_code_session }'
 	                        }else { return; }">

@@ -99,6 +99,12 @@ public class ReservationDAO {
 			pstmt.setString(7, house_name);
 			
 			result = pstmt.executeUpdate();
+			
+			sql = "update house set house_count = house_count + 1 where house_no=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, house_no);
+			pstmt.executeUpdate();
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -114,7 +120,7 @@ public class ReservationDAO {
 		openConn();
 
 		try {
-			sql = "select count(*) from notice where pmemer_code = ?";
+			sql = "select count(*) from notice where pmember_code = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setLong(1, dto.getPmember_code());
 			rs = pstmt.executeQuery();

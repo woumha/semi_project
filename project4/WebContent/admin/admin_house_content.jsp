@@ -55,14 +55,14 @@
 		text-align: left;
 	}
 	#sub_div_area1 .sub_div, #sub_div_area2 .sub_div { display: inline; }
-	#sub_div_area1, #sub_div_area2 { margin-bottom: 20px; margin-left: 20%; }
+	#sub_div_area1, #sub_div_area2 { margin-bottom: 20px; margin-left: 26%; }
 	#sub_div_area3 { margin-top: 20px; }
 	#sub_div_area4 { margin-top: 30px; }
-	#sub_div_area5 { margin-top: 30px; }
-	#sub_div_area6 { margin-top: 50px; }
+	#sub_div_area5 { margin-top: 50px; margin-left: 100px;}
+	#sub_div_area6 { margin-top: 20px; margin-left: 18%; }
 	#sub_div_area7 { text-align: center; margin-top: 50px; }
 	.sub_div { margin-bottom: 20px; }
-	.sub_div_btn { margin-right: 30%; }
+	.sub_div_btn { margin-right: 41%; }
 	.one_tr { padding-right: 10px;}
 	.two_tr { padding-right: 10px; padding-left: 150px;}
 	.title_text { padding-right: 10px; }
@@ -91,7 +91,7 @@
 </style>
 </head>
 <body>
-<jsp:include page="../include/top2.jsp"/>
+<jsp:include page="../include/top.jsp"/>
 <c:set var="dto" value="${Cont }" />
 		<div id="main">
 		<div id="border">
@@ -134,21 +134,21 @@
 				<div id="sub_div_area2">
 					<div class="sub_div">
 						<span class="title">숙소 가격(1박)</span>
-						<input style="margin-left: 14.9%" class="input_box" value="${dto.getHouse_price() }" readonly>
+						<input style="margin-left: 16%" class="input_box" value="${dto.getHouse_price() }" readonly>
 					</div>
 				</div>
 					
 				<div id="sub_div_area2">
 					<div class="sub_div">
 						<span class="title">숙소 연락처</span>
-						<input style="margin-left: 18.2%" class="input_box" value="${dto.getHouse_phone() }" readonly>
+						<input style="margin-left: 18.8%" class="input_box" value="${dto.getHouse_phone() }" readonly>
 					</div>
 				</div>
 				
 				<div id="sub_div_area2">
 					<div class="sub_div">
 						<span class="title">숙소 최대인원</span>
-						<input style="margin-left: 15.2%" class="input_box" value="${dto.getHouse_person() }" readonly>
+						<input style="margin-left: 16.4%" class="input_box" value="${dto.getHouse_person() }" readonly>
 					</div>
 				</div>
 					
@@ -162,7 +162,7 @@
 				<div id="sub_div_area2">
 					<div class="sub_div">
 						<span class="title">숙소 결제 수</span>
-						<input style="margin-left: 17.2%" class="input_box" value="${dto.getHouse_count() }" readonly>
+						<input style="margin-left: 18.1%" class="input_box" value="${dto.getHouse_count() }" readonly>
 					</div>
 				</div>
 			
@@ -170,10 +170,16 @@
 					<div class="sub_div">
 						<span class="title">숙소 위치</span>
 						<input style="margin-left: 21.2%" class="input_box" value="${dto.getHouse_location() }" readonly>
+					</div>
+				</div>
 						
-						<div id="map" style="width:880px;height:500px;"></div>
+				<div id="sub_div_area6">
+					<div class="sub_div">
+						<div id="map" style="width:500px;height:300px;"></div>
 						<input id="latitude" name="latitude" value="${dto.getLatitude() }" readonly>
 						<input id="longitude" name="longitude" value="${dto.getLongitude() }" readonly>
+					</div>
+				</div>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b133548e794b66e5c1831469d0d70884"></script>
 <script>
 		var la = '<c:out value="${dto.getLatitude()}"/>';
@@ -211,13 +217,11 @@
     		
 		}); */
 </script>
-					</div>
-				</div>
 				
 				<div id="sub_div_area2">
 					<div class="sub_div">
 						<span class="title">숙소 등록일</span>
-						<input style="margin-left: 18.2%" class="input_box" value="${dto.getHouse_update().substring(0,10) }" readonly>
+						<input style="margin-left: 18.6%" class="input_box" value="${dto.getHouse_update().substring(0,10) }" readonly>
 					</div>
 				</div>
 		
@@ -226,13 +230,13 @@
 					<table>
 						<tr>
 							<th><span class="title_cont">숙소 소개</span></th>
-							<td><textarea style="margin-left: 47%" class="input_box_cont" rows="1" cols="100" name="house_content" id="house_house_contentlocation" readonly>${dto.getHouse_content() }</textarea></td>
+							<td><textarea style="margin-left: 57%" class="input_box_cont" rows="1" cols="100" name="house_content" id="house_house_contentlocation" readonly>${dto.getHouse_content() }</textarea></td>
 						</tr>
 					</table>
 					</div>
 				</div>
 			
-				<div id="sub_div_area5">
+				<div id="sub_div_area3">
 					<div class="sub_div">
 						<img src="<%=request.getContextPath() %>/upload/${dto.getHouse_img1() }" width="100%">
 						<img src="<%=request.getContextPath() %>/upload/${dto.getHouse_img2() }" width="100%">

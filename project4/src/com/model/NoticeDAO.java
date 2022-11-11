@@ -88,7 +88,7 @@ public class NoticeDAO {
 		openConn();
 
 		try {
-			sql = "select notice_no, notice_cont, created_date from notice n join reservation r on n.pmember_code = r.pmember_code where n.pmember_code = ? ORDER BY notice_no desc";
+			sql = "select notice_no, notice_cont, created_date from notice n join reservation r on n.id = r.id where n.pmember_code = ? ORDER BY notice_no desc";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setLong(1, dto.getPmember_code());
 			rs = pstmt.executeQuery();
