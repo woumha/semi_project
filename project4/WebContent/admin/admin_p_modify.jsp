@@ -161,7 +161,7 @@
 				
 				<div id="sub_div_area1">
 					<div class="sub_div">
-						<span class="title_text">수정일</span>
+						<span class="title_text">가입일</span>
 						<input style="margin-left: 21.3%" class="input_box" name="pmember_date" id="pmember_date" value="${dto.getPmember_date().substring(0,10) }" readonly>
 					</div>
 				</div>
