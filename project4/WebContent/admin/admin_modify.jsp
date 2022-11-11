@@ -471,6 +471,8 @@
 			<input id="btn" type="reset" value="다시작성" class="host_btns">
 		</div>
 	</div>
+</div>
+	</div>
 </form>
 <script>
 	let ft = document.getElementById("form_tag");
