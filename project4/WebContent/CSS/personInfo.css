@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+#position {
+	top: 300px;
+	margin-left: 300px;
+	line-height: 2em;
+	width: 500px;
+}
+
+.btntd {
+	 float: right
+}
+
+.btntd:hover {
+	color: tomato;
+}

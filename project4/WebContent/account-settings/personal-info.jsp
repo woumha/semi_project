@@ -9,22 +9,16 @@
 <title>개인정보 - 계정 관리 - 4팀</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
 <script type="text/javascript" src="../JS/personal-info_javascript.js"></script>
-<script type="text/javascript">
-	
-</script>
-<style type="text/css">
-	 .btntd {
-	 	float: right
-	 }
-</style>
+<link rel="stylesheet" href="/project4/CSS/personInfo.css" />
 </head>
 <body>
 	<jsp:include page="/include/top.jsp" />
-	<div align="center" class="childdiv">
-		<h4>개인 > 개인정보</h4>
+<div id="position">
+	<div class="childdiv">
+		<h4><a href="<%=request.getContextPath()%>/account-settings.do">계정</a> > 개인정보</h4>
 	</div>
 	<p> <p>
-	<div id="parentdiv" align="center">
+	<div id="parentdiv">
 		<table width="600">
 			<div id="divman">
 				<tr>
@@ -205,6 +199,8 @@
 			</tr>
 		</table>
 	</div>
+</div>
 	<jsp:include page="/include/bottom.jsp" />
+	<link rel="stylesheet" type="text/css" crossorigin="anonymous" href="https://a0.muscache.com/airbnb/static/packages/web/common/72f46196c8.css" media="all">
 </body>
 </html>

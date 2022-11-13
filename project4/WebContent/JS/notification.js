@@ -16,6 +16,7 @@ $(function () {
 			const rowIcnt = notice.rows.length; // 테이블 길이
 
 			if(data.length != 21) {
+				let i = 0;
 				$(data).find("notice").each(function() {
 					let newRow = notice.insertRow();
 
@@ -33,7 +34,7 @@ $(function () {
 					noCell.innerHTML = no;
 					contCell.innerHTML = content;
 					dateCell.innerHTML = date;	
-					deleteCell.innerHTML = "<a href='#' onClick=\"delRow()\">X</a>";
+					deleteCell.innerHTML = "<a href='#' id='"+ (i = i + 1) +"' onClick=\"delRow(this.id)\">X</a>";
 				});
 			} else {
 				let newRow = notice.insertRow();
@@ -44,17 +45,17 @@ $(function () {
 	});
 });
 
-function delRow() {
+function delRow(del_Id) {
 	$.ajax({
 		url: "/project4/notiDelete.do",
 		datatype: "xml",
 		data: {
-			num: no
+			num: del_Id
 		},
 		success: function(data) {
+			console.log(del_Id);
 			const notice = document.querySelector("#notice-table"); //테이블 이름
-			const rowIcnt = notice.rows.length; // 테이블 길이
-
+			
 			if(data.length != 21) {
 				location.reload();
 				$(data).find("notice").each(function() {

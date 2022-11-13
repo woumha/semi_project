@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+#position {
+	top: 400px;
+	margin-left: 300px;
+	line-height: 2em;
+	width: 500px;
+	margin-top: 30px;
+}
+
+.mainfont {
+	font-size: 32px;
+	font-weight: bold;
+	
+	
+	margin-bottom: 50px;
+}
+
+.topfont {
+	color: gray;	
+}
+
+.tabline {
+	margin-bottom: 50px;
+}
+
+.logintab {
+	margin-bottom: 40px;
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.updatespan {
+	float: right;
+	color: gray;
+}
+
+.membershutdown {
+	float: right;
+	color: gray;
+}
+
+.tabbtn {
+	border: 0;
+	background-color: white;
+	font-weight: bold;
+}
+
