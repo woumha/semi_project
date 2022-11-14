@@ -31,7 +31,7 @@
 		<c:set var="list" value="${pmember }" />
 		<h2>계정</h2>
 		<br>
-		<h4>${list.pmember_firstname }${list.pmember_lastname }님, ${list.pmember_email }@${list.pmember_domain } > <a href="#">프로필로 이동</a></h4>
+		<h4>${list.pmember_firstname }${list.pmember_lastname }님, ${list.pmember_email }@${list.pmember_domain } > <a href="/project4/account-settings/personal-info.jsp">프로필로 이동</a></h4>
 	</div>
 	<p>
 	<div align="center">
@@ -117,39 +117,6 @@
 						<div class="4_2">연결된 앱, 공유하는 정보 및 공개 대상 관리하기</div>
 					</a>
 				</td>
-				
-				<td>
-					<a href="preferences" class="information" >
-						<div class="_1uwb2q9">
-							<div style="margin-bottom: 16px;" id="5" class="box">
-								<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; height: 32px; width: 32px; fill: currentcolor;">
-									<path d="m24 31a7 7 0 0 0 0-14h-16a7 7 0 0 0 0 14zm5-7a5 5 0 1 1 -5-5 5.00588 5.00588 0 0 1 5 5zm-26 0a5.00588 5.00588 0 0 1 5-5h11.11072a6.97751 6.97751 0 0 0 0 10h-11.11072a5.00588 5.00588 0 0 1 -5-5zm21-23h-16a7 7 0 0 0 0 14h16a7 7 0 0 0 0-14zm-21 7a5 5 0 1 1 5 5 5.00588 5.00588 0 0 1 -5-5zm21 5h-11.11035a6.97836 6.97836 0 0 0 0-10h11.11035a5 5 0 0 1 0 10z">
-									</path>
-								</svg>
-							</div>
-						</div>
-						<div class="5_1">글로벌 환경 설정</div>
-						<div class="5_2">기본 언어, 통화, 시간대 설정하기</div>
-					</a>
-				</td>
-			</tr>
-			
-			<tr>
-				<td>
-					<a href="airbnb-for-work" class="information" >
-						<div class="_1uwb2q9">
-							<div style="margin-bottom: 16px;" id="6" class="box">
-								<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; height: 32px; width: 32px; fill: currentcolor;">
-									<path d="M26 2a1 1 0 0 1 .922.612l.04.113 2 7a1 1 0 0 1-.847 1.269L28 11h-3v5h6v2h-2v13h-2l.001-2.536a3.976 3.976 0 0 1-1.73.527L25 29H7a3.982 3.982 0 0 1-2-.535V31H3V18H1v-2h5v-4a1 1 0 0 1 .883-.993L7 11h.238L6.086 8.406l1.828-.812L9.427 11H12a1 1 0 0 1 .993.883L13 12v4h10v-5h-3a1 1 0 0 1-.987-1.162l.025-.113 2-7a1 1 0 0 1 .842-.718L22 2h4zm1 16H5v7a2 2 0 0 0 1.697 1.977l.154.018L7 27h18a2 2 0 0 0 1.995-1.85L27 25v-7zm-16-5H8v3h3v-3zm14.245-9h-2.491l-1.429 5h5.349l-1.429-5z">
-									</path>
-								</svg>
-							</div>
-						</div>
-						<div class="6_1">출장</div>
-						<div class="6_2">회사 이메일을 입력하면 출장에서 혜택을 누리실 수 있습니다.</div>
-					</a>
-				</td>
-				
 				<td>
 					<a href="account-settings/professional-hosting" class="information" >
 						<div class="_1uwb2q9">
@@ -162,22 +129,6 @@
 						</div>
 						<div class="7_1">전문 호스팅 도구</div>
 						<div class="7_2">에어비앤비에서 여러 숙소를 관리하신다면 전문 도구를 이용해보세요.</div>
-					</a>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<a href="cradit" class="information" >
-						<div class="_1uwb2q9">
-							<div style="margin-bottom: 16px;" id="8" class="box">
-								<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; height: 32px; width: 32px; fill: currentcolor;">
-									<path d="m28 2c1.0543618 0 1.9181651.81587779 1.9945143 1.85073766l.0054857.14926234v24c0 1.0543618-.8158778 1.9181651-1.8507377 1.9945143l-.1492623.0054857h-24c-1.0543618 0-1.91816512-.8158778-1.99451426-1.8507377l-.00548574-.1492623v-24c0-1.0543618.81587779-1.91816512 1.85073766-1.99451426l.14926234-.00548574zm-14.415 15h-9.585v11h11v-9.586l-4.2928932 4.2931068-1.41421358-1.4142136zm14.415 0h-9.585l4.2921068 4.2928932-1.4142136 1.4142136-4.2928932-4.2931068v9.586h11zm-13-13h-11v11l3.53577067.0011092c-.34073717-.5885973-.53577067-1.272077-.53577067-2.0011092 0-2.209139 1.790861-4 4-4 1.0347079 0 1.9884302.35717147 2.8159632 1.1592818.2940352.2850022.6817727.8549374 1.1838896 1.7366117zm6 7c-.5327919 0-.9841014.1690165-1.4239808.5953825-.2060299.1997004-.6246872.8766948-1.2206134 1.985144l-.247741.466282-.4926648.9531915h3.385c1.0016437 0 1.8313084-.7363297 1.9772306-1.6972257l.0172837-.153512.0054857-.1492623c0-1.1045695-.8954305-2-2-2zm7-7h-11l.0007292 7.8948717c.5018346-.8810929.889386-1.4506978 1.1833076-1.7355899.827533-.80211033 1.7812553-1.1592818 2.8159632-1.1592818 2.209139 0 4 1.790861 4 4 0 .7290322-.1950335 1.4125119-.5357707 2.0011092l3.5357707-.0011092zm-17 7c-1.1045695 0-2 .8954305-2 2l.00548574.1492623c.07634914 1.0348599.94015246 1.8507377 1.99451426 1.8507377h3.385l-.4926648-.9531915-.3645522-.6822055c-.533991-.9806703-.9115076-1.5828334-1.1038022-1.7692205-.4398794-.426366-.8911889-.5953825-1.4239808-.5953825z">
-									</path>
-								</svg>
-							</div>
-						</div>
-						<div class="8_1">추천 크레딧 및 쿠폰</div>
-						<div class="8_2">₩0의 추천 크레딧과 쿠폰이 있습니다. 자세히 알아보기</div>
 					</a>
 				</td>
 			</tr>

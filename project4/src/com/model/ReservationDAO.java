@@ -125,9 +125,17 @@ public class ReservationDAO {
 			pstmt.setLong(1, dto.getPmember_code());
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				count = rs.getInt(1) + 1;
+				count = rs.getInt(1);
 			}
-
+			
+			if(!(count == 0)) { // 알림이 있다면 기존에 있는 알림을 뒤로 밀어쓴다.
+				sql = "update notice set notice_no = notice_no + 1 where pmember_code = ? and notice_no <= (select count(*) from notice where pmember_code = ?);";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setLong(1, dto.getPmember_code());
+				pstmt.setLong(2, dto.getPmember_code());
+				pstmt.executeUpdate();	
+			}
+			
 			sql = "select ID from reservation where pmember_code = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setLong(1, dto.getPmember_code());
@@ -135,16 +143,15 @@ public class ReservationDAO {
 			if(rs.next()) {
 				id = rs.getInt("ID");
 			}
-
-			sql = "INSERT INTO notice values (?, ?, ?, ?)";
+			
+			sql = "INSERT INTO notice values (1, ?, ?, ?)";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, count);
-			pstmt.setString(2, dto.getNotice_cont());
-			pstmt.setLong(3, dto.getPmember_code());
-			pstmt.setInt(4, id);
-
+			
+			pstmt.setString(1, dto.getNotice_cont());
+			pstmt.setLong(2, dto.getPmember_code());
+			pstmt.setInt(3, id);
+			
 			pstmt.executeUpdate();
-
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

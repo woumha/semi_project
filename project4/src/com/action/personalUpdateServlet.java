@@ -2,12 +2,15 @@ package com.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Calendar;
 
+import javax.mail.Session;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.model.pmemberDAO;
 import com.model.pmemberDTO;
@@ -33,6 +36,7 @@ public class personalUpdateServlet extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 		String result = "";
+		boolean updateCheck;
 		
 		String no = request.getParameter("find");
 		long membercode = Long.parseLong(request.getParameter("code"));
@@ -48,7 +52,7 @@ public class personalUpdateServlet extends HttpServlet {
 			dto.setPmember_firstname(firstName);
 			dto.setPmember_lastname(lastName);
 			
-					
+				
 		} else if(no.equals("gender")) { // 성별 변경
 			String gen = request.getParameter("gender");
 			dto.setPmember_gender(gen);
@@ -58,7 +62,13 @@ public class personalUpdateServlet extends HttpServlet {
 			String domain = request.getParameter("domain");
 			dto.setPmember_email(email);
 			dto.setPmember_domain(domain);
-			
+			HttpSession session = request.getSession();
+			Calendar today = Calendar.getInstance();
+			int year = today.get(Calendar.YEAR);
+			int month = today.get(Calendar.MONTH);
+			int date = today.get(Calendar.DATE);
+			String day = year + "년 " + (month+1) + "월 " + date + "일에 이메일을 변경하셨습니다."; 
+			session.setAttribute("updateDay", day);
 		} else if(no.equals("phone")) {
 			String phone = request.getParameter("num");
 			
@@ -66,6 +76,7 @@ public class personalUpdateServlet extends HttpServlet {
 		}
 		
 		result = dao.setPersonalUpdate(no, dto);
+	
 		out.println(result);
 	}
 
