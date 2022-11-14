@@ -84,22 +84,22 @@ pageEncoding="UTF-8"%>
       <!-- 페이징 처리 -->
   <div id="paging">
       <c:if test="${page > block }">
-			<a href="admin_house_list.do?page=1&p_page=${p_page }">◀◀︎</a>
-			<a href="admin_house_list.do?page=${startBlock - 1 }&p_page=${p_page }">◀︎</a>
+			<a href="res_list.do?p_page=${p_page }&pcode=${member_code_session}">◀◀︎</a>
+			<a href="res_list.do?page=${startBlock - 1 }&pcode=${member_code_session}">◀︎</a>
 		</c:if>
 		
 		<c:forEach begin="${startBlock }" end="${endBlock }" var="i">
 			<c:if test="${i == page }">
-				<b><a href="admin_house_list.do?page=${i }&p_page=${p_page }">[${i }]</a></b>
+				<b><a href="res_list.do?page=${i }&pcode=${member_code_session}">[${i }]</a></b>
 			</c:if>
 			<c:if test="${i != page }">
-				<a href="admin_house_list.do?page=${i }&p_page=${p_page }">[${i }]</a>
+				<a href="res_list.do?page=${i }&pcode=${member_code_session}">[${i }]</a>
 			</c:if>
 		</c:forEach>
 		
 		<c:if test="${endBlock < allPage }">
-			<a href="admin_house_list.do?page=${endBlock + 1 }&p_page=${p_page }">▶︎︎</a>
-			<a href="admin_house_list.do?page=${allPage }&p_page=${p_page }">▶▶︎︎</a>
+			<a href="res_list.do?page=${endBlock + 1 }&pcode=${member_code_session}">▶︎︎</a>
+			<a href="res_list.do?page=${allPage }&pcode=${member_code_session}">▶▶︎︎</a>
 		</c:if>
   </div>
 </div>
