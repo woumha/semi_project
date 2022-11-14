@@ -175,7 +175,7 @@
 						
 				<div id="sub_div_area6">
 					<div class="sub_div">
-						<div id="map" style="width:500px;height:300px;"></div>
+						<div id="map" style="width:500px;height:300px;z-index: -1;"></div>
 						<input id="latitude" name="latitude" value="${dto.getLatitude() }" readonly>
 						<input id="longitude" name="longitude" value="${dto.getLongitude() }" readonly>
 					</div>
