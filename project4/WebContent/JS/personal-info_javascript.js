@@ -144,6 +144,7 @@
 			
 			
 		});
+		
 	});
 	
 	function insertsubmit() {
@@ -151,113 +152,114 @@
 			ContentType: "application/x-www-form-urlencoded;charset=UTF-8", //한글처리
 			type: "post"
 		});
-		//if($("#input[type=text]").val() == null) {
-			//alert("값을 입력해주세요.");
-		//} else {
-			if($("#nameinsert").text().trim() == "취소") {
-				$.ajax({
-					url: "/project4/personal_update.do",
-					data: {
-						find: "name",
-						code: pcode,
-						last: $("#lastName").val(),
-						first: $("#firstName").val()
-					},
-					success: function(data) {
-						$(data).find("personal").each(function() {
-							lastname = $(this).find("pmember_lastname").text().trim();
-							firstname = $(this).find("pmember_firstname").text().trim();
-							$("#namebtn").text("수정");
-							$(".tdinput").hide();
-							$("#nameinsert").hide();
-							$("#pname").text(lastname + " " + firstname);
-						});
-					},
-					
-				});
-			} // name if
-			
-			if($("#genderbtn").text().trim() == "취소") {
-				select = $("select[name=genderSelect] option:selected" ).text();
-				console.log(select);
-				
-				$.ajax({
-					url: "/project4/personal_update.do",
-					data: {
-						find: "gender",
-						code: pcode,
-						gender: select 
-					},
-					success: function(data) {
-						$(data).find("personal").each(function() {
-							gender = $(this).find("pmember_gender").text().trim();
-							$("#genderbtn").text("수정");
-							$("#pgender").text(gender);
-							$(".classgender").hide();
-							$("#pgender").show();
-						});
-					}
-				});
-			} // gender if
-			
-			if($("#emailbtn").text().trim() == "취소") {
-				if(member_code == $("#inputcode").val()) {
-					$.ajax({
-						url: "/project4/personal_update.do",
-						datatype: "xml",
-						data: {
-							find: "mail",
-							code: pcode,
-							mail: m,
-							domain: d
-						},
-						success: function(data) {
-							$(data).find("personal").each(function() {
-								updateMail = $(this).find("pmember_email").text().trim();
-								updateDomain = $(this).find("pmember_domain").text().trim();
-								
-								$("#pemail").text(updateMail + "@" + updateDomain);
-								$(".classmail").hide();
-								$("#emailbtn").text("수정");
-								$("#tokencheck").hide();
-								$("#inputcode").hide();
-								$("#inputcode").val('');
-							});
-							
-						},
-						error: function() {
-							alert("이메일 수정 실패");
-						}
+		console.log($("#namebtn").text().trim());
+		if($("#namebtn").text().trim() == "취소") {
+			$.ajax({
+				url: "/project4/personal_update.do",
+				data: {
+					find: "name",
+					code: pcode,
+					last: $("#lastName").val(),
+					first: $("#firstName").val()
+				},
+				success: function(data) {
+					console.log("1");
+					$(data).find("personal").each(function() {
+						lastname = $(this).find("pmember_lastname").text().trim();
+						firstname = $(this).find("pmember_firstname").text().trim();
+						$("#namebtn").text("수정");
+						$(".tdinput").hide();
+						$("#nameinsert").hide();
+						$("#pname").text(lastname + " " + firstname);
 					});
-				} else {
-					alert("인증코드가 잘못되었습니다.");
 				}
-			} // email if
+			});
+		}
+		
+		if($("#genderbtn").text().trim() == "취소") {
+			select = $("select[name=genderSelect] option:selected" ).text();
+			console.log(select);
 			
-			if($("#phonebtn").text().trim() == "취소") {
+			$.ajax({
+				url: "/project4/personal_update.do",
+				data: {
+					find: "gender",
+					code: pcode,
+					gender: select 
+				},
+				success: function(data) {
+					$(data).find("personal").each(function() {
+						gender = $(this).find("pmember_gender").text().trim();
+						$("#genderbtn").text("수정");
+						$("#pgender").text(gender);
+						$(".classgender").hide();
+						$("#pgender").show();
+					});
+				}
+			});
+		} // gender if
+		
+		if($("#emailbtn").text().trim() == "취소") {
+			if(member_code == $("#inputcode").val()) {
 				$.ajax({
 					url: "/project4/personal_update.do",
 					datatype: "xml",
 					data: {
-						find: "phone",
+						find: "mail",
 						code: pcode,
-						num: $("#inputphone").val()
+						mail: m,
+						domain: d
 					},
 					success: function(data) {
 						$(data).find("personal").each(function() {
-							updatePhone = $(this).find("pmember_phone").text().trim();
-							$("#pphone").text(updatePhone);
-							$("#pphone").show();
-							$("#phonebtn").text("수정");
-							$("#td_phone_btn").hide();
-							$("#inputphone").val('');
+							updateMail = $(this).find("pmember_email").text().trim();
+							updateDomain = $(this).find("pmember_domain").text().trim();
+							
+							$("#pemail").text(updateMail + "@" + updateDomain);
+							$(".classmail").hide();
+							$("#emailbtn").text("수정");
+							$("#tokencheck").hide();
+							$("#inputcode").hide();
+							$("#inputcode").val('');
 						});
+						
 					},
 					error: function() {
-						alert("수정 실패");
+						alert("이메일 수정 실패");
 					}
 				});
-			} // phone if
-		//} // if/else
+			} else {
+				alert("인증코드가 잘못되었습니다.");
+			}
+		} // email if
 		
-	}; // insertsubmit();
+		if($("#phonebtn").text().trim() == "취소") {
+			$.ajax({
+				url: "/project4/personal_update.do",
+				datatype: "xml",
+				data: {
+					find: "phone",
+					code: pcode,
+					num: $("#inputphone").val()
+				},
+				success: function(data) {
+					console.log(data);
+					$(data).find("personal").each(function() {
+						updatePhone = $(this).find("pmember_phone").text().trim();
+						
+						$("#pphone").text(updatePhone);
+						$("#pphone").show();
+						$("#phonebtn").text("수정");
+						$("#td_phone_btn").hide();
+						$("#inputphone").val('');
+					});
+				},
+				error: function() {
+					alert("수정 실패");
+				}
+			});
+		} // phone if
+	//} // if/else
+	
+}; // insertsubmit();
+	

@@ -219,6 +219,11 @@ public class pmemberDAO {
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, dto.getPmember_phone());
 					pstmt.setLong(2, dto.getPmember_code());
+					pstmt.executeUpdate();
+					
+					sql = "select pmember_phone from pmember where pmember_code = ?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setLong(1, dto.getPmember_code());
 					rs = pstmt.executeQuery();
 					result += "<personals>";
 					if(rs.next()) {
