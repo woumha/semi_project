@@ -468,4 +468,31 @@ public class pmemberDAO {
 					return result;
 				} //setOnMember
 				
+				public int getKakaoLogin(pmemberDTO dto) {
+					int result = 0;
+					openConn();
+					
+					try {
+						sql = "select * from pmember where pmember_email = ?";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, dto.getPmember_email());
+						rs = pstmt.executeQuery();
+						
+						if(rs.next()) {
+							if(dto.getPmember_email().equals(rs.getString("pmember_email"))) {
+								result = 1;
+							} else {
+								result = 0;
+							}
+						}
+						
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} finally {
+						closeConn(rs, pstmt, con);
+					}
+					return result;
+				}
+				
 		}

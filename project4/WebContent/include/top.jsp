@@ -22,7 +22,10 @@
 <script type="text/javascript" src="/project4/JS/searchButton.js"></script>
 <link rel="stylesheet" href="/project4/CSS/top.css">
 <link rel="stylesheet" href="/project4/CSS/searchButton.css">
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script type="text/javascript" src="/project4/JS/kakaologin.js"></script>
 
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script>
 	$(document).ready(function(){
  		  $(".icon").click(function(){
@@ -204,7 +207,7 @@ $(function() {
 			<p id="login_welcom">에어비앤비에 오신 것을 환영합니다.</p>
 			<table>
 				<tr>
-					<td>
+					<td id="emailtd">
 						<form method="post" id="email_input" action="<%=request.getContextPath() %>/sendMail.do">
 							<input type="hidden" name="tag" value="first">
 							<input type="text" id="email" name="email" placeholder="Email">
@@ -218,17 +221,23 @@ $(function() {
 									<option value="daum.net">daum.net</option>
 								</select>
 							</div>
-
+					</td>
+				</tr>
+				<tr>
+					<td>
 							<div id="div_sendEmail">
 								<input type="submit" id="sendEmail" name="sendEmail" value="인증번호 보내기">
 							</div>
 						</form>
 						<br>
-
+					</td>
+				</tr>
+				<tr>
+					<td id="apitd">
 						<div id="naver_id_login" align="center"></div>
 						<!-- 네이버아이디로로그인 버튼 노출 영역 -->
 						<script type="text/javascript">
-					 		var naver_id_login = new naver_id_login("zROYJp38WO0IxEpiDz0u", "http://localhost:8756/project4/API/naverLoginApi.jsp");	// Client ID, CallBack URL 삽입
+					 		var naver_id_login = new naver_id_login("tIubopvs1z_FqQjYOHzP", "http://localhost:8756/project4/API/naverLoginApi.jsp");	// Client ID, CallBack URL 삽입
 																// 단 'localhost'가 포함된 CallBack URL
 					 		var state = naver_id_login.getUniqState();
 							
@@ -237,7 +246,12 @@ $(function() {
 					 		naver_id_login.setState(state);
 					 		naver_id_login.init_naver_id_login();
 						</script>
+						&nbsp;
+						<a id="custom-login-btn" href="javascript:kakaoLogin()">
+							<img src="/project4/main_img/kakao_login_medium_narrow.png" width="150" />
+						</a>
 					</td>
+					
 				</tr>
 			</table>
 		</div>

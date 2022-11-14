@@ -8,13 +8,20 @@
 body {
   padding-top: 6%;
 }
+
+#emailtd {
+	width: 500px;
+}
+
 #email_text {
+	display: inline-block;
 	padding-top: 4px;
     margin-right: 10px;
     margin-left: 10px;
 	float: left;
 }
 #email {
+  display: inline-block;
   float: left;
   width: 200px;
   height: 32px;
@@ -43,7 +50,7 @@ body {
   padding-left: 15px;
   padding-right: 15px;
   background-color: rgb(233, 233, 233);
-
+  display: inline-block;
 }
 
 #div_sendEmail {
@@ -209,7 +216,19 @@ body {
 #naver_id_login {
 	text-align: center;
 	margin-top: 40px;
+	display:inline-block;
 }
+
+.kakaoapi {
+	display:inline-block;
+	text-align: center;
+	margin-top: 40px;
+}
+
+#apitd {
+	text-align: center;
+}
+
 #email_input {
 		
 }
