@@ -128,7 +128,7 @@
 							</div>
 						</div>
 						<div class="7_1">리뷰 목록</div>
-						<div class="7_2"></div>
+						<div class="7_2">예약한 숙소 리뷰 작성 및 관리</div>
 					</a>
 				</td>
 			</tr>
