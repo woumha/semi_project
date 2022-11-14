@@ -180,7 +180,7 @@
 		
 		
 		<div id="map_area">
-			<div id="map" style="width:880px;height:500px;z-index: -1;"></div>
+			<div id="map" style="width:880px;height:500px;"></div>
 			<p><em>지도를 클릭해주세요!</em></p> 
 			<input id="latitude" name="latitude" value="0" readonly>
 			<input id="longitude" name="longitude" value="0" readonly>
