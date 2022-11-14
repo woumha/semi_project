@@ -83,7 +83,7 @@ $(document).ready(function(){
         pay_method : 'card',
         merchant_uid: "IMP"+makeMerchantUid, 
         name : '<%=houseName %>',
-        amount : '<%=houseprice %>',
+        amount : '<%=result %>',
         buyer_email : '',
         buyer_name : '${m_name}',
         buyer_tel : '010-5654-0265',

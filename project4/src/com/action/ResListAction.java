@@ -18,9 +18,6 @@ public class ResListAction implements Action {
 		long pcode = Long.parseLong(request.getParameter("pcode").trim());
 		System.out.println("pcode >>> " + pcode);
 		
-		ResDAO dao = ResDAO.getInstance();
-		
-		
 		int rowsize = 10;
 		int block = 5;
 		int totalRecord = 0;
@@ -37,6 +34,7 @@ public class ResListAction implements Action {
 			int startBlock = (((page -1)/block) * block) + 1; 
 			int endBlock = (((page -1)/block) * block) + block; 
 			
+			ResDAO dao = ResDAO.getInstance();
 			totalRecord = dao.getResCount(pcode);
 				
 			allPage = (int)Math.ceil(totalRecord / (double)rowsize);
