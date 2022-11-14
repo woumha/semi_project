@@ -231,7 +231,7 @@
 							<img src="/project4/main_img/filter_icon_40.png">	
 						</c:if>
 					<p>필터</p>
-					<img src="/project4/main_img/filter_icon_40.png">
+					<hr style="margin-top: 5px; height: 2px; background-color: white; border: 0">
 					
 				</a>
 			</li>		
