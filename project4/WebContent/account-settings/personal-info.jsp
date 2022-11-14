@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>개인정보 - 계정 관리 - 4팀</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
-<script type="text/javascript" src="../JS/personal-info_javascript.js"></script>
+<script type="text/javascript" src="/project4/JS/personal-info_javascript.js"></script>
 <link rel="stylesheet" href="/project4/CSS/personInfo.css" />
 </head>
 <body>

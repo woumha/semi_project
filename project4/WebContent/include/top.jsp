@@ -242,7 +242,7 @@ $(function() {
 					 		var state = naver_id_login.getUniqState();
 							
 					 		naver_id_login.setButton("green", 2, 40);
-					 		naver_id_login.setDomain("서비스 URL");	//  URL
+					 		naver_id_login.setDomain("http://localhost:8756/project4/include/top.jsp");	//  URL
 					 		naver_id_login.setState(state);
 					 		naver_id_login.init_naver_id_login();
 						</script>
