@@ -204,7 +204,7 @@
 		</div>
 	<div id="sub_div_area5">	
 		<div id="map_area">
-			<div id="map" style="width:500px;height:300px;z-index: -1;"></div>
+			<div id="map" style="width:500px;height:300px;"></div>
 			<p><em>지도를 클릭해주세요!</em></p> 
 			<input id="latitude" name="latitude" value="${dto.getLatitude() }" readonly>
 			<input id="longitude" name="longitude" value="${dto.getLongitude() }" readonly>
