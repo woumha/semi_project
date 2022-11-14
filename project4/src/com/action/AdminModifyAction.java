@@ -45,7 +45,7 @@ public class AdminModifyAction implements Action {
 		int house_gym = Integer.parseInt(multi.getParameter("house_gym"));
 		String latitude = multi.getParameter("latitude");
 		String longitude = multi.getParameter("longitude");
-		String house_update = multi.getParameter("house_update").trim();
+		String house_update = multi.getParameter("house_update");
 		
 		String upload_file1 = multi.getFilesystemName("house_img1");
 		String upload_file2 = multi.getFilesystemName("house_img2");
