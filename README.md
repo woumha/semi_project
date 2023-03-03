@@ -31,7 +31,11 @@ DBMS: OracleDB
 
 ![1_1](https://user-images.githubusercontent.com/93087571/222812744-848363e9-a910-4b13-8695-1257a7420c49.png)
 
-
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 
 
 
@@ -44,7 +48,11 @@ DBMS: OracleDB
 ![1_5](https://user-images.githubusercontent.com/93087571/222813054-0b34c054-bd90-408f-abcf-ed7d05d3ec06.png)
 
 
-
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 
 
 
@@ -55,7 +63,11 @@ DBMS: OracleDB
 ![1_3](https://user-images.githubusercontent.com/93087571/222813029-bc95d4ea-0aea-48ce-a4fb-091ec29bbf12.png)
 
 
-
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 
 
 
@@ -68,5 +80,9 @@ DBMS: OracleDB
   
 
   
-
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 
